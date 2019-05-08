@@ -6,6 +6,7 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
+    "jquery": "^3.4.1",
     "mdbreact": "^4.13.0",
     "react": "^16.8.6",
     "react-animate-css": "0.0.1",
