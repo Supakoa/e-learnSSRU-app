@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/e-learnSSRU-app/static/css/main.584f321a.chunk.css",
+    "main.js": "/e-learnSSRU-app/static/js/main.05ca86f0.chunk.js",
+    "main.js.map": "/e-learnSSRU-app/static/js/main.05ca86f0.chunk.js.map",
+    "runtime~main.js": "/e-learnSSRU-app/static/js/runtime~main.d013a639.js",
+    "runtime~main.js.map": "/e-learnSSRU-app/static/js/runtime~main.d013a639.js.map",
+    "static/js/2.b41502e9.chunk.js": "/e-learnSSRU-app/static/js/2.b41502e9.chunk.js",
+    "static/js/2.b41502e9.chunk.js.map": "/e-learnSSRU-app/static/js/2.b41502e9.chunk.js.map",
+    "index.html": "/e-learnSSRU-app/index.html",
+    "precache-manifest.d9898b84c8b4feffcd2e5d3e396e865c.js": "/e-learnSSRU-app/precache-manifest.d9898b84c8b4feffcd2e5d3e396e865c.js",
+    "service-worker.js": "/e-learnSSRU-app/service-worker.js",
+    "static/css/main.584f321a.chunk.css.map": "/e-learnSSRU-app/static/css/main.584f321a.chunk.css.map",
+    "static/media/logo.svg": "/e-learnSSRU-app/static/media/logo.5d5d9eef.svg"
+  }
+}
