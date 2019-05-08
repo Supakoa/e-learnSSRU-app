@@ -40,3 +40,23 @@ body {
  position: sticky;
 }
 
+div.wow>div {
+  height: 100px;
+  width: 100%;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.orange {
+  background-color: orange;
+}
