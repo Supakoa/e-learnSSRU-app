@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 import Header from './component/Header';
 import Content from './component/Content';
+import Footer from './component/Footer';
 
 
 export default class App extends Component {
@@ -15,10 +16,11 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Header Banner="MyCourse-{GE}" sublist={this.state.subOne}/>
+        <Header Banner="MyCourse-{GE}" sublist={this.state.subOne}/>
+        <div className="cebody">
           <Content/>
         </div>
+        <Footer/>
       </Router>
     );
   }
