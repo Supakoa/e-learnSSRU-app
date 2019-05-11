@@ -76,15 +76,12 @@ export default class Header extends Component {
         <div>
           <Navbar id="navce" className="ce" light expand="md" >
           <Container>
-          <NavbarBrand className="logo" href="/">{this.props.Banner}</NavbarBrand>
+          <NavbarBrand className="logo" href="/home">{this.props.Banner}</NavbarBrand>
             <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="/about">{this.props.sublist}</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/topics">Topic</NavLink>
+                  <NavLink href="/sign-In">{this.props.sublist}</NavLink>
                 </NavItem>
               </Nav>
             </Collapse>
