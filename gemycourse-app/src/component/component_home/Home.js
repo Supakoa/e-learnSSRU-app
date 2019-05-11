@@ -18,22 +18,28 @@ export default class Home extends Component {
       course: [
         {
           title: "longsing",
-          detail: "3247213694234#$!%!#%!@#%",
+          detail: "3247213694234qwer#$!%!#%!@#%",
           id: 1,
-          nameID:"#sub1",
-          imgID:"sub1"
+          nameID: "#sub1",
+          imgID: "sub1"
         }, {
           title: "MhaiWhailogg",
-          detail: "3247213694234#$!%!#%!@#%",
+          detail: "32472rqwerweq136942ewrtewrtewrtqwerqw34#$!%!#%!@#%",
           id: 2,
-          nameID:"#sub2",
-          imgID:"sub2"
+          nameID: "#sub2",
+          imgID: "sub2"
         }, {
           title: "Singley",
-          detail: "3247213694234#$!%!#%!@#%",
+          detail: "32472ewrtewtvewrt13694234#$!%!#%!@#%",
           id: 3,
-          nameID:"#sub3",
-          imgID:"sub3"
+          nameID: "#sub3",
+          imgID: "sub3"
+        }, {
+          title: "Com On !!!",
+          detail: "ewrtwertvw",
+          id: 3,
+          nameID: "#sub4",
+          imgID: "sub4"
         }
       ]
     }
@@ -48,18 +54,33 @@ export default class Home extends Component {
         </CardHeader>
         <div className="card-body">
           <Row>
-            <Col>
-                <MyCollapse  name={this.state.course[0].nameID} img={this.state.course[0].imgID} title={this.state.course[0].title} detail={this.state.course[0].detail}/>
+            <Col md={{ size: 3, order: 2 }}>
+              <MyCollapse
+                name={this.state.course[0].nameID}
+                img={this.state.course[0].imgID}
+                title={this.state.course[0].title}
+                detail={this.state.course[0].detail}/>
             </Col>
-            <Col>
-                <MyCollapse  name={this.state.course[1].nameID} img={this.state.course[1].imgID} title={this.state.course[1].title} detail={this.state.course[1].detail}/>
+            <Col md={{ size: 3, order: 2 }}>
+              <MyCollapse
+                name={this.state.course[1].nameID}
+                img={this.state.course[1].imgID}
+                title={this.state.course[1].title}
+                detail={this.state.course[1].detail}/>
             </Col>
-            <Col>
-            
-                <MyCollapse  name={this.state.course[2].nameID} img={this.state.course[2].imgID} title={this.state.course[2].title} detail={this.state.course[2].detail}/>
+            <Col md={{ size: 3, order: 2 }}>
+              <MyCollapse
+                name={this.state.course[2].nameID}
+                img={this.state.course[2].imgID}
+                title={this.state.course[2].title}
+                detail={this.state.course[2].detail}/>
             </Col>
-            <Col>
-            
+            <Col md={{ size: 3, order: 2 }}>
+              <MyCollapse
+                name={this.state.course[3].nameID}
+                img={this.state.course[3].imgID}
+                title={this.state.course[3].title}
+                detail={this.state.course[3].detail}/>
             </Col>
           </Row>
         </div>
@@ -78,15 +99,12 @@ class MyCollapse extends Component {
             <CardTitle >
               {this.props.title}</CardTitle>
             <CardText >{this.props.detail}</CardText>
-           <Link className="btn btn-outline-dark" to="/home/course/" >Go To Course</Link>
-           {console.log(this.props)}
-           
+            <Link className="btn btn-outline-dark" to="/home/course/">Go To Course</Link>
+            {console.log(this.props)}
+
           </Card>
         </UncontrolledCollapse>
       </div>
     )
   }
 }
-
-
-

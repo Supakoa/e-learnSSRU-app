@@ -11,7 +11,7 @@ export default class Content extends Component {
     return (
       <div className="container cecontent">
         <Switch>
-          <Route exact path="/home" component={Home}/>
+          <Route exact path="/" component={Home}/>
           <Route path="/sign-In" component={SignIn}/>
           <Route path="/sign-Up" component={Register}/>
           <Route path="/home/course/" component={Course}/>
@@ -26,7 +26,7 @@ function Notfound() {
   return (
     <div>
       {alert("Please Check your path")}
-      <h1>Not Found Content !!</h1>
+      <h1>Not Found Content !! your Path False</h1>
 
     </div>
   )

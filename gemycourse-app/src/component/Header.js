@@ -3,13 +3,12 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
     Container
   } from 'reactstrap';
   import $ from 'jquery';
+  import {Link} from 'react-router-dom';
 
   $(function () {
     $(window).scroll(function () {
@@ -76,12 +75,12 @@ export default class Header extends Component {
         <div>
           <Navbar id="navce" className="ce" light expand="md" >
           <Container>
-          <NavbarBrand className="logo" href="/home">{this.props.Banner}</NavbarBrand>
+          <Link className="logo navbar-brand" activeClassName="active" to="/">{this.props.Banner}</Link>
             <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="/sign-In">{this.props.sublist}</NavLink>
+                  <Link className="nav-link" to="/sign-In">{this.props.sublist}</Link>
                 </NavItem>
               </Nav>
             </Collapse>
