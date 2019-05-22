@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin - Log-in</title>
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{ URL::asset('node_modules/CEFstyle/appLogin.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}">
 
 </head>
 
