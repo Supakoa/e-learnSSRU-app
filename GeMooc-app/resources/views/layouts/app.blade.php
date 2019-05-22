@@ -30,16 +30,24 @@
 <body>
     <div id="app">
         <nav class="fixed-top">
+            @guest
+            <div class="logo">
+                GE-Admin
+            </div>
+            @else
             <div class="burger2">
                 <div class="line4"></div>
                 <div class="line5"></div>
                 <div class="line6"></div>
             </div>
+            @endguest
             <ul class="nav-links ">
+                @guest
+                @else
                 <li>
                     <a href="#" class="nav-link">Supakit</a>
                 </li>
-
+                @endguest
                 <!-- Authentication Links -->
                 @guest
                 <li>
@@ -70,6 +78,7 @@
                 </li>
                 @endguest
             </ul>
+
             <div class="burger">
                 <div class="line1"></div>
                 <div class="line2"></div>
@@ -77,28 +86,29 @@
             </div>
         </nav>
         @guest
+        @else
         <section>
-                <ul class="nav-links2 list-group">
-                    <li>
-                        <a href="#">DashBroad</a>
-                    </li>
-                    <li>
-                        <a href="#">Subject</a>
-                    </li>
-                    <li>
-                        <a href="#">Teach</a>
-                    </li>
-                    <li>
-                        <a href="#">Student</a>
-                    </li>
-                    <li>
-                        <a href="#">Payment Setting</a>
-                    </li>
-                    <li>
-                        <a href="#">Report</a>
-                    </li>
-                </ul>
-            </section>
+            <ul class="nav-links2 list-group">
+                <li>
+                    <a href="#">DashBroad</a>
+                </li>
+                <li>
+                    <a href="#">Subject</a>
+                </li>
+                <li>
+                    <a href="#">Teach</a>
+                </li>
+                <li>
+                    <a href="#">Student</a>
+                </li>
+                <li>
+                    <a href="#">Payment Setting</a>
+                </li>
+                <li>
+                    <a href="#">Report</a>
+                </li>
+            </ul>
+        </section>
         @endguest
 
         <main class="content">
@@ -114,7 +124,7 @@
 
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('node_modules/popper.js/dist/popper.min.js')}}"></script>
+    <script src="{{ asset('node_modules/popper/dist/popper.min.js')}}"></script>
     <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
     <!-- CEFstyle -->
