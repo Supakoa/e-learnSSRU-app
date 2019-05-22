@@ -42,30 +42,24 @@
         </div>
     </nav>
 
-    <ul class="nav-links2">
+    <ul class="nav-links2 list-group">
         <li>
-            <a href="#">Content 1</a>
+            <a href="#">DashBroad</a>
         </li>
         <li>
-            <a href="#">Content 2</a>
+            <a href="#">Subject</a>
         </li>
         <li>
-            <a href="#">Content 3</a>
+            <a href="#">Teach</a>
         </li>
         <li>
-            <a href="#">Content 4</a>
+            <a href="#">Student</a>
         </li>
         <li>
-            <a href="#">Content 5</a>
+            <a href="#">Payment Setting</a>
         </li>
         <li>
-            <a href="#">Content 6</a>
-        </li>
-        <li>
-            <a href="#">Content 7</a>
-        </li>
-        <li>
-            <a href="#">Content 8</a>
+            <a href="#">Report</a>
         </li>
     </ul>
     <div class="container">
