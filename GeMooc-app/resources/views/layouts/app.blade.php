@@ -124,7 +124,7 @@
 
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('node_modules/popper/dist/popper.min.js')}}"></script>
+    <script src="{{ asset('node_modules/popper.min.js')}}"></script>
     <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
     <!-- CEFstyle -->
