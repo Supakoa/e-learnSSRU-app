@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'mainController@Login');
-Route::get('/index', 'mainController@Home');
+// Route::get('/', 'mainController@Login');
+Route::get('/admin', 'mainController@Home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');

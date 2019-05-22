@@ -42,12 +42,6 @@
             </div>
             @endguest
             <ul class="nav-links ">
-                @guest
-                @else
-                <li>
-                    <a href="#" class="nav-link">Supakit</a>
-                </li>
-                @endguest
                 <!-- Authentication Links -->
                 @guest
                 <li>
@@ -59,14 +53,14 @@
                 </li>
                 @endif
                 @else
-                <li class="nav-item dropdown">
+                <li class="dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"  >
+                        <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
@@ -90,7 +84,7 @@
         <section>
             <ul class="nav-links2 list-group">
                 <li>
-                    <a href="#">DashBroad</a>
+                    <a href="/">DashBoard</a>
                 </li>
                 <li>
                     <a href="#">Subject</a>
@@ -123,8 +117,9 @@
     </div>
 
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
-    <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
+    <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
     <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
     <!-- CEFstyle -->
