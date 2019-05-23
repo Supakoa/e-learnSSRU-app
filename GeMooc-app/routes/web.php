@@ -17,3 +17,10 @@ Route::get('/admin', 'mainController@Home');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+// Route::get('/subject', '');
+
+Route::resource('/subject', 'subject_c');
+Route::resource('/course', 'course_c');
+
+

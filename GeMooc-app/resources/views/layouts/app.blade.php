@@ -86,9 +86,11 @@
                 <li>
                     <a href="/">DashBoard</a>
                 </li>
-                <li>
-                    <a href="#">Subject</a>
-                </li>
+                <a href="/subject">
+                    <li>
+                        Subject
+                    </li>
+                </a>
                 <li>
                     <a href="#">Teach</a>
                 </li>
