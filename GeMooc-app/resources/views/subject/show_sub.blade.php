@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-baseline">
-                            <h2>Course : {{$sub->name}}</h2>
+                            <h2>Subject : {{$sub->name}}</h2>
                             <div>
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#Add_Modal">Add Course</button>
                                     <button class="btn btn-warning" data-toggle="modal" data-target="#Edit_Modal">Edit Subject</button>
