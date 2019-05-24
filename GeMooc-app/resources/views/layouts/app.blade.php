@@ -124,7 +124,7 @@
 
         <main class="content">
             <div class="row">
-                <div class="col-md-8 offset-2 order-2">
+                <div class="col-md-10 offset-1 order-1">
                     @include('inc.alert')
                     @yield('content')
                 </div>
