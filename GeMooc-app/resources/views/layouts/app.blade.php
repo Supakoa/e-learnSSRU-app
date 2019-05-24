@@ -108,7 +108,9 @@
         @endguest
 
         <main class="content">
+            @include('inc.alert')
             @yield('content')
+
         </main>
 
         <div class="footer">
@@ -117,7 +119,7 @@
             </div>
         </div>
     </div>
-
+    @yield('modal')
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -138,6 +140,7 @@
         wow.init();
 
     </script>
+    @yield('js')
 </body>
 
 </html>
