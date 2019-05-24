@@ -121,7 +121,9 @@
         @endguest
 
         <main class="content">
+            @include('inc.alert')
             @yield('content')
+
         </main>
 
         <div class="footer">
@@ -130,7 +132,7 @@
             </div>
         </div>
     </div>
-
+    @yield('modal')
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
 {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
@@ -155,6 +157,7 @@
         wow.init();
 
     </script>
+    @yield('js')
 </body>
 
 </html>
