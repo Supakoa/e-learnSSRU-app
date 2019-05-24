@@ -1,4 +1,6 @@
 @inject('content', 'App\content')
+@inject('lesson_class', 'App\lesson')
+
 
 
 @extends('layouts.app')
@@ -36,7 +38,17 @@
 
                         <div id="collapse{{$lesson->lesson_id}}" class="collapse" aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
                             <div class="card-body">
-                                    {{$content::find(1)}}
+
+
+                                    @php
+                                        $names = $content::where('lesson_id',$lesson->lesson_id)->get();
+                                    @endphp
+
+                                    @foreach ($names as $name)
+                                       <a href="#"><h4> {{$name->name}}</h4></a>
+
+                                    @endforeach
+
                             </div>
                         </div>
                     </div>
