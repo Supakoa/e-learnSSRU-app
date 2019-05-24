@@ -76,8 +76,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('/subject')}}" method="post" enctype='multipart/form-data' id="sub_form">
+                <form action="{{url('/subject/'.$sub->subject_id)}}" method="POST" enctype='multipart/form-data' id="sub_form">
                     @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="sub_id" value="{{$sub->subject_id}}">
+
                     <div class="form-group">
                         <label for="name">Subject Name</label>
                     <input type="text" class="form-control" name="name" value="{{$sub->name}}" placeholder="Subject Name">
@@ -86,8 +89,8 @@
                         <label for="detail">Detail</label>
                         <input type="text" class="form-control" name="detail" value="{{$sub->detail}}" placeholder="Subject Detail">
                     </div>
-                    <div class="form-group">
-                        <img src="" alt="" sizes="" srcset="">
+                    <div class="form-group text-center">
+                        <img src="/storage/cover_images/{{$sub->sm_banner}}" alt="" width="100%"  srcset="">
                     </div>
                     <div class="form-group">
                         <label for="name">Cover Image</label>
@@ -97,7 +100,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="sub_btn">Save changes</button>
+                <button type="submit" class="btn btn-primary" form = "sub_form" id="sub_btn">Save changes</button>
             </div>
         </div>
     </div>
