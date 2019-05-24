@@ -123,7 +123,6 @@
         <main class="content">
             @include('inc.alert')
             @yield('content')
-
         </main>
 
         <div class="footer">
@@ -145,7 +144,6 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-    @yield('js-dashboard')
     <script>
         wow = new WOW({
             boxClass: 'wow', // default
