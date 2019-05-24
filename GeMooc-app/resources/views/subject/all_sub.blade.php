@@ -4,7 +4,7 @@
 
 <h2>Subject</h2>
 <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
-<div class="row row-img">
+<div class="row ">
     @foreach ($sub as $sub)
     <div class="col-md-3">
         <figure class="imghvr-flip-vert" style="background:inherit">
