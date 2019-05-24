@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
 
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}">
@@ -59,7 +62,7 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"  >
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
@@ -82,27 +85,37 @@
         @guest
         @else
         <section>
-            <ul class="nav-links2 list-group">
-                <li>
-                    <a href="/">DashBoard</a>
-                </li>
-                <a href="/subject">
+            <ul class="nav-links2 ">
+                <a href="{{ url('/')}}">
+                    <li>
+                        DashBoard
+                    </li>
+                </a>
+                <a href="{{ url('/subject')}}">
                     <li>
                         Subject
                     </li>
                 </a>
-                <li>
-                    <a href="#">Teach</a>
-                </li>
-                <li>
-                    <a href="#">Student</a>
-                </li>
-                <li>
-                    <a href="#">Payment Setting</a>
-                </li>
-                <li>
-                    <a href="#">Report</a>
-                </li>
+                <a href="#">
+                    <li>
+                        Report
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        Teach
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        Student
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        Payment Setting
+                    </li>
+                </a>
             </ul>
         </section>
         @endguest
@@ -119,6 +132,9 @@
     </div>
 
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
+{{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
+    <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
+    {{-- <script src="{{ asset('node_modules/datatables.net-responsive/js/dataTables.responsive.js')}}"></script> --}}
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
@@ -127,6 +143,7 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
+    @yield('js-dashboard')
     <script>
         wow = new WOW({
             boxClass: 'wow', // default
