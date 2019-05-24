@@ -7,7 +7,7 @@
 <div class="row">
     @foreach ($sub as $sub)
     <div class="col-md-4 mb-3">
-        <figure class="imghvr-fade">
+        <figure class="imghvr-flip-vert">
             <img src="/storage/cover_images/{{$sub->sm_banner}}">
             <figcaption>
                 <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
