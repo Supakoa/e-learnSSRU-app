@@ -20,5 +20,7 @@ Route::get('/', 'HomeController@index')->name('dashboard.home');
 
 Route::resource('/subject', 'subject_c');
 Route::resource('/course', 'course_c');
+Route::resource('/lesson', 'lesson_c');
+
 
 

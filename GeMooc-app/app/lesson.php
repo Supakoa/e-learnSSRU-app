@@ -16,6 +16,6 @@ class lesson extends Model
 
     public function contents()
     {
-        return $this->hasMany('App\contents');
+        return $this->hasMany('App/contents');
     }
 }

@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\course as course;
+use App\lesson as lesson;
+
+use App\content as content;
+
+
 use Illuminate\Http\Request;
 
 class course_c extends Controller

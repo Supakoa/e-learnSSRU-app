@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class content extends Model
 {
     //
-    protected $primaryKey = 'content_id';
-    
+    protected $primaryKey = 'con_id';
+
     public function lesson()
     {
         return $this->belongsTo('App\lesson');
