@@ -2,13 +2,29 @@
 
 @section('content')
 <div class="row">
-    <div class="justify-content-between">
+    <div class="col-md-8 offset-2 order-2">
         <h2>Subject</h2>
         <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
+
+        @foreach ($sub as $sub)
+        <figure class="imghvr-stack-up">
+            <img src="/storage/cover_images/{{$sub->sm_banner}}" alt="example-image">
+            <figcaption>
+                <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
+                <p class="ih-zoom-in ih-delay-md">
+                    <i>{{$sub->detail}}</i>
+                </p>
+                <a class="ih-fade-up ih-delay-lg button" href="#">Read More</a>
+            </figcaption>
+            <a href="/subject/{{$sub->subject_id}}"></a>
+        </figure>
+        @endforeach
+
     </div>
-
-
 </div>
+
+
+
 <div class="row justify-content-center">
     <div class="col-md-10 justify-content-center">
         <div class="card">
@@ -16,19 +32,7 @@
             </div>
             <div class="card-body">
                 <div class="row ">
-                    @foreach ($sub as $sub)
-                    <div class="col-md-4 mb-2">
-                        <a href="/subject/{{$sub->subject_id}}">
-                            <div class="card " style="width: 18rem;">
-                                <img src="/storage/cover_images/{{$sub->sm_banner}}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{$sub->name}}</h5>
-                                    <p class="card-text">{{$sub->detail}}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    @endforeach
+
                 </div>
             </div>
         </div>
