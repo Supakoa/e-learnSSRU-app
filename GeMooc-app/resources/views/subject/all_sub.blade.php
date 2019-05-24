@@ -5,11 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                            <div class="row">
-                                <div class="col"><h2>Subject</h2></div>
-                                <div class="col text-right"><button class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" >Add Subject</button></div>
-                            </div>
+                <div class="card-header d-flex justify-content-between align-items-baseline">
+                        <h2>Subject</h2>
+                        <button class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" >Add Subject</button>
                 </div>
 
                 <div class="card-body">
