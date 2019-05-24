@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div class="cebody">
         <nav class="fixed-top">
             @guest
             <div class="logo">
@@ -122,7 +122,7 @@
         </section>
         @endguest
 
-        <main class="content">
+        <main class="content mb-5">
             <div class="row">
                 <div class="col-md-10 offset-1 order-1">
                     @include('inc.alert')
