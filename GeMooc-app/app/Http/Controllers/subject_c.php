@@ -43,8 +43,6 @@ class subject_c extends Controller
      */
     public function store(Request $request)
     {
-        //
-
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
@@ -84,8 +82,9 @@ class subject_c extends Controller
     public function show($id)
     {
         $course = sub::find($id);
-        $sub_name = $course->name;
-        return view('subject.show_sub')->with('courses', $course->courses)->with('sub_name', $sub_name);
+        $sub = $course;
+        // dd($sub) ;
+        return view('subject.show_sub')->with('courses', $course->courses)->with('sub', $sub);
     }
 
     /**
