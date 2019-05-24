@@ -107,7 +107,34 @@ class subject_c extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'detail' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
+        ]) ;
+        if($request->hasFile('cover_image')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        // Create Post
+        $post = sub::find($request->input('sub_id'));
+        $post->name = $request->input('name');
+        $post->detail = $request->input('detail');
+        // $post->user_id = auth()->user()->id;
+        $post->sm_banner = $fileNameToStore;
+        $post->save();
+        return redirect('/subject')->with('success', 'Subject Update');
     }
 
     /**
