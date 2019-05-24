@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/imagehover/css/imagehover.css')}}">
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
+    --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
 
     <!-- CEFstyle -->
@@ -122,8 +123,12 @@
         @endguest
 
         <main class="content">
-            @include('inc.alert')
-            @yield('content')
+            <div class="row">
+                <div class="col-md-8 offset-2 order-2">
+                    @include('inc.alert')
+                    @yield('content')
+                </div>
+            </div>
         </main>
 
         <div class="footer">
@@ -134,7 +139,7 @@
     </div>
     @yield('modal')
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
-{{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
+    {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
     {{-- <script src="{{ asset('node_modules/datatables.net-responsive/js/dataTables.responsive.js')}}"></script> --}}
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>

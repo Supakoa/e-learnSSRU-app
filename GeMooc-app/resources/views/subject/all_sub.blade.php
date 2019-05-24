@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-8 offset-2 order-2">
-        <h2>Subject</h2>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
 
-        @foreach ($sub as $sub)
+<h2>Subject</h2>
+<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
+<div class="row">
+    @foreach ($sub as $sub)
+    <div class="col -md-4">
         <figure class="imghvr-stack-up">
             <img src="/storage/cover_images/{{$sub->sm_banner}}" alt="example-image">
             <figcaption>
@@ -18,27 +18,9 @@
             </figcaption>
             <a href="/subject/{{$sub->subject_id}}"></a>
         </figure>
-        @endforeach
-
     </div>
+    @endforeach
 </div>
-
-
-
-<div class="row justify-content-center">
-    <div class="col-md-10 justify-content-center">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-baseline">
-            </div>
-            <div class="card-body">
-                <div class="row ">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 @endsection
 
 @section('modal')
