@@ -11,8 +11,6 @@
 |
 */
 
-// Route::get('/', 'mainController@Login');
-Route::get('/admin', 'mainController@Home');
 
 Auth::routes();
 
