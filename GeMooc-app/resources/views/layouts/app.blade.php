@@ -37,7 +37,7 @@
         <nav class="fixed-top">
             @guest
             <div class="logo">
-                GE-Admin
+                GE-Mooc E-Learning
             </div>
             @else
             <div class="burger2">
@@ -88,7 +88,7 @@
         @else
         <section>
             <ul class="nav-links2 ">
-                <a href="{{ url('/')}}">
+                <a href="{{ url('/home')}}">
                     <li>
                         DashBoard
                     </li>
@@ -121,20 +121,14 @@
             </ul>
         </section>
         @endguest
-
-        <main class="content mb-5">
-            <div class="row">
-                <div class="col-md-10 offset-1 order-1">
-                    @include('inc.alert')
-                    @yield('content')
-                </div>
-            </div>
-        </main>
-
-        <div class="footer">
-            <div class="text">
-                <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-            </div>
+        <div class="content container-fluid">
+            @include('inc.alert')
+            @yield('content')
+        </div>
+    </div>
+    <div class="footer">
+        <div class="text">
+            <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
     </div>
     @yield('modal')
