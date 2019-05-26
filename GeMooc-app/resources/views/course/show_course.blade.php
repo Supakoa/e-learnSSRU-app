@@ -13,10 +13,9 @@
                 <div class="card-header d-flex justify-content-between align-items-baseline">
                     <h2>Course : {{$course->name}}</h2>
                     <div>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#Add_Modal">Add
-                            Lesson</button>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#Edit_Modal">Edit
-                            Course</button>
+
+                        <a href="#" data-toggle="modal" data-target="#Add_Modal"> <i class="fas fa-folder-plus" ></i> </a>
+                        <a href="#" data-toggle="modal" data-target="#Edit_Modal"> <i class="fas fa-cog"></i></a>
                     </div>
                 </div>
                 {{-- <div class="card-header">{{$course_name}}
@@ -34,7 +33,7 @@
                                 {{$lesson->name}}
                                 </button>
                                 <div class="text-right">
-                                <button class=" btn btn-success btn-sm " data-toggle="modal" data-target="#Add_Modal_content" onclick="add_content({{$lesson}})">Add Content</button>
+                                <button class=" btn btn-success btn-sm " data-toggle="modal" data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i class="fas fa-plus-circle"></i></button>
                                 </div>
 
                             </h2>
