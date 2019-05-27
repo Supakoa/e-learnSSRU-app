@@ -9,11 +9,11 @@
         Course : {{$course->name}}
     </h1>
     <div class="row justify-content-end">
-        <div class="col-md-4">
-            <a href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
-                    class="fas fa-folder-plus"></i> </a>
-            <a href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal"> <i
-                    class="fas fa-cog"></i></a>
+        <div class="ce-card-btn">
+            <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
+                    class="fas fa-folder-plus"></i> </button>
+            <button href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal"> <i
+                    class="fas fa-cog"></i></button>
         </div>
     </div>
     <div class="row ce-container">

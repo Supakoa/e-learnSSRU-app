@@ -4,7 +4,7 @@
 <div class="card ce-card">
     <h1 class="ce-name">Total Subject</h1>
     <div class="row justify-content-end">
-        <div class="offset-md-3 col-md-9 ">
+        <div class="ce-card-btn">
             <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
                 Subject</button>
         </div>

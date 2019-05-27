@@ -5,7 +5,7 @@
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
     <div class="ce-container">
         <div class="justify-content-end row mb-3">
-            <div class="offset-md-3 col-md-6 ">
+            <div class="ce-card-btn">
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
                 <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
             </div>
