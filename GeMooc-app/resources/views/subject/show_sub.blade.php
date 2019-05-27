@@ -12,7 +12,7 @@
         </div>
 
         @if ($courses->count() > 0)
-        <div class="row">
+        <div class="row mb-3">
             @foreach ($courses as $course)
             <div class="col-md-3">
                 <div class="card shadow" style="width: 18rem;">
