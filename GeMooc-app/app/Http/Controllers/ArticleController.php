@@ -63,6 +63,9 @@ class ArticleController extends Controller
     public function edit(article $article)
     {
         //
+        $content = content::where('detail',$article->id)->first();;
+
+        return  view('article.edit')->with('article', $article)->with('content',  $content);
     }
 
     /**
@@ -74,7 +77,20 @@ class ArticleController extends Controller
      */
     public function update(Request $request, article $article)
     {
-        //
+        $this->validate($request,[
+            'rawdata' => 'required',
+        ]) ;
+
+
+        // Create Post
+        $article->rawdata = "'".$request->input('rawdata')."'";
+        // $post->detail = $request->input('detail');
+        // $post->user_id = auth()->user()->id;
+        // $post->sm_banner = $fileNameToStore;
+        // $post->subject_id = $request->input('sub_id');
+
+        $article->save();
+        return redirect('/article/'.$article->id)->with('success', 'Article Updated');
     }
 
     /**
