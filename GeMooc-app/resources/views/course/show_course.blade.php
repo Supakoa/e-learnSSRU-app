@@ -30,36 +30,35 @@
                                 {{$lesson->name}}
                             </button>
                         </h2>
-                        
-                        <div id="collapse{{$lesson->lesson_id}}" class="collapse"
-                            aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
-                            <div class="card-body">
-                                @php
-                                $names = $content::where('lesson_id',$lesson->lesson_id)->get();
-                                @endphp
-                                @if ($names->count()>0)
-                                @foreach ($names as $name)
-                                <a href="#">
-                                    <h4> {{$name->name}}</h4>
-                                </a>
+                    </div>
+                </div>
+                <div id="collapse{{$lesson->lesson_id}}" class="collapse"
+                    aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
+                    <div class="card-body">
+                        @php
+                        $names = $content::where('lesson_id',$lesson->lesson_id)->get();
+                        @endphp
+                        @if ($names->count()>0)
+                        @foreach ($names as $name)
+                        <a href="#">
+                            <h4> {{$name->name}}</h4>
+                        </a>
 
-                                @endforeach
-                                @else
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Now,Have have a Content !!!</strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                @endif
-                            </div>
-                            <hr>
-                            <div class=" text-right">
-                                <button class=" btn btn-success btn-sm mb-3 mr-3" data-toggle="modal"
-                                    data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i
-                                        class="fas fa-plus-circle"></i></button>
-                            </div>
+                        @endforeach
+                        @else
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Now,Have have a Content !!!</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        @endif
+                    </div>
+                    <hr>
+                    <div class=" text-right">
+                        <button class=" btn btn-success btn-sm mb-3 mr-3" data-toggle="modal"
+                            data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i
+                                class="fas fa-plus-circle"></i></button>
                     </div>
                 </div>
                 @endforeach
