@@ -10,17 +10,27 @@
         </div>
         <div class="ce-container">
             @guest
-            @if ($courses != null)
-            @foreach ($courses as $course)
-            <a href="{{url('/course/'.$course->course_id)}}">
-                {{$course->name}}
-            </a>
-            <br>
-            @endforeach
-            @else
-            <h1>Course empty !!</h1>
-            @endif
+                @if ($courses != null)
+                @foreach ($courses as $course)
+                    <a href="{{url('/course/'.$course->course_id)}}">
+                    {{$course->name}}
+                    </a>
+                    <br>
+                @endforeach
+                @else
+                    <h1>Course empty !!</h1>
+                @endif
             @endguest
+            @if ($courses != null)
+                @foreach ($courses as $course)
+                    <a href="{{url('/course/'.$course->course_id)}}">
+                    {{$course->name}}
+                    </a>
+                    <br>
+                @endforeach
+                @else
+                    <h1>Course empty !!</h1>
+                @endif
         </div>
     </div>
 </div>

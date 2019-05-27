@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Str;
 
-
+// use File;
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('dashboard.home');
 
@@ -26,9 +27,17 @@ Route::post('ajaximage', function(){
     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
     $extension = $file->getClientOriginalExtension();
     $fileNameToStore= $filename.'_'.time().'.'.$extension;
-    
+
     $file->move($destinationPath, $fileNameToStore);
     echo url('/uploads/'.$fileNameToStore);
+});
+
+Route::post('ajaximage_delete', function(){
+    $src = Request::input('src');
+    $src = Str::substr($src,21);
+    if(unlink(public_path($src))){
+        echo "Success";
+    }
 });
 
 // Route::get('test', function ($id) {

@@ -31,10 +31,6 @@
                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true" aria-controls="collapseOne">
                                 {{$lesson->name}}
                                 </button>
-                                <div class="text-right">
-                                <button class=" btn btn-success btn-sm " data-toggle="modal" data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i class="fas fa-plus-circle"></i></button>
-                                </div>
-
                             </h2>
 
                         </div>
@@ -46,12 +42,21 @@
                                     @php
                                         $names = $content::where('lesson_id',$lesson->lesson_id)->get();
                                     @endphp
-
+                                    @if ($names->count()>0)
                                     @foreach ($names as $name)
-                                       <a href="#"><h4> {{$name->name}}</h4></a>
+                                    <a href="#"><h4> {{$name->name}}</h4></a>
 
-                                    @endforeach
+                                     @endforeach
+                                    @else
+                                        {{"Have no Content"}}
+                                    @endif
 
+
+
+                            </div>
+                            <hr>
+                            <div class=" text-right">
+                                    <button class=" btn btn-success btn-sm mb-3 mr-3" data-toggle="modal" data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i class="fas fa-plus-circle"></i></button>
                             </div>
                         </div>
                     </div>
