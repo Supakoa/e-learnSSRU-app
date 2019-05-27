@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card ce-card">
+<div class="card ce-card h-100">
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
     <div class="ce-container">
         <div class="justify-content-end row mb-3">
