@@ -1,5 +1,6 @@
 @inject('content', 'App\content')
 @inject('lesson_class', 'App\lesson')
+@inject('DB', 'Illuminate\Support\Facades\DB')
 
 @extends('layouts.app')
 
@@ -23,11 +24,17 @@
                 @foreach ($lessons as $lesson)
                 <div class="card shadow">
                     <div class="card-header" id="heading{{$lesson->lesson_id}}">
-                            <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
-                                data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"
-                                aria-controls="collapseOne">
-                                {{$lesson->name}}
-                            </button>
+                        <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
+                            data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            {{$lesson->name}}
+                        </button>
+
+                        {{$video = $content::where([['type','1'],['lesson_id',$lesson->lesson_id]])->count()}}
+                        {{$article = $content::where([['type','2'],['lesson_id',$lesson->lesson_id]])->count()}}
+                        {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->lesson_id]])->count()}}
+
+
                     </div>
                 </div>
                 <div id="collapse{{$lesson->lesson_id}}" class="collapse border-left border-right border-bottom"
@@ -37,12 +44,21 @@
                         $names = $content::where('lesson_id',$lesson->lesson_id)->get();
                         @endphp
                         @if ($names->count()>0)
-                        @foreach ($names as $name)
-                       <a href="{{url('/course/goto_content/'.$name->detail)}}">
-                            <h4> {{$name->name}}</h4>
-                        </a>
-
-                        @endforeach
+                            @foreach ($names as $name)
+                                @if ($name->type=="1")
+                                    <a href="{{$name->detail}}">
+                                        <h4> {{$name->name}}</h4>
+                                    </a>
+                                @elseif ($name->type=="2")
+                                    <a href="{{url('article/'.$name->detail)}}">
+                                        <h4> {{$name->name}}</h4>
+                                    </a>
+                                @else
+                                    <a href="{{url('/conntent/goto_content/'.$name->detail)}}">
+                                        <h4> {{$name->name}}</h4>
+                                    </a>
+                                @endif
+                            @endforeach
                         @else
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Now,Have have a Content !!!</strong>
