@@ -49,6 +49,8 @@ Route::resource('/subject', 'subject_c');
 Route::resource('/course', 'course_c');
 Route::resource('/lesson', 'lesson_c');
 Route::resource('/content', 'content_c');
+Route::resource('/article', 'articleController');
+
 
 
 
