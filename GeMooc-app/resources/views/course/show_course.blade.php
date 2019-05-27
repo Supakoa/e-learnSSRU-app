@@ -30,7 +30,7 @@
                             </button>
                     </div>
                 </div>
-                <div id="collapse{{$lesson->lesson_id}}" class="collapse"
+                <div id="collapse{{$lesson->lesson_id}}" class="collapse border-left border-right border-bottom"
                     aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
                     <div class="card-body">
                         @php

@@ -13,10 +13,13 @@
 
         @if ($courses->count() > 0)
         @foreach ($courses as $course)
-        <a href="{{url('/course/'.$course->course_id)}}">
-            {{$course->name}}
-        </a>
-        <br>
+        <ul class="list-group">
+            <li class="list-group-item">
+                    <a class="btn btn-block" href="{{url('/course/'.$course->course_id)}}">
+                        {{$course->name}}
+                    </a>
+            </li>
+        </ul>
         @endforeach
         @else
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
