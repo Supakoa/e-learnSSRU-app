@@ -100,12 +100,12 @@
                         Subject
                     </li>
                 </a>
-                <a href="{{ url('/teach')}}">
+                <a href="#">
                     <li>
                         Report
                     </li>
                 </a>
-                <a href="#">
+                <a href="{{ url('/teach')}}">
                     <li>
                         Teach
                     </li>
