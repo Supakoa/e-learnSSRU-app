@@ -21,15 +21,6 @@
         <div class="mb-3">
             <img src="..." class="img-fluid" width="800" height="600" alt="Responsive image">
         </div>
-        <div class="col-md-12 input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-            </div>
-        </div>
     </div>
     <div class="row ce-container">
         <div class="col-md-12">
