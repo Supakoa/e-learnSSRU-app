@@ -23,13 +23,11 @@
                 @foreach ($lessons as $lesson)
                 <div class="card">
                     <div class="card-header" id="heading{{$lesson->lesson_id}}">
-                        <h2 class="mb-0 ">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
                                 data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"
                                 aria-controls="collapseOne">
                                 {{$lesson->name}}
                             </button>
-                        </h2>
                     </div>
                 </div>
                 <div id="collapse{{$lesson->lesson_id}}" class="collapse"
