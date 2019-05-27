@@ -21,9 +21,9 @@
                         <h5 class="card-title">{{$course->name}}</h5>
                         <p class="card-text">ลิงจักๆ รู้นะไม่ต้องพิมต่อ !!</p>
                         <div class="text-right ce-card-btn">
-                            <a href="{{url('/course/'.$course->course_id)}}" class="btn btn-md btn-warning shadow"><i
-                                    class="fas fa-pencil-alt" style="color:#fff"></i></a>
-                            <a href="#" class="btn btn-md btn-danger shadow"><i class="fas fa-minus"></i></a>
+                            <a href="{{url('/course/'.$course->course_id)}}" class="btn btn-sm btn-outline-warning shadow"><i
+                                    class="fas fa-pencil-alt" ></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-danger shadow"><i class="fas fa-minus"></i></a>
                         </div>
                     </div>
                 </div>
