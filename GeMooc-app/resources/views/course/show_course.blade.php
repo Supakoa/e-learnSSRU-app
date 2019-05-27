@@ -38,7 +38,7 @@
                         @endphp
                         @if ($names->count()>0)
                         @foreach ($names as $name)
-                    `   <a href="{{url('/course/goto_content/'.$name->detail)}}">
+                       <a href="{{url('/course/goto_content/'.$name->detail)}}">
                             <h4> {{$name->name}}</h4>
                         </a>
 
