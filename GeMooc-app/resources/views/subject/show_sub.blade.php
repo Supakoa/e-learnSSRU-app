@@ -5,19 +5,21 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-baseline">
-                            <h2>Subject : {{$sub->name}}</h2>
-                            <div>
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#Add_Modal">Add Course</button>
-                                    <button class="btn btn-warning" data-toggle="modal" data-target="#Edit_Modal">Edit Subject</button>
-                            </div>
+                <div class="card-header d-flex justify-content-between align-items-baseline">
+                    <h2>Subject : {{$sub->name}}</h2>
+                    <div>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#Add_Modal">Add Course</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#Edit_Modal">Edit
+                            Subject</button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#Add_Modal">Delete Subject</button>
                     </div>
+                </div>
                 <div class="card-body">
                     {{-- {{dd($courses)}} --}}
                     @foreach ($courses as $course)
-                        <a href="{{url('/course/'.$course->course_id)}}">
-                            {{$course->name}}
-                        </a>
+                    <a href="{{url('/course/'.$course->course_id)}}">
+                        {{$course->name}}
+                    </a>
                     <br>
                     @endforeach
                 </div>
@@ -70,27 +72,30 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Subject -> {{$sub->name}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Subject -> {{$sub->name}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('/subject/'.$sub->subject_id)}}" method="POST" enctype='multipart/form-data' id="sub_form">
+                <form action="{{url('/subject/'.$sub->subject_id)}}" method="POST" enctype='multipart/form-data'
+                    id="sub_form">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="sub_id" value="{{$sub->subject_id}}">
 
                     <div class="form-group">
                         <label for="name">Subject Name</label>
-                    <input type="text" class="form-control" name="name" value="{{$sub->name}}" placeholder="Subject Name">
+                        <input type="text" class="form-control" name="name" value="{{$sub->name}}"
+                            placeholder="Subject Name">
                     </div>
                     <div class="form-group">
                         <label for="detail">Detail</label>
-                        <input type="text" class="form-control" name="detail" value="{{$sub->detail}}" placeholder="Subject Detail">
+                        <input type="text" class="form-control" name="detail" value="{{$sub->detail}}"
+                            placeholder="Subject Detail">
                     </div>
                     <div class="form-group text-center">
-                        <img src="/storage/cover_images/{{$sub->sm_banner}}" alt="" width="100%"  srcset="">
+                        <img src="/storage/cover_images/{{$sub->sm_banner}}" alt="" width="100%" srcset="">
                     </div>
                     <div class="form-group">
                         <label for="name">Cover Image</label>
@@ -100,11 +105,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form = "sub_form" id="sub_btn">Save changes</button>
+                <button type="submit" class="btn btn-primary" form="sub_form" id="sub_btn">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-
