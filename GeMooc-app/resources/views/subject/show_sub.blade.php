@@ -19,8 +19,12 @@
         <br>
         @endforeach
         @else
-        <h1>Course empty !!</h1>
-        <hr>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Your course is empty !!!</strong> Can you click Add button for make your courses.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
         @endif
 
     </div>

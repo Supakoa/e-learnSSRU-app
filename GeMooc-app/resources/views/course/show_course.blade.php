@@ -9,51 +9,37 @@
         Course : {{$course->name}}
     </h1>
     <div class="row justify-content-end">
-        <a href="#" data-toggle="modal" data-target="#Add_Modal"> <i class="fas fa-folder-plus"></i> </a>
-        <a href="#" data-toggle="modal" data-target="#Edit_Modal"> <i class="fas fa-cog"></i></a>
+        <div class="col-md-4">
+            <a href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
+                    class="fas fa-folder-plus"></i> </a>
+            <a href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal"> <i
+                    class="fas fa-cog"></i></a>
+        </div>
     </div>
-</div>
-<div class="row ce-container">
-    <div class="accordion" id="accordionExample">
-
-        @foreach ($lessons as $lesson)
-        <div class="card">
-            <div class="card-header" id="heading{{$lesson->lesson_id}}">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse"
-                        data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true" aria-controls="collapseOne">
-                        {{$lesson->name}}
-                    </button>
-                    <div class="text-right">
-                        <button class=" btn btn-success btn-sm " data-toggle="modal" data-target="#Add_Modal_content"
-                            onclick="add_content({{$lesson}})"><i class="fas fa-plus-circle"></i></button>
-                    </div>
-            </div>
-            {{-- <div class="card-header">{{$course_name}}
-        </div> --}}
-
-        <div class="card-body">
-            {{-- {{dd($courses)}} --}}
+    <div class="row ce-container">
+        <div class="col-md-12">
+            @if ($lessons->count() > 0)
             <div class="accordion" id="accordionExample">
-
                 @foreach ($lessons as $lesson)
                 <div class="card">
                     <div class="card-header" id="heading{{$lesson->lesson_id}}">
-                        <h2 class="mb-0">
+                        <h2 class="mb-0 ">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"
                                 aria-controls="collapseOne">
                                 {{$lesson->name}}
                             </button>
                         </h2>
-
-                        </h2>
-
+                        <div class="row">
+                            <div class="justify-content-end">
+                                <button class=" btn btn-success btn-sm " data-toggle="modal"
+                                    data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i
+                                        class="fas fa-plus-circle"></i></button>
+                            </div>
+                        </div>
                         <div id="collapse{{$lesson->lesson_id}}" class="collapse"
                             aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
                             <div class="card-body">
-
-
                                 @php
                                 $names = $content::where('lesson_id',$lesson->lesson_id)->get();
                                 @endphp
@@ -65,11 +51,13 @@
 
                                 @endforeach
                                 @else
-                                {{"Have no Content"}}
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Now,Have have a Content !!!</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                                 @endif
-
-
-
                             </div>
                             <hr>
                             <div class=" text-right">
@@ -79,11 +67,18 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
+            @else
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Now, Not have Lession !!!</strong> Can you click Add button for make new Lession.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
         </div>
-        @endforeach
     </div>
 </div>
 @endsection

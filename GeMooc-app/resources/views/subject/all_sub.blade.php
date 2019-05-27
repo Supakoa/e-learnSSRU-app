@@ -5,10 +5,12 @@
     <h1 class="ce-name">Total Subject</h1>
     <div class="row justify-content-end">
         <div class="offset-md-3 col-md-6 ">
-            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
+            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
+                Subject</button>
         </div>
     </div>
-    <div class="row ce-container">
+    <div class="ce-container">
+        @if ($sub->count() > 0)
         @foreach ($sub as $sub)
         <div class="col-md-3">
             <figure class="imghvr-flip-vert" style="background:inherit">
@@ -23,6 +25,14 @@
             </figure>
         </div>
         @endforeach
+        @else
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Now, Not have subject !!!</strong> Can you click Add Subject button for make new subject.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
     </div>
 </div>
 @endsection
