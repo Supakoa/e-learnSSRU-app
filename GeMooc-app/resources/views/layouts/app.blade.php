@@ -9,6 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
@@ -37,7 +39,7 @@
         <nav class="fixed-top">
             @guest
             <div class="logo">
-                GE-Admin
+                GE-Mooc E-Learning
             </div>
             @else
             <div class="burger2">
@@ -88,7 +90,7 @@
         @else
         <section>
             <ul class="nav-links2 ">
-                <a href="{{ url('/')}}">
+                <a href="{{ url('/home')}}">
                     <li>
                         DashBoard
                     </li>
@@ -121,20 +123,14 @@
             </ul>
         </section>
         @endguest
-
-        <main class="content mb-5">
-            <div class="row">
-                <div class="col-md-10 offset-1 order-1">
-                    @include('inc.alert')
-                    @yield('content')
-                </div>
-            </div>
-        </main>
-
-        <div class="footer">
-            <div class="text">
-                <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-            </div>
+        <div class="content container-fluid">
+            @include('inc.alert')
+            @yield('content')
+        </div>
+    </div>
+    <div class="footer">
+        <div class="text">
+            <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
     </div>
     @yield('modal')
@@ -147,6 +143,8 @@
     <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
     <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>

@@ -1,24 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-
-<h2>Subject</h2>
-<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
-<div class="row ">
-    @foreach ($sub as $sub)
-    <div class="col-md-3">
-        <figure class="imghvr-flip-vert" style="background:inherit">
-            <img src="/storage/cover_images/{{$sub->sm_banner}}" >
-            <figcaption>
-                <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
-                <p class="ih-zoom-in ih-delay-md">
-                    <i>{{$sub->detail}}</i>
-                </p>
-            </figcaption>
-            <a href="/subject/{{$sub->subject_id}}"></a>
-        </figure>
+<div class="card ce-card">
+    <h1 class="ce-name">Total Subject</h1>
+    <div class="row justify-content-end">
+        <div class="offset-md-3 col-md-6 ">
+            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
+        </div>
     </div>
-    @endforeach
+    <div class="row ce-container">
+        @foreach ($sub as $sub)
+        <div class="col-md-3">
+            <figure class="imghvr-flip-vert" style="background:inherit">
+                <img class="ce-img" src="/storage/cover_images/{{$sub->sm_banner}}">
+                <figcaption>
+                    <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
+                    <p class="ih-zoom-in ih-delay-md">
+                        <i>{{$sub->detail}}</i>
+                    </p>
+                </figcaption>
+                <a href="/subject/{{$sub->subject_id}}"></a>
+            </figure>
+        </div>
+        @endforeach
+    </div>
 </div>
 @endsection
 

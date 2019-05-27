@@ -1,29 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-baseline">
-                    <h2>Subject : {{$sub->name}}</h2>
-                    <div>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#Add_Modal">Add Course</button>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#Edit_Modal">Edit
-                            Subject</button>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#Add_Modal">Delete Subject</button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    {{-- {{dd($courses)}} --}}
-                    @foreach ($courses as $course)
-                    <a href="{{url('/course/'.$course->course_id)}}">
-                        {{$course->name}}
-                    </a>
-                    <br>
-                    @endforeach
-                </div>
-            </div>
+<div class="card ce-card">
+    <h1 class="ce-name">Subject : {{$sub->name}}</h1>
+    <div class="row justify-content-end">
+        <div class="offset-md-3 col-md-6 ">
+            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
+            <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
+        </div>
+        <div class="ce-container">
+            @guest
+            @if ($courses != null)
+            @foreach ($courses as $course)
+            <a href="{{url('/course/'.$course->course_id)}}">
+                {{$course->name}}
+            </a>
+            <br>
+            @endforeach
+            @else
+            <h1>Course empty !!</h1>
+            @endif
+            @endguest
         </div>
     </div>
 </div>

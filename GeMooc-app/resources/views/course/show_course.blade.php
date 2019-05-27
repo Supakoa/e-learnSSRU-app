@@ -13,10 +13,8 @@
                 <div class="card-header d-flex justify-content-between align-items-baseline">
                     <h2>Course : {{$course->name}}</h2>
                     <div>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#Add_Modal">Add
-                            Lesson</button>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#Edit_Modal">Edit
-                            Course</button>
+                        <a href="#" data-toggle="modal" data-target="#Add_Modal"> <i class="fas fa-folder-plus" ></i> </a>
+                        <a href="#" data-toggle="modal" data-target="#Edit_Modal"> <i class="fas fa-cog"></i></a>
                     </div>
                 </div>
                 {{-- <div class="card-header">{{$course_name}}
@@ -34,7 +32,7 @@
                                 {{$lesson->name}}
                                 </button>
                                 <div class="text-right">
-                                <button class=" btn btn-success btn-sm " data-toggle="modal" data-target="#Add_Modal_content" onclick="add_content({{$lesson}})">Add Content</button>
+                                <button class=" btn btn-success btn-sm " data-toggle="modal" data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i class="fas fa-plus-circle"></i></button>
                                 </div>
 
                             </h2>
@@ -153,24 +151,33 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('/lesson')}}" method="post" enctype='multipart/form-data' id="lesson_form">
+                <form action="{{url('/content')}}" method="post" enctype='multipart/form-data' id="content_form" >
                     @csrf
-                    <input type="hidden" name="lesson_id" id = "lesson_id_con" value="">
+                    <input type="hidden" name="lesson_id" id = "lesson_id" value="">
+                    <input type="hidden" name="course_id" value="{{$course->course_id}}">
                     <div class="form-group">
                         <label for="name">Content Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="lesson Name">
+                        <input type="text" class="form-control" name="name" placeholder="content Name" required>
                     </div>
                     <div class="form-group">
                             <label for="name">Content type</label>
-                            <input type="text" class="form-control" name="name" placeholder="lesson Name">
+                            <select name="type" id="content_type" class="form-control" required>
+                                <option value="" disabled selected>Type</option>
+                                <option value="1">Video</option>
+                                <option value="2">Text</option>
+                                <option value="3">Quiz</option>
+                            </select>
+                            {{-- <input type="text" class="form-control" name="name" placeholder="content Name"> --}}
                     </div>
+                    <div class="form-group" id="content_url">
 
+                    </div>
 
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="lesson_form">Save changes</button>
+                <button type="submit" class="btn btn-primary" form="content_form">Save changes</button>
             </div>
         </div>
     </div>
@@ -181,8 +188,20 @@
 @section('js')
     <script>
         function add_content(lesson) {
-            $('#lesson_id_con').val(lesson.lesson_id);
+            $('#lesson_id').val(lesson.lesson_id);
             $('#add_content_header').html('Create Content : '+lesson.name);
         }
+        // $('#content_url').hide();
+        $('#content_type').change(function (e) {
+            e.preventDefault();
+
+            if($(this).val()=='1'){
+                $('#content_url').html('<label for="url">URL Video</label><input type="text" class="form-control" name="url" placeholder="content Name" required>');
+            }
+            else{
+                $('#content_url').html('');
+            }
+
+        });
     </script>
 @endsection
