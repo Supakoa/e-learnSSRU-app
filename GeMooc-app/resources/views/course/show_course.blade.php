@@ -28,24 +28,58 @@
                         <button class=" btn btn-success btn-sm " data-toggle="modal" data-target="#Add_Modal_content"
                             onclick="add_content({{$lesson}})"><i class="fas fa-plus-circle"></i></button>
                     </div>
-
-                </h2>
-
             </div>
+            {{-- <div class="card-header">{{$course_name}}
+        </div> --}}
 
-            <div id="collapse{{$lesson->lesson_id}}" class="collapse" aria-labelledby="heading{{$lesson->lesson_id}}"
-                data-parent="#accordionExample">
-                <div class="card-body">
-                    @php
-                    $names = $content::where('lesson_id',$lesson->lesson_id)->get();
-                    @endphp
-                    @foreach ($names as $name)
-                    <a href="#">
-                        <h4> {{$name->name}}</h4>
-                    </a>
+        <div class="card-body">
+            {{-- {{dd($courses)}} --}}
+            <div class="accordion" id="accordionExample">
 
+                @foreach ($lessons as $lesson)
+                <div class="card">
+                    <div class="card-header" id="heading{{$lesson->lesson_id}}">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                                data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                {{$lesson->name}}
+                            </button>
+                        </h2>
+
+                        </h2>
+
+                        <div id="collapse{{$lesson->lesson_id}}" class="collapse"
+                            aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
+                            <div class="card-body">
+
+
+                                @php
+                                $names = $content::where('lesson_id',$lesson->lesson_id)->get();
+                                @endphp
+                                @if ($names->count()>0)
+                                @foreach ($names as $name)
+                                <a href="#">
+                                    <h4> {{$name->name}}</h4>
+                                </a>
+
+                                @endforeach
+                                @else
+                                {{"Have no Content"}}
+                                @endif
+
+
+
+                            </div>
+                            <hr>
+                            <div class=" text-right">
+                                <button class=" btn btn-success btn-sm mb-3 mr-3" data-toggle="modal"
+                                    data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i
+                                        class="fas fa-plus-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
-
                 </div>
             </div>
         </div>
@@ -188,7 +222,7 @@
         if ($(this).val() == '1') {
             $('#content_url').html(
                 '<label for="url">URL Video</label><input type="text" class="form-control" name="url" placeholder="content Name" required>'
-                );
+            );
         } else {
             $('#content_url').html('');
         }

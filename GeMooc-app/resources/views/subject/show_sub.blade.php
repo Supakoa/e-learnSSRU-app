@@ -3,25 +3,26 @@
 @section('content')
 <div class="card ce-card">
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
-    <div class="row justify-content-end">
-        <div class="offset-md-3 col-md-6 ">
-            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
-            <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
+    <div class="ce-container">
+        <div class="justify-content-end row mb-3">
+            <div class="offset-md-3 col-md-6 ">
+                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
+                <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
+            </div>
         </div>
-        <div class="ce-container">
-            @guest
-            @if ($courses->count() > 0)
-            @foreach ($courses as $course)
-            <a href="{{url('/course/'.$course->course_id)}}">
-                {{$course->name}}
-            </a>
-            <br>
-            @endforeach
-            @else
-            <h1>Course empty !!</h1>
-            @endif
-            @endguest
-        </div>
+
+        @if ($courses->count() > 0)
+        @foreach ($courses as $course)
+        <a href="{{url('/course/'.$course->course_id)}}">
+            {{$course->name}}
+        </a>
+        <br>
+        @endforeach
+        @else
+        <h1>Course empty !!</h1>
+        <hr>
+        @endif
+
     </div>
 </div>
 @endsection
