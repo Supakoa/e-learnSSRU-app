@@ -32,14 +32,23 @@
                         <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
                             data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"
                             aria-controls="collapseOne">
-                            {{$lesson->name}}
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    {{$lesson->name}}
+                                </li>
+                                <li class="list-inline-item "><i class="fas fa-video"></i>
+                                    {{$video = $content::where([['type','1'],['lesson_id',$lesson->lesson_id]])->count()}}
+
+                                </li>
+                                <li class="list-inline-item "><i class="far fa-clipboard"></i>
+                                    {{$article = $content::where([['type','2'],['lesson_id',$lesson->lesson_id]])->count()}}
+
+                                </li>
+                                <li class="list-inline-item"><i class="fas fa-question"></i>
+                                    {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->lesson_id]])->count()}}
+                                </li>
+                            </ul>
                         </button>
-
-                        {{$video = $content::where([['type','1'],['lesson_id',$lesson->lesson_id]])->count()}}
-                        {{$article = $content::where([['type','2'],['lesson_id',$lesson->lesson_id]])->count()}}
-                        {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->lesson_id]])->count()}}
-
-
                     </div>
                 </div>
                 <div id="collapse{{$lesson->lesson_id}}" class="collapse border-left border-right border-bottom"
@@ -48,23 +57,35 @@
                         @php
                         $names = $content::where('lesson_id',$lesson->lesson_id)->get();
                         @endphp
-                        @if ($names->count()>0)
-                            @foreach ($names as $name)
-                                @if ($name->type=="1")
-                                    <a href="{{$name->detail}}">
-                                        <h4> {{$name->name}}</h4>
-                                    </a>
-                                @elseif ($name->type=="2")
-                                    <a href="{{url('article/'.$name->detail)}}">
-                                        <h4> {{$name->name}}</h4>
-                                    </a>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                @if ($names->count()>0)
+                                @foreach ($names as $name)
+                                <ul class="list-inline">
+                                    <li class="list-inline-item ">
+                                        @if ($name->type=="1")
+                                        <i class="fas fa-video"></i>
+                                        <a class="btn btn-inline" href="{{$name->detail}}">
+                                            <h4>{{$name->name}}</h4>
+                                        </a>
+                                        @elseif ($name->type=="2")
+                                        <i class="far fa-clipboard"></i>
+                                        <a class="btn btn-inline" href="{{url('article/'.$name->detail)}}">
+                                            <h4> {{$name->name}}</h4>
+                                        </a>
+                                        @else
+                                        <i class="fas fa-question"></i>
+                                        <a class="btn btn-inline"
+                                            href="{{url('/conntent/goto_content/'.$name->detail)}}">
+                                            <h4> {{$name->name}}</h4>
+                                        </a>
+                                        @endif
+                                    </li>
+                                </ul>
+                                @endforeach
                                 @else
-                                    <a href="{{url('/conntent/goto_content/'.$name->detail)}}">
-                                        <h4> {{$name->name}}</h4>
-                                    </a>
-                                @endif
-                            @endforeach
-                        @else
+                            </li>
+                        </ul>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Now,Have have a Content !!!</strong>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
