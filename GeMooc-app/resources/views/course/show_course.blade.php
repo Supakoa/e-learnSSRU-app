@@ -30,13 +30,7 @@
                                 {{$lesson->name}}
                             </button>
                         </h2>
-                        <div class="row">
-                            <div class="justify-content-end">
-                                <button class=" btn btn-success btn-sm " data-toggle="modal"
-                                    data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i
-                                        class="fas fa-plus-circle"></i></button>
-                            </div>
-                        </div>
+                        
                         <div id="collapse{{$lesson->lesson_id}}" class="collapse"
                             aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
                             <div class="card-body">
