@@ -12,9 +12,9 @@
         </div>
 
         @if ($courses->count() > 0)
-        <div class="row">
+        <div class="row mb-3">
             @foreach ($courses as $course)
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card shadow" style="width: 18rem;">
                     <img class="card-img-top" src="../../image/sing.jpg" alt="">
                     <div class="card-body">

@@ -9,12 +9,26 @@
     <h1 class="ce-name">
         Course : {{$course->name}}
     </h1>
-    <div class="row justify-content-end">
+    <div class="row justify-content-end mb-3">
         <div class="ce-card-btn">
             <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
                     class="fas fa-folder-plus"></i> </button>
             <button href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal"> <i
                     class="fas fa-cog"></i></button>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="mb-3">
+            <img src="..." class="img-fluid" width="800" height="600" alt="Responsive image">
+        </div>
+        <div class="col-md-12 input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
         </div>
     </div>
     <div class="row ce-container">
