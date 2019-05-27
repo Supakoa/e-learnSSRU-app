@@ -12,22 +12,30 @@
         </div>
 
         @if ($courses->count() > 0)
-        @foreach ($courses as $course)
-        <ul class="list-group shadow">
-            <li class="list-group-item">
-                    <a class="btn btn-block" href="{{url('/course/'.$course->course_id)}}">
-                        {{$course->name}}
-                    </a>
-            </li>
-        </ul>
-        @endforeach
+        <div class="row">
+            @foreach ($courses as $course)
+            <div class="col-md-4">
+                <div class="card shadow" style="width: 18rem;">
+                    <img class="card-img-top" src="../../image/sing.jpg" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$course->name}}</h5>
+                        <p class="card-text">ลิงจักๆ รู้นะไม่ต้องพิมต่อ !!</p>
+                        <a href="{{url('/course/'.$course->course_id)}}" class="btn btn-sm btn-warning shadow"><i
+                                class="fas fa-pencil-alt" style="color:#fff"></i></a>
+                        <a href="#" class="btn btn-sm btn-danger shadow"><i class="fas fa-minus"></i></a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
         @else
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Your course is empty !!!</strong> Can you click Add button for make your courses.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+            <strong>Your course is empty !!!</strong> Can you click Add button for make your courses.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         @endif
 
     </div>
