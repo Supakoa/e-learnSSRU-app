@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('dashboard.home');
 
 Route::get('/home', 'HomeController@index')->name('dashboard.home');
 Route::get('/test','test_sumernote@index');
+Route::get('/teach', 'teach@Teach');
 // Route::get('/up_image','test_sumernote@up_image');
 Route::post('ajaximage', function(){
 
@@ -26,7 +27,7 @@ Route::post('ajaximage', function(){
     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
     $extension = $file->getClientOriginalExtension();
     $fileNameToStore= $filename.'_'.time().'.'.$extension;
-    
+
     $file->move($destinationPath, $fileNameToStore);
     echo url('/uploads/'.$fileNameToStore);
 });

@@ -100,7 +100,7 @@
                         Subject
                     </li>
                 </a>
-                <a href="#">
+                <a href="{{ url('/teach')}}">
                     <li>
                         Report
                     </li>
@@ -148,6 +148,8 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
+    @yield('js-teach')
+    @yield('js-stdent')
     <script>
         wow = new WOW({
             boxClass: 'wow', // default

@@ -10,7 +10,7 @@
         </div>
         <div class="ce-container">
             @guest
-            @if ($courses != null)
+            @if ($courses->count() > 0)
             @foreach ($courses as $course)
             <a href="{{url('/course/'.$course->course_id)}}">
                 {{$course->name}}

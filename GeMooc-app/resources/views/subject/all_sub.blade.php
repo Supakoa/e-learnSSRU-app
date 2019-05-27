@@ -13,7 +13,7 @@
         <div class="col-md-3">
             <figure class="imghvr-flip-vert" style="background:inherit">
                 <img class="ce-img" src="/storage/cover_images/{{$sub->sm_banner}}">
-                <figcaption>
+                <figcaption style="background-color:#ff99ff;">
                     <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
                     <p class="ih-zoom-in ih-delay-md">
                         <i>{{$sub->detail}}</i>
