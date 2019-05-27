@@ -4,12 +4,12 @@
 <div class="card ce-card">
     <h1 class="ce-name">Total Subject</h1>
     <div class="row justify-content-end">
-        <div class="offset-md-3 col-md-6 ">
+        <div class="offset-md-3 col-md-9 ">
             <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
                 Subject</button>
         </div>
     </div>
-    <div class="ce-container">
+    <div class="row ce-container">
         @if ($sub->count() > 0)
         @foreach ($sub as $sub)
         <div class="col-md-3">
