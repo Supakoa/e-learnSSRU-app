@@ -21,7 +21,7 @@
             @if ($lessons->count() > 0)
             <div class="accordion" id="accordionExample">
                 @foreach ($lessons as $lesson)
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-header" id="heading{{$lesson->lesson_id}}">
                             <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
                                 data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"

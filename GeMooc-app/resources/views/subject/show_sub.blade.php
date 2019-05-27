@@ -13,7 +13,7 @@
 
         @if ($courses->count() > 0)
         @foreach ($courses as $course)
-        <ul class="list-group">
+        <ul class="list-group shadow">
             <li class="list-group-item">
                     <a class="btn btn-block" href="{{url('/course/'.$course->course_id)}}">
                         {{$course->name}}
