@@ -160,7 +160,7 @@ class subject_c extends Controller
             $now->detail = 'Edit Subject '.$detail;
             $now->save();
         }
-        return redirect('/subject')->with('success', 'Subject Update');
+        return redirect('/subject/'.$subject->id)->with('success', 'Subject Update');
     }
 
     /**

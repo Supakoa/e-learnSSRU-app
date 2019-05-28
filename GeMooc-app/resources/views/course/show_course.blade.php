@@ -84,14 +84,14 @@
                                 </ul>
                                 @endforeach
                                 @else
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>Now,Have have a Content !!!</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
                             </li>
                         </ul>
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>Now,Have have a Content !!!</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
                         @endif
                     </div>
                     <hr>

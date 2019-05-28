@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\lesson as lesson;
 use App\course as course;
 use App\content as content;
+use App\adjust as adjust;
 
 class lesson_c extends Controller
 {
@@ -58,6 +59,10 @@ class lesson_c extends Controller
         // $post->user_id = auth()->user()->id;
         // $post->sm_banner = $fileNameToStore;
         $post->save();
+        $now = new adjust;
+        $now->user_id = auth()->user()->id;
+        $now->detail = "Create Lesson";
+        $now->save();
         return redirect('/course/'.$request->input('course_id'))->with('success', 'Subject Created');
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\content as content;
+use App\adjust as adjust;
 use App\article as article;
 use Illuminate\Http\Request;
 
@@ -63,7 +64,10 @@ class content_c extends Controller
         // $content->subject_id = $request->input('sub_id');
 
         $content->save();
-
+        $now = new adjust;
+        $now->user_id = auth()->user()->id;
+        $now->detail = "Create Content";
+        $now->save();
         return redirect('/course/'.$request->input('course_id'))->with('success', 'Content Created');
         // dd($content->content_id);
     }
