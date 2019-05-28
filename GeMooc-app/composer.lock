@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d22752ebcbd1509ee845464a39991b8a",
+    "content-hash": "a42f508586070623e87cc347a9e7e080",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1445,31 +1445,29 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "5.0.9",
+            "version": "4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "526cc3e8970c35b97c71a7a6d8b63c2073568bb1"
+                "reference": "b7ad126757c4e0542174c42b39094b4212a65d94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/526cc3e8970c35b97c71a7a6d8b63c2073568bb1",
-                "reference": "526cc3e8970c35b97c71a7a6d8b63c2073568bb1",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/b7ad126757c4e0542174c42b39094b4212a65d94",
+                "reference": "b7ad126757c4e0542174c42b39094b4212a65d94",
                 "shasum": ""
             },
             "require": {
-                "illuminate/auth": "~5.2",
-                "illuminate/cache": "~5.2",
-                "illuminate/console": "~5.2",
-                "illuminate/database": "^5.2.32",
-                "illuminate/support": "~5.2",
+                "illuminate/cache": "~5.1",
+                "illuminate/console": "~5.1",
+                "illuminate/database": "~5.1",
+                "illuminate/support": "^5.1.40",
                 "kkszymanowski/traitor": "^0.2.0",
                 "php": ">=5.5.9"
             },
             "require-dev": {
-                "mockery/mockery": ">=0.9.9",
-                "orchestra/testbench": "~3.2",
-                "phpunit/phpunit": ">=4.1"
+                "mockery/mockery": "~0.9.2",
+                "phpunit/phpunit": "~4.1"
             },
             "type": "library",
             "extra": {
@@ -1483,8 +1481,11 @@
                 }
             },
             "autoload": {
+                "classmap": [
+                    "src/commands"
+                ],
                 "psr-4": {
-                    "Laratrust\\": "src/"
+                    "Laratrust\\": "src/Laratrust/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1499,18 +1500,16 @@
             ],
             "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
             "keywords": [
-                "Teams",
                 "acl",
                 "authorization",
                 "laratrust",
                 "laravel",
-                "multiusers",
                 "permissions",
                 "php",
                 "rbac",
                 "roles"
             ],
-            "time": "2018-03-05T13:21:52+00:00"
+            "time": "2017-09-29T19:54:05+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

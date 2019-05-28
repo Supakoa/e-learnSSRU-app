@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 use App\content as content;
-
+use App\article as article;
 use Illuminate\Http\Request;
 
 class content_c extends Controller
 {
+    public function goto_content($id)
+    {
+        //
+        return $id;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +51,11 @@ class content_c extends Controller
         $content->type = $request->input('type');
         if($content->type=='1'){
             $content->detail = $request->input('url');
+        }elseif($content->type=='2'){
+            $article = new article;
+            $article->rawdata = "กรุณาเพิ่มเนื้อหา";
+            $article->save();
+            $content->detail = $article->id;
         }
         $content->lesson_id = $request->input('lesson_id');
         // $content->user_id = auth()->user()->id;

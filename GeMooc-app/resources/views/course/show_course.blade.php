@@ -1,66 +1,118 @@
 @inject('content', 'App\content')
 @inject('lesson_class', 'App\lesson')
-
-
+@inject('DB', 'Illuminate\Support\Facades\DB')
 
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-baseline">
-                    <h2>Course : {{$course->name}}</h2>
-                    <div>
-                        <a href="#" data-toggle="modal" data-target="#Add_Modal"> <i class="fas fa-folder-plus" ></i> </a>
-                        <a href="#" data-toggle="modal" data-target="#Edit_Modal"> <i class="fas fa-cog"></i></a>
-                    </div>
-                </div>
-                {{-- <div class="card-header">{{$course_name}}
-            </div> --}}
-
-            <div class="card-body">
-                {{-- {{dd($courses)}} --}}
-                <div class="accordion" id="accordionExample">
-
-                @foreach ($lessons as $lesson)
-                    <div class="card">
-                        <div class="card-header" id="heading{{$lesson->lesson_id}}">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true" aria-controls="collapseOne">
-                                {{$lesson->name}}
-                                </button>
-                                <div class="text-right">
-                                <button class=" btn btn-success btn-sm " data-toggle="modal" data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i class="fas fa-plus-circle"></i></button>
-                                </div>
-
-                            </h2>
-
-                        </div>
-
-                        <div id="collapse{{$lesson->lesson_id}}" class="collapse" aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
-                            <div class="card-body">
-
-
-                                    @php
-                                        $names = $content::where('lesson_id',$lesson->lesson_id)->get();
-                                    @endphp
-
-                                    @foreach ($names as $name)
-                                       <a href="#"><h4> {{$name->name}}</h4></a>
-
-                                    @endforeach
-
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                </div>
-            </div>
+<div class="card ce-card h-100">
+    <h1 class="ce-name">
+        Course : {{$course->name}}
+    </h1>
+    <div class="row justify-content-end mb-3">
+        <div class="ce-card-btn">
+            <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
+                    class="fas fa-folder-plus"></i> </button>
+            <button href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal"> <i
+                    class="fas fa-cog"></i></button>
         </div>
     </div>
-</div>
+    <div class="row justify-content-center">
+        <div class="mb-3">
+            <img src="..." class="img-fluid" width="800" height="600" alt="Responsive image">
+        </div>
+    </div>
+    <div class="row ce-container">
+        <div class="col-md-12">
+            @if ($lessons->count() > 0)
+            <div class="accordion" id="accordionExample">
+                @foreach ($lessons as $lesson)
+                <div class="card shadow">
+                    <div class="card-header" id="heading{{$lesson->lesson_id}}">
+                        <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
+                            data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    {{$lesson->name}}
+                                </li>
+                                <li class="list-inline-item "><i class="fas fa-video"></i>
+                                    {{$video = $content::where([['type','1'],['lesson_id',$lesson->lesson_id]])->count()}}
+
+                                </li>
+                                <li class="list-inline-item "><i class="far fa-clipboard"></i>
+                                    {{$article = $content::where([['type','2'],['lesson_id',$lesson->lesson_id]])->count()}}
+
+                                </li>
+                                <li class="list-inline-item"><i class="fas fa-question"></i>
+                                    {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->lesson_id]])->count()}}
+                                </li>
+                            </ul>
+                        </button>
+                    </div>
+                </div>
+                <div id="collapse{{$lesson->lesson_id}}" class="collapse border-left border-right border-bottom"
+                    aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
+                    <div class="card-body">
+                        @php
+                        $names = $content::where('lesson_id',$lesson->lesson_id)->get();
+                        @endphp
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                @if ($names->count()>0)
+                                @foreach ($names as $name)
+                                <ul class="list-inline">
+                                    <li class="list-inline-item ">
+                                        @if ($name->type=="1")
+                                        <i class="fas fa-video"></i>
+                                        <a class="btn btn-inline" href="{{$name->detail}}">
+                                            <h4>{{$name->name}}</h4>
+                                        </a>
+                                        @elseif ($name->type=="2")
+                                        <i class="far fa-clipboard"></i>
+                                        <a class="btn btn-inline" href="{{url('article/'.$name->detail)}}">
+                                            <h4> {{$name->name}}</h4>
+                                        </a>
+                                        @else
+                                        <i class="fas fa-question"></i>
+                                        <a class="btn btn-inline"
+                                            href="{{url('/conntent/goto_content/'.$name->detail)}}">
+                                            <h4> {{$name->name}}</h4>
+                                        </a>
+                                        @endif
+                                    </li>
+                                </ul>
+                                @endforeach
+                                @else
+                            </li>
+                        </ul>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Now,Have have a Content !!!</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+                    </div>
+                    <hr>
+                    <div class=" text-right">
+                        <button class=" btn btn-success btn-sm mb-3 mr-3" data-toggle="modal"
+                            data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i
+                                class="fas fa-plus-circle"></i></button>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @else
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Now, Not have Lession !!!</strong> Can you click Add button for make new Lession.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -145,29 +197,29 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="add_content_header"></h5>
+                <h5 class="modal-title" id="add_content_header"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('/content')}}" method="post" enctype='multipart/form-data' id="content_form" >
+                <form action="{{url('/content')}}" method="post" enctype='multipart/form-data' id="content_form">
                     @csrf
-                    <input type="hidden" name="lesson_id" id = "lesson_id" value="">
+                    <input type="hidden" name="lesson_id" id="lesson_id" value="">
                     <input type="hidden" name="course_id" value="{{$course->course_id}}">
                     <div class="form-group">
                         <label for="name">Content Name</label>
                         <input type="text" class="form-control" name="name" placeholder="content Name" required>
                     </div>
                     <div class="form-group">
-                            <label for="name">Content type</label>
-                            <select name="type" id="content_type" class="form-control" required>
-                                <option value="" disabled selected>Type</option>
-                                <option value="1">Video</option>
-                                <option value="2">Text</option>
-                                <option value="3">Quiz</option>
-                            </select>
-                            {{-- <input type="text" class="form-control" name="name" placeholder="content Name"> --}}
+                        <label for="name">Content type</label>
+                        <select name="type" id="content_type" class="form-control" required>
+                            <option value="" disabled selected>Type</option>
+                            <option value="1">Video</option>
+                            <option value="2">Text</option>
+                            <option value="3">Quiz</option>
+                        </select>
+                        {{-- <input type="text" class="form-control" name="name" placeholder="content Name"> --}}
                     </div>
                     <div class="form-group" id="content_url">
 
@@ -186,22 +238,24 @@
 @endsection
 
 @section('js')
-    <script>
-        function add_content(lesson) {
-            $('#lesson_id').val(lesson.lesson_id);
-            $('#add_content_header').html('Create Content : '+lesson.name);
+<script>
+    function add_content(lesson) {
+        $('#lesson_id').val(lesson.lesson_id);
+        $('#add_content_header').html('Create Content : ' + lesson.name);
+    }
+    // $('#content_url').hide();
+    $('#content_type').change(function (e) {
+        e.preventDefault();
+
+        if ($(this).val() == '1') {
+            $('#content_url').html(
+                '<label for="url">URL Video</label><input type="text" class="form-control" name="url" placeholder="content Name" required>'
+            );
+        } else {
+            $('#content_url').html('');
         }
-        // $('#content_url').hide();
-        $('#content_type').change(function (e) {
-            e.preventDefault();
 
-            if($(this).val()=='1'){
-                $('#content_url').html('<label for="url">URL Video</label><input type="text" class="form-control" name="url" placeholder="content Name" required>');
-            }
-            else{
-                $('#content_url').html('');
-            }
+    });
 
-        });
-    </script>
+</script>
 @endsection

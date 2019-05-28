@@ -1,27 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card ce-card">
+<div class="card ce-card h-100">
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
-    <div class="row justify-content-end">
-        <div class="offset-md-3 col-md-6 ">
-            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
-            <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
+    <div class="ce-container">
+        <div class="justify-content-end row mb-3">
+            <div class="ce-card-btn">
+                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
+                <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
+            </div>
         </div>
-        <div class="ce-container">
-            @guest
-            @if ($courses != null)
+
+        @if ($courses->count() > 0)
+        <div class="row mb-3">
             @foreach ($courses as $course)
-            <a href="{{url('/course/'.$course->course_id)}}">
-                {{$course->name}}
-            </a>
-            <br>
+            <div class="col-md-3">
+                <div class="card shadow" style="width: 18rem;">
+                    <img class="card-img-top" src="../../image/sing.jpg" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$course->name}}</h5>
+                        <p class="card-text">ลิงจักๆ รู้นะไม่ต้องพิมต่อ !!</p>
+                        <div class="text-right ce-card-btn">
+                            <a href="{{url('/course/'.$course->course_id)}}" class="btn btn-sm btn-outline-warning shadow"><i
+                                    class="fas fa-pencil-alt" ></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-danger shadow"><i class="fas fa-minus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @endforeach
-            @else
-            <h1>Course empty !!</h1>
-            @endif
-            @endguest
         </div>
+
+        @else
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Your course is empty !!!</strong> Can you click Add button for make your courses.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
     </div>
 </div>
 @endsection

@@ -6,22 +6,39 @@
 
 <div class="card ce-card">
     <h1 class="ce-name">Subject : </h1>
-        <div class="ce-container">
+        <div class="">
             <div class=" text-right">
                 <button id="edit" class="btn btn-primary" onclick="edit()" type="button">Edit</button>
                 <button id="save" class="btn btn-primary" onclick="preview()" type="button">Preview</button>
             </div>
 
             <div id="summernote">
-
+                    {!!$article->rawdata!!}
             </div>
+        <form action="{{url('/article/'.$article->id)}}" method="post" id="form_article">
+            @csrf
+            @method('PATCH')
+            <input type="hidden" name="rawdata" id="rawdata">
+            <div class=" text-right">
+                <br>
+                    <button class="btn btn-success" id="btn_save" type="submit">Save</button>
+            </div>
+
+        </form>
         </div>
 
 </div>
+
 @endsection
 
 @section('js')
 <script>
+    $('#btn_save').click(function (e) {
+        e.preventDefault();
+        $('#rawdata').val($('#summernote').summernote('code'));
+        $('#form_article').submit();
+
+    });
     $(document).ready(function () {
         $.ajaxSetup({
             headers: {
@@ -46,10 +63,13 @@
         $('#summernote').summernote({
             focus: true
         });
+        $('#btn_save').show();
+
     }
 
     function preview() {
         $('#summernote').summernote('destroy');
+        $('#btn_save').hide();
     }
 
     function sendFile(file, editor, welEditable) {
