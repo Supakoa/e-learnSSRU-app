@@ -26,7 +26,7 @@ Route::post('ajaximage', function(){
     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
     $extension = $file->getClientOriginalExtension();
     $fileNameToStore= $filename.'_'.time().'.'.$extension;
-    
+
     $file->move($destinationPath, $fileNameToStore);
     echo url('/uploads/'.$fileNameToStore);
 });
@@ -39,6 +39,15 @@ Route::resource('/subject', 'subject_c');
 Route::resource('/course', 'course_c');
 Route::resource('/lesson', 'lesson_c');
 Route::resource('/content', 'content_c');
+
+// Administrator & SuperAdministrator Control Panel Routes
+Route::group(['middleware' => ['role:administrator']], function () {
+    Route::resource('users', 'UsersController');
+    Route::resource('permission', 'PermissionController');
+    Route::resource('roles', 'RolesController');
+});
+// Dashboard
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 
