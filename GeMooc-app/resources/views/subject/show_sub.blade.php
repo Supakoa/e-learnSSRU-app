@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="card ce-card h-100">
+
+    <img src="/storage/{{$sub->xl_banner}}" alt="" style="width: 100%;height: auto;">
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
     <div class="ce-container">
         <div class="justify-content-end row mb-3">
@@ -16,12 +18,12 @@
             @foreach ($courses as $course)
             <div class="col-md-3">
                 <div class="card shadow" style="width: 18rem;">
-                    <img class="card-img-top" src="../../image/sing.jpg" alt="">
+                    <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
                     <div class="card-body">
                         <h5 class="card-title">{{$course->name}}</h5>
-                        <p class="card-text">ลิงจักๆ รู้นะไม่ต้องพิมต่อ !!</p>
+                        <p class="card-text">{{$course->detail}}</p>
                         <div class="text-right ce-card-btn">
-                            <a href="{{url('/course/'.$course->course_id)}}" class="btn btn-sm btn-outline-warning shadow"><i
+                            <a href="{{url('/course/'.$course->id)}}" class="btn btn-sm btn-outline-warning shadow"><i
                                     class="fas fa-pencil-alt" ></i></a>
                             <a href="#" class="btn btn-sm btn-outline-danger shadow"><i class="fas fa-minus"></i></a>
                         </div>
@@ -58,7 +60,7 @@
             <div class="modal-body">
                 <form action="{{url('/course')}}" method="post" enctype='multipart/form-data' id="course_form">
                     @csrf
-                    <input type="hidden" name="sub_id" value="{{$sub->subject_id}}">
+                    <input type="hidden" name="sub_id" value="{{$sub->id}}">
                     <div class="form-group">
                         <label for="name">Course Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Course Name">
@@ -93,11 +95,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('/subject/'.$sub->subject_id)}}" method="POST" enctype='multipart/form-data'
+                <form action="{{url('/subject/'.$sub->id)}}" method="POST" enctype='multipart/form-data'
                     id="sub_form">
                     @csrf
                     @method('PATCH')
-                    <input type="hidden" name="sub_id" value="{{$sub->subject_id}}">
+                    <input type="hidden" name="sub_id" value="{{$sub->id}}">
 
                     <div class="form-group">
                         <label for="name">Subject Name</label>
@@ -110,12 +112,19 @@
                             placeholder="Subject Detail">
                     </div>
                     <div class="form-group text-center">
-                        <img src="/storage/cover_images/{{$sub->sm_banner}}" alt="" width="100%" srcset="">
+                        <img src="/storage/{{$sub->sm_banner}}" alt="" width="100%" srcset="">
                     </div>
                     <div class="form-group">
-                        <label for="name">Cover Image</label>
-                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
+                        <label for="name">Cover Image (Small : 400*255) </label>
+                        <input type="file" class="form-control" name="cover_image_sm" placeholder="Image">
                     </div>
+                    <div class="form-group text-center">
+                            <img src="/storage/{{$sub->xl_banner}}" alt="" width="100%" srcset="">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Cover Image (Large : 1600*600) </label>
+                            <input type="file" class="form-control" name="cover_image_xl" placeholder="Image">
+                        </div>
                 </form>
             </div>
             <div class="modal-footer">

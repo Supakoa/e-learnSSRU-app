@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\course as course;
 use App\subject as sub;
-
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 class subject_c extends Controller
@@ -54,19 +54,14 @@ class subject_c extends Controller
             'detail' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ]) ;
+
         if($request->hasFile('cover_image')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $imagePath = request('cover_image')->store('cover_image_subject/sm','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,225);
+            $image->save();
+            $fileNameToStore =  $imagePath;
         } else {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore =  'cover_image_subject/sm/no_image.jpg';
         }
 
         // Create Post
@@ -75,6 +70,8 @@ class subject_c extends Controller
         $post->detail = $request->input('detail');
         // $post->user_id = auth()->user()->id;
         $post->sm_banner = $fileNameToStore;
+        $post->xl_banner = 'cover_image_subject/xl/no_image.jpg';
+        // $post->xl_banner = $fileNameToStore;
         $post->save();
         return redirect('/subject')->with('success', 'Subject Created');
     }
@@ -116,29 +113,34 @@ class subject_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image_sm' => 'image|nullable|max:1999',
+            'cover_image_xl' => 'image|nullable|max:1999'
+
         ]) ;
-        if($request->hasFile('cover_image')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
+        $post = sub::find($request->input('sub_id'));
+        if($request->hasFile('cover_image_xl')){
+            $imagePath = request('cover_image_xl')->store('cover_image_subject/xl','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1600,600);
+            $image->save();
+            $fileNameToStore =  $imagePath;
+            $post->xl_banner = $fileNameToStore;
+
+        }
+        if($request->hasFile('cover_image_sm')){
+            $imagePath = request('cover_image_sm')->store('cover_image_subject/sm','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,255);
+            $image->save();
+            $fileNameToStore =  $imagePath;
+            $post->sm_banner = $fileNameToStore;
+
         }
 
         // Create Post
-        $post = sub::find($request->input('sub_id'));
+
         $post->name = $request->input('name');
         $post->detail = $request->input('detail');
         // $post->user_id = auth()->user()->id;
-        $post->sm_banner = $fileNameToStore;
+
         $post->save();
         return redirect('/subject')->with('success', 'Subject Update');
     }

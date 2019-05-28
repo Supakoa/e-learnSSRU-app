@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->longText('rawdata');
             $table->integer('status')->default(0);
+            $table->integer('lesson_id')->nullable();
             $table->timestamps();
         });
     }

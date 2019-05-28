@@ -19,7 +19,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="mb-3">
-            <img src="..." class="img-fluid" width="800" height="600" alt="Responsive image">
+        <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="800" height="600" alt="Responsive image">
         </div>
     </div>
     <div class="row ce-container">
@@ -28,34 +28,34 @@
             <div class="accordion" id="accordionExample">
                 @foreach ($lessons as $lesson)
                 <div class="card shadow">
-                    <div class="card-header" id="heading{{$lesson->lesson_id}}">
+                    <div class="card-header" id="heading{{$lesson->id}}">
                         <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
-                            data-target="#collapse{{$lesson->lesson_id}}" aria-expanded="true"
+                            data-target="#collapse{{$lesson->id}}" aria-expanded="true"
                             aria-controls="collapseOne">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     {{$lesson->name}}
                                 </li>
                                 <li class="list-inline-item "><i class="fas fa-video"></i>
-                                    {{$video = $content::where([['type','1'],['lesson_id',$lesson->lesson_id]])->count()}}
+                                    {{$video = $content::where([['type','1'],['lesson_id',$lesson->id]])->count()}}
 
                                 </li>
                                 <li class="list-inline-item "><i class="far fa-clipboard"></i>
-                                    {{$article = $content::where([['type','2'],['lesson_id',$lesson->lesson_id]])->count()}}
+                                    {{$article = $content::where([['type','2'],['lesson_id',$lesson->id]])->count()}}
 
                                 </li>
                                 <li class="list-inline-item"><i class="fas fa-question"></i>
-                                    {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->lesson_id]])->count()}}
+                                    {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->id]])->count()}}
                                 </li>
                             </ul>
                         </button>
                     </div>
                 </div>
-                <div id="collapse{{$lesson->lesson_id}}" class="collapse border-left border-right border-bottom"
-                    aria-labelledby="heading{{$lesson->lesson_id}}" data-parent="#accordionExample">
+                <div id="collapse{{$lesson->id}}" class="collapse border-left border-right border-bottom"
+                    aria-labelledby="heading{{$lesson->id}}" data-parent="#accordionExample">
                     <div class="card-body">
                         @php
-                        $names = $content::where('lesson_id',$lesson->lesson_id)->get();
+                        $names = $content::where('lesson_id',$lesson->id)->get();
                         @endphp
                         <ul class="list-group">
                             <li class="list-group-item">
@@ -131,7 +131,7 @@
             <div class="modal-body">
                 <form action="{{url('/lesson')}}" method="post" enctype='multipart/form-data' id="lesson_form">
                     @csrf
-                    <input type="hidden" name="course_id" value="{{$course->course_id}}">
+                    <input type="hidden" name="course_id" value="{{$course->id}}">
                     <div class="form-group">
                         <label for="name">lesson Name</label>
                         <input type="text" class="form-control" name="name" placeholder="lesson Name">
@@ -160,7 +160,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('/course/'.$course->course_id)}}" method="post" enctype='multipart/form-data'
+                <form action="{{url('/course/'.$course->id)}}" method="post" enctype='multipart/form-data'
                     id="course_form">
                     @csrf
                     @method('PATCH')
@@ -206,7 +206,7 @@
                 <form action="{{url('/content')}}" method="post" enctype='multipart/form-data' id="content_form">
                     @csrf
                     <input type="hidden" name="lesson_id" id="lesson_id" value="">
-                    <input type="hidden" name="course_id" value="{{$course->course_id}}">
+                    <input type="hidden" name="course_id" value="{{$course->id}}">
                     <div class="form-group">
                         <label for="name">Content Name</label>
                         <input type="text" class="form-control" name="name" placeholder="content Name" required>
@@ -240,7 +240,7 @@
 @section('js')
 <script>
     function add_content(lesson) {
-        $('#lesson_id').val(lesson.lesson_id);
+        $('#lesson_id').val(lesson.id);
         $('#add_content_header').html('Create Content : ' + lesson.name);
     }
     // $('#content_url').hide();
