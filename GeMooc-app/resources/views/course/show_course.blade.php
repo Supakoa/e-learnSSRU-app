@@ -19,7 +19,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="mb-3">
-        <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="800" height="600" alt="Responsive image">
+        <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="100%" height="auto" alt="Responsive image">
         </div>
     </div>
     <div class="row ce-container">
@@ -176,7 +176,20 @@
                         <input type="text" class="form-control" name="detail" value="{{$course->detail}}"
                             placeholder="Course Detail">
                     </div>
-
+                    <div class="form-group text-center">
+                            <img src="/storage/{{$course->sm_banner}}" alt="" width="100%" srcset="">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Cover Image (Small : 400*255) </label>
+                            <input type="file" class="form-control" name="cover_image_sm" placeholder="Image">
+                        </div>
+                        <div class="form-group text-center">
+                                <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Cover Image (Large : 1600*600) </label>
+                                <input type="file" class="form-control" name="cover_image_xl" placeholder="Image">
+                            </div>
                     {{-- <div class="form-group">
                     <label for="name">Cover Image</label>
                     <input type="file" class="form-control" name="cover_image" placeholder="Image">
