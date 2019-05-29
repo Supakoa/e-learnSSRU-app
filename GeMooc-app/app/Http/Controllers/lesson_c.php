@@ -47,21 +47,21 @@ class lesson_c extends Controller
         $this->validate($request,[
             'name' => 'required'
             // 'detail' => 'required'
-            // 'cover_image' => 'image|nullable|max:1999'
+            // 'cover_image' => 'image|nullable|max:10000'
             ]) ;
 
 
-        // Create Post
-        $post = new lesson;
-        $post->name = $request->input('name');
-        $post->course_id = $request->input('course_id');
-        // $post->detail = $request->input('detail');
-        // $post->user_id = auth()->user()->id;
-        // $post->sm_banner = $fileNameToStore;
-        $post->save();
+        // Create lesson
+        $lesson = new lesson;
+        $lesson->name = $request->input('name');
+        $lesson->course_id = $request->input('course_id');
+        // $lesson->detail = $request->input('detail');
+        // $lesson->user_id = auth()->user()->id;
+        // $lesson->sm_banner = $fileNameToStore;
+        $lesson->save();
         $now = new adjust;
         $now->user_id = auth()->user()->id;
-        $now->detail = "Create Lesson";
+        $now->detail = "Create Lesson : ID ====> || ".$lesson->id." ||";
         $now->save();
         return redirect('/course/'.$request->input('course_id'))->with('success', 'Subject Created');
     }

@@ -7,7 +7,7 @@
 <div class="card ce-card">
     <h1 class="ce-name">Subject : </h1>
         <div class="">
-            <div class=" text-right">
+            <div class=" text-right mr-2 mb-3">
                 <button id="edit" class="btn btn-primary" onclick="edit()" type="button">Edit</button>
                 <button id="save" class="btn btn-primary" onclick="preview()" type="button">Preview</button>
             </div>
@@ -48,7 +48,8 @@
     });
     $('#summernote').summernote({
         placeholder: 'มาเขียนตรงนี้',
-        height: 500,
+        // airMode: true,
+        height: 650,
         callbacks: {
             onImageUpload: function (files, editor, welEditable) {
                 sendFile(files[0], editor, welEditable);
@@ -61,7 +62,8 @@
 
     function edit() {
         $('#summernote').summernote({
-            focus: true
+            focus: true,
+            height: 650
         });
         $('#btn_save').show();
 

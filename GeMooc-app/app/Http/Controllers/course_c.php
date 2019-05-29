@@ -50,7 +50,7 @@ class course_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:10000'
         ]) ;
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_course/sm','public');
@@ -74,7 +74,7 @@ class course_c extends Controller
 
         $now = new adjust;
         $now->user_id = auth()->user()->id;
-        $now->detail = "Create Course";
+        $now->detail = "Create Course : ID ====> || ".$course->id." ||";
         $now->save();
         return redirect('/subject/'.$request->input('sub_id'))->with('success', 'Course Created');
     }
@@ -115,8 +115,8 @@ class course_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image_sm' => 'image|nullable|max:1999',
-            'cover_image_xl' => 'image|nullable|max:1999'
+            'cover_image_sm' => 'image|nullable|max:10000',
+            'cover_image_xl' => 'image|nullable|max:10000'
         ]) ;
         $detail = '';
         $course = course::find($id);
@@ -157,7 +157,7 @@ class course_c extends Controller
         if($detail != ''){
             $now = new adjust;
             $now->user_id = auth()->user()->id;
-            $now->detail = 'Edit Course '.$detail;
+            $now->detail = 'Edit Course ID ==> '.$course->id.' |'.$detail;
             $now->save();
         }
         return redirect('/course/'.$id)->with('success', 'Course Updated');
