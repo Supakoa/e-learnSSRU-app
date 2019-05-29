@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/imagehover/css/imagehover.css')}}">
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
     --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
@@ -61,7 +60,7 @@
                 @endif
                 @else
                 <li>
-                    <img  src="" >
+                    <img  src="" alt="Profile">
                 </li>
                 <li class="dropdown" >
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
