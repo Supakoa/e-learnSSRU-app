@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\adjust;
 use Illuminate\Http\Request;
-use App\lesson as lesson;
-use App\course as course;
-use App\content as content;
-use App\adjust as adjust;
 
-class lesson_c extends Controller
+class AdjustController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -44,35 +35,16 @@ class lesson_c extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required'
-            // 'detail' => 'required'
-            // 'cover_image' => 'image|nullable|max:1999'
-            ]) ;
-
-
-        // Create Post
-        $post = new lesson;
-        $post->name = $request->input('name');
-        $post->course_id = $request->input('course_id');
-        // $post->detail = $request->input('detail');
-        // $post->user_id = auth()->user()->id;
-        // $post->sm_banner = $fileNameToStore;
-        $post->save();
-        $now = new adjust;
-        $now->user_id = auth()->user()->id;
-        $now->detail = "Create Lesson";
-        $now->save();
-        return redirect('/course/'.$request->input('course_id'))->with('success', 'Subject Created');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\adjust  $adjust
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(adjust $adjust)
     {
         //
     }
@@ -80,10 +52,10 @@ class lesson_c extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\adjust  $adjust
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(adjust $adjust)
     {
         //
     }
@@ -92,10 +64,10 @@ class lesson_c extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\adjust  $adjust
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, adjust $adjust)
     {
         //
     }
@@ -103,10 +75,10 @@ class lesson_c extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\adjust  $adjust
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(adjust $adjust)
     {
         //
     }

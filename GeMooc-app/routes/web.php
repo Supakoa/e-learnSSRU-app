@@ -54,6 +54,15 @@ Route::resource('/article', 'articleController');
 // Route::get('/content/goto_content/{id}','content_c@goto_content');
 
 
+// Administrator & SuperAdministrator Control Panel Routes
+Route::group(['middleware' => ['role:administrator']], function () {
+    Route::resource('users', 'UsersController');
+    Route::resource('permission', 'PermissionController');
+    Route::resource('roles', 'RolesController');
+});
+// Dashboard
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
 
 
 

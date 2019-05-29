@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 use App\course as course;
 use App\lesson as lesson;
+use App\adjust as adjust;
 
 use App\content as content;
 
 
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class course_c extends Controller
 {
@@ -51,29 +53,29 @@ class course_c extends Controller
             'cover_image' => 'image|nullable|max:1999'
         ]) ;
         if($request->hasFile('cover_image')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $imagePath = request('cover_image')->store('cover_image_course/sm','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,225);
+            $image->save();
+            $fileNameToStore =  $imagePath;
         } else {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore =  'cover_image_course/sm/no_image.jpg';
         }
 
-        // Create Post
-        $post = new course;
-        $post->name = $request->input('name');
-        $post->detail = $request->input('detail');
-        // $post->user_id = auth()->user()->id;
-        // $post->sm_banner = $fileNameToStore;
-        $post->subject_id = $request->input('sub_id');
+        // Create course
+        $course = new course;
+        $course->name = $request->input('name');
+        $course->detail = $request->input('detail');
+        // $course->user_id = auth()->user()->id;
+        $course->sm_banner = $fileNameToStore;
+        $course->xl_banner = 'cover_image_course/xl/no_image.jpg';
+        $course->subject_id = $request->input('sub_id');
 
-        $post->save();
+        $course->save();
+
+        $now = new adjust;
+        $now->user_id = auth()->user()->id;
+        $now->detail = "Create Course";
+        $now->save();
         return redirect('/subject/'.$request->input('sub_id'))->with('success', 'Course Created');
     }
 
@@ -113,32 +115,51 @@ class course_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image_sm' => 'image|nullable|max:1999',
+            'cover_image_xl' => 'image|nullable|max:1999'
         ]) ;
-        if($request->hasFile('cover_image')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
+        $detail = '';
+        $course = course::find($id);
+
+        if($request->hasFile('cover_image_xl')){
+            $imagePath = request('cover_image_xl')->store('cover_image_course/xl','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1600,600);
+            $image->save();
+            $detail .= '|XL_Banner : '.$course->xl_banner.' ====> '.$imagePath.'|';
+            $fileNameToStore =  $imagePath;
+            $course->xl_banner = $fileNameToStore;
+
+        }
+        if($request->hasFile('cover_image_sm')){
+            $imagePath = request('cover_image_sm')->store('cover_image_course/sm','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,255);
+            $image->save();
+            $detail .= '|SM_Banner : '.$course->sm_banner.' ====> '.$imagePath.'|';
+            $fileNameToStore =  $imagePath;
+            $course->sm_banner = $fileNameToStore;
+
         }
 
-        // Create Post
-        $post = course::find($id);
-        $post->name = $request->input('name');
-        $post->detail = $request->input('detail');
-        // $post->user_id = auth()->user()->id;
-        // $post->sm_banner = $fileNameToStore;
-        // $post->subject_id = $request->input('sub_id');
+        // Create course
+        if( $course->name != $request->input('name')){
+            $detail .= '|Name : '.$course->name.' ====> '.$request->input('name').'|';
+        }
+        $course->name = $request->input('name');
+        if( $course->detail != $request->input('detail')){
+            $detail .= '|Detail : '.$course->detail.' ====> '.$request->input('detail').'|';
+        }
+        $course->detail = $request->input('detail');
+        // $course->user_id = auth()->user()->id;
+        // $course->sm_banner = $fileNameToStore;
+        // $course->course_id = $request->input('sub_id');
 
-        $post->save();
+        $course->save();
+        if($detail != ''){
+            $now = new adjust;
+            $now->user_id = auth()->user()->id;
+            $now->detail = 'Edit Course '.$detail;
+            $now->save();
+        }
         return redirect('/course/'.$id)->with('success', 'Course Updated');
     }
 

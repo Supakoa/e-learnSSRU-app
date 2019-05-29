@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class course extends Model
 {
     //
-    protected $primaryKey = 'course_id';
+    // protected $primaryKey = 'course_id';
 
     public function subject()
     {

@@ -12,16 +12,16 @@
     <div class="row ce-container">
         @if ($sub->count() > 0)
         @foreach ($sub as $sub)
-        <div class="col-md-3">
-            <figure class="imghvr-flip-vert shadow mb-3" style="background:inherit">
-                <img class="ce-img" src="/storage/cover_images/{{$sub->sm_banner}}">
+        <div class="col-md-3 h-100">
+            <figure class="imghvr-flip-vert shadow mb-3" style="background:inherit;">
+                        <img class="ce-img" src="/storage/{{$sub->sm_banner}}">
                 <figcaption style="background-color:#ff99ff;">
                     <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
                     <p class="ih-zoom-in ih-delay-md">
                         <i>{{$sub->detail}}</i>
                     </p>
                 </figcaption>
-                <a href="/subject/{{$sub->subject_id}}"></a>
+                <a href="/subject/{{$sub->id}}"></a>
             </figure>
         </div>
         @endforeach
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Cover Image</label>
+                        <label for="name">Cover Image (Small : 400*255)</label>
                         <input type="file" class="form-control btn" name="cover_image" placeholder="Image">
                     </div>
                 </form>
