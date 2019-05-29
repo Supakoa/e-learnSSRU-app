@@ -164,8 +164,6 @@
                     id="course_form">
                     @csrf
                     @method('PATCH')
-                    {{-- <input type="hidden" name="sub_id" value="{{$sub->subject_id}}"> --}}
-
                     <div class="form-group">
                         <label for="name">Course Name</label>
                         <input type="text" class="form-control" name="name" value="{{$course->name}}"
@@ -188,12 +186,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Cover Image (Large : 1600*600) </label>
-                                <input type="file" class="form-control" name="cover_image_xl" placeholder="Image">
+                                <input type="file" class="form-control btn" style="padding:3px"  name="cover_image_xl" placeholder="Image">
                             </div>
-                    {{-- <div class="form-group">
-                    <label for="name">Cover Image</label>
-                    <input type="file" class="form-control" name="cover_image" placeholder="Image">
-                </div> --}}
                 </form>
             </div>
             <div class="modal-footer">
