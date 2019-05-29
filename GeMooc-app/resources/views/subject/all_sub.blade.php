@@ -14,7 +14,7 @@
         @foreach ($sub as $sub)
         <div class="col-md-3 h-100">
             <figure class="imghvr-flip-vert shadow mb-3" style="background:inherit;">
-                        <img class="ce-img" src="/storage/{{$sub->sm_banner}}">
+                <img class="ce-img card-img-top" src="/storage/{{$sub->sm_banner}}">
                 <figcaption style="background-color:#ff99ff;">
                     <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
                     <p class="ih-zoom-in ih-delay-md">
@@ -62,7 +62,8 @@
 
                     <div class="form-group">
                         <label for="name">Cover Image (Small : 400*255)</label>
-                        <input type="file" class="form-control btn" name="cover_image" placeholder="Image">
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
+                            placeholder="Image">
                     </div>
                 </form>
             </div>

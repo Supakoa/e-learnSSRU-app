@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="card ce-card h-100">
-
+    <div class="justify-content-start">
+        <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+    </div>
     <img src="/storage/{{$sub->xl_banner}}" alt="" style="width: 100%;height: auto;">
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
     <div class="ce-container">
@@ -24,7 +26,7 @@
                         <p class="card-text">{{$course->detail}}</p>
                         <div class="text-right ce-card-btn">
                             <a href="{{url('/course/'.$course->id)}}" class="btn btn-sm btn-outline-warning shadow"><i
-                                    class="fas fa-pencil-alt" ></i></a>
+                                    class="fas fa-pencil-alt"></i></a>
                             <a href="#" class="btn btn-sm btn-outline-danger shadow"><i class="fas fa-minus"></i></a>
                         </div>
                     </div>
@@ -72,7 +74,8 @@
 
                     <div class="form-group">
                         <label for="name">Cover Image</label>
-                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
+                            placeholder="Image">
                     </div>
                 </form>
             </div>
@@ -95,8 +98,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('/subject/'.$sub->id)}}" method="POST" enctype='multipart/form-data'
-                    id="sub_form">
+                <form action="{{url('/subject/'.$sub->id)}}" method="POST" enctype='multipart/form-data' id="sub_form">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="sub_id" value="{{$sub->id}}">
@@ -119,12 +121,12 @@
                         <input type="file" class="form-control" name="cover_image_sm" placeholder="Image">
                     </div>
                     <div class="form-group text-center">
-                            <img src="/storage/{{$sub->xl_banner}}" alt="" width="100%" srcset="">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Cover Image (Large : 1600*600) </label>
-                            <input type="file" class="form-control" name="cover_image_xl" placeholder="Image">
-                        </div>
+                        <img src="/storage/{{$sub->xl_banner}}" alt="" width="100%" srcset="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Cover Image (Large : 1600*600) </label>
+                        <input type="file" class="form-control" name="cover_image_xl" placeholder="Image">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

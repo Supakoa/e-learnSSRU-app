@@ -148,8 +148,6 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-    @yield('js-teach')
-    @yield('js-stdent')
     <script>
         wow = new WOW({
             boxClass: 'wow', // default
@@ -159,6 +157,10 @@
             live: true // default
         })
         wow.init();
+
+        function goBack() {
+            window.history.back();
+        }
 
     </script>
     @yield('js')

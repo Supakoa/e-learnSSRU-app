@@ -1,31 +1,33 @@
-
 @extends('layouts.app')
 
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 <div class="card ce-card">
+    <div class="justify-content-start">
+        <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+    </div>
     <h1 class="ce-name">Subject : </h1>
-        <div class="">
-            <div class=" text-right mr-2 mb-3">
-                <button id="edit" class="btn btn-primary" onclick="edit()" type="button">Edit</button>
-                <button id="save" class="btn btn-primary" onclick="preview()" type="button">Preview</button>
-            </div>
+    <div class="">
+        <div class=" text-right">
+            <button id="edit" class="btn btn-primary" onclick="edit()" type="button">Edit</button>
+            <button id="save" class="btn btn-primary" onclick="preview()" type="button">Preview</button>
+        </div>
 
-            <div id="summernote">
-                    {!!$article->rawdata!!}
-            </div>
+        <div id="summernote">
+            {!!$article->rawdata!!}
+        </div>
         <form action="{{url('/article/'.$article->id)}}" method="post" id="form_article">
             @csrf
             @method('PATCH')
             <input type="hidden" name="rawdata" id="rawdata">
             <div class=" text-right">
                 <br>
-                    <button class="btn btn-success" id="btn_save" type="submit">Save</button>
+                <button class="btn btn-success" id="btn_save" type="submit">Save</button>
             </div>
 
         </form>
-        </div>
+    </div>
 
 </div>
 
@@ -54,7 +56,7 @@
             onImageUpload: function (files, editor, welEditable) {
                 sendFile(files[0], editor, welEditable);
             },
-            onMediaDelete : function(target) {
+            onMediaDelete: function (target) {
                 deleteFile(target[0].src);
             }
         }
@@ -91,15 +93,18 @@
 
         });
     }
+
     function deleteFile(src) {
 
         $.ajax({
-            data: {src : src},
+            data: {
+                src: src
+            },
             type: "POST",
             url: '{{url("/ajaximage_delete")}}', // replace with your url
             cache: false,
-            success: function(resp) {
-               console.log(resp);
+            success: function (resp) {
+                console.log(resp);
 
             }
         });
