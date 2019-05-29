@@ -25,9 +25,8 @@
                         <h5 class="card-title">{{$course->name}}</h5>
                         <p class="card-text">{{$course->detail}}</p>
                         <div class="text-right ce-card-btn">
-                            <a href="{{url('/course/'.$course->id)}}" class="btn btn-sm btn-outline-warning shadow"><i
-                                    class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="btn btn-sm btn-outline-danger shadow"><i class="fas fa-minus"></i></a>
+                            <a href="{{url('/course/'.$course->id)}}" class="btn btn-md btn-block btn-outline-warning shadow">
+                                <i class="fas fa-pencil-alt"></i></a>
                         </div>
                     </div>
                 </div>

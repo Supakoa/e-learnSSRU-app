@@ -10,11 +10,11 @@
         <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
     </div>
     <div class="row justify-content-center">
-            <div class="mb-3">
-                <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="100%" height="auto"
-                    alt="Responsive image">
-            </div>
+        <div class="mb-3">
+            <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="100%" height="auto"
+                alt="Responsive image">
         </div>
+    </div>
     <h1 class="ce-name">
         Course : {{$course->name}}
     </h1>
@@ -32,26 +32,27 @@
             <div class="accordion" id="accordionExample">
                 @foreach ($lessons as $lesson)
                 <div class="card shadow">
-                    <div class="card-header" id="heading{{$lesson->id}}">
-                        <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
-                            data-target="#collapse{{$lesson->id}}" aria-expanded="true" aria-controls="collapseOne">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    {{$lesson->name}}
-                                </li>
-                                <li class="list-inline-item "><i class="fas fa-video"></i>
+                    <div class="card-header " id="heading{{$lesson->id}}">
+                        <div class="row">
+                            <div class="col-md-10 text-left">
+                                <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
+                                    data-target="#collapse{{$lesson->id}}" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                   <span>{{$lesson->name}}: </span>
+                                    <i class="fas fa-video"> </i>
                                     {{$video = $content::where([['type','1'],['lesson_id',$lesson->id]])->count()}}
-
-                                </li>
-                                <li class="list-inline-item "><i class="far fa-clipboard"></i>
+                                    <i class="far fa-clipboard"> </i>
                                     {{$article = $content::where([['type','2'],['lesson_id',$lesson->id]])->count()}}
-
-                                </li>
-                                <li class="list-inline-item"><i class="fas fa-question"></i>
+                                    <i class="fas fa-question"> </i>
                                     {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->id]])->count()}}
-                                </li>
-                            </ul>
-                        </button>
+                                </button>
+                            </div>
+                            <div class="col-md-2 text-right">
+                                <a href="#" class="btn btn-block btn-outline-danger btn-md ">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="collapse{{$lesson->id}}" class="collapse border-left border-right border-bottom"
@@ -81,7 +82,8 @@
                             @else
                             <li class="list-group-item text-left">
                                 <i class="fas fa-question"></i> {{$name->count()}}
-                                <a class="btn btn-block text-left pl-5" href="{{url('/conntent/goto_content/'.$name->detail)}}">
+                                <a class="btn btn-block text-left pl-5"
+                                    href="{{url('/conntent/goto_content/'.$name->detail)}}">
                                     <h4> {{$name->name}}</h4>
                                 </a>
                             </li>
@@ -182,7 +184,8 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Cover Image (Small : 400*255) </label>
-                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_sm" placeholder="Image">
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_sm"
+                            placeholder="Image">
                     </div>
                     <div class="form-group text-center">
                         <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
