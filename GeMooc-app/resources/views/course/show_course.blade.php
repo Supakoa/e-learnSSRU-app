@@ -9,6 +9,12 @@
     <div class="justify-content-start">
         <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
     </div>
+    <div class="row justify-content-center">
+            <div class="mb-3">
+                <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="100%" height="auto"
+                    alt="Responsive image">
+            </div>
+        </div>
     <h1 class="ce-name">
         Course : {{$course->name}}
     </h1>
@@ -18,12 +24,6 @@
                     class="fas fa-folder-plus"></i> </button>
             <button href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal"> <i
                     class="fas fa-cog"></i></button>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="mb-3">
-            <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="100%" height="auto"
-                alt="Responsive image">
         </div>
     </div>
     <div class="row ce-container">
@@ -61,39 +61,39 @@
                         $names = $content::where('lesson_id',$lesson->id)->get();
                         @endphp
                         <ul class="list-group">
-                            <li class="list-group-item">
-                                @if ($names->count()>0)
-                                @foreach ($names as $name)
-                                <ul class="list-inline">
-                                    <li class="list-inline-item ">
-                                        @if ($name->type=="1")
-                                        <i class="fas fa-video"></i>
-                                        <a class="btn btn-inline" href="{{$name->detail}}">
-                                            <h4>{{$name->name}}</h4>
-                                        </a>
-                                        @elseif ($name->type=="2")
-                                        <i class="far fa-clipboard"></i>
-                                        <a class="btn btn-inline" href="{{url('article/'.$name->detail)}}">
-                                            <h4> {{$name->name}}</h4>
-                                        </a>
-                                        @else
-                                        <i class="fas fa-question"></i>
-                                        <a class="btn btn-inline"
-                                            href="{{url('/conntent/goto_content/'.$name->detail)}}">
-                                            <h4> {{$name->name}}</h4>
-                                        </a>
-                                        @endif
-                                    </li>
-                                </ul>
-                                @endforeach
-                                @else
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Now,Have have a Content !!!</strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                            @if ($names->count()>0)
+                            @foreach ($names as $name)
+                            @if ($name->type=="1")
+                            <li class="list-group-item text-left">
+                                <i class="fas fa-video"></i> {{$name->count()}}
+                                <a class="btn btn-block text-left pl-5" href="{{$name->detail}}">
+                                    <h4>{{$name->name}}</h4>
+                                </a>
                             </li>
+                            @elseif ($name->type=="2")
+                            <li class="list-group-item text-left">
+                                <i class="far fa-clipboard"></i> {{$name->count()}}
+                                <a class="btn btn-block text-left pl-5" href="{{url('article/'.$name->detail)}}">
+                                    <h4> {{$name->name}}</h4>
+                                </a>
+                            </li>
+
+                            @else
+                            <li class="list-group-item text-left">
+                                <i class="fas fa-question"></i> {{$name->count()}}
+                                <a class="btn btn-block text-left pl-5" href="{{url('/conntent/goto_content/'.$name->detail)}}">
+                                    <h4> {{$name->name}}</h4>
+                                </a>
+                            </li>
+                            @endif
+                            @endforeach
+                            @else
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Now,Have have a Content !!!</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </ul>
                         @endif
                     </div>
@@ -152,9 +152,9 @@
 </div>
 
 {{-- Edit_Modal Content --}}
-<div class="modal fade" id="Edit_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade " id="Edit_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Course</h5>
@@ -182,7 +182,7 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Cover Image (Small : 400*255) </label>
-                        <input type="file" class="form-control" name="cover_image_sm" placeholder="Image">
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_sm" placeholder="Image">
                     </div>
                     <div class="form-group text-center">
                         <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
@@ -239,8 +239,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="content_form">Save changes</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline-primary" form="content_form">Save changes</button>
             </div>
         </div>
     </div>

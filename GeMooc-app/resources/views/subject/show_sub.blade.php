@@ -18,7 +18,7 @@
         @if ($courses->count() > 0)
         <div class="row mb-3">
             @foreach ($courses as $course)
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
                     <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
                     <div class="card-body">
@@ -49,9 +49,9 @@
 @endsection
 
 @section('modal')
-<div class="modal fade" id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade " id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Create Course</h5>
@@ -89,7 +89,7 @@
 
 <div class="modal fade" id="Edit_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Subject -> {{$sub->name}}</h5>
