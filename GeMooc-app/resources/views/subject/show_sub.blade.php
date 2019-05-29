@@ -20,7 +20,10 @@
             @foreach ($courses as $course)
             <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
-                    <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
+                    <div class="ce-body-cog">
+                        <a href="#" class="ce-cog-btn"><i class="fas fa-cogs"></i></a>
+                        <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{$course->name}}</h5>
                         <p class="card-text">{{$course->detail}}</p>

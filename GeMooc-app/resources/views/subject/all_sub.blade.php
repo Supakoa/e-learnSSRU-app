@@ -15,12 +15,16 @@
             @foreach ($sub as $sub)
             <div class="col-md-4 h-100">
                 <div class="card shadow " style="width: 18rem;">
-                    <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
+                    <div class="ce-body-cog">
+                        <a href="#" class="ce-cog-btn"><i class="fas fa-cogs"></i></a>
+                        <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
+                    </div>
                     <div class="card-body" style="background-color: white;">
                         <h5 class="card-title">{{$sub->name}}</h5>
                         <p class="card-text">{{$sub->detail}}</p>
                         <div class="text-right ce-card-btn">
-                            <a href="/subject/{{$sub->id}}" class="btn btn-block btn-sm btn-outline-warning shadow">Go to Course</a>
+                            <a href="/subject/{{$sub->id}}" class="btn btn-block btn-sm btn-outline-warning shadow">Go
+                                to Course</a>
                         </div>
                     </div>
                 </div>
