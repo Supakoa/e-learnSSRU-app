@@ -48,7 +48,7 @@
                 <div class="line6"></div>
             </div>
             @endguest
-            <ul class="nav-links ">
+            <ul class="nav-links">
                 <!-- Authentication Links -->
                 @guest
                 <li>
@@ -60,7 +60,10 @@
                 </li>
                 @endif
                 @else
-                <li class="dropdown">
+                <li>
+                    <img  src="" >
+                </li>
+                <li class="dropdown" >
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>

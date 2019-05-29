@@ -9,22 +9,25 @@
                 Subject</button>
         </div>
     </div>
-    <div class="row ce-container">
+    <div class="ce-container">
         @if ($sub->count() > 0)
-        @foreach ($sub as $sub)
-        <div class="col-md-3 h-100">
-            <figure class="imghvr-flip-vert shadow mb-3" style="background:inherit;">
-                <img class="ce-img card-img-top" src="/storage/{{$sub->sm_banner}}">
-                <figcaption style="background-color:#ff99ff;">
-                    <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
-                    <p class="ih-zoom-in ih-delay-md">
-                        <i>{{$sub->detail}}</i>
-                    </p>
-                </figcaption>
-                <a href="/subject/{{$sub->id}}"></a>
-            </figure>
+        <div class="row mb-3 ">
+            @foreach ($sub as $sub)
+            <div class="col-md-4 h-100">
+                <div class="card shadow " style="width: 18rem;">
+                    <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
+                    <div class="card-body" style="background-color: white;">
+                        <h5 class="card-title">{{$sub->name}}</h5>
+                        <p class="card-text">{{$sub->detail}}</p>
+                        <div class="text-right ce-card-btn">
+                            <a href="/subject/{{$sub->id}}" class="btn btn-block btn-sm btn-outline-warning shadow">Go to Course</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
-        @endforeach
+
         @else
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Now, Not have subject !!!</strong> Can you click Add Subject button for make new subject.

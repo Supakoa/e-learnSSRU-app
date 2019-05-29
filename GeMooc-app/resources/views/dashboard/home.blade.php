@@ -1,17 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <h1>wait ...</h1>
-        <div class="col-md-12 mb-4">
+<div class="card ce-card h-100">
+        <h1 class="ce-name">Dashboard</h1>
+        <div class="row ce-container">
 
         </div>
-        <div class="col-md-12 mb-4">
-            <div class="card">
-            </div>
-        </div>
-    </div>
 </div>
 @endsection
 
