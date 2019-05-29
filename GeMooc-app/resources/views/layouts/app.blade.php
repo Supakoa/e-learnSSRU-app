@@ -158,6 +158,10 @@
         })
         wow.init();
 
+        function goBack() {
+            window.history.back();
+        }
+
     </script>
     @yield('js')
 </body>

@@ -6,6 +6,9 @@
 
 @section('content')
 <div class="card ce-card h-100">
+    <div class="justify-content-start">
+        <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+    </div>
     <h1 class="ce-name">
         Course : {{$course->name}}
     </h1>
@@ -19,7 +22,8 @@
     </div>
     <div class="row justify-content-center">
         <div class="mb-3">
-        <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="100%" height="auto" alt="Responsive image">
+            <img src="/storage/{{$course->xl_banner}}" class="img-fluid" width="100%" height="auto"
+                alt="Responsive image">
         </div>
     </div>
     <div class="row ce-container">
@@ -30,8 +34,7 @@
                 <div class="card shadow">
                     <div class="card-header" id="heading{{$lesson->id}}">
                         <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
-                            data-target="#collapse{{$lesson->id}}" aria-expanded="true"
-                            aria-controls="collapseOne">
+                            data-target="#collapse{{$lesson->id}}" aria-expanded="true" aria-controls="collapseOne">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     {{$lesson->name}}
@@ -85,11 +88,11 @@
                                 @endforeach
                                 @else
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong>Now,Have have a Content !!!</strong>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                                    <strong>Now,Have have a Content !!!</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                             </li>
                         </ul>
                         @endif
@@ -175,19 +178,20 @@
                             placeholder="Course Detail">
                     </div>
                     <div class="form-group text-center">
-                            <img src="/storage/{{$course->sm_banner}}" alt="" width="100%" srcset="">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Cover Image (Small : 400*255) </label>
-                            <input type="file" class="form-control" name="cover_image_sm" placeholder="Image">
-                        </div>
-                        <div class="form-group text-center">
-                                <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Cover Image (Large : 1600*600) </label>
-                                <input type="file" class="form-control btn" style="padding:3px"  name="cover_image_xl" placeholder="Image">
-                            </div>
+                        <img src="/storage/{{$course->sm_banner}}" alt="" width="100%" srcset="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Cover Image (Small : 400*255) </label>
+                        <input type="file" class="form-control" name="cover_image_sm" placeholder="Image">
+                    </div>
+                    <div class="form-group text-center">
+                        <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Cover Image (Large : 1600*600) </label>
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_xl"
+                            placeholder="Image">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
