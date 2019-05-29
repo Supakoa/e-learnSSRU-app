@@ -54,7 +54,7 @@ class subject_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:10000'
         ]) ;
 
         if($request->hasFile('cover_image')){
@@ -77,7 +77,7 @@ class subject_c extends Controller
         $subject->save();
         $now = new adjust;
         $now->user_id = auth()->user()->id;
-        $now->detail = "Create Subject";
+        $now->detail = "Create Subject : ID ====> || ".$subject->id." ||";
         $now->save();
         return redirect('/subject')->with('success', 'Subject Created');
     }
@@ -119,8 +119,8 @@ class subject_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image_sm' => 'image|nullable|max:1999',
-            'cover_image_xl' => 'image|nullable|max:1999'
+            'cover_image_sm' => 'image|nullable|max:10000',
+            'cover_image_xl' => 'image|nullable|max:10000'
 
         ]) ;
         $detail = '';
@@ -157,7 +157,7 @@ class subject_c extends Controller
         if($detail != ''){
             $now = new adjust;
             $now->user_id = auth()->user()->id;
-            $now->detail = 'Edit Subject '.$detail;
+            $now->detail = 'Edit Subject ID ==> '.$subject->id.' |'.$detail;
             $now->save();
         }
         return redirect('/subject/'.$subject->id)->with('success', 'Subject Update');

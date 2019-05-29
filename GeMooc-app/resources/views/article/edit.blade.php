@@ -62,7 +62,8 @@
     });
     $('#summernote').summernote({
         placeholder: 'มาเขียนตรงนี้',
-        height: 500,
+        // airMode: true,
+        height: 650,
         callbacks: {
             onImageUpload: function (files, editor, welEditable) {
                 sendFile(files[0], editor, welEditable);
@@ -75,7 +76,8 @@
 
     function edit() {
         $('#summernote').summernote({
-            focus: true
+            focus: true,
+            height: 650
         });
         $('#btn_save').show();
 

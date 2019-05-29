@@ -66,7 +66,7 @@ class content_c extends Controller
         $content->save();
         $now = new adjust;
         $now->user_id = auth()->user()->id;
-        $now->detail = "Create Content";
+        $now->detail = "Create Content : ID ====> || ".$content->id." ||";
         $now->save();
         return redirect('/course/'.$request->input('course_id'))->with('success', 'Content Created');
         // dd($content->content_id);
