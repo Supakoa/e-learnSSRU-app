@@ -3,7 +3,7 @@
 @section('content')
 <div class="card ce-card h-100">
     <h1 class="ce-name">Total Subject</h1>
-    <div class="row justify-content-end">
+    <div class="row justify-content-end mb-2">
         <div class="ce-card-btn">
             <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
                 Subject</button>
@@ -11,7 +11,7 @@
     </div>
     <div class="ce-container">
         @if ($sub->count() > 0)
-        <div class="row mb-3 ">
+        <div class="row mb-3 justify-content-center">
             @foreach ($sub as $sub)
             <div class="col-md-4 h-100">
                 <div class="card shadow " style="width: 18rem;">

@@ -8,7 +8,7 @@
     <img src="/storage/{{$sub->xl_banner}}" alt="" style="width: 100%;height: auto;">
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
     <div class="ce-container">
-        <div class="justify-content-end row mb-3">
+        <div class="justify-content-end row mb-2">
             <div class="ce-card-btn">
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
                 <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
@@ -16,7 +16,7 @@
         </div>
 
         @if ($courses->count() > 0)
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-center">
             @foreach ($courses as $course)
             <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">

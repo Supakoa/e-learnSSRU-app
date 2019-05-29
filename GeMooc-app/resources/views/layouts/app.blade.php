@@ -60,7 +60,7 @@
                 @endif
                 @else
                 <li>
-                    <img  src="" alt="Profile">
+                    <img  src="..." alt="...">
                 </li>
                 <li class="dropdown" >
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -71,7 +71,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -102,7 +102,7 @@
                         Subject
                     </li>
                 </a>
-                <a href="#">
+                <a href="{{ url('/report')}}">
                     <li>
                         Report
                     </li>
