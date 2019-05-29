@@ -62,7 +62,7 @@
 
                     <div class="form-group">
                         <label for="name">Cover Image</label>
-                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
+                        <input type="file" class="form-control btn" name="cover_image" placeholder="Image">
                     </div>
                 </form>
             </div>
