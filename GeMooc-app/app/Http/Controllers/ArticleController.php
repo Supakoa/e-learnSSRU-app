@@ -83,7 +83,7 @@ class ArticleController extends Controller
 
 
         // Create Post
-        $article->rawdata = "'".$request->input('rawdata')."'";
+        $article->rawdata = $request->input('rawdata');
         // $post->detail = $request->input('detail');
         // $post->user_id = auth()->user()->id;
         // $post->sm_banner = $fileNameToStore;

@@ -13,8 +13,13 @@ class content extends Model
     {
         return $this->belongsTo('App\lesson');
     }
-    // public function article()
-    // {
-    //     return $this->hasOne('App\article');
-    // }
+    public function article()
+    {
+        return $this->hasOne('App\article');
+    }
+
+    public function quiz()
+    {
+        return $this->hasOne('App\quiz');
+    }
 }
