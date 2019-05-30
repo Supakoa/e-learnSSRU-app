@@ -59,7 +59,9 @@
                     aria-labelledby="heading{{$lesson->id}}" data-parent="#accordionExample">
                     <div class="card-body">
                         @php
-                        $names = $content::where('lesson_id',$lesson->id)->get();
+                        // $names = $content::where('lesson_id',$lesson->id)->get();
+                        $names = $lesson->contents;
+
                         @endphp
                         <ul class="list-group">
                             @if ($names->count()>0)
