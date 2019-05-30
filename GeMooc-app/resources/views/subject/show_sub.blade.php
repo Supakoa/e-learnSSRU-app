@@ -21,7 +21,7 @@
             <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
                     <div class="ce-body-cog">
-                        <a href="#" class="ce-cog-btn"><i class="fas fa-cogs"></i></a>
+                        <a href="#" class="ce-cog-btn" onclick="edit_course({{$course}})"><i class="fas fa-cogs"></i></a>
                         <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
                     </div>
                     <div class="card-body">
@@ -138,4 +138,120 @@
         </div>
     </div>
 </div>
+
+{{-- <div class="modal fade " id="Edit_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('/course/'.$course->id)}}" method="post" enctype='multipart/form-data'
+                    id="course_form">
+                    @csrf
+                    @method('PATCH')
+                    <div class="form-group">
+                        <label for="name">Course Name</label>
+                        <input type="text" class="form-control" name="name" value="{{$course->name}}"
+                            placeholder="Course Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="detail">Detail</label>
+                        <input type="text" class="form-control" name="detail" value="{{$course->detail}}"
+                            placeholder="Course Detail">
+                    </div>
+                    <div class="form-group text-center">
+                        <img src="/storage/{{$course->sm_banner}}" alt="" width="100%" srcset="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Cover Image (Small : 400*255) </label>
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_sm"
+                            placeholder="Image">
+                    </div>
+                    <div class="form-group text-center">
+                        <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Cover Image (Large : 1600*600) </label>
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_xl"
+                            placeholder="Image">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="course_form">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<div id="edit_course_div"></div>
+@endsection
+
+@section('js')
+    <script>
+        function edit_course(course) {
+
+    modal = `
+        <div class="modal fade " id="Edit_Course_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Course</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url('/course/`+course.id+`')}}" method="post" enctype='multipart/form-data'
+                            id="course_edit_form">
+                            @csrf
+                            @method('PATCH')
+                            <div class="form-group">
+                                <label for="name">Course Name</label>
+                                <input type="text" class="form-control" name="name" value="`+course.name+`"
+                                    placeholder="Course Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="detail">Detail</label>
+                                <input type="text" class="form-control" name="detail" value="`+course.detail+`"
+                                    placeholder="Course Detail">
+                            </div>
+                            <div class="form-group text-center">
+                                <img src="/storage/`+course.sm_banner+`" alt="" width="100%" srcset="">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Cover Image (Small : 400*255) </label>
+                                <input type="file" class="form-control btn" style="padding:3px" name="cover_image_sm"
+                                    placeholder="Image">
+                            </div>
+                            <div class="form-group text-center">
+                                <img src="/storage/`+course.xl_banner+`" alt="" width="100%" srcset="">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Cover Image (Large : 1600*600) </label>
+                                <input type="file" class="form-control btn" style="padding:3px" name="cover_image_xl"
+                                    placeholder="Image">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" form="course_edit_form">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    $('#edit_course_div').html(modal);
+    $('#Edit_Course_Modal').modal('show')
+}
+    </script>
 @endsection
