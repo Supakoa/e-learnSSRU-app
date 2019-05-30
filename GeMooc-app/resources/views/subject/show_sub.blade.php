@@ -2,11 +2,13 @@
 
 @section('content')
 <div class="card ce-card h-100">
-
+    <div class="justify-content-start">
+        <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+    </div>
     <img src="/storage/{{$sub->xl_banner}}" alt="" style="width: 100%;height: auto;">
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
     <div class="ce-container">
-        <div class="justify-content-end row mb-3">
+        <div class="justify-content-end row mb-2">
             <div class="ce-card-btn">
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
                 <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button>
@@ -14,18 +16,20 @@
         </div>
 
         @if ($courses->count() > 0)
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-center">
             @foreach ($courses as $course)
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
-                    <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
+                    <div class="ce-body-cog">
+                        <a href="#" class="ce-cog-btn"><i class="fas fa-cogs"></i></a>
+                        <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{$course->name}}</h5>
                         <p class="card-text">{{$course->detail}}</p>
                         <div class="text-right ce-card-btn">
-                            <a href="{{url('/course/'.$course->id)}}" class="btn btn-sm btn-outline-warning shadow"><i
-                                    class="fas fa-pencil-alt" ></i></a>
-                            <a href="#" class="btn btn-sm btn-outline-danger shadow"><i class="fas fa-minus"></i></a>
+                            <a href="{{url('/course/'.$course->id)}}" class="btn btn-md btn-block btn-outline-warning shadow">
+                                <i class="fas fa-pencil-alt"></i></a>
                         </div>
                     </div>
                 </div>
@@ -47,9 +51,9 @@
 @endsection
 
 @section('modal')
-<div class="modal fade" id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade " id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Create Course</h5>
@@ -72,7 +76,8 @@
 
                     <div class="form-group">
                         <label for="name">Cover Image</label>
-                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
+                            placeholder="Image">
                     </div>
                 </form>
             </div>
@@ -86,7 +91,7 @@
 
 <div class="modal fade" id="Edit_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Subject -> {{$sub->name}}</h5>
@@ -95,8 +100,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('/subject/'.$sub->id)}}" method="POST" enctype='multipart/form-data'
-                    id="sub_form">
+                <form action="{{url('/subject/'.$sub->id)}}" method="POST" enctype='multipart/form-data' id="sub_form">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="sub_id" value="{{$sub->id}}">
@@ -119,12 +123,12 @@
                         <input type="file" class="form-control" name="cover_image_sm" placeholder="Image">
                     </div>
                     <div class="form-group text-center">
-                            <img src="/storage/{{$sub->xl_banner}}" alt="" width="100%" srcset="">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Cover Image (Large : 1600*600) </label>
-                            <input type="file" class="form-control" name="cover_image_xl" placeholder="Image">
-                        </div>
+                        <img src="/storage/{{$sub->xl_banner}}" alt="" width="100%" srcset="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Cover Image (Large : 1600*600) </label>
+                        <input type="file" class="form-control" name="cover_image_xl" placeholder="Image">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

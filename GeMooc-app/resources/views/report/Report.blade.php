@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card ce-card h-100">
-    <h1 class="ce-name">Dashboard</h1>
+<div class="card ce-card">
+    <h1 class="ce-name">Peport</h1>
     <div class="ce-container">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Now, this page Empty!</strong>
@@ -12,4 +12,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+
 @endsection

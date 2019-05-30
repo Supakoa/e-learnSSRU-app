@@ -3,28 +3,35 @@
 @section('content')
 <div class="card ce-card h-100">
     <h1 class="ce-name">Total Subject</h1>
-    <div class="row justify-content-end">
+    <div class="row justify-content-end mb-2">
         <div class="ce-card-btn">
             <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
                 Subject</button>
         </div>
     </div>
-    <div class="row ce-container">
+    <div class="ce-container">
         @if ($sub->count() > 0)
-        @foreach ($sub as $sub)
-        <div class="col-md-3 h-100">
-            <figure class="imghvr-flip-vert shadow mb-3" style="background:inherit;">
-                        <img class="ce-img" src="/storage/{{$sub->sm_banner}}">
-                <figcaption style="background-color:#ff99ff;">
-                    <h3 class="ih-fade-down ih-delay-sm ">{{$sub->name}}</h3>
-                    <p class="ih-zoom-in ih-delay-md">
-                        <i>{{$sub->detail}}</i>
-                    </p>
-                </figcaption>
-                <a href="/subject/{{$sub->id}}"></a>
-            </figure>
+        <div class="row mb-3 justify-content-center">
+            @foreach ($sub as $sub)
+            <div class="col-md-4 h-100">
+                <div class="card shadow " style="width: 18rem;">
+                    <div class="ce-body-cog">
+                        <a href="#" class="ce-cog-btn"><i class="fas fa-cogs"></i></a>
+                        <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
+                    </div>
+                    <div class="card-body" style="background-color: white;">
+                        <h5 class="card-title">{{$sub->name}}</h5>
+                        <p class="card-text">{{$sub->detail}}</p>
+                        <div class="text-right ce-card-btn">
+                            <a href="/subject/{{$sub->id}}" class="btn btn-block btn-sm btn-outline-warning shadow">Go
+                                to Course</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
-        @endforeach
+
         @else
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Now, Not have subject !!!</strong> Can you click Add Subject button for make new subject.
@@ -62,7 +69,8 @@
 
                     <div class="form-group">
                         <label for="name">Cover Image (Small : 400*255)</label>
-                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
+                            placeholder="Image">
                     </div>
                 </form>
             </div>

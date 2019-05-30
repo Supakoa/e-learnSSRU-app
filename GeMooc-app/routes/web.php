@@ -17,8 +17,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('dashboard.home');
 
 Route::get('/home', 'HomeController@index')->name('dashboard.home');
-Route::get('/test','test_sumernote@index');
+Route::get('/test', 'test_sumernote@index');
 Route::get('/teach', 'teach@Teach');
+Route::get('/report', 'Report@index');
 // Route::get('/up_image','test_sumernote@up_image');
 Route::post('ajaximage', function(){
 

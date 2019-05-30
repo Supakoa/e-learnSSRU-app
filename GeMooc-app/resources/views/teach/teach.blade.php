@@ -32,7 +32,7 @@
 </div>
 @endsection
 
-@section('js-teach')
+@section('js')
 <script>
     $(document).ready(function () {
         $('#teachTable').DataTable();

@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/imagehover/css/imagehover.css')}}">
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
     --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
@@ -48,7 +47,7 @@
                 <div class="line6"></div>
             </div>
             @endguest
-            <ul class="nav-links ">
+            <ul class="nav-links">
                 <!-- Authentication Links -->
                 @guest
                 <li>
@@ -60,7 +59,10 @@
                 </li>
                 @endif
                 @else
-                <li class="dropdown">
+                <li>
+                    <img  src="..." alt="...">
+                </li>
+                <li class="dropdown" >
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
@@ -69,7 +71,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -100,7 +102,7 @@
                         Subject
                     </li>
                 </a>
-                <a href="#">
+                <a href="{{ url('/report')}}">
                     <li>
                         Report
                     </li>
@@ -148,8 +150,6 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-    @yield('js-teach')
-    @yield('js-stdent')
     <script>
         wow = new WOW({
             boxClass: 'wow', // default
@@ -159,6 +159,10 @@
             live: true // default
         })
         wow.init();
+
+        function goBack() {
+            window.history.back();
+        }
 
     </script>
     @yield('js')
