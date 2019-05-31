@@ -21,14 +21,16 @@
             <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
                     <div class="ce-body-cog">
-                        <a href="#" class="ce-cog-btn" onclick="edit_course({{$course}})"><i class="fas fa-cogs"></i></a>
+                        <a href="#" class="ce-cog-btn" onclick="edit_course({{$course}})"><i
+                                class="fas fa-cogs"></i></a>
                         <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{$course->name}}</h5>
                         <p class="card-text">{{$course->detail}}</p>
                         <div class="text-right ce-card-btn">
-                            <a href="{{url('/course/'.$course->id)}}" class="btn btn-md btn-block btn-outline-warning shadow">
+                            <a href="{{url('/course/'.$course->id)}}"
+                                class="btn btn-md btn-block btn-outline-warning shadow">
                                 <i class="fas fa-pencil-alt"></i></a>
                         </div>
                     </div>
@@ -100,6 +102,10 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="text-right">
+                    <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                            aria-hidden="true"></i></button>
+                </div>
                 <form action="{{url('/subject/'.$sub->id)}}" method="POST" enctype='multipart/form-data' id="sub_form">
                     @csrf
                     @method('PATCH')
@@ -151,53 +157,49 @@
             </div>
             <div class="modal-body">
                 <form action="{{url('/course/'.$course->id)}}" method="post" enctype='multipart/form-data'
-                    id="course_form">
-                    @csrf
-                    @method('PATCH')
-                    <div class="form-group">
-                        <label for="name">Course Name</label>
-                        <input type="text" class="form-control" name="name" value="{{$course->name}}"
-                            placeholder="Course Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="detail">Detail</label>
-                        <input type="text" class="form-control" name="detail" value="{{$course->detail}}"
-                            placeholder="Course Detail">
-                    </div>
-                    <div class="form-group text-center">
-                        <img src="/storage/{{$course->sm_banner}}" alt="" width="100%" srcset="">
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Cover Image (Small : 400*255) </label>
-                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_sm"
-                            placeholder="Image">
-                    </div>
-                    <div class="form-group text-center">
-                        <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Cover Image (Large : 1600*600) </label>
-                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_xl"
-                            placeholder="Image">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="course_form">Save changes</button>
-            </div>
-        </div>
-    </div>
+id="course_form">
+@csrf
+@method('PATCH')
+<div class="form-group">
+    <label for="name">Course Name</label>
+    <input type="text" class="form-control" name="name" value="{{$course->name}}" placeholder="Course Name">
+</div>
+<div class="form-group">
+    <label for="detail">Detail</label>
+    <input type="text" class="form-control" name="detail" value="{{$course->detail}}" placeholder="Course Detail">
+</div>
+<div class="form-group text-center">
+    <img src="/storage/{{$course->sm_banner}}" alt="" width="100%" srcset="">
+</div>
+<div class="form-group">
+    <label for="name">Cover Image (Small : 400*255) </label>
+    <input type="file" class="form-control btn" style="padding:3px" name="cover_image_sm" placeholder="Image">
+</div>
+<div class="form-group text-center">
+    <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
+</div>
+<div class="form-group">
+    <label for="name">Cover Image (Large : 1600*600) </label>
+    <input type="file" class="form-control btn" style="padding:3px" name="cover_image_xl" placeholder="Image">
+</div>
+</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary" form="course_form">Save changes</button>
+</div>
+</div>
+</div>
 </div> --}}
 
 <div id="edit_course_div"></div>
 @endsection
 
 @section('js')
-    <script>
-        function edit_course(course) {
+<script>
+    function edit_course(course) {
 
-    modal = `
+        modal = `
         <div class="modal fade " id="Edit_Course_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -209,22 +211,25 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{url('/course/`+course.id+`')}}" method="post" enctype='multipart/form-data'
+                        <div class="text-right">
+                            <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </div>
+                        <form action="{{url('/course/` + course.id + `')}}" method="post" enctype='multipart/form-data'
                             id="course_edit_form">
                             @csrf
                             @method('PATCH')
                             <div class="form-group">
                                 <label for="name">Course Name</label>
-                                <input type="text" class="form-control" name="name" value="`+course.name+`"
+                                <input type="text" class="form-control" name="name" value="` + course.name + `"
                                     placeholder="Course Name">
                             </div>
                             <div class="form-group">
                                 <label for="detail">Detail</label>
-                                <input type="text" class="form-control" name="detail" value="`+course.detail+`"
+                                <input type="text" class="form-control" name="detail" value="` + course.detail + `"
                                     placeholder="Course Detail">
                             </div>
                             <div class="form-group text-center">
-                                <img src="/storage/`+course.sm_banner+`" alt="" width="100%" srcset="">
+                                <img src="/storage/` + course.sm_banner + `" alt="" width="100%" srcset="">
                             </div>
                             <div class="form-group">
                                 <label for="name">Cover Image (Small : 400*255) </label>
@@ -232,7 +237,7 @@
                                     placeholder="Image">
                             </div>
                             <div class="form-group text-center">
-                                <img src="/storage/`+course.xl_banner+`" alt="" width="100%" srcset="">
+                                <img src="/storage/` + course.xl_banner + `" alt="" width="100%" srcset="">
                             </div>
                             <div class="form-group">
                                 <label for="name">Cover Image (Large : 1600*600) </label>
@@ -250,8 +255,9 @@
         </div>
     `;
 
-    $('#edit_course_div').html(modal);
-    $('#Edit_Course_Modal').modal('show')
-}
-    </script>
+        $('#edit_course_div').html(modal);
+        $('#Edit_Course_Modal').modal('show')
+    }
+
+</script>
 @endsection

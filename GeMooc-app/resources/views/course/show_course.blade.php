@@ -38,7 +38,7 @@
                                 <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
                                     data-target="#collapse{{$lesson->id}}" aria-expanded="true"
                                     aria-controls="collapseOne">
-                                   <span>{{$lesson->name}}: </span>
+                                    <span>{{$lesson->name}}: </span>
                                     <i class="fas fa-video"> </i>
                                     {{$video = $content::where([['type','1'],['lesson_id',$lesson->id]])->count()}}
                                     <i class="far fa-clipboard"> </i>
@@ -68,26 +68,60 @@
                             @foreach ($names as $name)
                             @if ($name->type=="1")
                             <li class="list-group-item text-left">
-                                <i class="fas fa-video"></i>
-                                <a class="btn btn-block text-left pl-5" href="{{$name->detail}}">
-                                    <h4>{{$name->name}}</h4>
-                                </a>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <i class="fas fa-video"></i> {{$name->count()}}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a class="btn btn-block text-left pl-5" href="{{$name->detail}}">
+                                            <h4>{{$name->name}}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <a href="#" class="btn btn-block btn-outline-danger btn-md ">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </li>
                             @elseif ($name->type=="2")
                             <li class="list-group-item text-left">
-                                <i class="far fa-clipboard"></i>
-                                <a class="btn btn-block text-left pl-5" href="{{url('article/'.$name->detail)}}">
-                                    <h4> {{$name->name}}</h4>
-                                </a>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <i class="far fa-clipboard"></i> {{$name->count()}}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a class="btn btn-block text-left pl-5"
+                                            href="{{url('article/'.$name->detail)}}">
+                                            <h4> {{$name->name}}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a href="#" class="btn btn-block btn-outline-danger btn-md ">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </li>
 
                             @else
                             <li class="list-group-item text-left">
-                                <i class="fas fa-question"></i>
-                                <a class="btn btn-block text-left pl-5"
-                                    href="{{url('quiz/'.$name->detail)}}">
-                                    <h4> {{$name->name}}</h4>
-                                </a>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <i class="fas fa-question"></i> {{$name->count()}}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a class="btn btn-block text-left pl-5"
+                                            href="{{url('/conntent/goto_content/'.$name->detail)}}">
+                                            <h4> {{$name->name}}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <a href="#" class="btn btn-block btn-outline-danger btn-sm ">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </li>
                             @endif
                             @endforeach
