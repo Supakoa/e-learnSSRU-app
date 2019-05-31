@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}">
+
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
     --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
@@ -34,60 +36,60 @@
 </head>
 
 <body>
-    <div class="cebody">
-        <nav class="fixed-top">
+    <nav class="fixed-top">
+        @guest
+        <div class="logo">
+            GE-Mooc E-Learning
+        </div>
+        @else
+        <div class="burger2">
+            <div class="line4"></div>
+            <div class="line5"></div>
+            <div class="line6"></div>
+        </div>
+        @endguest
+        <ul class="nav-links">
+            <!-- Authentication Links -->
             @guest
-            <div class="logo">
-                GE-Mooc E-Learning
-            </div>
+            <li>
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+            {{-- @if (Route::has('register'))
+                    <li>
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            </li>
+            @endif --}}
             @else
-            <div class="burger2">
-                <div class="line4"></div>
-                <div class="line5"></div>
-                <div class="line6"></div>
-            </div>
-            @endguest
-            <ul class="nav-links">
-                <!-- Authentication Links -->
-                @guest
-                <li>
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                @if (Route::has('register'))
-                <li>
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-                @endif
-                @else
-                <li>
-                    <img  src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" alt="...">
-                </li>
-                <li class="dropdown" >
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
+            <li>
+                <img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" alt="...">
+            </li>
+            <li class="dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                        {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                            {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
-                        </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+            @endguest
+        </ul>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-                @endguest
-            </ul>
-
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-        </nav>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <div class="cebody">
         @guest
         @else
         <section>
@@ -112,12 +114,12 @@
                         Teach
                     </li>
                 </a>
-                <a href="#">
+                <a href="{{ url('/student')}}">
                     <li>
                         Student
                     </li>
                 </a>
-                <a href="#">
+                <a href="{{ url('/payment-setting')}}">
                     <li>
                         Payment Setting
                     </li>
@@ -135,6 +137,7 @@
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
     </div>
+
     @yield('modal')
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
