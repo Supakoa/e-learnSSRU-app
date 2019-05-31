@@ -1,9 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="card ce-card">
-    <h1 class="ce-name">Teach Table</h1>
-
+    <h1 class="ce-name">Student Table</h1>
     <div class="ce-container table-responsive">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Now, this page Empty!</strong>
@@ -11,7 +9,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <table class="table table-hover display table-bordered" id="teachTable">
+        <table class="table table-hover display table-bordered" id="studentTable">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -37,11 +35,10 @@
     </div>
 </div>
 @endsection
-
 @section('js')
 <script>
     $(document).ready(function () {
-        $('#teachTable').DataTable();
+        $('#studentTable').DataTable();
     });
 
 </script>
