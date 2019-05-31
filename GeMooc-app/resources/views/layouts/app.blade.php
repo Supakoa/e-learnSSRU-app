@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
 
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
     --}}

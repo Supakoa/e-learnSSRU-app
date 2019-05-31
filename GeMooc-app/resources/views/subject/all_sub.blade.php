@@ -109,9 +109,21 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="text-right">
-                                <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                            </div>
+                                <div class="row justify-content-center">
+                                    <div class="offset-md-3 col-md-2 text-right">
+                                        <span>status: </span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        {{-- <label for="cb4">Status: </label> --}}
+                                        <input class="tgl tgl-flat" id="cb4" type="checkbox" />
+                                        <label class="tgl-btn" for="cb4"></label>
+
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                                                aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
                             <form action="{{url('/subject/` + sub.id + `')}}" method="POST" enctype='multipart/form-data' id="sub_edit_form">
                                 @csrf
                                 @method('PATCH')
