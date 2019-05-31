@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card ce-card h-100">
-    <div class="justify-content-start">
+    <div class="justify-content-start mb-2">
         <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
     </div>
     <img src="/storage/{{$sub->xl_banner}}" alt="" style="width: 100%;height: auto;">
