@@ -109,6 +109,9 @@
                             </button>
                         </div>
                         <div class="modal-body">
+                            <div class="text-right">
+                                <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </div>
                             <form action="{{url('/subject/` + sub.id + `')}}" method="POST" enctype='multipart/form-data' id="sub_edit_form">
                                 @csrf
                                 @method('PATCH')
