@@ -46,7 +46,8 @@ class QuizController extends Controller
      */
     public function show(quiz $quiz)
     {
-        //
+        return view('quiz.show')->with('quiz', $quiz);
+
     }
 
     /**

@@ -53,8 +53,8 @@ Route::resource('/course', 'course_c');
 Route::resource('/lesson', 'lesson_c');
 Route::resource('/content', 'content_c');
 Route::resource('/article', 'articleController');
-// Route::get('/course/goto_content/{id}','content_c@goto_content');
-// Route::get('/content/goto_content/{id}','content_c@goto_content');
+Route::resource('/quiz', 'quizController');
+
 
 
 // Administrator & SuperAdministrator Control Panel Routes
