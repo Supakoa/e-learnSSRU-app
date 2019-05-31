@@ -8,6 +8,6 @@ class article extends Model
 {
     public function content()
     {
-        return $this->belongsTo('App\content','detail');
+        return $this->belongsTo('App\content');
     }
 }

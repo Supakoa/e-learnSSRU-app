@@ -15,11 +15,11 @@ class content extends Model
     }
     public function article()
     {
-        return $this->hasOne('App\article');
+        return $this->hasOne('App\article','id','detail');
     }
 
     public function quiz()
     {
-        return $this->hasOne('App\quiz');
+        return $this->hasOne('App\quiz','id','detail');
     }
 }
