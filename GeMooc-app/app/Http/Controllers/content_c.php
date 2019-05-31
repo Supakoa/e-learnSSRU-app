@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\content as content;
 use App\adjust as adjust;
 use App\article as article;
+use App\quiz as quiz;
 use Illuminate\Http\Request;
 
 class content_c extends Controller
@@ -50,15 +51,25 @@ class content_c extends Controller
         $content = new content;
         $content->name = $request->input('name');
         $content->type = $request->input('type');
+        $content->lesson_id = $request->input('lesson_id');
+        $content->save();
         if($content->type=='1'){
             $content->detail = $request->input('url');
         }elseif($content->type=='2'){
             $article = new article;
             $article->rawdata = "กรุณาเพิ่มเนื้อหา";
+            $article->content_id = $content->id;
             $article->save();
             $content->detail = $article->id;
+        }else{
+            $quiz = new quiz;
+            $quiz->name = $request->input('name');
+            $quiz->detail = 'กรุณาใส่รายละเอียด.';
+            // $quiz->status = 0;
+            $quiz->content_id = $content->id;
+            $quiz->save();
+            $content->detail = $quiz->id;
         }
-        $content->lesson_id = $request->input('lesson_id');
         // $content->user_id = auth()->user()->id;
         // $content->sm_banner = $fileNameToStore;
         // $content->subject_id = $request->input('sub_id');

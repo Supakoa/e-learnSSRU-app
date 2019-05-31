@@ -56,11 +56,11 @@ Route::resource('/article', 'articleController');
 
 
 // Administrator & SuperAdministrator Control Panel Routes
-Route::group(['middleware' => ['role:administrator']], function () {
-    Route::resource('users', 'UsersController');
-    Route::resource('permission', 'PermissionController');
-    Route::resource('roles', 'RolesController');
-});
+// Route::group(['middleware' => ['role:administrator']], function () {
+//     Route::resource('users', 'UsersController');
+//     Route::resource('permission', 'PermissionController');
+//     Route::resource('roles', 'RolesController');
+// });
 // Dashboard
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
