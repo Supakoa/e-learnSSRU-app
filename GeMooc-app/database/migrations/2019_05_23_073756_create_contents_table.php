@@ -15,10 +15,10 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('type')->nullable();
+            $table->string('name');
+            $table->string('type');
             $table->string('detail')->nullable();
-            $table->string('lesson_id')->nullable();
+            $table->integer('lesson_id');
             $table->timestamps();
         });
     }

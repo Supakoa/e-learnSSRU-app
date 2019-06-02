@@ -120,8 +120,7 @@
                                         <i class="fas fa-question"></i> {{$name->count()}}
                                     </div>
                                     <div class="col-md-9">
-                                        <a class="btn btn-block text-left pl-5"
-                                            href="{{url('quiz/'.$name->detail)}}">
+                                        <a class="btn btn-block text-left pl-5" href="{{url('quiz/'.$name->detail)}}">
                                             <h4> {{$name->name}}</h4>
                                         </a>
                                     </div>
@@ -205,22 +204,34 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="row">
-                <div class="offset-md-3 col-md-2 text-right">
-                    <span>status: </span>
-                </div>
-                <div class="col-md-3">
-                    {{-- <label for="cb4">Status: </label> --}}
-                    <input class="tgl tgl-flat" id="cb4" type="checkbox" />
-                    <label class="tgl-btn" for="cb4"></label>
-
-                </div>
-                <div class="col-md-4 text-right">
-                    <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
-                            aria-hidden="true"></i></button>
-                </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="offset-md-3 col-md-2 text-right">
+                        <span>status: </span>
+                    </div>
+                    <div class="col-md-3">
+                        {{-- <label for="cb4">Status: </label> --}}
+                        @php
+                        $check = '';
+                        if($course->status!=0){
+                            $check = 'checked';
+                        }
+                        @endphp
+                        <input class="tgl tgl-flat" id="cb4" name="status" {{$check}} form="course_form" value='1' type="checkbox" />
+                        <label class="tgl-btn" for="cb4"></label>
+
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </div>
                 <form action="{{url('/course/'.$course->id)}}" method="post" enctype='multipart/form-data'
                     id="course_form">
                     @csrf

@@ -96,7 +96,10 @@
     });
 
     function edit_subject(sub) {
-
+        check = ''
+        if(sub.status!=0){
+            check = 'checked'
+        }
         modal = `
             <div class="modal fade" id="Edit_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -115,7 +118,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         {{-- <label for="cb4">Status: </label> --}}
-                                        <input class="tgl tgl-flat" id="cb4" type="checkbox" />
+                                        <input form='sub_edit_form' class="tgl tgl-flat" id="cb4" `+check+` value = '1' name='status' type="checkbox" />
                                         <label class="tgl-btn" for="cb4"></label>
 
                                     </div>
