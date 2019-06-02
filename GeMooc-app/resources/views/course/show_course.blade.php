@@ -34,23 +34,32 @@
                 <div class="card shadow">
                     <div class="card-header " id="heading{{$lesson->id}}">
                         <div class="row">
-                            <div class="col-md-10 text-left">
+                            <div class="col-md-8 text-left">
                                 <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
                                     data-target="#collapse{{$lesson->id}}" aria-expanded="true"
                                     aria-controls="collapseOne">
-                                   <span>{{$lesson->name}}: </span>
-                                    <i class="fas fa-video"> </i>
-                                    {{$video = $content::where([['type','1'],['lesson_id',$lesson->id]])->count()}}
-                                    <i class="far fa-clipboard"> </i>
-                                    {{$article = $content::where([['type','2'],['lesson_id',$lesson->id]])->count()}}
-                                    <i class="fas fa-question"> </i>
-                                    {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->id]])->count()}}
+                                    <span>{{$lesson->name}}: </span>
                                 </button>
                             </div>
-                            <div class="col-md-2 text-right">
-                                <a href="#" class="btn btn-block btn-outline-danger btn-md ">
+                            <div class="col-md-3 text-left">
+                                <span>
+                                    <i class="fas fa-video"> </i>
+                                    {{$video = $content::where([['type','1'],['lesson_id',$lesson->id]])->count()}}
+                                </span>
+                                <span>
+                                    <i class="far fa-clipboard"> </i>
+                                    {{$article = $content::where([['type','2'],['lesson_id',$lesson->id]])->count()}}
+                                </span>
+                                <span>
+                                    <i class="fas fa-question"> </i>
+                                    {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->id]])->count()}}
+                                </span>
+                            </div>
+                            <div class="col-md-1 text-right">
+                                <button onclick="delete_lesson('{{$lesson->id}}')"
+                                    class="btn btn-block btn-outline-danger btn-md ">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -59,33 +68,69 @@
                     aria-labelledby="heading{{$lesson->id}}" data-parent="#accordionExample">
                     <div class="card-body">
                         @php
-                        $names = $content::where('lesson_id',$lesson->id)->get();
+                        // $names = $content::where('lesson_id',$lesson->id)->get();
+                        $names = $lesson->contents;
+
                         @endphp
                         <ul class="list-group">
                             @if ($names->count()>0)
                             @foreach ($names as $name)
                             @if ($name->type=="1")
                             <li class="list-group-item text-left">
-                                <i class="fas fa-video"></i> {{$name->count()}}
-                                <a class="btn btn-block text-left pl-5" href="{{$name->detail}}">
-                                    <h4>{{$name->name}}</h4>
-                                </a>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <i class="fas fa-video"></i> {{$name->count()}}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a class="btn btn-block text-left pl-5" href="{{$name->detail}}">
+                                            <h4>{{$name->name}}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <a href="#" class="btn btn-block btn-outline-danger btn-md ">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </li>
                             @elseif ($name->type=="2")
                             <li class="list-group-item text-left">
-                                <i class="far fa-clipboard"></i> {{$name->count()}}
-                                <a class="btn btn-block text-left pl-5" href="{{url('article/'.$name->detail)}}">
-                                    <h4> {{$name->name}}</h4>
-                                </a>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <i class="far fa-clipboard"></i> {{$name->count()}}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a class="btn btn-block text-left pl-5"
+                                            href="{{url('article/'.$name->detail)}}">
+                                            <h4> {{$name->name}}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a href="#" class="btn btn-block btn-outline-danger btn-md ">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </li>
 
                             @else
                             <li class="list-group-item text-left">
-                                <i class="fas fa-question"></i> {{$name->count()}}
-                                <a class="btn btn-block text-left pl-5"
-                                    href="{{url('/conntent/goto_content/'.$name->detail)}}">
-                                    <h4> {{$name->name}}</h4>
-                                </a>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <i class="fas fa-question"></i> {{$name->count()}}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a class="btn btn-block text-left pl-5"
+                                            href="{{url('quiz/'.$name->detail)}}">
+                                            <h4> {{$name->name}}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <a href="#" class="btn btn-block btn-outline-danger btn-sm ">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </li>
                             @endif
                             @endforeach
@@ -118,6 +163,8 @@
             @endif
         </div>
     </div>
+</div>
+<div id="div_delete">
 </div>
 @endsection
 
@@ -158,11 +205,20 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Course</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="row">
+                <div class="offset-md-3 col-md-2 text-right">
+                    <span>status: </span>
+                </div>
+                <div class="col-md-3">
+                    {{-- <label for="cb4">Status: </label> --}}
+                    <input class="tgl tgl-flat" id="cb4" type="checkbox" />
+                    <label class="tgl-btn" for="cb4"></label>
+
+                </div>
+                <div class="col-md-4 text-right">
+                    <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                            aria-hidden="true"></i></button>
+                </div>
             </div>
             <div class="modal-body">
                 <form action="{{url('/course/'.$course->id)}}" method="post" enctype='multipart/form-data'
@@ -249,6 +305,8 @@
     </div>
 </div>
 
+
+
 @endsection
 
 @section('js')
@@ -270,6 +328,33 @@
         }
 
     });
+
+    function delete_lesson(id) {
+        form = `<form action="{{url('lesson/` + id + `')}}" method="post" id='form_del_lesson'>
+                        @csrf
+                        @method('DELETE')
+                    </form>`;
+        $('#div_delete').html(form);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "All Contents in Lesson will be deleted as well. (ต้องแก้คำมั้ง)",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                $('#form_del_lesson').submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        });
+    }
 
 </script>
 @endsection

@@ -14,7 +14,7 @@ class subject extends Model
 
        public function courses()
        {
-           return $this->hasMany('App\course','subject_id');
+           return $this->hasMany('App\course');
        }
 
 }

@@ -8,6 +8,12 @@
             user</strong></button>
 
     <div class="ce-container table-responsive">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Now, this page Empty!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <table class="table table-hover display table-bordered" id="teachTable">
             <thead>
                 <tr>

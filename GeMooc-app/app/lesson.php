@@ -11,11 +11,11 @@ class lesson extends Model
 
     public function course()
     {
-        return $this->belongsTo('App/course');
+        return $this->belongsTo('App\course');
     }
 
     public function contents()
     {
-        return $this->hasMany('App/contents');
+        return $this->hasMany('App\content');
     }
 }

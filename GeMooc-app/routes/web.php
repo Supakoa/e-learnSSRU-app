@@ -25,6 +25,8 @@ Route::get('/test', 'test_sumernote@index');
 Route::get('/teach', 'teach@Teach');
 Route::post('/teach/create', 'teach@createTeach');
 
+Route::get('/student', 'student@Student');
+Route::get('/payment-setting', 'payment@Home');
 Route::get('/report', 'Report@index');
 // Route::get('/up_image','test_sumernote@up_image');
 Route::post('ajaximage', function(){
@@ -56,16 +58,16 @@ Route::resource('/course', 'course_c');
 Route::resource('/lesson', 'lesson_c');
 Route::resource('/content', 'content_c');
 Route::resource('/article', 'articleController');
-// Route::get('/course/goto_content/{id}','content_c@goto_content');
-// Route::get('/content/goto_content/{id}','content_c@goto_content');
+Route::resource('/quiz', 'quizController');
+
 
 
 // Administrator & SuperAdministrator Control Panel Routes
-Route::group(['middleware' => ['role:administrator']], function () {
-    Route::resource('users', 'UsersController');
-    Route::resource('permission', 'PermissionController');
-    Route::resource('roles', 'RolesController');
-});
+// Route::group(['middleware' => ['role:administrator']], function () {
+//     Route::resource('users', 'UsersController');
+//     Route::resource('permission', 'PermissionController');
+//     Route::resource('roles', 'RolesController');
+// });
 // Dashboard
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
