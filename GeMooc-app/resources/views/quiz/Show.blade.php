@@ -7,6 +7,12 @@
     </div>
     {{-- {{$quiz->name}} --}}
     <h1 class="ce-name">Show - Quiz : </h1>
+    <div class="row justify-content-end">
+        <div class="ce-card-btn">
+            <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
+                    class="fas fa-folder-plus"></i> </button>
+        </div>
+    </div>
     <div class="ce-container">
         <div class="row mb-3">
             <div class="col-md-4">
@@ -37,14 +43,51 @@
                                     </p>
                                 </div>
                                 <div class="text-center mt-2">
-                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-eye "></i>
+                                    <button class="btn btn-sm btn-outline-info">
+                                        <i class="fas fa-image    "></i>
                                     </button>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="anser" role="tabpanel" aria-labelledby="anser-tab">
-                                Anser
-                                <div class="container">
-
+                                <div class="container-fluid">
+                                    <ul class="mt-3">
+                                        <li>
+                                            <div class="input-group-prepend mr-1">
+                                                <div class="input-group-text">
+                                                    <input type="checkbox"
+                                                        aria-label="Radio button for following text input">
+                                                </div>
+                                            </div>
+                                            <dt><span> 1.</span> fsdfsdflksdfl;sd</dt>
+                                        </li>
+                                        <li>
+                                            <div class="input-group-prepend mr-1">
+                                                <div class="input-group-text">
+                                                    <input type="checkbox"
+                                                        aria-label="Radio button for following text input">
+                                                </div>
+                                            </div>
+                                            <dt><span> 2.</span> fsdfsdflksdfl;sd</dt>
+                                        </li>
+                                        <li>
+                                            <div class="input-group-prepend mr-1">
+                                                <div class="input-group-text">
+                                                    <input type="checkbox"
+                                                        aria-label="Radio button for following text input">
+                                                </div>
+                                            </div>
+                                            <dt><span> 3.</span> fsdfsdflksdfl;sd</dt>
+                                        </li>
+                                        <li>
+                                            <div class="input-group-prepend mr-1">
+                                                <div class="input-group-text">
+                                                    <input type="checkbox"
+                                                        aria-label="Radio button for following text input">
+                                                </div>
+                                            </div>
+                                            <dt><span> 4.</span> fsdfsdflksdfl;sd</dt>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="action" role="tabpanel" aria-labelledby="action-tab">
