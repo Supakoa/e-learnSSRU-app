@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->text('image')->nullable();
             $table->integer('time');
             $table->integer('status');
-            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
+            $table->integer('quiz_id')->nullable();
             $table->timestamps();
         });
     }
