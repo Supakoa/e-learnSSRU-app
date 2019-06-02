@@ -25,7 +25,13 @@ Route::get('/test', 'test_sumernote@index');
 Route::get('/teach', 'teach@Teach');
 Route::post('/teach/create', 'teach@createTeach');
 
+/**
+ * Route Student
+ */
 Route::get('/student', 'student@Student');
+Route::post('student/create', 'student@createStudent');
+Route::delete('users/{user}', 'student@deleteStudent')->name('users.destroy');
+
 Route::get('/payment-setting', 'payment@Home');
 Route::get('/report', 'Report@index');
 // Route::get('/up_image','test_sumernote@up_image');
