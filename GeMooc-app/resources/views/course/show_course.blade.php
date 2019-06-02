@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <a class="btn btn-block text-left pl-5"
-                                            href="{{url('/conntent/goto_content/'.$name->detail)}}">
+                                            href="{{url('quiz/'.$name->detail)}}">
                                             <h4> {{$name->name}}</h4>
                                         </a>
                                     </div>
