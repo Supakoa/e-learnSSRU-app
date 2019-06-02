@@ -178,5 +178,9 @@ class course_c extends Controller
     public function destroy($id)
     {
         //
+        $course = course::find($id);
+        $subject = $course->subject;
+        $course->delete();
+        return redirect('/subject/'.$subject->id)->with('success', 'Course Deleted');
     }
 }

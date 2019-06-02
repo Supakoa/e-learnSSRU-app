@@ -34,6 +34,13 @@ Route::delete('users/{user}', 'student@deleteStudent')->name('users.destroy');
 
 Route::get('/payment-setting', 'payment@Home');
 Route::get('/report', 'Report@index');
+
+Route::get('/quiz/show', function(){
+return view('quiz.Show');
+});
+Route::get('/quiz/edit', function(){
+    return view('quiz.Edit');
+    });
 // Route::get('/up_image','test_sumernote@up_image');
 Route::post('ajaximage', function(){
     $file = Request::file('file');

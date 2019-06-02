@@ -21,7 +21,8 @@ class CreateQuizzesTable extends Migration
             $table->integer('count_play')->default(0);
             $table->float('rate', 5, 2)->default(0);
             $table->integer('status')->default(0);
-            $table->integer('content_id')->nullable();
+            $table->unsignedbigInteger('content_id');
+            $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');
             $table->timestamps();
         });
     }

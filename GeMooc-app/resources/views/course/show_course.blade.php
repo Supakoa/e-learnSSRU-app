@@ -212,11 +212,11 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="offset-md-3 col-md-2 text-right">
-                        <span>status: </span>
+                    <div class="offset-md-8 col-md-2 text-right" style="margin-right:-20px">
+                        <span>Online :</span>
                     </div>
-                    <div class="col-md-3">
-                        {{-- <label for="cb4">Status: </label> --}}
+                    <div class="col-md-1">
+                        {{-- <label for="cb4">Online :</label> --}}
                         @php
                         $check = '';
                         if($course->status!=0){
@@ -227,8 +227,8 @@
                         <label class="tgl-btn" for="cb4"></label>
 
                     </div>
-                    <div class="col-md-4 text-right">
-                        <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                    <div class="col-md-1 text-right">
+                        <button class="btn btn-outline-danger btn-sm" onclick="delete_course('{{$course->id}}')"><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
                     </div>
                 </div>
@@ -317,7 +317,6 @@
 </div>
 
 
-
 @endsection
 
 @section('js')
@@ -367,5 +366,31 @@
         });
     }
 
+    function delete_course(id){
+        form = `<form action="{{url('course/` + id + `')}}" method="post" id='form_del_Course'>
+                        @csrf
+                        @method('DELETE')
+                    </form>`;
+        $('#div_delete').html(form);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "All Course in Course will be deleted as well. (ต้องแก้คำมั้ง)",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                $('#form_del_Course').submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        });
+    }
 </script>
 @endsection

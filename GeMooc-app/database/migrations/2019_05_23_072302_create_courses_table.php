@@ -20,7 +20,8 @@ class CreateCoursesTable extends Migration
             $table->integer('status')->default(0);
             $table->text('sm_banner')->nullable();
             $table->text('xl_banner')->nullable();
-            $table->integer('subject_id');
+            $table->unsignedbigInteger('subject_id');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->timestamps();
         });
     }

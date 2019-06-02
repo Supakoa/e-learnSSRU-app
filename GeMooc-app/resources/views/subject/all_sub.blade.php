@@ -86,7 +86,9 @@
 <div id="edit_subject_div">
 
 </div>
+<div id="div_delete">
 
+</div>
 @endsection
 @section('js')
 <script>
@@ -113,17 +115,17 @@
                         </div>
                         <div class="modal-body">
                                 <div class="row justify-content-center">
-                                    <div class="offset-md-3 col-md-2 text-right">
-                                        <span>status: </span>
+                                    <div class="offset-md-8 col-md-2 text-right" style="margin-right:-20px">
+                                        <span>Online :</span>
                                     </div>
-                                    <div class="col-md-3">
-                                        {{-- <label for="cb4">Status: </label> --}}
+                                    <div class="col-md-1">
+                                        {{-- <label for="cb4">Online :</label> --}}
                                         <input form='sub_edit_form' class="tgl tgl-flat" id="cb4" `+check+` value = '1' name='status' type="checkbox" />
                                         <label class="tgl-btn" for="cb4"></label>
 
                                     </div>
-                                    <div class="col-md-4 text-right">
-                                        <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                                    <div class="col-md-1 text-right">
+                                        <button class="btn btn-outline-danger btn-sm" onclick="delete_subject('`+sub.id+`')"><i class="fa fa-trash"
                                                 aria-hidden="true"></i></button>
                                     </div>
                                 </div>
@@ -167,6 +169,34 @@
             </div>`;
         $('#edit_subject_div').html(modal);
         $('#Edit_Modal').modal('show')
+    }
+
+    function delete_subject(id){
+        form = `<form action="{{url('subject/` + id + `')}}" method="post" id='form_del_Subject'>
+                        @csrf
+                        @method('DELETE')
+                    </form>`;
+        $('#div_delete').html(form);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "All Course in Subject will be deleted as well. (ต้องแก้คำมั้ง)",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                $('#form_del_Subject').submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        });
+
     }
 
 </script>

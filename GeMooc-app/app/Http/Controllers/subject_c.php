@@ -180,5 +180,8 @@ class subject_c extends Controller
     public function destroy($id)
     {
         //
+        $subject = sub::find($id);
+        $subject->delete();
+        return redirect('/subject')->with('success', 'Subject Deleted');
     }
 }
