@@ -212,11 +212,11 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="offset-md-3 col-md-2 text-right">
-                        <span>Online : </span>
+                    <div class="offset-md-8 col-md-2 text-right" style="margin-right:-20px">
+                        <span>Online :</span>
                     </div>
-                    <div class="col-md-3">
-                        {{-- <label for="cb4">Online : </label> --}}
+                    <div class="col-md-1">
+                        {{-- <label for="cb4">Online :</label> --}}
                         @php
                         $check = '';
                         if($course->status!=0){
@@ -227,7 +227,7 @@
                         <label class="tgl-btn" for="cb4"></label>
 
                     </div>
-                    <div class="col-md-4 text-right">
+                    <div class="col-md-1 text-right">
                         <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
                     </div>
