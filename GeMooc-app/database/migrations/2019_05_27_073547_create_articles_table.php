@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->longText('rawdata');
             $table->integer('status')->default(0);
+            $table->unsignedbigInteger('content_id');
             $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');
             $table->timestamps();
         });
