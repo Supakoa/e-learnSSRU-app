@@ -103,7 +103,125 @@
                 </article>
             </div>
         </div>
+    </div>
+</div>
+@endsection
 
+@section('modal')
+<div class="modal fade " id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Qiuz</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="ce-container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="create-quiz">
+                                    <div class="row mb-3">
+                                        <div class="col-md-12 row">
+                                            <label for="name-quiz" class="col-sm-2 col-form-label">name:</label>
+                                            <div class="col-md-8">
+                                                <input id="name-quiz" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-5">
+                                        <div class="offset-md-6 col-md-6">
+                                            <input type="file">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <ul>
+                                                <li>
+                                                    <div class="row">
+                                                        <label for="name-quiz"
+                                                            class="col-sm-2 col-form-label">1.</label>
+                                                        <div class="col-sm-8">
+                                                            <input name="name-quiz" type="text" class="form-control">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="input-group-prepend mr-1">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"
+                                                                        aria-label="Radio button for following text input">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row">
+                                                        <label for="name-quiz"
+                                                            class="col-sm-2 col-form-label">2.</label>
+                                                        <div class="col-md-8">
+                                                            <input name="name-quiz" type="text" class="form-control">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="input-group-prepend mr-1">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"
+                                                                        aria-label="Radio button for following text input">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row">
+                                                        <label for="name-quiz"
+                                                            class="col-sm-2 col-form-label">3.</label>
+                                                        <div class="col-md-8">
+                                                            <input name="name-quiz" type="text" class="form-control">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="input-group-prepend mr-1">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"
+                                                                        aria-label="Radio button for following text input">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row">
+                                                        <label for="name-quiz"
+                                                            class="col-sm-2 col-form-label">4.</label>
+                                                        <div class="col-md-8">
+                                                            <input name="name-quiz" type="text" class="form-control">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="input-group-prepend mr-1">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"
+                                                                        aria-label="Radio button for following text input">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="course_form">Save changes</button>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
