@@ -121,6 +121,12 @@ class course_c extends Controller
         $detail = '';
         $course = course::find($id);
 
+        if($request->has('status')){
+            $course->status = $request->input('status');
+        }else{
+            $course->status = 0;
+        }
+
         if($request->hasFile('cover_image_xl')){
             $imagePath = request('cover_image_xl')->store('cover_image_course/xl','public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1600,600);

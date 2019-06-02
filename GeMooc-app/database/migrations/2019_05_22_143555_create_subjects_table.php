@@ -16,10 +16,10 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('detail')->nullable();
-            $table->string('status')->nullable();
-            $table->string('sm_banner')->nullable();
-            $table->string('xl_banner')->nullable();
+            $table->text('detail')->nullable();
+            $table->integer('status')->default(0);
+            $table->text('sm_banner')->nullable();
+            $table->text('xl_banner')->nullable();
             $table->timestamps();
         });
     }

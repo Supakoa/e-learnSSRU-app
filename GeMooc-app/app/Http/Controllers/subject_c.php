@@ -123,8 +123,16 @@ class subject_c extends Controller
             'cover_image_xl' => 'image|nullable|max:10000'
 
         ]) ;
+
         $detail = '';
+        // dd($request);
         $subject = sub::find($request->input('sub_id'));
+        if($request->has('status')){
+            $subject->status = $request->input('status');
+        }else{
+            $subject->status = 0;
+
+        }
         if($request->hasFile('cover_image_xl')){
             $imagePath = request('cover_image_xl')->store('cover_image_subject/xl','public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1600,600);
