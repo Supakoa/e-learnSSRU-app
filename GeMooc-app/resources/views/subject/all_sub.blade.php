@@ -96,7 +96,10 @@
     });
 
     function edit_subject(sub) {
-
+        check = ''
+        if(sub.status!=0){
+            check = 'checked'
+        }
         modal = `
             <div class="modal fade" id="Edit_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -110,16 +113,16 @@
                         </div>
                         <div class="modal-body">
                                 <div class="row justify-content-center">
-                                    <div class="offset-md-3 col-md-2 text-right">
-                                        <span>status: </span>
+                                    <div class="offset-md-8 col-md-2 text-right" style="margin-right:-20px">
+                                        <span>Online :</span>
                                     </div>
-                                    <div class="col-md-3">
-                                        {{-- <label for="cb4">Status: </label> --}}
-                                        <input class="tgl tgl-flat" id="cb4" type="checkbox" />
+                                    <div class="col-md-1">
+                                        {{-- <label for="cb4">Online :</label> --}}
+                                        <input form='sub_edit_form' class="tgl tgl-flat" id="cb4" `+check+` value = '1' name='status' type="checkbox" />
                                         <label class="tgl-btn" for="cb4"></label>
 
                                     </div>
-                                    <div class="col-md-4 text-right">
+                                    <div class="col-md-1 text-right">
                                         <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
                                                 aria-hidden="true"></i></button>
                                     </div>

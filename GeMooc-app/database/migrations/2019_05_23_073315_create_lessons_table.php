@@ -16,7 +16,7 @@ class CreateLessonsTable extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
-            $table->string('course_id')->nullable();
+            $table->integer('course_id')->nullable();
             $table->timestamps();
         });
     }

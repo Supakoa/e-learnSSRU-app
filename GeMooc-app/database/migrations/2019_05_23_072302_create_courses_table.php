@@ -15,12 +15,12 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('detail')->nullable();
-            $table->string('status')->nullable();
-            $table->string('sm_banner')->nullable();
-            $table->string('xl_banner')->nullable();
-            $table->integer('subject_id')->nullable();
+            $table->string('name');
+            $table->text('detail');
+            $table->integer('status')->default(0);
+            $table->text('sm_banner')->nullable();
+            $table->text('xl_banner')->nullable();
+            $table->integer('subject_id');
             $table->timestamps();
         });
     }

@@ -18,7 +18,13 @@ Route::get('/', 'HomeController@index')->name('dashboard.home');
 
 Route::get('/home', 'HomeController@index')->name('dashboard.home');
 Route::get('/test', 'test_sumernote@index');
+
+/**
+ * Route teach ..
+ */
 Route::get('/teach', 'teach@Teach');
+Route::post('/teach/create', 'teach@createTeach');
+
 Route::get('/student', 'student@Student');
 Route::get('/payment-setting', 'payment@Home');
 Route::get('/report', 'Report@index');
@@ -31,7 +37,6 @@ Route::get('/quiz/edit', function(){
     });
 // Route::get('/up_image','test_sumernote@up_image');
 Route::post('ajaximage', function(){
-
     $file = Request::file('file');
     $destinationPath = public_path().'/uploads/';
     $filenameWithExt = $file->getClientOriginalName();
