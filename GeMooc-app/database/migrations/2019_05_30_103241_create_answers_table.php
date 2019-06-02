@@ -20,14 +20,14 @@ class CreateAnswersTable extends Migration
             // $table->text('image')->nullable();
             $table->integer('show');
             $table->integer('order');
-            $table->integer('question_id')->nullable();
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('user_answer', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('answer_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('answer_id')->references('id')->on('answers')->onDelete('cascade');
             $table->integer('countdown');
             $table->timestamps();
         });

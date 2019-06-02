@@ -15,8 +15,8 @@ class CreateAdjustsTable extends Migration
     {
         Schema::create('adjusts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->nullable();
             $table->text('detail')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
