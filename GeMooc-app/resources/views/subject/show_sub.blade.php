@@ -104,10 +104,10 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="offset-md-3 col-md-2 text-right">
-                        <span>status: </span>
+                        <span>Online : </span>
                     </div>
                     <div class="col-md-3">
-                        {{-- <label for="cb4">Status: </label> --}}
+                        {{-- <label for="cb4">Online : </label> --}}
                         @php
                         $check = '';
                         if($sub->status!=0){
@@ -187,10 +187,10 @@
                     <div class="modal-body">
                             <div class="row">
                                 <div class="offset-md-3 col-md-2 text-right">
-                                    <span>status: </span>
+                                    <span>Online : </span>
                                 </div>
                                 <div class="col-md-3">
-                                    {{-- <label for="cb4">Status: </label> --}}
+                                    {{-- <label for="cb4">Online : </label> --}}
                                     <input class="tgl tgl-flat" id="cb5" name='status' value='1' `+check+` form='course_edit_form' type="checkbox" />
                                     <label class="tgl-btn" for="cb5"></label>
 

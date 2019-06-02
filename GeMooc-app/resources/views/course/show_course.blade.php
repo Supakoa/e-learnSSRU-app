@@ -213,10 +213,10 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="offset-md-3 col-md-2 text-right">
-                        <span>status: </span>
+                        <span>Online : </span>
                     </div>
                     <div class="col-md-3">
-                        {{-- <label for="cb4">Status: </label> --}}
+                        {{-- <label for="cb4">Online : </label> --}}
                         @php
                         $check = '';
                         if($course->status!=0){

@@ -114,10 +114,10 @@
                         <div class="modal-body">
                                 <div class="row justify-content-center">
                                     <div class="offset-md-3 col-md-2 text-right">
-                                        <span>status: </span>
+                                        <span>Online : </span>
                                     </div>
                                     <div class="col-md-3">
-                                        {{-- <label for="cb4">Status: </label> --}}
+                                        {{-- <label for="cb4">Online : </label> --}}
                                         <input form='sub_edit_form' class="tgl tgl-flat" id="cb4" `+check+` value = '1' name='status' type="checkbox" />
                                         <label class="tgl-btn" for="cb4"></label>
 
