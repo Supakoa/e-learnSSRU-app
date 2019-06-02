@@ -180,21 +180,6 @@ class course_c extends Controller
         //
         $course = course::find($id);
         $subject = $course->subject;
-        $lessons = $course->lessons;
-        foreach ($lessons as $lesson) {
-            $contents = $lesson->contents;
-            foreach ($contents as $content) {
-                if($content->type == '1'){
-
-                }elseif($content->type == '2'){
-                    $content->article->delete();
-                }else{
-                    $content->quiz->delete();
-                }
-                $content->delete();
-            }
-            $lesson->delete();
-        }
         $course->delete();
         return redirect('/subject/'.$subject->id)->with('success', 'Course Deleted');
     }

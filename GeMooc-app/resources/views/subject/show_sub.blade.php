@@ -123,7 +123,7 @@
 
                     </div>
                     <div class="col-md-1 text-right">
-                    <button onclick="delete_subject('{{$sub->id}}')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                    <button  class="btn btn-outline-danger btn-sm" onclick="delete_subject('{{$sub->id}}')" ><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
                     </div>
                 </div>
@@ -302,5 +302,6 @@
             }
         });
     }
+    
 </script>
 @endsection
