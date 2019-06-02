@@ -53,6 +53,10 @@
 @endsection
 
 @section('modal')
+<div id="div_delete">
+
+</div>
+
 <div class="modal fade " id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -119,7 +123,7 @@
 
                     </div>
                     <div class="col-md-1 text-right">
-                        <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                    <button onclick="delete_subject('{{$sub->id}}')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
                     </div>
                 </div>
@@ -196,7 +200,7 @@
 
                                 </div>
                                 <div class="col-md-1 text-right">
-                                    <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
+                                    <button onclick="delete_course('`+course.id+`')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"
                                             aria-hidden="true"></i></button>
                                 </div>
                             </div>
@@ -244,5 +248,59 @@
         $('#Edit_Course_Modal').modal('show')
     }
 
+    function delete_subject(id){
+        form = `<form action="{{url('subject/` + id + `')}}" method="post" id='form_del_Subject'>
+                        @csrf
+                        @method('DELETE')
+                    </form>`;
+        $('#div_delete').html(form);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "All Course in Subject will be deleted as well. (ต้องแก้คำมั้ง)",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                $('#form_del_Subject').submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        });
+
+    }
+
+    function delete_course(id){
+        form = `<form action="{{url('course/` + id + `')}}" method="post" id='form_del_Course'>
+                        @csrf
+                        @method('DELETE')
+                    </form>`;
+        $('#div_delete').html(form);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "All Course in Course will be deleted as well. (ต้องแก้คำมั้ง)",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                $('#form_del_Course').submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        });
+    }
 </script>
 @endsection

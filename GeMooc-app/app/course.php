@@ -11,7 +11,7 @@ class course extends Model
 
     public function subject()
     {
-        return $this->belongsTo('App\subject')->withDefault();
+        return $this->belongsTo('App\subject');
     }
 
     public function lessons()
