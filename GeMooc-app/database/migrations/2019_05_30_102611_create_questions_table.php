@@ -16,10 +16,10 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->text('detail');
+            $table->text('detail')->nullable();
             $table->text('image')->nullable();
-            $table->integer('time');
-            $table->integer('status');
+            $table->integer('time')->nullable();
+            $table->integer('status')->default(0);
             $table->unsignedbigInteger('quiz_id');
             $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->timestamps();

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\question;
+use App\question as question;
+use App\answer as answer;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class QuestionController extends Controller
 {
@@ -35,7 +37,44 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $this->validate($request,[
+            'name' => 'required',
+            'cover_image' => 'image|nullable|max:10000'
+
+        ]) ;
+        $question = new question;
+        if($request->hasFile('cover_image')){
+            $imagePath = request('cover_image')->store('question_img','public');
+            $image = Image::make(public_path("storage/{$imagePath}"));
+            // dd($image);
+            $image->save();
+            $question->image =  $imagePath;
+        }
+        // Create question
+
+        $question->name = $request->input('name');
+        $question->quiz_id = $request->input('quiz_id');
+        $question->save();
+
+        $i = 1;
+        $answers =$request->input('answer');
+        foreach ($answers as $name) {
+            $answer = new answer;
+            $answer->name = $name;
+            $answer->order = $i;
+            if($i++==$request->input('correct')){
+                $answer->correct = 1;
+            }
+            $answer->question_id = $question->id;
+            $answer->save();
+        }
+
+        // $now = new adjust;
+        // $now->user_id = auth()->user()->id;
+        // $now->detail = "Create question : ID ====> || ".$question->id." ||";
+        // $now->save();
+        return redirect('/quiz/'.$request->input('quiz_id'))->with('success', 'question Created');
     }
 
     /**
