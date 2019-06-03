@@ -42,6 +42,13 @@ return view('quiz.Show');
 Route::get('/quiz/edit', function(){
     return view('quiz.Edit');
     });
+
+Route::get('/std_view/login', 'Std_viewer@Std_login');
+Route::get('/std_view/home', 'Std_viewer@Std_home');
+Route::get('/std_view/subject', 'Std_viewer@Std_subject');
+Route::get('/std_view/showcourse', 'Std_viewer@Std_showcourse');
+Route::get('/std_view/course', 'Std_viewer@Std_course');
+Route::get('/std_view/payment', 'Std_viewer@Std_payment');
 // Route::get('/up_image','test_sumernote@up_image');
 Route::post('ajaximage', function(){
     $file = Request::file('file');
