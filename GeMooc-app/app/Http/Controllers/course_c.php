@@ -183,4 +183,11 @@ class course_c extends Controller
         $course->delete();
         return redirect('/subject/'.$subject->id)->with('success', 'Course Deleted');
     }
+    public function modal_edit(Request $request)
+    {
+         $id = $request->id;
+         $course = course::find($id);
+
+         return view('course.modal.edit')->with('course', $course);
+    }
 }

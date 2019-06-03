@@ -183,5 +183,13 @@ class subject_c extends Controller
         $subject = sub::find($id);
         $subject->delete();
         return redirect('/subject')->with('success', 'Subject Deleted');
+
     }
+
+   public function modal_edit(Request $request)
+   {
+        $id = $request->id;
+        $subject = sub::find($id);
+        return view('subject.modal.edit')->with('sub', $subject);
+   }
 }

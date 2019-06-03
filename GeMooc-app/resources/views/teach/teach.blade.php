@@ -54,34 +54,38 @@
 {{--
         modal create new teach
     --}}
-<div class="modal fade" id="createNewTeach">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1>create new user</h1>
-            </div>
-            <div class="modal-body">
-                <form action="/teach/create" id="create" enctype="multipart/form-data" method="POST">
-                    @csrf
 
-                    <p>Username</p>
-                    <input class="form-control mb-1" type="text" name="username" id="username">
-                    <p>Password</p>
-                    <input type="text" class="form-control mb-1" name="password" id="password">
-                    <p>Confirm Password</p>
-                    <input type="text" class="form-control mb-1" name="confirmPassword" id="confirmPassword">
-                    <p>Email</p>
-                    <input type="text" class="form-control mb-1" name="email" id="email">
-                    <p>Confirm Email</p>
-                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button form="create" type="submit" class="btn btn-warning">create</button>
+@section('modal')
+<div class="modal fade" id="createNewTeach">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>create new user</h1>
+                </div>
+                <div class="modal-body">
+                    <form action="/teach/create" id="create" enctype="multipart/form-data" method="POST">
+                        @csrf
+
+                        <p>Username</p>
+                        <input class="form-control mb-1" type="text" name="username" id="username">
+                        <p>Password</p>
+                        <input type="text" class="form-control mb-1" name="password" id="password">
+                        <p>Confirm Password</p>
+                        <input type="text" class="form-control mb-1" name="confirmPassword" id="confirmPassword">
+                        <p>Email</p>
+                        <input type="text" class="form-control mb-1" name="email" id="email">
+                        <p>Confirm Email</p>
+                        <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button form="create" type="submit" class="btn btn-warning">create</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
+
 
 @section('js')
 <script>
