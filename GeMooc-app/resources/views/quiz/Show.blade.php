@@ -14,214 +14,323 @@
         </div>
     </div>
     <div class="ce-container">
-        <div class="row mb-3">
-            <div class="col-md-4">
+        <div class="row mb-5">
+            {{-- demo --}}
+            <div class="col-md-12 mb-5">
                 <article class="q-card">
-                    <p class="card__header-meta">1.</p>
+                    <p class="card__header-meta"></p>
                     <div class="q-card_body">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview"
-                                    role="tab" aria-controls="overview" aria-selected="true">Overview</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="anser-tab" data-toggle="tab" href="#anser" role="tab"
-                                    aria-controls="anser" aria-selected="false">Anser</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="action-tab" data-toggle="tab" href="#action" role="tab"
-                                    aria-controls="action" aria-selected="false">Action</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active overview" id="overview" role="tabpanel"
-                                aria-labelledby="overview-tab">
-                                <div class="container-fluid text-overview">
-                                    <p class="lead">
-                                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis
-                                        mollis, est non commodo luctus. supakit kitjananubmungsak
-                                    </p>
+                        <div class="row justify-content-end">
+                            <div class="ce-card-btn">
+                                <button href="#" class="btn btn-md btn-outline-warning"> <i
+                                        class="fas fa-cog"></i></button>
+                                <button href="#" class="btn btn-md btn-outline-danger"> <i class="fa fa-trash"
+                                        aria-hidden="true"></i> </button>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row mb-1">
+                                <div class="col-md-8">
+                                    <div class="container-fluid">
+                                        <dd>
+                                            Documentation and examples for opting images into responsive behavior (so
+                                            they never become larger than their parent elements) and add lightweight
+                                            styles to them—all via classes.
+                                        </dd>
+                                    </div>
                                 </div>
-                                <div class="text-center mt-2">
-                                    <button class="btn btn-sm btn-outline-info">
-                                        <i class="fas fa-image    "></i>
-                                    </button>
+                                <div class="col-md-4 justify-content-center p-0">
+                                    <div class="container-fluid text-center">
+                                        <img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png"
+                                            class="rounded" width="80" height="80" alt="">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="anser" role="tabpanel" aria-labelledby="anser-tab">
-                                <div class="container-fluid">
-                                    <ul class="mt-3">
-                                        <li>
-                                            <div class="input-group-prepend mr-1">
-                                                <div class="input-group-text">
-                                                    <input type="checkbox"
-                                                        aria-label="Radio button for following text input">
+                            <div class="row justify-content-start">
+                                <div class="col-md-10 ">
+                                    <div class="container-fluid">
+                                        <ul class="choice">
+                                            <li>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="checkbox"
+                                                                aria-label="Checkbox for following text input">
+                                                        </div>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Text input with checkbox" placeholder="1.">
                                                 </div>
-                                            </div>
-                                            <dt><span> 1.</span> fsdfsdflksdfl;sd</dt>
-                                        </li>
-                                        <li>
-                                            <div class="input-group-prepend mr-1">
-                                                <div class="input-group-text">
-                                                    <input type="checkbox"
-                                                        aria-label="Radio button for following text input">
+                                            </li>
+                                            <li>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="checkbox"
+                                                                aria-label="Checkbox for following text input">
+                                                        </div>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Text input with checkbox" placeholder="2.">
                                                 </div>
-                                            </div>
-                                            <dt><span> 2.</span> fsdfsdflksdfl;sd</dt>
-                                        </li>
-                                        <li>
-                                            <div class="input-group-prepend mr-1">
-                                                <div class="input-group-text">
-                                                    <input type="checkbox"
-                                                        aria-label="Radio button for following text input">
+                                            </li>
+                                            <li>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="checkbox"
+                                                                aria-label="Checkbox for following text input">
+                                                        </div>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Text input with checkbox" placeholder="3.">
                                                 </div>
-                                            </div>
-                                            <dt><span> 3.</span> fsdfsdflksdfl;sd</dt>
-                                        </li>
-                                        <li>
-                                            <div class="input-group-prepend mr-1">
-                                                <div class="input-group-text">
-                                                    <input type="checkbox"
-                                                        aria-label="Radio button for following text input">
+                                            </li>
+                                            <li>
+                                                <div class="input-group mb-1">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="checkbox"
+                                                                aria-label="Checkbox for following text input">
+                                                        </div>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Text input with checkbox" placeholder="4.">
                                                 </div>
-                                            </div>
-                                            <dt><span> 4.</span> fsdfsdflksdfl;sd</dt>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="action" role="tabpanel" aria-labelledby="action-tab">
-                                <div class="container m-3">
-                                    <button class="btn btn-md btn-outline-warning"><i class="fas fa-edit"></i>
-                                        Edit</button>
-                                    <button class="btn btn-md btn-outline-danger"><i class="fa fa-trash"
-                                            aria-hidden="true"></i> Delete</button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
+
+            {{-- @if ($quiz->questions->count()>0)
+            @php
+            $i = 1;
+            @endphp
+            @foreach ($quiz->questions as $question)
+            <div class="col-md-4">
+                <article class="q-card">
+                    <p class="card__header-meta">{{$i++}}.</p>
+            <div class="q-card_body">
+                <ul class="nav nav-tabs" id="myTab_{{$question->id}}" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="overview-tab_{{$question->id}}" data-toggle="tab"
+                            href="#overview_{{$question->id}}" role="tab" aria-controls="overview_{{$question->id}}"
+                            aria-selected="true">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="anser-tab_{{$question->id}}" data-toggle="tab"
+                            href="#anser_{{$question->id}}" role="tab" aria-controls="anser_{{$question->id}}"
+                            aria-selected="false">Anser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="action-tab_{{$question->id}}" data-toggle="tab"
+                            href="#action_{{$question->id}}" role="tab" aria-controls="action_{{$question->id}}"
+                            aria-selected="false">Action</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent_{{$question->id}}">
+                    <div class="tab-pane fade show active overview" id="overview_{{$question->id}}" role="tabpanel"
+                        aria-labelledby="overview-tab_{{$question->id}}">
+                        <div class="container-fluid text-overview">
+                            <p class="lead">
+                                {{$question->name}}
+                            </p>
+                        </div>
+                        <div class="text-center mt-2">
+                            <button class="btn btn-sm btn-outline-info">
+                                <i class="fas fa-image    "></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="anser_{{$question->id}}" role="tabpanel"
+                        aria-labelledby="anser-tab_{{$question->id}}">
+                        <div class="container-fluid">
+
+                            @foreach ($question->answers as $answer)
+                            <ul class="mt-3">
+                                <li>
+                                    @php
+                                    $check = '';
+                                    if($answer->correct!=0){
+                                    $check = 'checked';
+                                    }
+                                    @endphp
+                                    <div class="input-group-prepend mr-1">
+                                        <div class="input-group-text">
+                                            <input type="radio" {{$check}} disabled
+                                                aria-label="Radio button for following text input">
+                                        </div>
+                                    </div>
+                                    <dt><span> {{$answer->order}}.</span> {{$answer->name}}</dt>
+                                </li>
+                            </ul>
+                            @endforeach
+
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="action_{{$question->id}}" role="tabpanel"
+                        aria-labelledby="action-tab_{{$question->id}}">
+                        <div class="container m-3">
+                            <button class="btn btn-md btn-outline-warning"><i class="fas fa-edit"></i>
+                                Edit</button>
+                            <button class="btn btn-md btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                                Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </article>
         </div>
+        @endforeach
+        @else
+        Nooooooo
+        @endif --}}
+
+
     </div>
+</div>
 </div>
 @endsection
 
 @section('modal')
-<div class="modal fade " id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+{{-- <div class="modal fade " id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Qiuz</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Create Question</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="ce-container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="create-quiz">
-                                    <div class="row mb-3">
-                                        <div class="col-md-12 row">
-                                            <label for="name-quiz" class="col-sm-2 col-form-label">name:</label>
-                                            <div class="col-md-8">
-                                                <input id="name-quiz" class="form-control" />
+                <form action="{{url('question')}}" method="post" id="question_form" enctype='multipart/form-data'>
+@csrf
+<input type="hidden" name="quiz_id" value="{{$quiz->id}}">
+<div class="ce-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="create-quiz">
+                <div class="row mb-3">
+                    <div class="col-md-12 row">
+                        <label for="name-quiz" class="col-sm-2 col-form-label">Question :</label>
+                        <div class="col-md-8">
+                            <textarea name="name" id="name-quiz" class="form-control">
+                                                    </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="offset-md-3 col-md-6">
+                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
+                            placeholder="Image">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <ul>
+                            <li>
+                                <div class="row">
+                                    <label for="answer[]" class="col-sm-2 col-form-label">1.</label>
+                                    <div class="col-sm-8">
+                                        <input name="answer[]" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group-prepend mr-1">
+                                            <div class="input-group-text">
+                                                <input type="radio" name="correct" value="1"
+                                                    aria-label="Radio button for following text input" required>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-5">
-                                        <div class="offset-md-6 col-md-6">
-                                            <input type="file">
-                                        </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <label for="answer[]" class="col-sm-2 col-form-label">2.</label>
+                                    <div class="col-md-8">
+                                        <input name="answer[]" type="text" class="form-control">
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <ul>
-                                                <li>
-                                                    <div class="row">
-                                                        <label for="name-quiz"
-                                                            class="col-sm-2 col-form-label">1.</label>
-                                                        <div class="col-sm-8">
-                                                            <input name="name-quiz" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group-prepend mr-1">
-                                                                <div class="input-group-text">
-                                                                    <input type="checkbox"
-                                                                        aria-label="Radio button for following text input">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="row">
-                                                        <label for="name-quiz"
-                                                            class="col-sm-2 col-form-label">2.</label>
-                                                        <div class="col-md-8">
-                                                            <input name="name-quiz" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group-prepend mr-1">
-                                                                <div class="input-group-text">
-                                                                    <input type="checkbox"
-                                                                        aria-label="Radio button for following text input">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="row">
-                                                        <label for="name-quiz"
-                                                            class="col-sm-2 col-form-label">3.</label>
-                                                        <div class="col-md-8">
-                                                            <input name="name-quiz" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group-prepend mr-1">
-                                                                <div class="input-group-text">
-                                                                    <input type="checkbox"
-                                                                        aria-label="Radio button for following text input">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="row">
-                                                        <label for="name-quiz"
-                                                            class="col-sm-2 col-form-label">4.</label>
-                                                        <div class="col-md-8">
-                                                            <input name="name-quiz" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group-prepend mr-1">
-                                                                <div class="input-group-text">
-                                                                    <input type="checkbox"
-                                                                        aria-label="Radio button for following text input">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                    <div class="col-md-2">
+                                        <div class="input-group-prepend mr-1">
+                                            <div class="input-group-text">
+                                                <input type="radio" name="correct" value="2"
+                                                    aria-label="Radio button for following text input">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <label for="answer[]" class="col-sm-2 col-form-label">3.</label>
+                                    <div class="col-md-8">
+                                        <input name="answer[]" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group-prepend mr-1">
+                                            <div class="input-group-text">
+                                                <input type="radio" name="correct" value="3"
+                                                    aria-label="Radio button for following text input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <label for="answer[]" class="col-sm-2 col-form-label">4.</label>
+                                    <div class="col-md-8">
+                                        <input name="answer[]" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group-prepend mr-1">
+                                            <div class="input-group-text">
+                                                <input type="radio" name="correct" value="4"
+                                                    aria-label="Radio button for following text input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="course_form">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div id="div_modal"></div>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+    });
+
+    function edit_question(id) {
+        $.ajax({
+                type: "post",
+                url: "{{url('question/modal/edit')}}",
+                data: {id :id},
+                dataType: "html",
+                success: function (response) {
+                $('#div_modal').html(response);
+                $('#Edit_question_Modal').modal("show");
+                }
+            });
+    }
+    </script>
 @endsection

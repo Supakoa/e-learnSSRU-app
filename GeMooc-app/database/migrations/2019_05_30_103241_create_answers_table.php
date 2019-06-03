@@ -16,9 +16,9 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('correct');
+            $table->integer('correct')->default(0);
             // $table->text('image')->nullable();
-            $table->integer('show');
+            $table->integer('show')->default(1);
             $table->integer('order');
             $table->unsignedbigInteger('question_id');
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
@@ -43,7 +43,7 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
         Schema::dropIfExists('user_answer');
+        Schema::dropIfExists('answers');
     }
 }

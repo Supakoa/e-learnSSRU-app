@@ -176,6 +176,16 @@
 
             $('button[type=submit]').attr('disabled','');
         });
+        $('.send_ajax').click(function (e) {
+            var btn = $(this);
+            btn.prop('disabled',true);
+            setTimeout(function(){
+                btn.prop('disabled',false);
+            },1000);
+
+            // alert("123");
+         });
+
     </script>
     @yield('js')
 </body>

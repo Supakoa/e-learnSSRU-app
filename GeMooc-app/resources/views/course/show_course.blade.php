@@ -22,7 +22,7 @@
         <div class="ce-card-btn">
             <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
                     class="fas fa-folder-plus"></i> </button>
-            <button href="#" class="btn btn-md btn-outline-warning" onclick="edit_course('{{$course->id}}')"> <i
+            <button href="#" class="btn btn-md btn-outline-warning send_ajax " onclick="edit_course('{{$course->id}}')"> <i
                     class="fas fa-cog"></i></button>
         </div>
     </div>
