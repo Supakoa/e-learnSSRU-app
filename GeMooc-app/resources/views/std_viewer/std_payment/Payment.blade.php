@@ -1,7 +1,4 @@
-@extends('layouts.appViewer')
+@extends('std_viewer.std_home.index')
 
-@section('content')
-<h1>
-    Payment page.
-</h1>
+@section('content.payment')
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.appViewer')
 
 @section('content')
-<div class="ce-card">
+<div class="card ce-card">
     <h1 class="ce-name">some course</h1>
     <div class="ce-container">
         <div class="row justify-content-center mb-5">
