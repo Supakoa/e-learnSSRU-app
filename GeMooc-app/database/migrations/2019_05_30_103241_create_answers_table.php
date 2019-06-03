@@ -43,7 +43,7 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
         Schema::dropIfExists('user_answer');
+        Schema::dropIfExists('answers');
     }
 }
