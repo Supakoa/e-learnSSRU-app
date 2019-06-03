@@ -76,7 +76,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="sub_btn">Save changes</button>
+                <button type="submit" form="sub_form" class="btn btn-primary "  id="sub_btn">Save changes</button>
             </div>
         </div>
     </div>
@@ -92,10 +92,10 @@
 @endsection
 @section('js')
 <script>
-    $('#sub_btn').click(function (e) {
-        e.preventDefault();
-        $('#sub_form').submit();
-    });
+    // $('#sub_btn').click(function (e) {
+    //     e.preventDefault();
+    //     $('#sub_form').submit();
+    // });
 
     function edit_subject(sub) {
         check = ''

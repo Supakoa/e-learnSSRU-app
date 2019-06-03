@@ -168,7 +168,10 @@
         function goBack() {
             window.history.back();
         }
+        $('form').submit(function (e) {
 
+            $('button[type=submit]').attr('disabled','');
+        });
     </script>
     @yield('js')
 </body>
