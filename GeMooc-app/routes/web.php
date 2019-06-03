@@ -80,6 +80,8 @@ Route::resource('/lesson', 'lesson_c');
 Route::resource('/content', 'content_c');
 Route::resource('/article', 'articleController');
 Route::resource('/quiz', 'quizController');
+Route::resource('/question', 'questionController');
+
 
 
 
