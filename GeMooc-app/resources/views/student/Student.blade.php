@@ -18,14 +18,24 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Major</th>
-                    <th>Teach</th>
+                    <th>Password</th>
+                    <th>Email</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($user as $users)
                 <tr>
+
+                    {{--
+                        send form id to delete record.
+                    --}}
+                    <form action="/student/{{ $users->id }}" id="formDelete" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="id" id="id" value="{{ $users->id }}">
+                    </form>
+
                     <td>{{ $users->name }}</td>
                     <td>{{ $users->password }}</td>
                     <td>{{ $users->email }}</td>
@@ -42,8 +52,8 @@
 @endsection
 
 {{--
-        modal create new teach
-    --}}
+    modal create new teach.
+--}}
 <div class="modal fade" id="createNewTeach">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -74,29 +84,22 @@
 
 @section('js')
 <script>
+    /**
+        function when onclick will delete with id.
+    */
     const deleteStudent = (obj) => {
         Swal.fire({
-        title: 'ยืนยันการลบ?',
-        text: "ข้อมูลจะถูกลบออกจากฐานข้อมูล",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'ลบ',
-        cancelButtonText: 'ยกเลิก',
+            title: 'ยืนยันการลบ?',
+            text: "ข้อมูลจะถูกลบออกจากฐานข้อมูล",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ลบ',
+            cancelButtonText: 'ยกเลิก',
         }).then((result) => {
             if (result.value) {
-                // var token = $("meta[name='csrf-token']").attr("content");
-                $.ajax(
-                    {
-                        type: "DELETE",
-                        url: "student/"+obj,
-                        data: {id:obj},
-                        function (data, textStatus, jqXHR) {
-                            console.log('success');
-                        },
-                    }
-                );
+                $('#formDelete').submit();
             }
         });
     };

@@ -43,9 +43,18 @@ class teach extends Controller
         //     'password' => Hash::make($data['password']),
         // ]);
 
-        $user = DB::table('users')->where('type_user','teach')->get();
+        return redirect('/teach');
+    }
 
-        return view('teach.teach',compact('user'));
+    public function deleteStudent()
+    {
+        $data = request()->validate([
+            'id' => 'required',
+        ]);
+
+        $result = DB::table('users')->where('id', '=', $data['id'])->delete();
+
+        return redirect('/teach');
     }
 
 }

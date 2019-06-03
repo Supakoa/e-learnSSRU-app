@@ -31,21 +31,19 @@ class student extends Controller
         ]);
 
 
-        $user = DB::table('users')->where('type_user','student')->get();
-
-        return view('teach.teach',compact('user'));
+        return redirect('/student');
 
     }
 
     public function deleteStudent()
     {
-        $data = 'a';
+        $data = request()->validate([
+            'id' => 'required',
+        ]);
 
-        $user = DB::table('users')->where('type_user','student')->get();
+        $result = DB::table('users')->where('id', '=', $data['id'])->delete();
 
-        dd($user);
-
-        return view('teach.teach',compact('user'));
+        return redirect('/student');
     }
 
 }

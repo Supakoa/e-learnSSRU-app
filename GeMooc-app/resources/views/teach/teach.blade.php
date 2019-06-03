@@ -19,19 +19,29 @@
                 <tr>
                     <th>Username</th>
                     <th>Password</th>
-                    <th>e-mail</th>
+                    <th>Email</th>
                     <th>Modify</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($user as $user)
                 <tr>
+
+                    {{--
+                        send form id to delete record.
+                    --}}
+                    <form action="/teach/{{ $user->id }}" id="formDelete" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="id" id="id" value="{{ $user->id }}">
+                    </form>
+
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->password }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
                         <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                        <button onclick="deleteStudent({{$user->id}})" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 @endforeach
@@ -75,6 +85,27 @@
 
 @section('js')
 <script>
+
+    /**
+        function when onclick will delete with id.
+    */
+    const deleteStudent = (obj) => {
+        Swal.fire({
+            title: 'ยืนยันการลบ?',
+            text: "ข้อมูลจะถูกลบออกจากฐานข้อมูล",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ลบ',
+            cancelButtonText: 'ยกเลิก',
+        }).then((result) => {
+            if (result.value) {
+                $('#formDelete').submit();
+            }
+        });
+    };
+
     $(document).ready(function () {
         $('#teachTable').DataTable();
     });
