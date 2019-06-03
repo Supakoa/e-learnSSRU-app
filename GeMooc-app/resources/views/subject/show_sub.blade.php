@@ -12,7 +12,7 @@
             <div class="ce-card-btn">
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
                 {{-- <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button> --}}
-                <button class="btn btn-outline-warning" onclick="edit_subject({{$sub->id}})">Edit</button>
+                <button class="btn btn-outline-warning send_ajax" onclick="edit_subject({{$sub->id}})">Edit</button>
             </div>
         </div>
 
@@ -22,8 +22,8 @@
             <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
                     <div class="ce-body-cog">
-                        <a href="#" class="ce-cog-btn" onclick="edit_course({{$course->id}})"><i
-                                class="fas fa-cogs"></i></a>
+                        <button class="ce-cog-btn btn btn-link send_ajax" onclick="edit_course({{$course->id}})"><i
+                                class="fas fa-cogs"></i></button>
                         <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
                     </div>
                     <div class="card-body">

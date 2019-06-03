@@ -121,4 +121,10 @@ class QuestionController extends Controller
     {
         //
     }
+    public function modal_edit(Request $request)
+    {
+         $id = $request->id;
+         $question = question::find($id);
+         return view('question.modal.edit')->with('question', $question);
+    }
 }

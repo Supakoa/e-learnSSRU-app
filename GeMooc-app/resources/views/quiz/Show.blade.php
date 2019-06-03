@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="tab-pane fade" id="action_{{$question->id}}" role="tabpanel" aria-labelledby="action-tab_{{$question->id}}">
                                             <div class="container m-3">
-                                                <button class="btn btn-md btn-outline-warning"><i class="fas fa-edit"></i>
+                                                <button class="btn btn-md btn-outline-warning send_ajax" onclick="edit_question({{$question->id}})"><i class="fas fa-edit"></i>
                                                     Edit</button>
                                                 <button class="btn btn-md btn-outline-danger"><i class="fa fa-trash"
                                                         aria-hidden="true"></i> Delete</button>
@@ -222,4 +222,31 @@
         </div>
     </div>
 </div>
+<div id="div_modal"></div>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+    });
+
+    function edit_question(id) {
+        $.ajax({
+                type: "post",
+                url: "{{url('question/modal/edit')}}",
+                data: {id :id},
+                dataType: "html",
+                success: function (response) {
+                $('#div_modal').html(response);
+                $('#Edit_question_Modal').modal("show");
+                }
+            });
+    }
+    </script>
 @endsection
