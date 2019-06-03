@@ -24,8 +24,15 @@ Route::get('/test', 'test_sumernote@index');
  */
 Route::get('/teach', 'teach@Teach');
 Route::post('/teach/create', 'teach@createTeach');
+Route::delete('/teach/{user}', 'teach@deleteStudent');
 
+/**
+ * Route Student
+ */
 Route::get('/student', 'student@Student');
+Route::post('student/create', 'student@createStudent');
+Route::delete('student/{user}', 'student@deleteStudent');
+
 Route::get('/payment-setting', 'payment@Home');
 Route::get('/report', 'Report@index');
 
@@ -84,3 +91,8 @@ Route::resource('/quiz', 'quizController');
 // });
 // Dashboard
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+Route::post('subject/modal/edit','subject_c@modal_edit');
+Route::post('course/modal/edit','course_c@modal_edit');
+
+

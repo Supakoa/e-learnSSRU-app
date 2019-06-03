@@ -181,26 +181,15 @@ class subject_c extends Controller
     {
         //
         $subject = sub::find($id);
-        $courses = $subject->courses;
-        foreach($courses as $course){
-            $lessons = $course->lessons;
-            foreach ($lessons as $lesson) {
-                $contents = $lesson->contents;
-                foreach ($contents as $content) {
-                    if($content->type == '1'){
-
-                    }elseif($content->type == '2'){
-                        $content->article->delete();
-                    }else{
-                        $content->quiz->delete();
-                    }
-                    $content->delete();
-                }
-                $lesson->delete();
-            }
-            $course->delete();
-        }
         $subject->delete();
         return redirect('/subject')->with('success', 'Subject Deleted');
+
     }
+
+   public function modal_edit(Request $request)
+   {
+        $id = $request->id;
+        $subject = sub::find($id);
+        return view('subject.modal.edit')->with('sub', $subject);
+   }
 }

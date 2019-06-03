@@ -109,18 +109,7 @@ class lesson_c extends Controller
     public function destroy($id)
     {
         $lesson = lesson::find($id);
-        $contents = $lesson->contents;
         $course = $lesson->course;
-        foreach ($contents as $content) {
-            if($content->type == '1'){
-
-            }elseif($content->type == '2'){
-                $content->article->delete();
-            }else{
-                $content->quiz->delete();
-            }
-            $content->delete();
-        }
         $lesson->delete();
         return redirect('/course/'.$course->id)->with('success', 'Lesson Deleted');
 
