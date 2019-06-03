@@ -20,18 +20,12 @@ Route::get('/home', 'HomeController@index')->name('dashboard.home');
 Route::get('/test', 'test_sumernote@index');
 
 /**
- * Route teach ..
- */
-Route::get('/teach', 'teach@Teach');
-Route::post('/teach/create', 'teach@createTeach');
-Route::delete('/teach/{user}', 'teach@deleteStudent');
-
-/**
  * Route Student
  */
 Route::get('/student', 'student@Student');
 Route::post('student/create', 'student@createStudent');
 Route::delete('student/{user}', 'student@deleteStudent');
+
 
 Route::get('/payment-setting', 'payment@Home');
 Route::get('/report', 'Report@index');
@@ -65,16 +59,27 @@ Route::post('ajaximage_delete', function(){
 
 // Route::get('test', function ($id) {
 
-// Route::get('/subject', '');
-
+/**
+* Route Sub
+*/
 Route::resource('/subject', 'subject_c');
+Route::post('subject/modal/edit','subject_c@modal_edit');
+
+// Resource controller
 Route::resource('/course', 'course_c');
 Route::resource('/lesson', 'lesson_c');
 Route::resource('/content', 'content_c');
 Route::resource('/article', 'articleController');
 Route::resource('/quiz', 'quizController');
+Route::resource('/teach', 'teachController');
 
-
+/**
+ * Route teach
+ */
+// Route::get('/teach', 'teach@Teach');
+// Route::post('/teach/create', 'teach@createTeach');
+// Route::delete('/teach/{user}', 'teach@deleteTeach');
+Route::post('teach/{user}/editModal', 'teachController@edit');
 
 // Administrator & SuperAdministrator Control Panel Routes
 // Route::group(['middleware' => ['role:administrator']], function () {
@@ -85,7 +90,7 @@ Route::resource('/quiz', 'quizController');
 // Dashboard
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-Route::post('subject/modal/edit','subject_c@modal_edit');
+
 Route::post('course/modal/edit','course_c@modal_edit');
 
 

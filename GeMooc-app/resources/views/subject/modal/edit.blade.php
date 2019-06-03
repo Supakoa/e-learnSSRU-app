@@ -69,12 +69,14 @@
         </div>
     </div>
 </div>
+
 <div id="div_delete">
         <form action="{{url('subject/'.$sub->id)}}" method="post" id='form_del_Subject'>
             @csrf
             @method('DELETE')
         </form>
 </div>
+
 <script>
 
 function delete_subject(id){
