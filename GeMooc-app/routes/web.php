@@ -84,6 +84,7 @@ Route::resource('/quiz', 'quizController');
 // Dashboard
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-
+Route::post('subject/modal/edit','subject_c@modal_edit');
+Route::post('course/modal/edit','course_c@modal_edit');
 
 
