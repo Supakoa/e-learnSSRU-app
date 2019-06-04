@@ -64,30 +64,35 @@
 
                             </div>
                             <div class="row justify-content-start">
-                                <div class="col-md-10 offset-1">
+                                <div class="col-md-10 mt-4 offset-1">
                                     <div class="container-fluid">
-                                        @foreach ($question->answers as $answer)
-                                        <li>
-                                            @php
-                                            $check = '';
-                                            if($answer->correct!=0){
-                                            $check = 'checked';
-                                            }
-                                            @endphp
+                                        <div class="row">
+                                            @foreach ($question->answers as $answer)
+                                            <div class="col-6">
+                                                <li>
+                                                    @php
+                                                    $check = '';
+                                                    if($answer->correct!=0){
+                                                    $check = 'checked';
+                                                    }
+                                                    @endphp
 
-                                            <div class="input-group mb-1">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">
-                                                        <input type="radio" {{$check}} disabled
-                                                            aria-label="Checkbox for following text input">
+                                                    <div class="input-group mb-1">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <input type="radio" {{$check}} disabled
+                                                                    aria-label="Checkbox for following text input">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" disabled class="form-control"
+                                                            aria-label="Text input with checkbox" placeholder=""
+                                                            value="{{$answer->order}}. {{$answer->name}}">
                                                     </div>
-                                                </div>
-                                                <input type="text" disabled class="form-control"
-                                                    aria-label="Text input with checkbox" placeholder=""
-                                                    value="{{$answer->order}}. {{$answer->name}}">
+
+                                                </li>
                                             </div>
-                                        </li>
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -283,11 +288,16 @@
 
     $('.q-card').mouseenter(function () {
         thiscard = $(this);
-        thiscard.css('background-color', "#ebf3faef");
+        thiscard.css('background-color', "#ebf3faf9");
+        // thiscard.css('filter', 'blur(10px)');
+
     });
     $('.q-card').mouseleave(function () {
         thiscard = $(this);
         thiscard.css('background-color', '#dceaf8a4');
+        // thiscard.css('filter', 'blur(0px)');
+
+
     });
 
 </script>
