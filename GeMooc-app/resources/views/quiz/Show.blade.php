@@ -13,99 +13,100 @@
                     class="fas fa-folder-plus"></i> </button>
         </div>
     </div>
-    <div class="container">
-        <div class="ce-container">
-            <div class="row mb-5">
-                {{-- demo --}}
-                @if ($quiz->questions->count()>0)
-                @php
-                $i = 1;
-                @endphp
-                @foreach ($quiz->questions as $index=>$question)
-                <div class="col-md-12 mb-5">
-                    <article class="q-card" >
-                        <h5 class="card__header-meta ml-2">#{{$index+1}}</h5>
-                        <div class="q-card_body">
-                            <div class="row justify-content-end">
-                                <div class="ce-card-btn">
-                                    <button class="btn btn-md btn-outline-warning sent_ajax"
-                                        onclick="edit_question({{$question->id}})"> <i class="fas fa-cog"></i></button>
-                                    <button href="#" class="btn btn-md btn-outline-danger"> <i class="fa fa-trash"
-                                            aria-hidden="true"></i> </button>
-                                </div>
+    <div class="ce-container">
+        <div class="row mb-5">
+            {{-- demo --}}
+            @if ($quiz->questions->count()>0)
+            @php
+            $i = 1;
+            @endphp
+            @foreach ($quiz->questions as $index=>$question)
+            <div class="col-md-12 mb-5">
+                <article class="q-card">
+                    <h5 class="card__header-meta ml-2">#{{$index+1}}</h5>
+                    <div class="q-card_body">
+                        <div class="row justify-content-end">
+                            <div class="ce-card-btn">
+                                <button class="btn btn-md btn-outline-warning sent_ajax"
+                                    onclick="edit_question({{$question->id}})"> <i class="fas fa-cog"></i></button>
+                                <button onclick="delete_question({{$question->id}})"
+                                    class="btn btn-md btn-outline-danger"> <i class="fa fa-trash"
+                                        aria-hidden="true"></i> </button>
                             </div>
-                            <div class="container-fluid">
-                                <div class="row mb-1 justify-content-start">
-                                    @if ($question->image!=null)
-                                    <div class="col-md-7 offset-1">
-                                        <div class="container-fluid">
-                                            <dd>
-                                                <textarea class="form-control mb-2"
-                                                    style="width:100%;height:150px;background: transparent;border: none;"
-                                                    disabled>{!!$question->name!!}</textarea>
-                                            </dd>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="container-fluid text-right">
-                                            <img src="{{url('storage/'.$question->image)}}" class="rounded" width="auto"
-                                                height="150" alt="">
-                                        </div>
-                                    </div>
-                                    @else
-                                    <div class="col-md-10 offset-1">
-                                        <div class="container-fluid">
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row mb-1 ">
+                                @if ($question->image!=null)
+                                <div class="col-md-6 offset-1">
+                                    <div class="container-fluid">
+                                        <dd>
                                             <textarea class="form-control mb-2"
                                                 style="width:100%;height:150px;background: transparent;border: none;"
                                                 disabled>{!!$question->name!!}</textarea>
-                                        </div>
+                                        </dd>
                                     </div>
-                                    @endif
-
                                 </div>
-                                <div class="row justify-content-start">
-                                    <div class="col-md-10 offset-1">
-                                        <div class="container-fluid">
-                                            @foreach ($question->answers as $answer)
-                                            <li>
-                                                @php
-                                                $check = '';
-                                                if($answer->correct!=0){
-                                                $check = 'checked';
-                                                }
-                                                @endphp
+                                <div class="col-md-4 align-self-center text-right">
+                                    <div class="container-fluid">
+                                        <img src="{{url('storage/'.$question->image)}}" class="rounded" width="auto"
+                                            height="auto" style="max-width: 100%;max-height: 150px" alt="">
+                                    </div>
+                                </div>
+                                @else
+                                <div class="col-md-10 offset-1">
+                                    <div class="container-fluid">
+                                        <textarea class="form-control mb-2"
+                                            style="width:100%;height:150px;background: transparent;border: none;"
+                                            disabled>{!!$question->name!!}</textarea>
+                                    </div>
+                                </div>
+                                @endif
 
-                                                <div class="input-group mb-1">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">
-                                                            <input type="radio" {{$check}} disabled
-                                                                aria-label="Checkbox for following text input">
-                                                        </div>
+                            </div>
+                            <div class="row justify-content-start">
+                                <div class="col-md-10 offset-1">
+                                    <div class="container-fluid">
+                                        @foreach ($question->answers as $answer)
+                                        <li>
+                                            @php
+                                            $check = '';
+                                            if($answer->correct!=0){
+                                            $check = 'checked';
+                                            }
+                                            @endphp
+
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="radio" {{$check}} disabled
+                                                            aria-label="Checkbox for following text input">
                                                     </div>
-                                                    <input type="text" disabled class="form-control"
-                                                        aria-label="Text input with checkbox" placeholder=""
-                                                        value="{{$answer->order}}. {{$answer->name}}">
                                                 </div>
-                                            </li>
-                                            @endforeach
-                                        </div>
+                                                <input type="text" disabled class="form-control"
+                                                    aria-label="Text input with checkbox" placeholder=""
+                                                    value="{{$answer->order}}. {{$answer->name}}">
+                                            </div>
+                                        </li>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </article>
-                </div>
-                @endforeach
-                @else
-                Nooooooo
-                @endif
+                    </div>
+                </article>
             </div>
+            @endforeach
+            @else
+            Nooooooo
+            @endif
         </div>
     </div>
 </div>
+
 @endsection
 
 @section('modal')
+<div id="div_del"></div>
 <div class="modal fade " id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -252,18 +253,42 @@
             }
         });
     }
-    var tempcolor;
+
+    function delete_question(id) {
+        form = `<form action="{{url('question/` + id + `')}}" method="post" id='form_del_qusetion'>
+            @csrf
+            @method('DELETE')
+        </form>`
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "All Everyting in Question will be deleted as well. (ต้องแก้คำมั้ง)",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                $('#div_del').html(form);
+                $('#form_del_qusetion').submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        });
+        div_del
+    }
+
     $('.q-card').mouseenter(function () {
         thiscard = $(this);
-        tempcolor = thiscard.css('background-color');
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-        thiscard.css('background-color',"#ebf3faef");
+        thiscard.css('background-color', "#ebf3faef");
     });
     $('.q-card').mouseleave(function () {
         thiscard = $(this);
-        thiscard.css('background-color','#dceaf8a4');
+        thiscard.css('background-color', '#dceaf8a4');
     });
-
 
 </script>
 @endsection

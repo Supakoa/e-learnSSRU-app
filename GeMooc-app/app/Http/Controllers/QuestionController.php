@@ -108,7 +108,41 @@ class QuestionController extends Controller
      */
     public function update(Request $request, question $question)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'cover_image' => 'image|nullable|max:10000'
+
+        ]) ;
+        if($request->hasFile('cover_image')){
+            $imagePath = request('cover_image')->store('question_img','public');
+            $image = Image::make(public_path("storage/{$imagePath}"));
+            // dd($image);
+            $image->save();
+            $question->image =  $imagePath;
+        }
+        // Create question
+
+        $question->name = $request->input('name');
+        $question->save();
+
+        $i = 1;
+        $answers_new =$request->input('answer');
+        foreach ($question->answers as $key => $answer) {
+            $answer->name = $answers_new[$key];
+            if($key+1==$request->input('correct')){
+                $answer->correct = 1;
+            }else{
+                $answer->correct = 0;
+            }
+            $answer->save();
+        }
+
+
+        // $now = new adjust;
+        // $now->user_id = auth()->user()->id;
+        // $now->detail = "Create question : ID ====> || ".$question->id." ||";
+        // $now->save();
+        return redirect('/quiz/'.$question->quiz->id)->with('success', 'Question Updated');
     }
 
     /**
@@ -119,7 +153,9 @@ class QuestionController extends Controller
      */
     public function destroy(question $question)
     {
-        //
+        $id = $question->quiz->id;
+        $question->delete();
+        return redirect('/quiz/'.$id)->with('success', 'Question Updated');
     }
     public function modal_edit(Request $request)
     {
