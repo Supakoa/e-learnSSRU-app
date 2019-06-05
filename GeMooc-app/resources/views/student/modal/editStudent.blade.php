@@ -1,12 +1,12 @@
 
-<div class="modal fade" id="editTeach">
+<div class="modal fade" id="editStudent">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>edit teach user</h1>
+                <h1>edit Student user</h1>
             </div>
             <div class="modal-body">
-                <form action="/teach/{{ $user->id }}" id="formEditTeach" enctype="multipart/form-data" method="POST">
+                <form action="/student/{{ $user->id }}" id="formEditStudent" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('PATCH')
 
@@ -24,7 +24,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button form="formEditTeach" type="submit" class="btn btn-warning">save</button>
+                <button form="formEditStudent" type="submit" class="btn btn-warning">save</button>
             </div>
         </div>
     </div>

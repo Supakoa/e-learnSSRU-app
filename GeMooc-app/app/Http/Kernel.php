@@ -63,9 +63,10 @@ class Kernel extends HttpKernel
         /**
          * laratrust implement
          */
-        'role' => \Laratrust\Middleware\LaratrustRole::class,
-        'permission' => \Laratrust\Middleware\LaratrustPermission::class,
-        'ability' => \Laratrust\Middleware\LaratrustAbility::class,
+        // 'role' => \Laratrust\Middleware\LaratrustRole::class,
+        // 'permission' => \Laratrust\Middleware\LaratrustPermission::class,
+        // 'ability' => \Laratrust\Middleware\LaratrustAbility::class,
+        'student' => \App\Http\Middleware\stuentGetout::class,
     ];
 
     /**

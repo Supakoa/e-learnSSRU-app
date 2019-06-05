@@ -2,7 +2,7 @@
 @section('content')
 <div class="card ce-card">
     <h1 class="ce-name">Student Table</h1>
-    <button class="btn btn-outline-success mb-1" data-toggle="modal" data-target="#createNewTeach"><strong>create
+    <button class="btn btn-outline-success mb-1" data-toggle="modal" data-target="#createNewStudent"><strong>create
             new
             user</strong></button>
     <div class="ce-container table-responsive">
@@ -30,7 +30,7 @@
                     {{--
                         send form id to delete record.
                     --}}
-                    <form action="/student/{{ $users->id }}" id="formDelete" method="post">
+                    <form action="/student/{{ $users->id }}" id="formDelete{{ $users->id }}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="id" id="id" value="{{ $users->id }}">
@@ -40,7 +40,7 @@
                     <td>{{ $users->password }}</td>
                     <td>{{ $users->email }}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
+                        <button onclick="openEditModal({{$users->id}})" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
                         <button onclick="deleteStudent({{$users->id}})" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
@@ -55,15 +55,17 @@
     modal create new teach
 --}}
 @section('modal')
-<div class="modal fade" id="createNewTeach">
+<div class="modal fade" id="createNewStudent">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1>create new user</h1>
                 </div>
                 <div class="modal-body">
-                    <form action="/student/create" id="create" enctype="multipart/form-data" method="POST">
+                    <form action="/student/create" id="createStudent" enctype="multipart/form-data" method="POST">
                         @csrf
+                        @method('GET')
+
                         <p>Username</p>
                         <input class="form-control mb-1" type="text" name="username" id="username">
                         <p>Password</p>
@@ -77,16 +79,28 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button form="create" type="submit" class="btn btn-warning">create</button>
+                    <button form="createStudent" type="submit" class="btn btn-warning">create</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="" id="tmpModalToHere"></div>
+
 @endsection
 
 
 @section('js')
 <script>
+
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
     /**
         function when onclick will delete with id.
     */
@@ -102,10 +116,26 @@
             cancelButtonText: 'ยกเลิก',
         }).then((result) => {
             if (result.value) {
-                $('#formDelete').submit();
+                $('#formDelete'+obj).submit();
             }
         });
     };
+
+    /**
+        open modal
+    */
+    const openEditModal = (id) => {
+        alert(id);
+        $.post("/student/"+id+"/editModal", {id:id},
+            function (response, textStatus, jqXHR) {
+                $('#tmpModalToHere').html(response);
+                $('#editStudent').modal('show');
+            }
+        ).then((result)=> {
+            $('#tmpModalToHere').html(response);
+            $('#editStudent').modal('show');
+        });
+    }
 
     $(document).ready(function () {
         $('#studentTable').DataTable();
