@@ -35,6 +35,8 @@ Route::get('/quiz/edit', function(){
 });
 
 Route::get('/std_view/course/quiz', 'Std_viewer@Std_quiz');
+Route::get('/std_view/course/quiz/dashboard', 'Std_viewer@Std_quizDashboard');
+
 Route::get('/std_view/home', 'Std_viewer@Std_home');
 Route::get('/std_view/subject', 'Std_viewer@Std_subject');
 Route::get('/std_view/showcourse', 'Std_viewer@Std_showcourse');
