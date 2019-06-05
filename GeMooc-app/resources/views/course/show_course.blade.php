@@ -18,14 +18,21 @@
     <h1 class="ce-name">
         Course : {{$course->name}}
     </h1>
-    <div class="row justify-content-end mb-3">
-        <div class="ce-card-btn">
-            <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
-                    class="fas fa-folder-plus"></i> </button>
-            <button href="#" class="btn btn-md btn-outline-warning send_ajax " onclick="edit_course('{{$course->id}}')"> <i
-                    class="fas fa-cog"></i></button>
+        <div class="row mb-3">
+            <div class="col-md-2 text-left">
+                <button href="#" class="btn btn-md btn-outline-success btn-block">
+                    <i class="fas fa-users"></i> Teacher
+                </button>
+            </div>
+            <div class="col-md-10 text-right">
+                <div class="ce-card-btn">
+                    <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal"
+                        data-target="#Add_Modal"> <i class="fas fa-folder-plus"></i> </button>
+                    <button href="#" class="btn btn-md btn-outline-warning send_ajax "
+                        onclick="edit_course('{{$course->id}}')"> <i class="fas fa-cog"></i></button>
+                </div>
+            </div>
         </div>
-    </div>
     <div class="row ce-container">
         <div class="col-md-12">
             @if ($lessons->count() > 0)
@@ -251,7 +258,7 @@
 
 @section('js')
 <script>
-     $(document).ready(function () {
+    $(document).ready(function () {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -259,6 +266,7 @@
         });
 
     });
+
     function add_content(lesson) {
         $('#lesson_id').val(lesson.id);
         $('#add_content_header').html('Create Content : ' + lesson.name);
@@ -306,15 +314,18 @@
 
     function edit_course(id) {
         $.ajax({
-                type: "post",
-                url: "{{url('course/modal/edit')}}",
-                data: {id :id},
-                dataType: "html",
-                success: function (response) {
+            type: "post",
+            url: "{{url('course/modal/edit')}}",
+            data: {
+                id: id
+            },
+            dataType: "html",
+            success: function (response) {
                 $('#div_modal').html(response);
                 $('#Edit_Course_Modal').modal("show");
-                }
-            });
+            }
+        });
     }
+
 </script>
 @endsection

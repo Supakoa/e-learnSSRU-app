@@ -9,11 +9,15 @@ use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait;
+    // use LaratrustUserTrait;
     use Notifiable;
 
     /** Laratrust */
-    use LaratrustUserTrait; // เรียกใช้ trait
+    // use LaratrustUserTrait; // เรียกใช้ trait
+
+    public function canInside(){
+        return $this->type_user == 'admin' || $this->type_user == 'teach';
+    }
 
     /**
      * The attributes that are mass assignable.

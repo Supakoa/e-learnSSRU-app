@@ -60,7 +60,7 @@ class teachController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -97,7 +97,15 @@ class teachController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = request()->validate([
+            'username' => 'required',
+            'email' => 'required',
+        ]);
+        $user = User::find($id);
+        $user->name = $data['username'];
+        $user->email = $data['email'];
+        $user->save();
+        return redirect('/teach');
     }
 
     /**
@@ -108,11 +116,8 @@ class teachController extends Controller
      */
     public function destroy($id)
     {
-        $data = request()->validate([
-            'id' => 'required',
-        ]);
 
-        $result = DB::table('users')->where('id', '=', $data['id'])->delete();
+        $result = DB::table('users')->where('id', '=', $id)->delete();
 
         return redirect('/teach');
     }
