@@ -27,9 +27,6 @@ Route::get('/report', 'Report@index')->middleware('student');
 Route::get('/quiz/show', function () {
     return view('quiz.Show');
 });
-Route::get('/course/user', function(){
-    return view('course.Add_staff');
-    });
 Route::get('/quiz/edit', function(){
     return view('quiz.Edit');
 });
@@ -80,6 +77,10 @@ Route::resource('/teach', 'teachController')->middleware('student');
 Route::resource('/question', 'questionController')->middleware('student');
 Route::resource('/student', 'studentController')->middleware('student');
 
+/**
+ * Route course
+ */
+Route::get('/course/{course}/users','course_c@users');
 
 /**
  * Route teach
