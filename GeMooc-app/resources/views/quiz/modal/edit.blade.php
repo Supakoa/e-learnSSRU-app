@@ -15,7 +15,7 @@
                     <div class="ce-container">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="create-quiz">
+                                <div class="edit-quiz">
                                     <div class="row mb-3">
                                         <div class="col-md-12 row">
                                             <label for="name-quiz" class="col-sm-2 col-form-label">Question :</label>
@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <img src="/storage/{{$question->image}}" alt="" width="100%" srcset="">
+                                        <img src="/storage/{{$question->image}}" alt="" height="500px" width="auto" srcset="">
                                     </div>
                                     <div class="row mb-5">
                                         <div class="offset-md-3 col-md-6">
