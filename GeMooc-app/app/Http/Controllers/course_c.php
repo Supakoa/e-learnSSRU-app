@@ -6,6 +6,8 @@ use App\lesson as lesson;
 use App\adjust as adjust;
 
 use App\content as content;
+use App\user as user;
+
 
 
 use Illuminate\Http\Request;
@@ -189,5 +191,14 @@ class course_c extends Controller
          $course = course::find($id);
 
          return view('course.modal.edit')->with('course', $course);
+    }
+    public function users(course $course)
+    {
+        $user_teacher = user::all();
+        // $user_teacher = user::where('type_user','teach');
+       $course_user =  $course->users;
+       $teachers = $course_user->where('type_user','teach');
+       $students= $course_user->where('type_user','student');
+         return view('course.users')->with('teachers',$teachers)->with('students',$students)->with('users',$user_teacher)->with('course',$course);
     }
 }

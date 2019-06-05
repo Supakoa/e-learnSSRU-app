@@ -101,37 +101,51 @@
         @guest
         @else
         <section>
+            @php
+                $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
+                $adminOnly = auth()->user()->type_user == 'admin';
+            @endphp
             <ul class="nav-links2 ">
                 <a href="{{ url('/home')}}">
                     <li>
                         DashBoard
                     </li>
                 </a>
+                @if ($both)
                 <a href="{{ url('/subject')}}">
                     <li>
                         Subject
                     </li>
                 </a>
+                @endif
+                @if ($adminOnly)
                 <a href="{{ url('/report')}}">
                     <li>
                         Report
                     </li>
                 </a>
-                <a href="{{ url('/teach')}}">
-                    <li>
-                        Teach
-                    </li>
-                </a>
+                @endif
+                @if ($adminOnly)
+                    <a href="{{ url('/teach')}}">
+                        <li>
+                            Teach
+                        </li>
+                    </a>
+                @endif
+                @if ($adminOnly)
                 <a href="{{ url('/student')}}">
                     <li>
                         Student
                     </li>
                 </a>
+                @endif
+                @if ($adminOnly)
                 <a href="{{ url('/payment-setting')}}">
                     <li>
                         Payment Setting
                     </li>
                 </a>
+                @endif
             </ul>
         </section>
         @endguest
