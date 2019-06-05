@@ -27,11 +27,11 @@ Route::get('/report', 'Report@index')->middleware('student');
 Route::get('/quiz/show', function () {
     return view('quiz.Show');
 });
-Route::get('/quiz/edit', function () {
+Route::get('/quiz/edit', function(){
     return view('quiz.Edit');
 });
 
-Route::get('/std_view/login', 'Std_viewer@Std_login');
+Route::get('/std_view/course/quiz', 'Std_viewer@Std_quiz');
 Route::get('/std_view/home', 'Std_viewer@Std_home');
 Route::get('/std_view/subject', 'Std_viewer@Std_subject');
 Route::get('/std_view/showcourse', 'Std_viewer@Std_showcourse');
@@ -77,6 +77,10 @@ Route::resource('/teach', 'teachController')->middleware('student');
 Route::resource('/question', 'questionController')->middleware('student');
 Route::resource('/student', 'studentController')->middleware('student');
 
+/**
+ * Route course
+ */
+Route::get('/course/{course}/users','course_c@users');
 
 /**
  * Route teach
