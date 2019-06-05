@@ -20,6 +20,7 @@ class stuentGetout
         if(!auth()->user()->canInside()){
             Auth::logout();
             Session::flush();
+            Session::flash('message', "can't access to this side.");
             return redirect()->route('login');
         }
 

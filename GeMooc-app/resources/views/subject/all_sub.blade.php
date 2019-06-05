@@ -16,7 +16,8 @@
             <div class="col-md-4 h-100">
                 <div class="card shadow " style="width: 18rem;">
                     <div class="ce-body-cog">
-                        <button class="ce-cog-btn btn-text btn  send_ajax"  onclick="edit_subject({{$sub->id}})"><i class="fas fa-cogs"></i></button>
+                        <button class="ce-cog-btn btn-text btn  send_ajax" onclick="edit_subject({{$sub->id}})"><i
+                                class="fas fa-cogs"></i></button>
                         <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
                     </div>
                     <div class="card-body" style="background-color: white;">
@@ -76,7 +77,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" form="add_sub_form" class="btn btn-primary "  id="sub_btn">Save changes</button>
+                <button type="submit" form="add_sub_form" class="btn btn-primary " id="sub_btn">Save changes</button>
             </div>
         </div>
     </div>
@@ -84,7 +85,9 @@
 
 <div id="sub_modal">
 </div>
+
 @endsection
+
 @section('js')
 <script>
     $(document).ready(function () {
@@ -94,17 +97,20 @@
             }
         });
     });
+
     function edit_subject(id) {
         $.ajax({
-                type: "post",
-                url: "subject/modal/edit",
-                data: {id :id},
-                dataType: "html",
-                success: function (response) {
+            type: "post",
+            url: "subject/modal/edit",
+            data: {
+                id: id
+            },
+            dataType: "html",
+            success: function (response) {
                 $('#sub_modal').html(response);
                 $('#Edit_Modal').modal("show")
-                }
-            });
+            }
+        });
     }
 
     // function delete_subject(id){
