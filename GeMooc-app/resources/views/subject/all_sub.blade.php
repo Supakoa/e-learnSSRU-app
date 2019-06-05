@@ -93,7 +93,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
     });
     function edit_subject(id) {
         $.ajax({

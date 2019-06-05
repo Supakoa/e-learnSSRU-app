@@ -40,8 +40,10 @@
                     <td>{{ $user->password }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
-                        <button onclick="deleteStudent({{$user->id}})" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                        <button onclick="openEditModal({{$user->id}})" class="btn btn-sm btn-outline-warning"><i
+                                class="fas fa-edit"></i></button>
+                        <button onclick="deleteStudent({{$user->id}})" class="btn btn-sm btn-outline-danger"><i
+                                class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 @endforeach
@@ -54,41 +56,55 @@
 {{--
         modal create new teach
     --}}
-
 @section('modal')
+{{--
+    Create User
+--}}
 <div class="modal fade" id="createNewTeach">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1>create new user</h1>
-                </div>
-                <div class="modal-body">
-                    <form action="/teach/create" id="create" enctype="multipart/form-data" method="POST">
-                        @csrf
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>create new user</h1>
+            </div>
+            <div class="modal-body">
+                <form action="/teach/create" id="create" enctype="multipart/form-data" method="POST">
+                    @csrf
+                    @method('GET')
 
-                        <p>Username</p>
-                        <input class="form-control mb-1" type="text" name="username" id="username">
-                        <p>Password</p>
-                        <input type="text" class="form-control mb-1" name="password" id="password">
-                        <p>Confirm Password</p>
-                        <input type="text" class="form-control mb-1" name="confirmPassword" id="confirmPassword">
-                        <p>Email</p>
-                        <input type="text" class="form-control mb-1" name="email" id="email">
-                        <p>Confirm Email</p>
-                        <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button form="create" type="submit" class="btn btn-warning">create</button>
-                </div>
+                    <p>Username</p>
+                    <input class="form-control mb-1" type="text" name="username" id="username">
+                    <p>Password</p>
+                    <input type="text" class="form-control mb-1" name="password" id="password">
+                    <p>Confirm Password</p>
+                    <input type="text" class="form-control mb-1" name="confirmPassword" id="confirmPassword">
+                    <p>Email</p>
+                    <input type="text" class="form-control mb-1" name="email" id="email">
+                    <p>Confirm Email</p>
+                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button form="create" type="submit" class="btn btn-warning">create</button>
             </div>
         </div>
     </div>
+</div>
+<div class="" id="tmpModalToHere"></div>
+
 @endsection
+
 
 
 @section('js')
 <script>
+
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
 
     /**
         function when onclick will delete with id.
@@ -109,6 +125,22 @@
             }
         });
     };
+
+    /**
+        open modal
+    */
+    const openEditModal = (id) => {
+        alert(id);
+        $.post("/teach/"+id+"/editModal", {id:id},
+            function (response, textStatus, jqXHR) {
+                $('#tmpModalToHere').html(response);
+            $('#editTeach').modal('show');
+            }
+        ).then((result)=> {
+            $('#tmpModalToHere').html(response);
+            $('#editTeach').modal('show');
+        });
+    }
 
     $(document).ready(function () {
         $('#teachTable').DataTable();

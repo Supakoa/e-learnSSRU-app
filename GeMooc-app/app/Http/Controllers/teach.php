@@ -46,7 +46,7 @@ class teach extends Controller
         return redirect('/teach');
     }
 
-    public function deleteStudent()
+    public function deleteTeach()
     {
         $data = request()->validate([
             'id' => 'required',
@@ -55,6 +55,11 @@ class teach extends Controller
         $result = DB::table('users')->where('id', '=', $data['id'])->delete();
 
         return redirect('/teach');
+    }
+
+    public function editTeach()
+    {
+
     }
 
 }
