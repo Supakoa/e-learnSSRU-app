@@ -3,7 +3,7 @@
 @section('content')
 <div class="card ce-card">
     <h1 class="ce-name">Teach database</h1>
-    <p>My way is empty!!</p>
+    <p>My way is teach!!</p>
     <button class="btn btn-outline-success mb-1" data-toggle="modal" data-target="#createNewTeach"><strong>create new
             user</strong></button>
 
@@ -30,7 +30,7 @@
                     {{--
                         send form id to delete record.
                     --}}
-                    <form action="/teach/{{ $user->id }}" id="formDelete" method="post">
+                    <form action="/teach/{{ $user->id }}" id="formDelete{{ $user->id }}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="id" id="id" value="{{ $user->id }}">
@@ -121,7 +121,7 @@
             cancelButtonText: 'ยกเลิก',
         }).then((result) => {
             if (result.value) {
-                $('#formDelete').submit();
+                $('#formDelete'+obj).submit();
             }
         });
     };
