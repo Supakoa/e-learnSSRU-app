@@ -18,4 +18,8 @@ class course extends Model
     {
         return $this->hasMany('App\lesson','course_id');
     }
+    public function users()
+       {
+           return $this->belongsToMany('App\user','course_user');
+       }
 }
