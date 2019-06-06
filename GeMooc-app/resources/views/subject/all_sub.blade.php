@@ -18,6 +18,7 @@
     <div class="ce-container">
         @if ($sub->count() > 0)
         <div class="row mb-3 justify-content-center">
+        {{-- {{dd($sub)}} --}}
             @foreach ($sub as $sub)
             <div class="col-md-4 h-100">
                 <div class="card shadow " style="width: 18rem;">
@@ -26,6 +27,7 @@
                         <button class="ce-cog-btn btn-text btn  send_ajax" onclick="edit_subject({{$sub->id}})"><i
                             class="fas fa-cogs"></i></button>
                         @endif
+
                         <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
                     </div>
                     <div class="card-body" style="background-color: white;">

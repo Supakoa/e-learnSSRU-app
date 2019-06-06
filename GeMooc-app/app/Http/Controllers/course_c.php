@@ -11,6 +11,7 @@ use App\user as user;
 
 
 use Illuminate\Http\Request;
+// use \Illuminate\Database\Eloquent\Collection as Collection;
 use Intervention\Image\Facades\Image;
 
 class course_c extends Controller

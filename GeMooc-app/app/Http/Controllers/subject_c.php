@@ -23,9 +23,18 @@ class subject_c extends Controller
      */
     public function index()
     {
-        $sub = sub::all();
-        // $sub = ["123","456"];
-        // dd($sub);
+        $adminOnly = auth()->user()->type_user == 'admin';
+        $teacherOnly = auth()->user()->type_user == 'teach';
+        if($adminOnly){
+            $sub = sub::all();
+        }elseif($teacherOnly){
+            $sub = collect();
+            $courses = auth()->user()->courses;
+            foreach ($courses as $course) {
+                $subject = $course->subject;
+                $sub = $sub->push($subject);
+            }
+        }
         return view('subject.all_sub')->with('sub', $sub);
 
     }
