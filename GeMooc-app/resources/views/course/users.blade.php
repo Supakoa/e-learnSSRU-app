@@ -44,8 +44,13 @@
                 <tr>
                     <td>{{$i+1}}</td>
                     <td>{{$teacher->name}}</td>
-                    <td></td>
-                    <td></td>
+                    @php
+                        $roles = $teacher->courses->where('id',$course->id)->pop()->pivot->role;
+                    @endphp
+                    <td>{{$roles}}</td>
+                    <td>
+                        <button class=" btn btn-outline-danger" onclick="delete_user({{$teacher->id}})">Delete</button>
+                    </td>
                 </tr>
                 @endforeach
 
@@ -54,6 +59,10 @@
 
     </div>
 </div>
+<form action="delete_user" method="post" id="delete_user">
+        @csrf
+        <input type="hidden" name="user" id="user_id">
+</form>
 @endsection
 @section('modal')
 
@@ -72,7 +81,7 @@
                 @csrf
                 <div class=" form-group">
                     <label for="user">User :</label>
-                    <select class="selectpicker form-control" name="user" title="Choose some one "
+                    <select class="selectpicker form-control" name="user" title="Choose some one " required
                         data-live-search="true">
                         @foreach ($users as $user)
                 <option value="{{$user->id}}">{{$user->name}}</option>
@@ -98,6 +107,22 @@
     $(document).ready(function () {
         $('#staff').DataTable();
     });
+    function delete_user(id) {
+        $('#user_id').val(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
 
+            }).then((result) => {
+            if (result.value) {
+                $('#delete_user').submit();
+            }
+        });
+     }
 </script>
 @endsection

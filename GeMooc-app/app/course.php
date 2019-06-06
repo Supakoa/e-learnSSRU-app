@@ -21,7 +21,7 @@ class course extends Model
     }
     public function users()
        {
-           return $this->belongsToMany('App\user','course_user');
+           return $this->belongsToMany('App\user','course_user')->withPivot('role');
        }
 
        public function not_users()

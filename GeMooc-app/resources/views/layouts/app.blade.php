@@ -195,6 +195,13 @@
         $('form').submit(function (e) {
 
             $('button[type=submit]').attr('disabled','');
+            Swal.fire({
+                title: 'Wait a minute !',
+                // timer: 2000,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                }
+                });
         });
         $('.send_ajax').click(function (e) {
             var btn = $(this);

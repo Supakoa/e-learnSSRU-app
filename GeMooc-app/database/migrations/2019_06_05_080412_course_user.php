@@ -19,7 +19,7 @@ class CourseUser extends Migration
             $table->unsignedbigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->integer('role')->unsigned()->nullable();
         });
     }
 
