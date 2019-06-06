@@ -83,6 +83,7 @@ Route::resource('/student', 'studentController')->middleware('student');
  * Route course
  */
 Route::get('/course/{course}/users','course_c@users');
+Route::post('/course/{course}/add_user','course_c@add_users');
 
 /**
  * Route teach

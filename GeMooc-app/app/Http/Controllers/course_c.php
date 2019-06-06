@@ -194,11 +194,21 @@ class course_c extends Controller
     }
     public function users(course $course)
     {
-        $user_teacher = user::all();
-        // $user_teacher = user::where('type_user','teach');
+
+        $user_teacher = user::whereDoesntHave('courses')->orWhereHas('courses', function ($query) use ($course) {
+            $query->where('course_id', '!=', $course->id);
+        })->get();
+        $user_teacher = $user_teacher->where('type_user','teach');
        $course_user =  $course->users;
        $teachers = $course_user->where('type_user','teach');
        $students= $course_user->where('type_user','student');
          return view('course.users')->with('teachers',$teachers)->with('students',$students)->with('users',$user_teacher)->with('course',$course);
+    }
+
+    public function add_users(course $course,Request $request){
+        $course->users()->attach($request->user);
+        return redirect('/course/'.$course->id.'/users')->with('success', 'Add Success');
+
+
     }
 }

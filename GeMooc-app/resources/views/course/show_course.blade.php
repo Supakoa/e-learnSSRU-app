@@ -20,9 +20,9 @@
     </h1>
         <div class="row mb-3">
             <div class="col-md-2 text-left">
-                <button href="#" class="btn btn-md btn-outline-success btn-block">
+            <a href="/course/{{$course->id}}/users" class="btn btn-md btn-outline-success btn-block">
                     <i class="fas fa-users"></i> Teacher
-                </button>
+                </a>
             </div>
             <div class="col-md-10 text-right">
                 <div class="ce-card-btn">
