@@ -16,6 +16,8 @@ use Illuminate\Support\Str;
 // use File;
 Auth::routes();
 
+
+
 Route::get('/', 'HomeController@index')->name('dashboard.home');
 Route::get('/home', 'HomeController@index')->name('dashboard.home');
 
