@@ -42,7 +42,7 @@
             <tbody>
                 @foreach ($teachers as $i => $teacher)
                 <tr>
-                    <td>{{$i}}</td>
+                    <td>{{$i+1}}</td>
                     <td>{{$teacher->name}}</td>
                     <td></td>
                     <td></td>
@@ -75,7 +75,7 @@
                     <select class="selectpicker form-control" name="user" title="Choose some one "
                         data-live-search="true">
                         @foreach ($users as $user)
-                        <option value="{{$user->id}}">{{$user->name}}</option>
+                <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
                     </select>
                 </div>

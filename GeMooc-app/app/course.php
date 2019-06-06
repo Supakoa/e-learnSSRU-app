@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\user as user;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +22,10 @@ class course extends Model
     public function users()
        {
            return $this->belongsToMany('App\user','course_user');
+       }
+
+       public function not_users()
+       {
+        return user::whereNotIn('id', $this->users->modelKeys())->get();
        }
 }

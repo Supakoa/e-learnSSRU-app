@@ -195,9 +195,12 @@ class course_c extends Controller
     public function users(course $course)
     {
 
-        $user_teacher = user::whereDoesntHave('courses')->orWhereHas('courses', function ($query) use ($course) {
-            $query->where('course_id', '!=', $course->id);
-        })->get();
+        // $user_teacher = user::whereDoesntHave('courses')->orWhereHas('courses', function ($query) use ($course) {
+        //     // dd($query->get);
+        //     $query->where('course_id', '!=', $course->id)->where('user_id', '!=', $query->user.id);
+        // })->get();
+        $user_teacher = $course->not_users();
+        // dd( $user_teacher);
         $user_teacher = $user_teacher->where('type_user','teach');
        $course_user =  $course->users;
        $teachers = $course_user->where('type_user','teach');
