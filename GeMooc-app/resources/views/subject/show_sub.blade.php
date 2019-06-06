@@ -10,9 +10,17 @@
     <div class="ce-container">
         <div class="justify-content-end row mb-2">
             <div class="ce-card-btn">
+                @php
+                    $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
+                    $adminOnly = auth()->user()->type_user == 'admin';
+                @endphp
+                @if ($adminOnly)
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
-                {{-- <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button> --}}
+                @endif
+                @if ($adminOnly)
                 <button class="btn btn-outline-warning send_ajax" onclick="edit_subject({{$sub->id}})">Edit</button>
+                @endif
+                {{-- <button class="btn btn-outline-warning" data-toggle="modal" data-target="#Edit_Modal">Edit</button> --}}
             </div>
         </div>
 
@@ -22,8 +30,10 @@
             <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
                     <div class="ce-body-cog">
+                        @if ($adminOnly)
                         <button class="ce-cog-btn btn btn-link send_ajax" onclick="edit_course({{$course->id}})"><i
-                                class="fas fa-cogs"></i></button>
+                            class="fas fa-cogs"></i></button>
+                        @endif
                         <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
                     </div>
                     <div class="card-body">
