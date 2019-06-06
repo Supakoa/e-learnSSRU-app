@@ -5,8 +5,14 @@
     <h1 class="ce-name">Total Subject</h1>
     <div class="row justify-content-end mb-2">
         <div class="ce-card-btn">
+            @php
+                $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
+                $adminOnly = auth()->user()->type_user == 'admin';
+            @endphp
+            @if ($adminOnly)
             <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
-                Subject</button>
+                    Subject</button>
+            @endif
         </div>
     </div>
     <div class="ce-container">
@@ -16,8 +22,10 @@
             <div class="col-md-4 h-100">
                 <div class="card shadow " style="width: 18rem;">
                     <div class="ce-body-cog">
+                        @if ($adminOnly)
                         <button class="ce-cog-btn btn-text btn  send_ajax" onclick="edit_subject({{$sub->id}})"><i
-                                class="fas fa-cogs"></i></button>
+                            class="fas fa-cogs"></i></button>
+                        @endif
                         <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
                     </div>
                     <div class="card-body" style="background-color: white;">
