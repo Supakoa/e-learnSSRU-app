@@ -16,6 +16,10 @@ use Illuminate\Support\Str;
 // use File;
 Auth::routes();
 
+// middle ware to any route
+Route::group(['middleware' => ['mdgStudent']], function () {
+
+
 Route::get('/', 'HomeController@index')->name('dashboard.home');
 Route::get('/home', 'HomeController@index')->name('dashboard.home');
 
@@ -114,3 +118,5 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::post('course/modal/edit', 'course_c@modal_edit');
 Route::post('question/modal/edit', 'questionController@modal_edit');
+
+});

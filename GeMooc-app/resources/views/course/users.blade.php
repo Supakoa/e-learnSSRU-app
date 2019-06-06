@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
+    $adminOnly = auth()->user()->type_user == 'admin';
+@endphp
 <div class="card ce-card h-100">
     <div class="justify-content-start">
         <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
@@ -22,9 +26,11 @@
         </div>
         <div class="col-md-10 text-right">
             <div class="ce-card-btn">
+                @if ($adminOnly)
                 <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_user">
-                    <i class="fas fa-user"></i> Add
-                </button>
+                        <i class="fas fa-user"></i> Add
+                    </button>
+                @endif
             </div>
         </div>
     </div>
