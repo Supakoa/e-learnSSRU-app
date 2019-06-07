@@ -22,6 +22,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
 
     Route::get('/', 'HomeController@index')->name('dashboard.home');
     Route::get('/home', 'HomeController@index')->name('dashboard.home');
+    Route::get('/yourprofile', 'HomeController@YourProfile');
 
     Route::get('/test', 'test_sumernote@index');
 
@@ -37,6 +38,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
 
     Route::get('/std_view/course/quiz', 'Std_viewer@Std_quiz');
     Route::get('/std_view/course/quiz/dashboard', 'Std_viewer@Std_quizDashboard');
+    Route::get('/std_view/course/quiz/previewquiz', 'Std_viewer@Std_quizPreview');
 
     Route::get('/std_view/home', 'Std_viewer@Std_home');
     Route::get('/std_view/subject', 'Std_viewer@all_subject');

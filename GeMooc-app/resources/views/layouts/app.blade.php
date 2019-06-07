@@ -104,6 +104,7 @@
             @php
                 $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
                 $adminOnly = auth()->user()->type_user == 'admin';
+                $teach = auth()->user()->type_user == 'teach';
             @endphp
             <ul class="nav-links2 ">
                 <a href="{{ url('/home')}}">
@@ -111,6 +112,13 @@
                         DashBoard
                     </li>
                 </a>
+                @if ($teach)
+                <a href="{{ url('/yourprofile')}}">
+                    <li>
+                        Your Prefile
+                    </li>
+                </a>
+                @endif
                 @if ($both)
                 <a href="{{ url('/subject')}}">
                     <li>

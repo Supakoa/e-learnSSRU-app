@@ -35,6 +35,9 @@ class Std_viewer extends Controller
     public function Std_quizDashboard(){
         return view('std_viewer.std_subject.std_quiz.Quiz_dashboard');
     }
+    public function Std_quizPreview(){
+        return view('std_viewer.std_subject.std_quiz.Preview');
+    }
 
     public function Std_payment(){
         return view('std_viewer.std_payment.Payment');

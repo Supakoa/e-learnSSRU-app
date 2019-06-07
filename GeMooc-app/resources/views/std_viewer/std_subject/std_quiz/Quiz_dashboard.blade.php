@@ -46,7 +46,7 @@
                                             พิมพ์ข้อสอบ</button>
                                         <button class="btn-light btn-sm"><i class="far fa-check-square"></i>
                                             ดูเฉลย</button>
-                                        <button class="btn-light btn-sm"><i class="far fa-edit"></i> ทำอีครั้ง</button>
+                                        <button class="btn-light btn-sm"><i class="far fa-edit"></i> ทำอีกครั้ง</button>
                                     </div>
                                 </div>
                             </div>
@@ -87,42 +87,17 @@
                                 <h5>ช่วงคะแนนผู้สอบทั้งหมด</h5>
                             </div>
                             <div class="container">
-                                <div id="chart">
-                                    <ul id="numbers">
-                                        <li><span>100%</span></li>
-                                        <li><span>90%</span></li>
-                                        <li><span>80%</span></li>
-                                        <li><span>70%</span></li>
-                                        <li><span>60%</span></li>
-                                        <li><span>50%</span></li>
-                                        <li><span>40%</span></li>
-                                        <li><span>30%</span></li>
-                                        <li><span>20%</span></li>
-                                        <li><span>10%</span></li>
-                                        <li><span>0%</span></li>
-                                    </ul>
+                                <div class="charts ">
+                                    <span>0-25</span>
+                                    <div class="charts__chart chart--red" data-percent="5%" style="width: 5%"></div><!-- /.charts__chart -->
+                                    <span>26-50</span>
+                                    <div class="charts__chart chart--yellow" data-percent="60%" style="width: 60%"></div><!-- /.charts__chart -->
+                                    <span>51-75</span>
+                                    <div class="charts__chart chart--blue" data-percent="55%" style="width: 55%"></div><!-- /.charts__chart -->
+                                    <span>76-100</span>
+                                    <div class="charts__chart chart--green" data-percent="16%" style="width: 16%"></div><!-- /.charts__chart -->
+                                </div><!-- /.charts -->
 
-                                    <ul id="bars">
-                                        <li>
-                                            <div data-percentage="56" class="bar"></div><span>Option 1</span>
-                                        </li>
-                                        <li>
-                                            <div data-percentage="33" class="bar"></div><span>Option 2</span>
-                                        </li>
-                                        <li>
-                                            <div data-percentage="54" class="bar"></div><span>Option 3</span>
-                                        </li>
-                                        <li>
-                                            <div data-percentage="94" class="bar"></div><span>Option 4</span>
-                                        </li>
-                                        <li>
-                                            <div data-percentage="44" class="bar"></div><span>Option 5</span>
-                                        </li>
-                                        <li>
-                                            <div data-percentage="23" class="bar"></div><span>Option 6</span>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>

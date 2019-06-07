@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Document</title>
+    <title>Your name - GE-Mooc E-Learning</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
 
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
     --}}
