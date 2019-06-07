@@ -89,7 +89,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
      * Route course
      */
     Route::get('/course/{course}/users','backend\course_c@users');
-    Route::post('/course/{course}/add_user','backend\course_c@add_users');
+    Route::post('/course/{course}/add_user','backend\course_c@add_user');
     Route::post('/course/{course}/delete_user','backend\course_c@delete_user');
     Route::post('/course/{course}/edit_user','backend\course_c@update_role');
 
