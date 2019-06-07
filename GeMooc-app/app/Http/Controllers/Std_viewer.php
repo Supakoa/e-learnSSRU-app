@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\subject as subject;
+use App\course as course;
 
 use Illuminate\Http\Request;
 
@@ -10,15 +12,21 @@ class Std_viewer extends Controller
         return view('std_viewer.std_home.index');
     }
 
-    public function Std_subject(){
-        return view('std_viewer.std_subject.Show_sub');
+    public function all_subject(){
+        $subjects = subject::all();
+
+        return view('std_viewer.std_subject.Show_sub')->with('subjects',$subjects);
     }
 
-    public function Std_showcourse(){
-        return view('std_viewer.std_subject.std_course.Show_course');
+    public function show_subject(subject $subject){
+        $courses = $subject->courses;
+        return view('std_viewer.std_subject.std_course.Show_course')->with('subject',$subject)->with('courses',$courses);
     }
-    public function Std_course(){
-        return view('std_viewer.std_subject.std_course.Course');
+
+
+    public function Std_course(course $course){
+        $lessons = $course->lessons;
+        return view('std_viewer.std_subject.std_course.Course')->with('course',$course)->with('lessons',$lessons);
     }
 
     public function Std_quiz(){

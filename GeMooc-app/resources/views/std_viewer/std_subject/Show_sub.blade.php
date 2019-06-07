@@ -5,50 +5,26 @@
     <h1 class="ce-name">All Subject</h1>
     <div class="ce-container">
         <div class="row justify-content-center mb-4">
-            <div class="col-md-3">
-                <div class="card" style="width: 15rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Some subject 1.</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Course Information</a>
+            @if ($subjects->count()>0)
+                @foreach ($subjects as $subject)
+                <div class="col-md-3">
+                        <div class="card" style="width: auto;">
+                            <div class="card-body">
+                        <img src="/storage/{{$subject->sm_banner}}" class="card-img-top" width="80%" >
+                                <hr>
+                                <h5 class="card-title">{{$subject->name}}.</h5>
+                                <p class="card-text">{{$subject->detail}}</p>
+                            <a href="subject/{{$subject->id}}" class="btn btn-primary">Course Information</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                    <div class="card" style="width: 15rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Some subject 2.</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.</p>
-                                <a href="#" class="btn btn-primary">Course Information</a>
-                            </div>
-                        </div>
-            </div>
-            <div class="col-md-3">
-                    <div class="card" style="width: 15rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Some subject 3.</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.</p>
-                                <a href="#" class="btn btn-primary">Course Information</a>
-                            </div>
-                        </div>
-            </div>
-            <div class="col-md-3">
-                    <div class="card" style="width: 15rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Some subject 4.</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.</p>
-                                <a href="#" class="btn btn-primary">Course Information</a>
-                            </div>
-                        </div>
-            </div>
+                @endforeach
+
+
+            @else
+
+            @endif
+
         </div>
 
 

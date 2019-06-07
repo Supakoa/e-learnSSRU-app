@@ -39,9 +39,9 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     Route::get('/std_view/course/quiz/dashboard', 'Std_viewer@Std_quizDashboard');
 
     Route::get('/std_view/home', 'Std_viewer@Std_home');
-    Route::get('/std_view/subject', 'Std_viewer@Std_subject');
-    Route::get('/std_view/showcourse', 'Std_viewer@Std_showcourse');
-    Route::get('/std_view/course', 'Std_viewer@Std_course');
+    Route::get('/std_view/subject', 'Std_viewer@all_subject');
+    Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
+    Route::get('/std_view/course/{course}', 'Std_viewer@Std_course');
     Route::get('/std_view/payment', 'Std_viewer@Std_payment');
     // Route::get('/up_image','test_sumernote@up_image');
 
