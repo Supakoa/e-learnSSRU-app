@@ -71,7 +71,7 @@
                                     <p>ทั้งหมด 100 ข้อ</p>
                                 </div>
                                 <div class="col-md-6 text-center">
-                                    <div class="progress-circle" data-progress="25"></div>
+                                    <div class="progress-circle" data-progress="50"></div>
                                     <p>ใช้เวลาทั้งหมด 25(นาที)</p>
                                 </div>
                             </div>
