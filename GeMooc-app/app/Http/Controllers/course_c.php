@@ -210,7 +210,7 @@ class course_c extends Controller
     }
 
     public function add_user(course $course,Request $request){
-        $course->users()->attach($request->user);
+        $course->users()->attach($request->user,['role'=>1]);
         return redirect('/course/'.$course->id.'/users')->with('success', 'Add Success');
 
 
@@ -218,6 +218,11 @@ class course_c extends Controller
     public function delete_user(course $course,Request $request)
     {
         $course->users()->detach($request->user);
+        return redirect('/course/'.$course->id.'/users')->with('success', 'Delete Success');
+    }
+    public function update_role(course $course,Request $request)
+    {
+        $course->users()->attach($request->user);
         return redirect('/course/'.$course->id.'/users')->with('success', 'Delete Success');
     }
 }
