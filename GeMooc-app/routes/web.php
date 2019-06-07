@@ -22,6 +22,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
 
     Route::get('/', 'HomeController@index')->name('dashboard.home');
     Route::get('/home', 'HomeController@index')->name('dashboard.home');
+    Route::get('/yourprofile', 'HomeController@YourProfile');
 
     Route::get('/test', 'test_sumernote@index');
 

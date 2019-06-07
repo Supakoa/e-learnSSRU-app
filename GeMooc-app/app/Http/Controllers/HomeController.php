@@ -16,6 +16,10 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function YourProfile(){
+        return view('admin-teach.yourprofile.Yourprofile');
+    }
+
     /**
      * Show the application dashboard.
      *
