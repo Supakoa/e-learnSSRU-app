@@ -41,16 +41,16 @@
         <div class="container mb-5">
             <div class="row">
                 <div class="col-md-8">
-                    <dd>1.sdflksjdlkfsakdjfaksd;flkasdjfla;sdflkjas</dd>
+                    <dt>1.sdflksjdlkfsakdjfaksd;flkasdjfla;sdflkjas</dt>
                 </div>
                 <div class="col-md-4">
-                    <img class="rounded" class="rounded" width="auto" height="auto"
+                    <img class="rounded" width="auto" height="auto"
                         style="max-width: 100%;max-height: 150px" src="" alt="">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10">
-                    <ul>
+                    <ul class="ce-choice">
                         <li>1.</li>
                         <li>2.</li>
                         <li>3.</li>
