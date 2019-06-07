@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
+use App\Http\Controllers\Controller;
 
 use App\answer;
 use Illuminate\Http\Request;

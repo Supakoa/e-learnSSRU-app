@@ -22,7 +22,6 @@ Route::group(['middleware' => ['mdgStudent']], function () {
 
 Route::get('/', 'HomeController@index')->name('dashboard.home');
 Route::get('/home', 'HomeController@index')->name('dashboard.home');
-
 Route::get('/test', 'test_sumernote@index');
 
 Route::get('/payment-setting', 'payment@Home');
@@ -70,25 +69,27 @@ Route::post('ajaximage_delete', function () {
 /**
 * Route Sub
 */
-Route::resource('/subject', 'subject_c')->middleware('student');
-Route::post('subject/modal/edit', 'subject_c@modal_edit')->middleware('student');
+Route::resource('/subject', 'backend\subject_c')->middleware('student');
+Route::post('subject/modal/edit', 'backend\subject_c@modal_edit')->middleware('student');
 
 // Resource controller
-Route::resource('/course', 'course_c')->middleware('student');
-Route::resource('/lesson', 'lesson_c')->middleware('student');
-Route::resource('/content', 'content_c')->middleware('student');
-Route::resource('/article', 'articleController')->middleware('student');
-Route::resource('/quiz', 'quizController')->middleware('student');
-Route::resource('/teach', 'teachController')->middleware('student');
-Route::resource('/question', 'questionController')->middleware('student');
-Route::resource('/student', 'studentController')->middleware('student');
+Route::resource('/course','backend\course_c')->middleware('student');
+Route::resource('/lesson','backend\lesson_c')->middleware('student');
+Route::resource('/content','backend\content_c')->middleware('student');
+Route::resource('/article','backend\articleController')->middleware('student');
+Route::resource('/quiz','backend\quizController')->middleware('student');
+Route::resource('/teach','backend\teachController')->middleware('student');
+Route::resource('/question','backend\questionController')->middleware('student');
+Route::resource('/student','backend\studentController')->middleware('student');
 
 /**
  * Route course
  */
-Route::get('/course/{course}/users','course_c@users');
-Route::post('/course/{course}/add_user','course_c@add_user');
-Route::post('/course/{course}/delete_user','course_c@delete_user');
+Route::get('/course/{course}/users','backend\course_c@users');
+Route::post('/course/{course}/add_user','backend\course_c@add_user');
+Route::post('/course/{course}/delete_user','backend\course_c@delete_user');
+Route::post('/course/{course}/edit_user','backend\course_c@update_role');
+
 
 /**
  * Route teach
@@ -96,7 +97,7 @@ Route::post('/course/{course}/delete_user','course_c@delete_user');
 // Route::get('/teach', 'teach@Teach');
 // Route::post('/teach/create', 'teach@createTeach');
 // Route::delete('/teach/{user}', 'teach@deleteTeach');
-Route::post('teach/{user}/editModal', 'teachController@edit')->middleware('student');
+Route::post('teach/{user}/editModal', 'backend\teachController@edit')->middleware('student');
 
 /**
  * Route Student
@@ -104,7 +105,7 @@ Route::post('teach/{user}/editModal', 'teachController@edit')->middleware('stude
 // Route::get('/student', 'student@Student');
 // Route::post('student/create', 'student@createStudent');
 // Route::delete('student/{user}', 'student@deleteStudent');
-Route::post('student/{user}/editModal', 'studentController@edit')->middleware('student');
+Route::post('student/{user}/editModal', 'backend\studentController@edit')->middleware('student');
 
 
 // Administrator & SuperAdministrator Control Panel Routes
@@ -117,7 +118,7 @@ Route::post('student/{user}/editModal', 'studentController@edit')->middleware('s
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
-Route::post('course/modal/edit', 'course_c@modal_edit');
-Route::post('question/modal/edit', 'questionController@modal_edit');
+Route::post('course/modal/edit', 'backend\course_c@modal_edit');
+Route::post('question/modal/edit', 'backend\questionController@modal_edit');
 
 });

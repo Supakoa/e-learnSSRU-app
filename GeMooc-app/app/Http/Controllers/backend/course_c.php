@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
+use App\Http\Controllers\Controller;
 use App\course as course;
 use App\lesson as lesson;
 use App\adjust as adjust;
@@ -210,7 +211,7 @@ class course_c extends Controller
     }
 
     public function add_user(course $course,Request $request){
-        $course->users()->attach($request->user,['role'=>1]);
+        $course->users()->attach($request->user);
         return redirect('/course/'.$course->id.'/users')->with('success', 'Add Success');
 
 
@@ -222,7 +223,10 @@ class course_c extends Controller
     }
     public function update_role(course $course,Request $request)
     {
-        $course->users()->attach($request->user);
-        return redirect('/course/'.$course->id.'/users')->with('success', 'Delete Success');
+
+        $course->users()->updateExistingPivot($request->user, ['role' => $request->role], false);
+
+
+        return redirect('/course/'.$course->id.'/users')->with('success', 'Update Success');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -8,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class studentController extends Controller
+class teachController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class studentController extends Controller
      */
     public function index()
     {
-        $user = DB::table('users')->where('type_user','student')->get();
-        return view('student.student',compact('user'));
+        $user = DB::table('users')->where('type_user','teach')->get();
+        return view('teach.teach',compact('user'));
     }
 
     /**
@@ -37,12 +38,19 @@ class studentController extends Controller
         $sekai = User::create([
             'name' => $data['username'],
             'email' => $data['email'],
-            'type_user' => 'student',
+            'type_user' => 'teach',
             'password' => Hash::make($data['password']),
         ]);
 
-        return redirect('/student');
+        // auth()->user()->create([
+        //     'name' => $data(['username']),
+        //     'type_user' => 'teach',
+        //     'email' => $data(['email']),
+        //     'username' => $data(['username']),
+        //     'password' => Hash::make($data['password']),
+        // ]);
 
+        return redirect('/teach');
     }
 
     /**
@@ -53,7 +61,7 @@ class studentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -75,8 +83,10 @@ class studentController extends Controller
      */
     public function edit(Request $request)
     {
-        $user = User::find($request->id);
-        return view('student.modal.editStudent')->with('user',$user);
+
+        $teachUser = User::find($request->id);
+        // $user = DB::table('users')->where('id',$reques->id)->get();
+        return view('teach.modal.editTeach')->with('user',$teachUser);
     }
 
     /**
@@ -96,7 +106,7 @@ class studentController extends Controller
         $user->name = $data['username'];
         $user->email = $data['email'];
         $user->save();
-        return redirect('/student');
+        return redirect('/teach');
     }
 
     /**
@@ -110,6 +120,6 @@ class studentController extends Controller
 
         $result = DB::table('users')->where('id', '=', $id)->delete();
 
-        return redirect('/student');
+        return redirect('/teach');
     }
 }

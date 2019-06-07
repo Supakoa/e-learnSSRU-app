@@ -7,46 +7,49 @@
             user</strong></button>
     <div class="ce-container table-responsive">
 
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Now, this page Empty!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        @if ($user->count()>0)
+            <table class="table table-hover display table-bordered" id="studentTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($user as $users)
+                    <tr>
 
-        <table class="table table-hover display table-bordered" id="studentTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Password</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($user as $users)
-                <tr>
+                        {{--
+                            send form id to delete record.
+                        --}}
+                        <form action="/student/{{ $users->id }}" id="formDelete{{ $users->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id" id="id" value="{{ $users->id }}">
+                        </form>
 
-                    {{--
-                        send form id to delete record.
-                    --}}
-                    <form action="/student/{{ $users->id }}" id="formDelete{{ $users->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <input type="hidden" name="id" id="id" value="{{ $users->id }}">
-                    </form>
+                        <td>{{ $users->name }}</td>
+                        <td>{{ $users->password }}</td>
+                        <td>{{ $users->email }}</td>
+                        <td>
+                            <button onclick="openEditModal({{$users->id}})" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
+                            <button onclick="deleteStudent({{$users->id}})" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Now, this page Empty!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
 
-                    <td>{{ $users->name }}</td>
-                    <td>{{ $users->password }}</td>
-                    <td>{{ $users->email }}</td>
-                    <td>
-                        <button onclick="openEditModal({{$users->id}})" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
-                        <button onclick="deleteStudent({{$users->id}})" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
     </div>
 </div>
 @endsection

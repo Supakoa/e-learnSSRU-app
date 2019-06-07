@@ -3,52 +3,57 @@
 @section('content')
 <div class="card ce-card">
     <h1 class="ce-name">Teach database</h1>
-    <p>My way is teach!!</p>
+    {{-- <p>My way is teach!!</p> --}}
     <button class="btn btn-outline-success mb-1" data-toggle="modal" data-target="#createNewTeach"><strong>create new
             user</strong></button>
 
     <div class="ce-container table-responsive">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Now, this page Empty!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        @if ($user->count()>0)
         <table class="table table-hover display table-bordered" id="teachTable">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Email</th>
-                    <th>Modify</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($user as $user)
-                <tr>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($user as $user)
+                    <tr>
 
-                    {{--
-                        send form id to delete record.
-                    --}}
-                    <form action="/teach/{{ $user->id }}" id="formDelete{{ $user->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <input type="hidden" name="id" id="id" value="{{ $user->id }}">
-                    </form>
+                        {{--
+                            send form id to delete record.
+                        --}}
+                        <form action="/teach/{{ $user->id }}" id="formDelete{{ $user->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id" id="id" value="{{ $user->id }}">
+                        </form>
 
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->password }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>
-                        <button onclick="openEditModal({{$user->id}})" class="btn btn-sm btn-outline-warning"><i
-                                class="fas fa-edit"></i></button>
-                        <button onclick="deleteStudent({{$user->id}})" class="btn btn-sm btn-outline-danger"><i
-                                class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->password }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                            <button onclick="openEditModal({{$user->id}})" class="btn btn-sm btn-outline-warning"><i
+                                    class="fas fa-edit"></i></button>
+                            <button onclick="deleteStudent({{$user->id}})" class="btn btn-sm btn-outline-danger"><i
+                                    class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Now, this page Empty!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
+
     </div>
 </div>
 @endsection
