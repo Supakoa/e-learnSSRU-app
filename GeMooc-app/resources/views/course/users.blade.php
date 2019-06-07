@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="ce-container table-responsive">
-        <table class="display table table-hover table-secondary" id="staff">
+        <table class="display table table-hover " id="staff">
             <thead>
                 <tr>
                     <th>ลำดับ</th>
@@ -53,9 +53,16 @@
                     @php
                         $roles = $teacher->courses->where('id',$course->id)->pop()->pivot->role;
                     @endphp
-                    <td>{{$roles}}</td>
+                    @if ($roles == 1)
+                    <td>Main Teacher</td>
+                    @elseif($roles == 2)
+                    <td>Sub Teacher</td>
+                    @else
+                    <td></td>
+                    @endif
                     <td>
-                        <button class=" btn btn-outline-danger" onclick="delete_user({{$teacher->id}})">Delete</button>
+                            <button class=" btn btn-outline-warning" onclick="edit_user({{$teacher->id}})">Eidt</button>
+                            <button class=" btn btn-outline-danger" onclick="delete_user({{$teacher->id}})">Delete</button>
                     </td>
                 </tr>
                 @endforeach
@@ -68,6 +75,11 @@
 <form action="delete_user" method="post" id="delete_user">
         @csrf
         <input type="hidden" name="user" id="user_id">
+</form>
+<form action="edit_user" method="post" id="edit_user">
+        @csrf
+        <input type="hidden" name="user" id="user_id_edit">
+        <input type="hidden" name="role" id="user_role">
 </form>
 @endsection
 @section('modal')
@@ -129,6 +141,36 @@
                 $('#delete_user').submit();
             }
         });
+     }
+     function edit_user(id){
+        $('#user_id_edit').val(id);
+        Swal.fire({
+        title: 'Select field validation',
+        input: 'select',
+        inputOptions: {
+            '1': 'Main Teacher',
+            '2': 'Sub Teacher',
+            // 'grapes': 'Grapes',
+            // 'oranges': 'Oranges'
+        },
+        inputPlaceholder: 'Select Role',
+        showCancelButton: true,
+        inputValidator: (value) => {
+            return new Promise((resolve) => {
+            if (value != '') {
+                $('#user_role').val(value);
+                $('#edit_user').submit();
+                // resolve()
+
+            } else {
+                resolve('You need to select some one')
+            }
+            })
+        }
+        });
+
+
+
      }
 </script>
 @endsection
