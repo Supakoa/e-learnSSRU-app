@@ -195,12 +195,21 @@
         $('form').submit(function (e) {
 
             $('button[type=submit]').attr('disabled','');
+            Swal.fire({
+                title: 'Wait a minute !',
+                // timer: 2000,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                }
+                });
         });
         $('.send_ajax').click(function (e) {
             var btn = $(this);
-            btn.prop('disabled',true);
+            btn.addClass('.ce-disable', true);
+            // btn.prop('disabled',true);
             setTimeout(function(){
-                btn.prop('disabled',false);
+                btn.removeClass('.ce-disable', true);
+                // btn.prop('disabled',false);
             },1000);
 
             // alert("123");

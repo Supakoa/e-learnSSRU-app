@@ -31,8 +31,8 @@
                 <div class="card shadow" style="width: 18rem;">
                     <div class="ce-body-cog">
                         @if ($adminOnly)
-                        <button class="ce-cog-btn btn btn-link send_ajax" onclick="edit_course({{$course->id}})"><i
-                            class="fas fa-cogs"></i></button>
+                        <a class="ce-cog-btn send_ajax" onclick="edit_course({{$course->id}})"><i
+                            class="fas fa-cogs"></i></a>
                         @endif
                         <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
                     </div>

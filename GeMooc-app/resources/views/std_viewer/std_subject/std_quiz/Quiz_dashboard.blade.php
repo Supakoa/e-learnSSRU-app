@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3 p-0" >
+                            <div class="col-md-3 p-0">
                                 <div class="jumbotron text-center">
                                     <h5>img</h5>
                                 </div>
@@ -34,13 +34,18 @@
                                 </dl>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <button class="btn-light btn-sm ce-disable" disabled="disabled" ><i class="fas fa-list"></i> 100 ข้อ</button>
-                                        <button class="btn-light btn-sm ce-disable" disabled="disabled"><i class="fas fa-clock"></i> 30 นาที</button>
+                                        <button class="btn-light btn-sm ce-disable" disabled="disabled"><i
+                                                class="fas fa-list"></i> 100 ข้อ</button>
+                                        <button class="btn-light btn-sm ce-disable" disabled="disabled"><i
+                                                class="fas fa-clock"></i> 30 นาที</button>
                                     </div>
                                     <div class="col-md-8 text-right">
-                                        <button class="btn-light btn-sm"><i class="fas fa-search"></i> ตัวอย่างก่อนพิมพ์</button>
-                                        <button class="btn-light btn-sm"><i class="fas fa-print"></i> พิมพ์ข้อสอบ</button>
-                                        <button class="btn-light btn-sm"><i class="far fa-check-square"></i> ดูเฉลย</button>
+                                        <button class="btn-light btn-sm"><i class="fas fa-search"></i>
+                                            ตัวอย่างก่อนพิมพ์</button>
+                                        <button class="btn-light btn-sm"><i class="fas fa-print"></i>
+                                            พิมพ์ข้อสอบ</button>
+                                        <button class="btn-light btn-sm"><i class="far fa-check-square"></i>
+                                            ดูเฉลย</button>
                                         <button class="btn-light btn-sm"><i class="far fa-edit"></i> ทำอีครั้ง</button>
                                     </div>
                                 </div>
@@ -82,23 +87,41 @@
                                 <h5>ช่วงคะแนนผู้สอบทั้งหมด</h5>
                             </div>
                             <div class="container">
-                                <div class="bar-chart-block block">
-                                    <div class='grafico bar-chart'>
-                                        <ul class='eje-y text-left'>
-                                            <p>จำนวน</p>
-                                            <li data-ejeY='100'></li>
-                                            <li data-ejeY='80'></li>
-                                            <li data-ejeY='60'></li>
-                                            <li data-ejeY='40'></li>
-                                            <li data-ejeY='20'></li>
-                                        </ul>
-                                        <ul class='eje-x text-right'>
-                                            <li data-ejeX='0'><i>0</i></li>
-                                            <li data-ejeX='10'><i>50</i></li>
-                                            <li data-ejeX='33'><i>You</i></li>
-                                            <p>คะแนน</p>
-                                        </ul>
-                                    </div>
+                                <div id="chart">
+                                    <ul id="numbers">
+                                        <li><span>100%</span></li>
+                                        <li><span>90%</span></li>
+                                        <li><span>80%</span></li>
+                                        <li><span>70%</span></li>
+                                        <li><span>60%</span></li>
+                                        <li><span>50%</span></li>
+                                        <li><span>40%</span></li>
+                                        <li><span>30%</span></li>
+                                        <li><span>20%</span></li>
+                                        <li><span>10%</span></li>
+                                        <li><span>0%</span></li>
+                                    </ul>
+
+                                    <ul id="bars">
+                                        <li>
+                                            <div data-percentage="56" class="bar"></div><span>Option 1</span>
+                                        </li>
+                                        <li>
+                                            <div data-percentage="33" class="bar"></div><span>Option 2</span>
+                                        </li>
+                                        <li>
+                                            <div data-percentage="54" class="bar"></div><span>Option 3</span>
+                                        </li>
+                                        <li>
+                                            <div data-percentage="94" class="bar"></div><span>Option 4</span>
+                                        </li>
+                                        <li>
+                                            <div data-percentage="44" class="bar"></div><span>Option 5</span>
+                                        </li>
+                                        <li>
+                                            <div data-percentage="23" class="bar"></div><span>Option 6</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -108,4 +131,19 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    $(function () {
+        $("#bars li .bar").each(function (key, bar) {
+            var percentage = $(this).data('percentage');
+
+            $(this).animate({
+                'height': percentage + '%'
+            }, 1000);
+        });
+    });
+
+</script>
 @endsection
