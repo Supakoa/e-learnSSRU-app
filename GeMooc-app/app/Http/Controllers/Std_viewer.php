@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\subject as subject;
 use App\course as course;
+use App\content as content;
+
 
 use Illuminate\Http\Request;
 
@@ -28,7 +30,20 @@ class Std_viewer extends Controller
         $lessons = $course->lessons;
         return view('std_viewer.std_subject.std_course.Course')->with('course',$course)->with('lessons',$lessons);
     }
+     public function show_content(course $course,content $content)
+    {
+        if($content->type==1){
 
+
+        }elseif($content->type==2){
+
+        }else{
+            $quiz = $content->quiz;
+            // dd($quiz);
+        return view('std_viewer.std_subject.std_quiz.Quiz')->with('course',$course)->with('quiz',$quiz);
+
+        }
+    }
     public function Std_quiz(){
         return view('std_viewer.std_subject.std_quiz.Quiz');
     }

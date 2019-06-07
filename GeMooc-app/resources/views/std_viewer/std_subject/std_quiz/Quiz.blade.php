@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card ce-card">
-    <h1 class="ce-name">sub.course.id.quiz</h1>
+    <h1 class="ce-name">{{ $quiz->name}}</h1>
     <div class="ce-container">
         <div class="container">
             <div class="row mb-2">
@@ -18,8 +18,8 @@
         <div class="row mb-3">
             <div class="col-md-12">
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                        aria-valuemin="0" aria-valuemax="100">25%</div>
+                    <div class="progress-bar" id="progressbar" role="progressbar" style="width: 80%;" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     <a class="item" href="#">4</a>
                     <a class="item" href="#">5</a>
                     <a class="item" href="#">6</a>
-                    <a class="arrow" href="#" id="next"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a class="arrow" href="#" onclick="up_percent()"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -118,6 +118,16 @@
 
 @section('js')
 <script>
+    width = 0;
+    success = 0;
+    percent = 0;
+    questions = {{$quiz->questions->count()}} ;
 
+    function up_percent(){
+        success++;
+        percen = success/questions*100;
+        $('#progressbar').css('width', percen+"%");
+        $('#progressbar').text(percen+"%");
+    }
 </script>
 @endsection

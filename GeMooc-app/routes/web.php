@@ -44,6 +44,8 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     Route::get('/std_view/subject', 'Std_viewer@all_subject');
     Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
     Route::get('/std_view/course/{course}', 'Std_viewer@Std_course');
+    Route::get('/std_view/course/{course}/content/{content}', 'Std_viewer@show_content');
+
     Route::get('/std_view/payment', 'Std_viewer@Std_payment');
     // Route::get('/up_image','test_sumernote@up_image');
 
