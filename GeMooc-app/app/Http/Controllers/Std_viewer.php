@@ -33,10 +33,9 @@ class Std_viewer extends Controller
      public function show_content(course $course,content $content)
     {
         if($content->type==1){
-
-
+            return view('std_viewer.std_subject.std_course.content.CT_video');
         }elseif($content->type==2){
-
+            return view('std_viewer.std_subject.std_course.content.CT_text');
         }else{
             $quiz = $content->quiz;
             // dd($quiz);

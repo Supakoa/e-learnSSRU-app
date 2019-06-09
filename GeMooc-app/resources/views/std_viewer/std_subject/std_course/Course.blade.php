@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 p-0">
         @include('std_viewer.nav-left.Nav-left')
     </div>
     <div class="col-md-10">
@@ -29,26 +29,53 @@
                                         data-toggle="collapse" data-target="#collapse_{{$lesson->id}}"
                                         aria-expanded="true" aria-controls="collapse_{{$lesson->id}}">
                                         Chapter #1
+
                                     </button>
                                 </div>
                                 <div id="collapse_{{$lesson->id}}" class="collapse"
                                     aria-labelledby="heading_{{$lesson->id}}" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        @foreach ($lesson->contents as $content)
-                                        <div class="row">
-                                            <div>{{$content->name}}</div>
-                                        </div>
-                                        @endforeach
-
-                                        <div class="row">
-                                            <div class="offset-8 col-md-4 text-right">
-                                                <button class="btn btn-login btn-block">
-                                                    Learn
-                                                </button>
-                                                <button class="btn btn-info btn-block" data-toggle="modal"
-                                                    data-target="#exampleModal">
-                                                    Quiz
-                                                </button>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="btn-group-vertical btn-block btm-lg"
+                                                    aria-label="Vertical button group" role="group">
+                                                    @foreach ($lesson->contents as $content)
+                                                    @if ($content->type=='1')
+                                                    <button type="button" class="btn p-3 btn-light text-right">
+                                                        <div class="row">
+                                                            <div class="col-md-6 text-right">
+                                                                {{$content->name}}
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                <i class="fas fa-video"> </i>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    @elseif($content->type=='2')
+                                                    <button type="button" class="btn btn-light p-3 text-right">
+                                                        <div class="row">
+                                                            <div class="col-md-6 text-right">
+                                                                {{$content->name}}
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                <i class="far fa-clipboard"> </i>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    @else
+                                                    <button type="button" class="btn btn-light p-3 text-right">
+                                                        <div class="row">
+                                                            <div class="col-md-6 text-right">
+                                                                {{$content->name}}
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                <i class="fas fa-question"> </i>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    @endif
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
