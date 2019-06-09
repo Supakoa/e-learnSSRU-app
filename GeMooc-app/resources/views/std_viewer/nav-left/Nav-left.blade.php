@@ -1,4 +1,4 @@
-<section id="ce-navleft">
+<section id="ce-navleft fixed-top">
     <ul class="ce-accordion-menu">
         @foreach ($lessons as $key => $lesson)
         @if (isset($now_content))
