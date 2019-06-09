@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-2 p-0">
-        @include('std_viewer.nav-left.Nav-left')
+        @include('std_viewer.nav-left.Nav-left',$lessons)
     </div>
     <div class="col-md-10">
         <div class="card ce-card">

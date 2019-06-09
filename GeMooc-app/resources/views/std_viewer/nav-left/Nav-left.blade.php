@@ -1,16 +1,41 @@
 <section id="ce-navleft">
     <ul class="ce-accordion-menu">
-        <li>
-            <div class="ce-dropdownlink">Chapter 1
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </div>
-            <ul class="ce-submenuItems">
-                <li><a href="#">History book 1</a></li>
-                <li><a href="#">History book 2</a></li>
-                <li><a href="#">History book 3</a></li>
-            </ul>
-        </li>
-        <li>
+        @foreach ($lessons as $key => $lesson)
+        @if (isset($now_content))
+            @if ($now_content->lesson->id == $lesson->id)
+                <li class="open">
+            @else
+                <li>
+            @endif
+        @else
+            <li>
+        @endif
+
+                <div class="ce-dropdownlink">Chapter {{($key+1)." ".$lesson->name}}
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </div>
+                <ul class="ce-submenuItems"
+                @if (isset($now_content))
+                    @if ($now_content->lesson->id == $lesson->id)
+                    style="display: block;"
+                    @endif
+                 @endif
+                >
+                    @foreach ($lesson->contents as $content)
+                        <li
+                        @if (isset($now_content))
+                            @if ($content->id == $now_content->id)
+                                style = "background-color: rgb(189, 227, 252);";
+                            @endif
+                        @endif
+                        ><a href="{{url('std_view/course/'.$lesson->course->id.'/content/'.$content->id)}}">{{$content->name}}</a></li>
+
+                    @endforeach
+                </ul>
+            </li>
+        @endforeach
+
+        {{-- <li>
             <div class="ce-dropdownlink">Chapter 2
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
             </div>
@@ -39,7 +64,7 @@
                 <li><a href="#">Action book 2</a></li>
                 <li><a href="#">Action book 3</a></li>
             </ul>
-        </li>
+        </li> --}}
     </ul>
 </section>
 
