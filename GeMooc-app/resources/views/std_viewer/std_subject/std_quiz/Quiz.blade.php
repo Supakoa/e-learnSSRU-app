@@ -117,12 +117,12 @@
 
         <div class="row mb-4">
             <div class="col-md-2  text-left">
-                <button class="btn btn-outline-info btn-block btn-sm">
+                <button id="prev" class="btn btn-outline-info btn-block btn-sm">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="col-md-2 offset-8 text-right">
-                <button class="btn btn-outline-info btn-block btn-sm">
+                <button id="next" class="btn btn-outline-info btn-block btn-sm">
                     <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                 </button>
             </div>
