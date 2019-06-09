@@ -12,7 +12,7 @@
                 <div class="col-md-4 offset-md-4 order-md-4">
                     <div class="jumbotron text-center">
                         <h3>
-                            Time out
+                           <div id="countdown"></div>
                         </h3>
                     </div>
                 </div>
@@ -29,33 +29,27 @@
         <div class="row mb-3">
             <div class="col-md-12 text-center">
                 <div class="pagination nav" id="nav-tab" role="tablist">
-
-                    <a class="arrow " href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    <script> questions = []</script>
                     @foreach ($quiz->questions as $key => $question)
-                    {{-- <a class="item active " id="number1-tab" data-toggle="tab" href="#number1" role="tab" aria-controls="number1" aria-selected="true">1</a> --}}
-                    <a class="item" id="tab_{{$question->id}}" data-toggle="tab" href="#number_{{$question->id}}"
-                        role="tab" aria-controls="number_{{$question->id}}" aria-selected="false">{{$key+1}}</a>
-
+                    <a class="item question_number" id="question_{{$question->id}}" data-toggle="tab" href="#number_{{$question->id}}"
+                        role="tab" aria-controls="number_{{$question->id}}" >{{$key+1}}</a>
+                        <Script>
+                            questions.push('question_{{$question->id}}')
+                        </Script>
                     @endforeach
-
-                    {{-- <a class="item" id="number2-tab" data-toggle="tab" href="#number2" role="tab" aria-controls="number2" aria-selected="false">2</a>
-                    <a class="item" href="#">3</a>
-                    <a class="item" href="#">4</a>
-                    <a class="item" href="#">5</a>
-                    <a class="item" href="#">6</a> --}}
-                    <a class="arrow" href="#" ><i class="fa fa-arrow-right"
-                            aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="tab-content" id="nav-tabContent">
             <form action="" method="post" id="form_all_question">
+                @csrf
+                <input type="hidden" name="timeleft" id = "timeleft">
             </form>
 
-            @foreach ($quiz->questions as $question)
+            @foreach ($quiz->questions as $key => $question)
                 <div class="tab-pane fade " id="number_{{$question->id}}" role="tabpanel"
-                    aria-labelledby="tab_{{$question->id}}">
+                    aria-labelledby="question_{{$question->id}}">
                     <div class="container mb-5">
                         <div class="row">
                                 @if ($question->image!=null)
@@ -77,8 +71,12 @@
                             <div class="col-md-10">
                                 <ul class="ce-choice">
                                     @foreach ($question->answers as $key => $answer)
-                                        <input type="radio" class="test_radio" form="form_all_question" name="question_{{$question->id}}" required >
-                                        <li>{{$key+1}}.) {{$answer->name}}</li>
+                                        <div class="form-group">
+                                        <div class=" form-control">
+                                        <input type="radio" class="test_radio" form="form_all_question" name="question_{{$question->id}}" value="{{$answer->id}}" required >
+                                        <label>{{$key+1}}.) {{$answer->name}}</label>
+                                    </div>
+                                    </div>
                                     @endforeach
                                 </ul>
                             </div>
@@ -86,43 +84,19 @@
                     </div>
                 </div>
             @endforeach
-            {{-- <div class="tab-pane fade" id="number2" role="tabpanel" aria-labelledby="number2-tab">
-                <div id="number2" class="container mb-5">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <dt>2.ssdijflskdjf55555555555555555555</dt>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="https://vetforcatsonly.com/wp-content/uploads/2015/08/IMG_0028.jpg"
-                                class="rounded" width="auto" height="auto" style="max-width: 100%;max-height: 150px"
-                                src="" alt="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <ul class="ce-choice">
-                                <li>1.</li>
-                                <li>2.</li>
-                                <li>3.</li>
-                                <li>4.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> --}}
+
         </div>
 
 
 
         <div class="row mb-4">
             <div class="col-md-2  text-left">
-                <button id="prev" class="btn btn-outline-info btn-block btn-sm">
+                <button id="prev" onclick="prev_question()" class="btn btn-outline-info btn-block btn-sm">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="col-md-2 offset-8 text-right">
-                <button id="next" class="btn btn-outline-info btn-block btn-sm">
+                <button id="next"  onclick="next_question()" class="btn btn-outline-info btn-block btn-sm">
                     <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                 </button>
             </div>
@@ -130,7 +104,7 @@
 
         <div class="row justify-content-center">
             <div class="container text-center">
-                <button type="submit" form="form_all_question" class="btn btn-login">ส่งคำตอบ</button>
+                <button id="submit_quiz" class="btn btn-login">ส่งคำตอบ</button>
                 <button class="btn btn-danger">ยกเลิก</button>
             </div>
         </div>
@@ -143,23 +117,67 @@
     width = 0;
     success = 0;
     percent = 0;
-    questions = {{$quiz->questions->count()}};
+    questions_number = {{$quiz->questions->count()}};
     ckecked = [];
+    $(document).ready(function () {
+        $( ".question_number").first().trigger( "click" );
+        var timeleft = 10;
+        var downloadTimer = setInterval(function(){
+            $("#countdown").html(timeleft + " seconds remaining");
+            if(timeleft <= 0){
+                clearInterval(downloadTimer);
+                $("#countdown").html("Time Out");
+            }
+            $('#timeleft').val(timeleft);
+            timeleft -= 1;
+        }, 1000);
+    });
 
     function up_percent() {
-        success++;
-        percen = success / questions * 100;
+        success = $('input:radio:checked').length;
+        percen = success / questions_number * 100;
         $('#progressbar').css('width', percen + "%");
         $('#progressbar').text(percen + "%");
     }
+
+    function next_question(){
+        index =  jQuery.inArray( now_question, questions );
+        next = questions[index+1];
+        $( "#"+next ).trigger( "click" );
+    }
+
+    function prev_question(){
+        index =  jQuery.inArray( now_question, questions );
+        next = questions[index-1];
+        $( "#"+next ).trigger( "click" );
+    }
+
     $('.test_radio').change(function (e) {
-        e.preventDefault();
-        if(ckecked.find(element => element === this.name)){
-            // alert(ckecked);
-        }else{
-            ckecked.push(this.name);
+            $('#'+this.name).css('background-color', '#D7FADB');
             up_percent();
+    });
+
+    $('#submit_quiz').click(function (e) {
+        e.preventDefault();
+        if(success<questions_number){
+
+        }else{
+            $('#form_all_question').submit();
         }
     });
+
+
+
+    $('.question_number').click(function (e) {
+        e.preventDefault();
+        now_question = this.id;
+        // alert(now_question);
+        $('.question_number').css("border",'#000 solid 1px')
+
+        $(this).css("border", "#DAC7FC dashed 3px")
+
+    });
+
+
 </script>
 @endsection
