@@ -33,7 +33,7 @@
 
 <body>
     <div class="ce-wrap">
-        <nav>
+        <nav class="fixed-top">
             <div class="logo">
                 Presentation
             </div>
@@ -50,8 +50,8 @@
             </div>
         </nav>
 
-        <div class="body-content">
-            <div class="ce-container">
+        <div class="ce-content">
+            <div class="ce-container pt-5">
                     @yield('content')
             </div>
         </div>
