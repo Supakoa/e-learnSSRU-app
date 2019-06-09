@@ -20,11 +20,6 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
-
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
-    --}}
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
-
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}">
 
@@ -170,22 +165,16 @@
 
     @yield('modal')
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
-    {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
-    {{-- <script src="{{ asset('node_modules/datatables.net-responsive/js/dataTables.responsive.js')}}"></script> --}}
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script> --}}
-    {{-- <script src="{{ asset('node_modules/bootstrap-select/dist/js/i18n/defaults-*.min.js')}}"></script> --}}
-
     <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 
     <!-- CEFstyle -->
-    {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
     <script>
         wow = new WOW({

@@ -1,4 +1,4 @@
-<section id="ce-navleft">
+<section id="ce-navleft fixed-top">
     <ul class="ce-accordion-menu">
         <li>
             <div class="ce-dropdownlink">Chapter 1
