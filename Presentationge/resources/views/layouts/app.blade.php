@@ -35,7 +35,7 @@
     <div class="ce-wrap">
         <nav class="fixed-top">
             <div class="logo">
-                Presentation
+               <a href="#banner">Presentation</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>

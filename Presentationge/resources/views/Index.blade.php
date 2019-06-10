@@ -2,24 +2,27 @@
 
 @section('content')
 <section id="banner">
-        <img src="" class="img-fluid" alt="">
+        <div class="img-container"></div>
+        <div class="bg-content">
+                <img class="img-fluid" src="https://i.redd.it/ndhdiurwmrgy.png" alt="">
+        </div>
 </section>
-<section id="home">
+<section id="home" class="ce-contentbody">
     <div class="ce-container">
         @include('content.Home')
     </div>
 </section>
-<section id="subject">
+<section id="subject" class="ce-contentbody">
     <div class="ce-container">
         @include('content.Subject')
     </div>
 </section>
-<section id="about">
+<section id="about" class="ce-contentbody">
     <div class="ce-container">
         @include('content.About')
     </div>
 </section>
-<section id="fq">
+<section id="fq" class="ce-contentbody">
     <div class="ce-container">
         @include('content.Fq')
     </div>
