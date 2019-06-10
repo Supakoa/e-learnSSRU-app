@@ -38,10 +38,10 @@
                 Presentation
             </div>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Subject</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">F&Q</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#subject">Subject</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="#fq">F&Q</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -50,10 +50,8 @@
             </div>
         </nav>
 
-        <div class="ce-content">
-            <div class="ce-container pt-5">
-                    @yield('content')
-            </div>
+        <div class="ce-content pt-5">
+            @yield('content')
         </div>
 
         <div class="footer">
