@@ -66,19 +66,14 @@ class Std_viewer extends Controller
                 }else{
                     $answer = $answers->pop()->id;
                     $question_id="question_".$question->id;
-
                     if($answer == $request->$question_id){
-                    // dd($request->$question_id);
                      $score++;
                     }
-
-
                 }
             }
             $temp = auth()->user()->scores()->attach($quiz,['score'=>$score,'time'=>$request->timeleft]);
-            // $quiz_score = auth()->user()->scores()->orderBy('created_at', 'desc')->first();
-             return redirect('std_view/course/'.$course->id.'/content/'.$content->id.'dashboard');
-            // return  view('std_viewer.std_subject.std_quiz.Quiz_dashboard')->with('quiz_socre',$quiz_score);
+            return redirect('std_view/course/'.$course->id.'/content/'.$content->id.'/dashboard');
+
     }
     public function show_dashboard(course $course,content $content)
     {

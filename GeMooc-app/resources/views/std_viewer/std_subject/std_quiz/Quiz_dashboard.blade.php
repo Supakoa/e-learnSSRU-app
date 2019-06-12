@@ -120,13 +120,13 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                                             $percen_show_100 = $num_100/$scores*100;
                                             //dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
                                             @endphp <span>0-25</span>
-                                            <div class="charts__chart chart--red" data-percent="{{$percen_show_25}}%" style="width: {{$percen_show_25}}%"></div>
+                                            <div class="charts__chart chart--red" data-percent="{{ round($percen_show_25,2)}}%" style="width: {{$percen_show_25}}%"></div>
                                             <span>26-50</span>
-                                            <div class="charts__chart chart--yellow" data-percent="{{$percen_show_50}}%" style="width: {{$percen_show_50}}%"></div>
+                                            <div class="charts__chart chart--yellow" data-percent="{{ round($percen_show_50,2)}}%" style="width: {{$percen_show_50}}%"></div>
                                             <span>51-75</span>
-                                            <div class="charts__chart chart--blue" data-percent="{{$percen_show_75}}%" style="width: {{$percen_show_75}}%"></div>
+                                            <div class="charts__chart chart--blue" data-percent="{{ round($percen_show_75,2)}}%" style="width: {{$percen_show_75}}%"></div>
                                             <span>76-100</span>
-                                            <div class="charts__chart chart--green" data-percent="{{$percen_show_100}}%" style="width: {{$percen_show_100}}%"></div>
+                                            <div class="charts__chart chart--green" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%"></div>
 
                                         </div><!-- /.charts -->
 
@@ -138,7 +138,7 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                 </div>
                 <div class="row"  style="height:50%;">
                     <div class="col-md-12 ">
-                        <div class="card overflow-auto ce-hiddenScollbar" style="height:100%;">
+                        <div class="card overflow-auto ce-hiddenScollbar" style="height:100%; max-height :300px">
                             <div class="card-body" >
                                 <div class="table-responsive ">
                                     <table class="table table-hover nowrap">
@@ -152,7 +152,7 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                                         </thead>
                                         <tbody>
                                             @php
-                                                $your_scores = auth()->user()->scores()->wherePivot('quiz_id',$quiz->id)->get();
+                                                $your_scores = auth()->user()->scores()->wherePivot('quiz_id',$quiz->id)->orderBy('scores.created_at','desc')->get();
                                             @endphp
                                             @foreach ($your_scores as $key=>$score)
                                                 <tr>

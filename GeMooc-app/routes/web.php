@@ -78,7 +78,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     });
     Route::post('get_time', function () {
         $time = session('time');
-        if($time>0){
+        if($time>=0){
             $time--;
             session(['time'=>$time]);
             echo $time;
