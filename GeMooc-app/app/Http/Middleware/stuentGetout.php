@@ -17,11 +17,16 @@ class stuentGetout
      */
     public function handle($request, Closure $next)
     {
-        if(!auth()->user()->canInside()){
-            Auth::logout();
-            Session::flush();
+        if (!auth()->check()) {
             Session::flash('message', "can't access to this side.");
             return redirect()->route('login');
+        }
+
+        else if(!auth()->user()->canInside()){
+            // Auth::logout();
+            // Session::flush();
+            Session::flash('message', "can't access to this side.");
+            return redirect()->route('home');
         }
 
         return $next($request);
