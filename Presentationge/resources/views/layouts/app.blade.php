@@ -35,7 +35,7 @@
     <div class="ce-wrap">
         <nav class="fixed-top">
             <div class="logo">
-               <a href="#banner">Presentation</a>
+                <a href="#banner">Presentation</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -80,6 +80,10 @@
             live: true // default
         })
         wow.init();
+
+        $(function () {
+            $(".box").draggable();
+        });
 
     </script>
 </body>

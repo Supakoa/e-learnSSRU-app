@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}"> --}}
+    <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
 
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
     --}}

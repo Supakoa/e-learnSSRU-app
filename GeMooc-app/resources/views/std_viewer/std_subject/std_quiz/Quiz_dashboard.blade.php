@@ -33,7 +33,7 @@
                                     <dd class="col-md-8">05/06/2562</dd>
                                 </dl>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mb-1">
                                         <button class="btn-light btn-sm ce-disable" disabled="disabled"><i
                                                 class="fas fa-list"></i> 100 ข้อ</button>
                                         <button class="btn-light btn-sm ce-disable" disabled="disabled"><i
@@ -57,8 +57,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
+            <div class="col-md-6 mb-2" >
+                <div class="card overflow-auto" style="height:600px;">
                     <div class="card-body">
                         <div class="container">
                             <div class="page-header">
@@ -80,28 +80,112 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="container">
-                            <div class="page-header">
-                                <h5>ช่วงคะแนนผู้สอบทั้งหมด</h5>
-                            </div>
-                            <div class="container">
-                                <div class="charts ">
-                                    <span>0-25</span>
-                                    <div class="charts__chart chart--red" data-percent="5%" style="width: 5%"></div><!-- /.charts__chart -->
-                                    <span>26-50</span>
-                                    <div class="charts__chart chart--yellow" data-percent="60%" style="width: 60%"></div><!-- /.charts__chart -->
-                                    <span>51-75</span>
-                                    <div class="charts__chart chart--blue" data-percent="55%" style="width: 55%"></div><!-- /.charts__chart -->
-                                    <span>76-100</span>
-                                    <div class="charts__chart chart--green" data-percent="16%" style="width: 16%"></div><!-- /.charts__chart -->
-                                </div><!-- /.charts -->
+                <div class="row">
+                    <div class="col-md-12 mb-2 overflow-auto ce-hiddenScollbar" >
+                        <div class="card" style="height:300px;">
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="page-header">
+                                        <h5>ช่วงคะแนนผู้สอบทั้งหมด</h5>
+                                    </div>
+                                    <div class="container">
+                                        <div class="charts ">
+                                            <span>0-25 %</span>
+                                            <div class="charts__chart chart--red" data-percent="5%" style="width: 5%">
+                                            </div><!-- /.charts__chart -->
+                                            <span>26-50 %</span>
+                                            <div class="charts__chart chart--yellow" data-percent="60%"
+                                                style="width: 60%"></div><!-- /.charts__chart -->
+                                            <span>51-75 %</span>
+                                            <div class="charts__chart chart--blue" data-percent="55%"
+                                                style="width: 55%"></div><!-- /.charts__chart -->
+                                            <span>76-100 %</span>
+                                            <div class="charts__chart chart--green" data-percent="16%"
+                                                style="width: 16%"></div><!-- /.charts__chart -->
+                                        </div><!-- /.charts -->
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="card overflow-auto ce-hiddenScollbar" style="height:300px;">
+                            <div class="card-body">
+                                <div class="table-responsive " >
+                                    <table class="table table-hover nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th>วันที่สอบ</th>
+                                                <th>ชื่อผู้สอบ</th>
+                                                <th>คะแนน</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>16/01/2652</td>
+                                                <td>supakit</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>16/01/2652</td>
+                                                    <td>supakit</td>
+                                                    <td>100</td>
+                                                </tr>
+                                                <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>16/01/2652</td>
+                                                        <td>supakit</td>
+                                                        <td>100</td>
+                                                    </tr>
+                                                    <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>16/01/2652</td>
+                                                            <td>supakit</td>
+                                                            <td>100</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>16/01/2652</td>
+                                                                <td>supakit</td>
+                                                                <td>100</td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <th scope="row">1</th>
+                                                                    <td>16/01/2652</td>
+                                                                    <td>supakit</td>
+                                                                    <td>100</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <th scope="row">1</th>
+                                                                        <td>16/01/2652</td>
+                                                                        <td>supakit</td>
+                                                                        <td>100</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <th scope="row">1</th>
+                                                                            <td>16/01/2652</td>
+                                                                            <td>supakit</td>
+                                                                            <td>100</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <th scope="row">1</th>
+                                                                                <td>16/01/2652</td>
+                                                                                <td>supakit</td>
+                                                                                <td>100</td>
+                                                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
