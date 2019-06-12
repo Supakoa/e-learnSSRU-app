@@ -2,12 +2,12 @@
 
 @section('content')
 @php
-    $subject =$course->subject;
-    $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->first();
-    // dd($score_now);
+$subject =$course->subject;
+$score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->first();
+// dd($score_now);
 @endphp
 <div class="card ce-card">
-<h1 class="ce-name">Dashboard : {{$quiz->name}}</h1>
+    <h1 class="ce-name">Dashboard : {{$quiz->name}}</h1>
     <div class="ce-container">
         <div class="row mb-3">
             <div class="col-md-12">
@@ -71,18 +71,19 @@
                                 <p>{{auth()->user()->name}}</p>
                             </div>
                             @php
-                                $question_number = $quiz->questions->count();
-                                $percen_question = (int)(($score_now->pivot->score / $question_number)*100);
-                                $percen_time = (int)((($quiz->time - $score_now->pivot->time) / $quiz->time)*100);
+                            $question_number = $quiz->questions->count();
+                            $percen_question = (int)(($score_now->pivot->score / $question_number)*100);
+                            $percen_time = (int)((($quiz->time - $score_now->pivot->time) / $quiz->time)*100);
                             @endphp
                             <div class="row">
                                 <div class="col-md-6 text-center">
-                                <div class="progress-circle" data-progress="{{$percen_question}}"></div>
+                                    <div class="progress-circle" data-progress="{{$percen_question}}"></div>
                                     <p>ทำได้ทั้งหมด {{$score_now->pivot->score.' ข้อ จาก '.$question_number}} ข้อ</p>
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <div class="progress-circle" data-progress="{{$percen_time}}"></div>
-                                    <p>ใช้เวลาทั้งหมด {{$quiz->time - $score_now->pivot->time}}(วินาที) จาก {{$quiz->time}}(วินาที)</p>
+                                    <p>ใช้เวลาทั้งหมด {{$quiz->time - $score_now->pivot->time}}(วินาที) จาก
+                                        {{$quiz->time}}(วินาที)</p>
                                 </div>
                             </div>
                         </div>
@@ -99,31 +100,42 @@
                             <div class="container">
                                 <div class="charts ">
                                     @php
-                                        $scores = $quiz->scores->count();
-                                        $percen_25 = (int)($question_number*0.25);
-                                        // dd($percen_25);
-                                        $percen_50 = (int)($question_number*0.50);
-                                        $percen_75 = (int)($question_number*0.75);
-                                        $percen_100 = (int)($question_number);
-                                        $num_25 = $quiz->scores()->wherePivot('score','<=',$percen_25)->get()->count();
-                                        $num_50 = $quiz->scores()->wherePivot('score','<=',$percen_50)->wherePivot('score','>',$percen_25)->get()->count();
-                                        $num_75 = $quiz->scores()->wherePivot('score','<=',$percen_75)->wherePivot('score','>',$percen_50)->get()->count();
-                                        $num_100 = $quiz->scores()->wherePivot('score','<=',$percen_100)->wherePivot('score','>',$percen_75)->get()->count();
-                                        $percen_show_25 = $num_25/$scores*100;
-                                        $percen_show_50 = $num_50/$scores*100;
-                                        $percen_show_75 = $num_75/$scores*100;
-                                        $percen_show_100 = $num_100/$scores*100;
-                                        // dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
-
+                                    $scores = $quiz->scores->count();
+                                    $percen_25 = (int)($question_number*0.25);
+                                    // dd($percen_25);
+                                    $percen_50 = (int)($question_number*0.50);
+                                    $percen_75 = (int)($question_number*0.75);
+                                    $percen_100 = (int)($question_number);
+                                    $num_25 = $quiz->scores()->wherePivot('score','<=',$percen_25)->get()->count();
+                                    $num_50 = $quiz->scores()->wherePivot('score','<=',$percen_50)->wherePivot('score','>',$percen_25)->get()->count();
+                                    $num_75 = $quiz->scores()->wherePivot('score','<=',$percen_75)->wherePivot('score','>',$percen_50)->get()->count();
+                                    $num_100 = $quiz->scores()->wherePivot('score','<=',$percen_100)->wherePivot('score','>',$percen_75)->get()->count();
+                                    $percen_show_25 = $num_25/$scores*100;
+                                    $percen_show_50 = $num_50/$scores*100;
+                                    $percen_show_75 = $num_75/$scores*100;
+                                    $percen_show_100 = $num_100/$scores*100;
+                                    // dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
                                     @endphp
-                                    <span>0-25</span>
-                                    <div class="charts__chart chart--red" data-percent="{{$percen_show_25}}%" style="width: {{$percen_show_25}}%"></div><!-- /.charts__chart -->
+                                <span>0-25</span>
+                                    <div class="charts__chart chart--red"
+                                        data-percent="{{$percen_show_25}}%"
+                                        style="width: {{$percen_show_25}}%"></div>
+                                    <!-- /.charts__chart -->
                                     <span>26-50</span>
-                                    <div class="charts__chart chart--yellow" data-percent="{{$percen_show_50}}%" style="width: {{$percen_show_50}}%"></div><!-- /.charts__chart -->
+                                    <div class="charts__chart chart--yellow"
+                                        data-percent="{{$percen_show_50}}%"
+                                        style="width: {{$percen_show_50}}%"></div>
+                                    <!-- /.charts__chart -->
                                     <span>51-75</span>
-                                    <div class="charts__chart chart--blue" data-percent="{{$percen_show_75}}%" style="width: {{$percen_show_75}}%"></div><!-- /.charts__chart -->
+                                    <div class="charts__chart chart--blue"
+                                        data-percent="{{$percen_show_75}}%"
+                                        style="width: {{$percen_show_75}}%"></div>
+                                    <!-- /.charts__chart -->
                                     <span>76-100</span>
-                                    <div class="charts__chart chart--green" data-percent="{{$percen_show_100}}%" style="width: {{$percen_show_100}}%"></div><!-- /.charts__chart -->
+                                    <div class="charts__chart chart--green"
+                                        data-percent="{{$percen_show_100}}%"
+                                        style="width: {{$percen_show_100}}%"></div>
+                                    <!-- /.charts__chart -->
                                 </div><!-- /.charts -->
 
                             </div>
