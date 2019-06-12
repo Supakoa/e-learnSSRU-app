@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Route;
 
 class stuentGetout
 {
@@ -17,16 +18,16 @@ class stuentGetout
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->check()) {
+        // dd($request->path());
+        if (!auth()->check() && $request->path() != "login") {
             Session::flash('message', "can't access to this side.");
             return redirect()->route('login');
         }
-
-        else if(!auth()->user()->canInside()){
+        elseif(!auth()->user()->canInside() && $request->path() != "home"){
             // Auth::logout();
             // Session::flush();
             Session::flash('message', "can't access to this side.");
-            return redirect()->route('home');
+            return redirect()->route('dashboard.home');
         }
 
         return $next($request);

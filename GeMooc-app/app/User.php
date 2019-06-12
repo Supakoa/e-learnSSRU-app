@@ -16,7 +16,7 @@ class User extends Authenticatable
     // use LaratrustUserTrait; // เรียกใช้ trait
 
     public function canInside(){
-        return $this->type_user == 'admin' || $this->type_user == 'teach';
+        return !($this->type_user != 'admin' && $this->type_user != 'teach');
     }
 
     /**
