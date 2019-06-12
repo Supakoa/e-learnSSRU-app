@@ -19,7 +19,6 @@ Auth::routes();
 // middle ware to any route
 Route::group(['middleware' => ['mdgStudent']], function () {
 
-
     Route::get('/', 'HomeController@index')->name('dashboard.home');
     Route::get('/home', 'HomeController@index')->name('dashboard.home');
     Route::get('/yourprofile', 'HomeController@YourProfile');
@@ -27,7 +26,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     Route::get('/test', 'test_sumernote@index');
 
     Route::get('/payment-setting', 'payment@Home');
-    Route::get('/report', 'Report@index')->middleware('student');
+    Route::get('/report', 'Report@index');
 
     Route::get('/quiz/show', function () {
         return view('quiz.Show');
@@ -80,18 +79,18 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     /**
     * Route Sub
     */
-    Route::resource('/subject', 'backend\subject_c')->middleware('student');
-    Route::post('subject/modal/edit', 'backend\subject_c@modal_edit')->middleware('student');
+    Route::resource('/subject', 'backend\subject_c');
+    Route::post('subject/modal/edit', 'backend\subject_c@modal_edit');
 
     // Resource controller
-    Route::resource('/course', 'backend\course_c')->middleware('student');
-    Route::resource('/lesson', 'backend\lesson_c')->middleware('student');
-    Route::resource('/content', 'backend\content_c')->middleware('student');
-    Route::resource('/article', 'backend\articleController')->middleware('student');
-    Route::resource('/quiz', 'backend\quizController')->middleware('student');
-    Route::resource('/teach', 'backend\teachController')->middleware('student');
-    Route::resource('/question', 'backend\questionController')->middleware('student');
-    Route::resource('/student', 'backend\studentController')->middleware('student');
+    Route::resource('/course', 'backend\course_c');
+    Route::resource('/lesson', 'backend\lesson_c');
+    Route::resource('/content', 'backend\content_c');
+    Route::resource('/article', 'backend\articleController');
+    Route::resource('/quiz', 'backend\quizController');
+    Route::resource('/teach', 'backend\teachController');
+    Route::resource('/question', 'backend\questionController');
+    Route::resource('/student', 'backend\studentController');
 
     /**
      * Route course
@@ -107,7 +106,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     // Route::get('/teach', 'teach@Teach');
     // Route::post('/teach/create', 'teach@createTeach');
     // Route::delete('/teach/{user}', 'teach@deleteTeach');
-    Route::post('teach/{user}/editModal', 'backend\teachController@edit')->middleware('student');
+    Route::post('teach/{user}/editModal', 'backend\teachController@edit');
 
     /**
      * Route Student
@@ -115,7 +114,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     // Route::get('/student', 'student@Student');
     // Route::post('student/create', 'student@createStudent');
     // Route::delete('student/{user}', 'student@deleteStudent');
-    Route::post('student/{user}/editModal', 'backend\studentController@edit')->middleware('student');
+    Route::post('student/{user}/editModal', 'backend\studentController@edit');
 
 
     // Administrator & SuperAdministrator Control Panel Routes
