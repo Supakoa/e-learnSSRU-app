@@ -13,6 +13,12 @@ class quiz extends Model
 
        public function content()
        {
-           return $this->belongsTo('App\content','detail');
+           return $this->belongsTo('App\content');
+       }
+
+
+       public function scores()
+       {
+           return $this->belongsToMany('App\User','scores')->withPivot('score','time')->withTimestamps();
        }
 }

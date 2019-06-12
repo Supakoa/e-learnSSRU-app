@@ -45,6 +45,9 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
     Route::get('/std_view/course/{course}', 'Std_viewer@Std_course');
     Route::get('/std_view/course/{course}/content/{content}', 'Std_viewer@show_content');
+    Route::post('/std_view/course/{course}/content/{content}/submit_quiz', 'Std_viewer@submit_quiz');
+    Route::get('/std_view/course/{course}/content/{content}/dashboard', 'Std_viewer@show_dashboard');
+
 
     Route::get('/std_viewer/test/text', function(){
         return view('std_viewer.std_subject.std_course.content.CT_text');
@@ -73,6 +76,17 @@ Route::group(['middleware' => ['mdgStudent']], function () {
         if (unlink(public_path($src))) {
             echo "Success";
         }
+    });
+    Route::post('get_time', function () {
+        $time = session('time');
+        if($time>0){
+            $time--;
+            session(['time'=>$time]);
+            echo $time;
+        }else{
+            echo 0;
+        }
+
     });
 
     // Route::get('test', function ($id) {

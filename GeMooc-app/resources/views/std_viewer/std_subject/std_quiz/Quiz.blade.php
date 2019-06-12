@@ -42,7 +42,7 @@
         </div>
 
         <div class="tab-content" id="nav-tabContent">
-            <form action="" method="post" id="form_all_question">
+            <form action="{{url('std_view/course/'.$course->id.'/content/'.$quiz->content->id.'/submit_quiz')}}" method="post" id="form_all_question">
                 @csrf
                 <input type="hidden" name="timeleft" id = "timeleft">
             </form>
@@ -73,7 +73,7 @@
                                     @foreach ($question->answers as $key => $answer)
                                         <div class="form-group">
                                         <div class=" form-control">
-                                        <input type="radio" class="test_radio" form="form_all_question" name="question_{{$question->id}}" value="{{$answer->id}}" required >
+                                        <input type="radio" class="test_radio" form="form_all_question" name="question_{{$question->id}}" value="{{$answer->id}}" >
                                         <label>{{$key+1}}.) {{$answer->name}}</label>
                                     </div>
                                     </div>
@@ -104,34 +104,63 @@
 
         <div class="row justify-content-center">
             <div class="container text-center">
-                <button id="submit_quiz" class="btn btn-login">ส่งคำตอบ</button>
+                <button id="submit_quiz"  class="btn btn-login">ส่งคำตอบ</button>
                 <button class="btn btn-danger">ยกเลิก</button>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
+@php
+    // dd(session('time'));
+@endphp
 @section('js')
 <script>
+     $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    time = 'Wait...';
     width = 0;
     success = 0;
     percent = 0;
     questions_number = {{$quiz->questions->count()}};
     ckecked = [];
-    $(document).ready(function () {
-        $( ".question_number").first().trigger( "click" );
-        var timeleft = 10;
+    var timeleft = get_time();
         var downloadTimer = setInterval(function(){
             $("#countdown").html(timeleft + " seconds remaining");
-            if(timeleft <= 0){
+            if(timeleft < 0){
                 clearInterval(downloadTimer);
                 $("#countdown").html("Time Out");
+                $('#submit_quiz').attr('disabled', 'true');
+                $('#form_all_question').submit();
+
             }
             $('#timeleft').val(timeleft);
-            timeleft -= 1;
+            timeleft = get_time();
         }, 1000);
+    $(document).ready(function () {
+        $( ".question_number").first().trigger( "click" );
+
     });
+
+
+    function get_time() {
+        $.ajax({
+                type: "POST",
+                url: "/get_time",
+                cache: false,
+                success: function (response) {
+                    time =  response;
+
+                }
+
+            });
+            return time;
+
+    }
+
 
     function up_percent() {
         success = $('input:radio:checked').length;
@@ -160,6 +189,7 @@
     $('#submit_quiz').click(function (e) {
         e.preventDefault();
         if(success<questions_number){
+            $('#form_all_question').submit();
 
         }else{
             $('#form_all_question').submit();

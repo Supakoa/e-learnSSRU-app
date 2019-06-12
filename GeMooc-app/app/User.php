@@ -55,10 +55,15 @@ class User extends Authenticatable
 
        public function answers()
        {
-           return $this->belongsToMany('App\answer','user_answer');
+           return $this->belongsToMany('App\answer','user_answer')->withTimestamps();
        }
        public function courses()
        {
            return $this->belongsToMany('App\course','course_user')->withPivot('role');
+       }
+
+       public function scores()
+       {
+           return $this->belongsToMany('App\quiz','scores')->withPivot('score','time')->withTimestamps();
        }
 }

@@ -31,7 +31,6 @@ class CreateAnswersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedbigInteger('answer_id');
             $table->foreign('answer_id')->references('id')->on('answers')->onDelete('cascade');
-            $table->integer('countdown');
             $table->timestamps();
         });
     }
