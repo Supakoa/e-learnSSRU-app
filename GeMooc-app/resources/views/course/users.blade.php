@@ -113,8 +113,13 @@ $adminOnly = auth()->user()->type_user == 'admin';
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <h4>Top Scroll</h4>
+                <h4 class="ce-name">Top Scroll</h4>
+
+            <div class="col-md-8">
+                
+            </div>
+            <div class="col-md-4">
+
             </div>
         </div>
 

@@ -62,8 +62,8 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
+            <div class="col-md-6 mb-2">
+                <div class="card overflow-auto" style="height:600px;">
                     <div class="card-body">
                         <div class="container">
                             <div class="page-header">
@@ -91,53 +91,88 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="container">
-                            <div class="page-header">
-                                <h5>ช่วงคะแนนผู้สอบทั้งหมด</h5>
-                            </div>
-                            <div class="container">
-                                <div class="charts ">
-                                    @php
-                                    $scores = $quiz->scores->count();
-                                    $percen_25 = (int)($question_number*0.25);
-                                    // dd($percen_25);
-                                    $percen_50 = (int)($question_number*0.50);
-                                    $percen_75 = (int)($question_number*0.75);
-                                    $percen_100 = (int)($question_number);
-                                    $num_25 = $quiz->scores()->wherePivot('score','<=',$percen_25)->get()->count();
-                                    $num_50 = $quiz->scores()->wherePivot('score','<=',$percen_50)->wherePivot('score','>',$percen_25)->get()->count();
-                                    $num_75 = $quiz->scores()->wherePivot('score','<=',$percen_75)->wherePivot('score','>',$percen_50)->get()->count();
-                                    $num_100 = $quiz->scores()->wherePivot('score','<=',$percen_100)->wherePivot('score','>',$percen_75)->get()->count();
-                                    $percen_show_25 = $num_25/$scores*100;
-                                    $percen_show_50 = $num_50/$scores*100;
-                                    $percen_show_75 = $num_75/$scores*100;
-                                    $percen_show_100 = $num_100/$scores*100;
-                                    // dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
-                                    @endphp
-                                <span>0-25</span>
-                                    <div class="charts__chart chart--red"
-                                        data-percent="{{$percen_show_25}}%"
-                                        style="width: {{$percen_show_25}}%"></div>
-                                    <!-- /.charts__chart -->
-                                    <span>26-50</span>
-                                    <div class="charts__chart chart--yellow"
-                                        data-percent="{{$percen_show_50}}%"
-                                        style="width: {{$percen_show_50}}%"></div>
-                                    <!-- /.charts__chart -->
-                                    <span>51-75</span>
-                                    <div class="charts__chart chart--blue"
-                                        data-percent="{{$percen_show_75}}%"
-                                        style="width: {{$percen_show_75}}%"></div>
-                                    <!-- /.charts__chart -->
-                                    <span>76-100</span>
-                                    <div class="charts__chart chart--green"
-                                        data-percent="{{$percen_show_100}}%"
-                                        style="width: {{$percen_show_100}}%"></div>
-                                    <!-- /.charts__chart -->
-                                </div><!-- /.charts -->
+                <div class="row">
+                    <div class="col-md-12 mb-2 overflow-auto ce-hiddenScollbar">
+                        <div class="card" style="height:300px;">
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="page-header">
+                                        <h5>ช่วงคะแนนผู้สอบทั้งหมด</h5>
+                                    </div>
+                                    <div class="container">
+                                        <div class="charts ">
+                                            @php
+                                            $scores = $quiz->scores->count();
+                                            $percen_25 = (int)($question_number*0.25);
+                                            // dd($percen_25);
+                                            $percen_50 = (int)($question_number*0.50);
+                                            $percen_75 = (int)($question_number*0.75);
+                                            $percen_100 = (int)($question_number);
+                                            $num_25 = $quiz->scores()->wherePivot('score','<=',$percen_25)->
+                                                get()->count();
+                                                $num_50 = $quiz->scores()->wherePivot('score','<=',$percen_50)->
+                                                    wherePivot('score','>',$percen_25)->get()->count();
+                                                    $num_75 = $quiz->scores()->wherePivot('score','<=',$percen_75)->
+                                                        wherePivot('score','>',$percen_50)->get()->count();
+                                                        $num_100 = $quiz->scores()->wherePivot('score','
+                                                        <=',$percen_100)->
+                                                            wherePivot('score','>',$percen_75)->get()->count();
+                                                            $percen_show_25 = $num_25/$scores*100;
+                                                            $percen_show_50 = $num_50/$scores*100;
+                                                            $percen_show_75 = $num_75/$scores*100;
+                                                            $percen_show_100 = $num_100/$scores*100;
+                                                            //
+                                                            dd($scores->wherePivot('score','>',0)->wherePivot('score','
+                                                            <',20)); @endphp <span>0-25</span>
+                                                                <div class="charts__chart chart--red"
+                                                                    data-percent="{{$percen_show_25}}%"
+                                                                    style="width: {{$percen_show_25}}%"></div>
+                                                                <!-- /.charts__chart -->
+                                                                <span>26-50</span>
+                                                                <div class="charts__chart chart--yellow"
+                                                                    data-percent="{{$percen_show_50}}%"
+                                                                    style="width: {{$percen_show_50}}%"></div>
+                                                                <!-- /.charts__chart -->
+                                                                <span>51-75</span>
+                                                                <div class="charts__chart chart--blue"
+                                                                    data-percent="{{$percen_show_75}}%"
+                                                                    style="width: {{$percen_show_75}}%"></div>
+                                                                <!-- /.charts__chart -->
+                                                                <span>76-100</span>
+                                                                <div class="charts__chart chart--green"
+                                                                    data-percent="{{$percen_show_100}}%"
+                                                                    style="width: {{$percen_show_100}}%"></div>
+                                                                <!-- /.charts__chart -->
+                                        </div><!-- /.charts -->
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="card overflow-auto ce-hiddenScollbar" style="height:300px;">
+                            <div class="card-body">
+                                <div class="table-responsive ">
+                                    <table class="table table-hover nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th>วันที่สอบ</th>
+                                                <th>ชื่อผู้สอบ</th>
+                                                <th>คะแนน</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>16/01/2652</td>
+                                                <td>supakit</td>
+                                                <td>100</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
