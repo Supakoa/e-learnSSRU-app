@@ -21,7 +21,7 @@
         <div class="row mb-3">
             <div class="col-md-2 text-left">
             <a href="/course/{{$course->id}}/users" class="btn btn-md btn-outline-success btn-block">
-                    <i class="fas fa-users"></i> Teacher
+                    <i class="fas fa-users"></i>
                 </a>
             </div>
             <div class="col-md-10 text-right">
