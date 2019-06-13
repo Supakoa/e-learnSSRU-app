@@ -28,7 +28,7 @@
                                 style = "background-color: rgb(189, 227, 252);";
                             @endif
                         @endif
-                        ><a href="{{url('std_view/course/'.$lesson->course->id.'/content/'.$content->id)}}">{{$content->name}}</a></li>
+                        ><a href="{{url('std_view/course/content/'.$content->id)}}">{{$content->name}}</a></li>
 
                     @endforeach
                 </ul>

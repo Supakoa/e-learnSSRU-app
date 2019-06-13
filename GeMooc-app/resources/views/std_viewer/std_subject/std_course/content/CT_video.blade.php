@@ -4,19 +4,18 @@
 
 <div class="row">
     <div class="col-md-2 p-0">
-        @include('std_viewer.nav-left.Nav-left')
+        @include('std_viewer.nav-left.Nav-left',[$now_content,$lessons])
     </div>
     <div class="col-md-10">
         <div class="card ce-card">
             <div class="justify-content-center p-0">
                 <div class="ce-conainer">
-                    <h1 class="ce-name">That course content.video</h1>
+                <h1 class="ce-name">Video : {{$now_content->name}}</h1>
                     <div class="container">
                         <div class="row justify-content-center mb-5">
                             <div class="col">
                                 <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item"
-                                        src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                                    <iframe width="1280" height="720" src="https://www.youtube.com/embed/RUI9eeEvwhw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>

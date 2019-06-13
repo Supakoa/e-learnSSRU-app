@@ -32,10 +32,12 @@ class Std_viewer extends Controller
     }
 
 
-     public function show_content(course $course,content $content)
+     public function show_content(content $content)
     {
+        $course = $content->lesson->course;
+        // dd($course);
         if($content->type==1){
-            return view('std_viewer.std_subject.std_course.content.CT_video');
+            return view('std_viewer.std_subject.std_course.content.CT_video')->with('lessons',$course->lessons)->with('now_content',$content);
         }elseif($content->type==2){
             $article = $content->article;
             return view('std_viewer.std_subject.std_course.content.CT_text')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
@@ -47,8 +49,10 @@ class Std_viewer extends Controller
 
         }
     }
-    public function submit_quiz(course $course,content $content,Request $request){
-            if($request->timeleft=="Wait..."){
+    public function submit_quiz(content $content,Request $request){
+        $course = $content->lesson->course;
+
+        if($request->timeleft=="Wait..."){
                 return redirect('/std_view/course/'.$course->id);
             }
             $quiz = $content->quiz;
@@ -66,24 +70,20 @@ class Std_viewer extends Controller
                 }else{
                     $answer = $answers->pop()->id;
                     $question_id="question_".$question->id;
-
                     if($answer == $request->$question_id){
-                    // dd($request->$question_id);
                      $score++;
                     }
-
-
                 }
             }
             $temp = auth()->user()->scores()->attach($quiz,['score'=>$score,'time'=>$request->timeleft]);
-            // $quiz_score = auth()->user()->scores()->orderBy('created_at', 'desc')->first();
-             return redirect('std_view/course/'.$course->id.'/content/'.$content->id.'dashboard');
-            // return  view('std_viewer.std_subject.std_quiz.Quiz_dashboard')->with('quiz_socre',$quiz_score);
+            return redirect('std_view/course/content/'.$content->id.'/dashboard');
+
     }
-    public function show_dashboard(course $course,content $content)
+    public function show_dashboard(content $content)
     {
+        $course = $content->lesson->course;
         if($content->type==1){
-            return view('std_viewer.std_subject.std_course.content.CT_video');
+            return view('std_viewer.std_subject.std_course.content.CT_video')->with('lessons',$course->lessons)->with('now_content',$content);
         }elseif($content->type==2){
             $article = $content->article;
             return view('std_viewer.std_subject.std_course.content.CT_text')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);

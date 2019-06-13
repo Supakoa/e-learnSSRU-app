@@ -35,27 +35,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
         return view('quiz.Edit');
     });
 
-    Route::get('/std_view/course/quiz', 'Std_viewer@Std_quiz');
-    Route::get('/std_view/course/quiz/dashboard', 'Std_viewer@Std_quizDashboard');
-    Route::get('/std_view/course/quiz/previewquiz', 'Std_viewer@Std_quizPreview');
 
-    Route::get('/std_view/home', 'Std_viewer@Std_home');
-    Route::get('/std_view/subject', 'Std_viewer@all_subject');
-    Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
-    Route::get('/std_view/course/{course}', 'Std_viewer@Std_course');
-    Route::get('/std_view/course/{course}/content/{content}', 'Std_viewer@show_content');
-    Route::post('/std_view/course/{course}/content/{content}/submit_quiz', 'Std_viewer@submit_quiz');
-    Route::get('/std_view/course/{course}/content/{content}/dashboard', 'Std_viewer@show_dashboard');
-
-
-    Route::get('/std_viewer/test/text', function(){
-        return view('std_viewer.std_subject.std_course.content.CT_text');
-    });
-    Route::get('/std_viewer/test/video', function(){
-        return view('std_viewer.std_subject.std_course.content.CT_video');
-    });
-    Route::get('/std_view/payment', 'Std_viewer@Std_payment');
-    // Route::get('/up_image','test_sumernote@up_image');
 
     Route::post('ajaximage', function () {
         $file = Request::file('file');
@@ -78,7 +58,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     });
     Route::post('get_time', function () {
         $time = session('time');
-        if($time>0){
+        if($time>=0){
             $time--;
             session(['time'=>$time]);
             echo $time;
@@ -144,3 +124,25 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     Route::post('question/modal/edit', 'backend\questionController@modal_edit');
 
 });
+
+
+
+    Route::get('/std_view/course/quiz/previewquiz', 'Std_viewer@Std_quizPreview');
+
+    Route::get('/std_view/home', 'Std_viewer@Std_home');
+    Route::get('/std_view/subject', 'Std_viewer@all_subject');
+    Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
+    Route::get('/std_view/course/{course}', 'Std_viewer@Std_course');
+    Route::get('/std_view/course/content/{content}', 'Std_viewer@show_content');
+    Route::post('/std_view/course/content/{content}/submit_quiz', 'Std_viewer@submit_quiz');
+    Route::get('/std_view/course/content/{content}/dashboard', 'Std_viewer@show_dashboard');
+
+
+    // Route::get('/std_viewer/test/text', function(){
+    //     return view('std_viewer.std_subject.std_course.content.CT_text');
+    // });
+    // Route::get('/std_viewer/test/video', function(){
+    //     return view('std_viewer.std_subject.std_course.content.CT_video');
+    // });
+    // Route::get('/std_view/payment', 'Std_viewer@Std_payment');
+    // Route::get('/up_image','test_sumernote@up_image');
