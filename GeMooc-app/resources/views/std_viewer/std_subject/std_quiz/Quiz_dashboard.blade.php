@@ -1,5 +1,7 @@
 @extends('layouts.appViewer')
-
+@section('title')
+Quiz Dashboard : {{$quiz->name}}
+@endsection
 @section('content')
 @php
 $subject =$course->subject;

@@ -42,7 +42,7 @@
         </div>
 
         <div class="tab-content" id="nav-tabContent">
-            <form action="{{url('std_view/course/'.$course->id.'/content/'.$quiz->content->id.'/submit_quiz')}}" method="post" id="form_all_question">
+            <form action="{{url('std_view/course/content/'.$quiz->content->id.'/submit_quiz')}}" method="post" id="form_all_question">
                 @csrf
                 <input type="hidden" name="timeleft" id = "timeleft">
             </form>
@@ -129,15 +129,26 @@
     ckecked = [];
     var timeleft = get_time();
         var downloadTimer = setInterval(function(){
-            $("#countdown").html(timeleft + " seconds remaining");
-            if(timeleft < 0){
+            $('#timeleft').val(timeleft);
+            minute =  parseInt(timeleft/60)
+            sec = timeleft%60
+            if(minute<10){
+                minute = '0'+minute
+            }
+            if(sec<10){
+                sec = '0'+sec
+            }
+            $("#countdown").html(minute + ' : ' + sec);
+            if(timeleft <= 0){
                 clearInterval(downloadTimer);
                 $("#countdown").html("Time Out");
                 $('#submit_quiz').attr('disabled', 'true');
                 $('#form_all_question').submit();
 
             }
-            $('#timeleft').val(timeleft);
+
+            console.log(timeleft);
+
             timeleft = get_time();
         }, 1000);
     $(document).ready(function () {
@@ -164,7 +175,7 @@
 
     function up_percent() {
         success = $('input:radio:checked').length;
-        percen = success / questions_number * 100;
+        percen = parseInt(success / questions_number * 100);
         $('#progressbar').css('width', percen + "%");
         $('#progressbar').text(percen + "%");
     }
