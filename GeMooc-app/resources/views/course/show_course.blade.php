@@ -18,21 +18,21 @@
     <h1 class="ce-name">
         Course : {{$course->name}}
     </h1>
-        <div class="row mb-3">
-            <div class="col-md-2 text-left">
+    <div class="row mb-3">
+        <div class="col-md-2 text-left">
             <a href="/course/{{$course->id}}/users" class="btn btn-md btn-outline-success btn-block">
-                    <i class="fas fa-users"></i>
-                </a>
-            </div>
-            <div class="col-md-10 text-right">
-                <div class="ce-card-btn">
-                    <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal"
-                        data-target="#Add_Modal"> <i class="fas fa-folder-plus"></i> </button>
-                    <button href="#" class="btn btn-md btn-outline-warning send_ajax "
-                        onclick="edit_course('{{$course->id}}')"> <i class="fas fa-cog"></i></button>
-                </div>
+                <i class="fas fa-users"></i>
+            </a>
+        </div>
+        <div class="col-md-10 text-right">
+            <div class="ce-card-btn">
+                <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
+                        class="fas fa-folder-plus"></i> </button>
+                <button href="#" class="btn btn-md btn-outline-warning send_ajax "
+                    onclick="edit_course('{{$course->id}}')"> <i class="fas fa-cog"></i></button>
             </div>
         </div>
+    </div>
     <div class="row ce-container">
         <div class="col-md-12">
             @if ($lessons->count() > 0)
@@ -41,14 +41,14 @@
                 <div class="card shadow">
                     <div class="card-header " id="heading{{$lesson->id}}">
                         <div class="row">
-                            <div class="col-md-8 text-left">
+                            <div class="col-md-8 text-left p-0" id="titlelession">
                                 <button class="btn btn-block btn-text text-left" type="button" data-toggle="collapse"
                                     data-target="#collapse{{$lesson->id}}" aria-expanded="true"
                                     aria-controls="collapseOne">
                                     <span>{{$lesson->name}}: </span>
                                 </button>
                             </div>
-                            <div class="col-md-3 text-left">
+                            <div class="col-md-2 text-center p-2">
                                 <span>
                                     <i class="fas fa-video"> </i>
                                     {{$video = $content::where([['type','1'],['lesson_id',$lesson->id]])->count()}}
@@ -62,9 +62,12 @@
                                     {{$quiz = $content::where([['type','3'],['lesson_id',$lesson->id]])->count()}}
                                 </span>
                             </div>
-                            <div class="col-md-1 text-right">
+                            <div class="col-md-2 text-right">
+                                <button class="btn btn-outline-warning btn-sm">
+                                    <i class="fas fa-edit    "></i>
+                                </button>
                                 <button onclick="delete_lesson('{{$lesson->id}}')"
-                                    class="btn btn-block btn-outline-danger btn-md ">
+                                    class="btn  btn-outline-danger btn-sm ">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                             </div>
