@@ -205,8 +205,8 @@ class course_c extends Controller
         // dd( $user_teacher);
         $user_teacher = $user_teacher->where('type_user','teach');
        $course_user =  $course->users;
-       $teachers = $course_user->where('type_user','teach');
-       $students= $course_user->where('type_user','student');
+       $teachers = $course->users->where('type_user','teach');
+       $students= $course->users->where('type_user','student');
          return view('course.users')->with('teachers',$teachers)->with('students',$students)->with('users',$user_teacher)->with('course',$course);
     }
 

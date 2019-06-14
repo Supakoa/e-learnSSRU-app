@@ -43,7 +43,7 @@ class Std_viewer extends Controller
             return view('std_viewer.std_subject.std_course.content.CT_text')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
         }else{
             $quiz = $content->quiz;
-            $time = $quiz->time;
+            $time = $quiz->time*60;
             session(['time'=>$time]);
             return view('std_viewer.std_subject.std_quiz.Quiz')->with('course',$course)->with('quiz',$quiz);
 

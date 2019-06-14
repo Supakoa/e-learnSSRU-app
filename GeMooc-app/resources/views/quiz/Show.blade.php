@@ -250,15 +250,25 @@
             </div>
             <div class="modal-body">
                 <div class="ce-container">
+                <form action="{{url()->current()}}" method="post" enctype="multipart/form-data" id = 'edit_quiz'>
+                    @csrf
+                    @method('PATCH')
                     <div class="container text-center mb-3">
-                        <img src="https://s.aolcdn.com/dims-global/dims3/GLOB/legacy_thumbnail/640x400/quality/80/https://s.aolcdn.com/commerce/autodata/images/USC80SUC181A021001.jpg"
-                            class="img-fluid img-rounded" alt="">
+                        @if ($quiz->image!=null)
+                        <img src="/storage/{{$quiz->image}}"
+                        class="img-fluid img-rounded" alt="">
+
+                        @else
+                        <img src=" https://placeholder.pics/svg/500x250"
+                        class="img-fluid img-rounded" alt="">
+                        @endif
+
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-8 offset-md-2">
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile04">
+                                    <input type="file" name='cover_image' class="custom-file-input" id="inputGroupFile04">
                                     <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
                                 </div>
                             </div>
@@ -267,24 +277,25 @@
                     <div class="row mb-2">
                         <div class="offset-md-2 col-md-5">
                             <label for="setName">Quiz name:</label>
-                            <input type="text" name="" class="form-control" id="setName">
+                        <input type="text" name="name" class="form-control" value="{{$quiz->name}}" id="setName">
                         </div>
                         <div class="col-md-3">
                             <label for="setTime">ตั้งค่าเวลา: (นาที)</label>
-                            <input type="number" name="" class="form-control" id="setTime">
+                        <input type="number" name="time" value="{{$quiz->time}}" class="form-control" id="setTime">
                         </div>
                     </div>
                     <div class="row">
                         <div class="offset-md-2 col-md-8">
                             <label for="setDetail">รายละเอียด:</label>
-                            <textarea name="name" id="setDetail" class="form-control"></textarea>
+                            <textarea name="detail"  id="setDetail" class="form-control">{{$quiz->detail}}</textarea>
                         </div>
                     </div>
+                </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" form="edit_quiz" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

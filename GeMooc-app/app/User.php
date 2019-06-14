@@ -63,10 +63,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\answer', 'user_answer')->withTimestamps();
     }
-    
+
     public function courses()
     {
-        return $this->belongsToMany('App\course', 'course_user')->withPivot('role');
+        return $this->belongsToMany('App\course', 'course_user')->withPivot('role')->withTimestamps();
     }
 
     public function scores()

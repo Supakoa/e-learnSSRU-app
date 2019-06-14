@@ -45,14 +45,14 @@ $adminOnly = auth()->user()->type_user == 'admin';
                                 <th scope="col">ลำดับ</th>
                                 <th>ชื่อ</th>
                                 <th>ตำแหน่ง</th>
-                                <th class="text-center">
-                                    @if ($adminOnly)
+                                @if ($adminOnly)
+                                <th class=" text-center">
                                     <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal"
                                         data-target="#Add_user">
                                         <i class="fas fa-user"></i> Add
                                     </button>
-                                    @endif
                                 </th>
+                                @endif
                             </tr>
                         </thead>
 
@@ -71,12 +71,14 @@ $adminOnly = auth()->user()->type_user == 'admin';
                                 @else
                                 <td></td>
                                 @endif
-                                <td>
+                                @if ($adminOnly)
+                                <td class=" text-center">
                                     <button class=" btn btn-outline-warning" onclick="edit_user({{$teacher->id}})"><i
                                             class="fas fa-edit    "></i></button>
                                     <button class=" btn btn-outline-danger" onclick="delete_user({{$teacher->id}})"><i
                                             class="fa fa-trash" aria-hidden="true"></i></button>
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
@@ -90,23 +92,28 @@ $adminOnly = auth()->user()->type_user == 'admin';
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th>เริ่มเรียน</th>
                                 <th>ชื่อ</th>
-                                <th>Action</th>
+                                <th>เริ่มเรียน</th>
+                                {{-- <th>Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
+                                @foreach ($students as $key=>$student)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>11/02/2562</td>
-                                <td>Supakit kitjanabumrungsak</td>
-                                <td>
+
+                                <th scope="row">{{$key+1}}</th>
+                                <td>{{$student->name}}</td>
+                                <td>{{$student->pivot->created_at}}</td>
+                            </tr>
+
+                                @endforeach
+
+                                {{-- <td>
                                     <button class="btn btn-outline-warning btn-md"><i
                                             class="fas fa-edit    "></i></button>
                                     <button class="btn btn-outline-danger btn-md"><i class="fas fa-trash"
                                             aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
+                                </td> --}}
                         </tbody>
                     </table>
                 </div>

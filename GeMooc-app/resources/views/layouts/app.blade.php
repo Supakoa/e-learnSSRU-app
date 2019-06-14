@@ -63,6 +63,7 @@
             </li>
             @endif --}}
             @else
+            
             <li>
                 @if (auth()->user()->profile->image!=null)
                     <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
@@ -108,12 +109,12 @@
                 $teach = auth()->user()->type_user == 'teach';
             @endphp
             <ul class="nav-links2 ">
-                <a href="{{ url('/home')}}">
+                {{-- <a href="{{ url('/home')}}">
                     <li>
                         DashBoard
                     </li>
-                </a>
-                @if ($teach)
+                </a> --}}
+                @if ($both)
                 <a href="{{ url('/profile') }}">
                     <li>
                         Your Profile
@@ -148,13 +149,13 @@
                     </li>
                 </a>
                 @endif
-                @if ($adminOnly)
+                {{-- @if ($adminOnly)
                 <a href="{{ url('/payment-setting')}}">
                     <li>
                         Payment Setting
                     </li>
                 </a>
-                @endif
+                @endif --}}
             </ul>
         </section>
         @endguest

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\quiz;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class QuizController extends Controller
 {
@@ -71,7 +72,28 @@ class QuizController extends Controller
      */
     public function update(Request $request, quiz $quiz)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'time' => 'required',
+            'detail' => 'required',
+            'cover_image' => 'image|nullable|max:10000'
+
+        ]);
+        $quiz->name = $request->name;
+        $quiz->time = $request->time;
+        $quiz->detail = $request->detail;
+        if($request->hasFile('cover_image')){
+            $imagePath = request('cover_image')->store('quiz_img','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(500,250);
+            // dd($image);
+            $image->save();
+
+            $quiz->image =  $imagePath;
+            // dd($quiz->image);
+        }
+        $quiz->save();
+        return redirect('/quiz/'.$quiz->id)->with('success', 'Quiz Updated');
+
     }
 
     /**

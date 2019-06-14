@@ -21,7 +21,7 @@ class CreateProfilesTable extends Migration
             $table->timestamps();
 
             //forren-key
-            $table->index('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

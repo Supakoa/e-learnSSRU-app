@@ -57,7 +57,7 @@
                                 <dt>{{$question->name}}</dt>
                             </div>
                             <div class="col-md-4">
-                                <img src="storage/{{$question->image}}"
+                                <img src="/storage/{{$question->image}}"
                                     class="rounded" width="auto" height="auto" style="max-width: 100%;max-height: 150px"
                                     >
                             </div>
@@ -134,7 +134,7 @@
 
         Swal.fire({
         title: "{{$quiz->name}}",
-        text: `{{$quiz->questions->count().' ข้อ '.($quiz->time/60).' นาที'}}`,
+        text: `{{$quiz->questions->count().' ข้อ '.($quiz->time).' นาที'}}`,
         type: 'info',
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -143,7 +143,7 @@
 
             countdown ();
             $( ".question_number").first().trigger( "click" );
-       
+
         })
     });
 
@@ -151,7 +151,7 @@
     function countdown (){
         var downloadTimer = setInterval(function(){
             if(timeleft!='Start !!'){
-                $('#timeleft').val({{$quiz->time}}-timeleft);
+                $('#timeleft').val({{($quiz->time*60)}}-timeleft);
                 minute =  parseInt(timeleft/60)
                 sec = timeleft%60
                 if(minute<10){
