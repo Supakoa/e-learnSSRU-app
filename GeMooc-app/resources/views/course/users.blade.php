@@ -114,15 +114,15 @@ $adminOnly = auth()->user()->type_user == 'admin';
         </div>
         <div class="row">
                 <h4 class="ce-name">Top Scroll</h4>
-
-            <div class="col-md-8">
-                
+            <div class="col-md-12">
+                    <div class="jumbotron">
+                            Wait...
+                        </div>
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
 
-            </div>
+            </div> --}}
         </div>
-
     </div>
 </div>
 <form action="delete_user" method="post" id="delete_user">
