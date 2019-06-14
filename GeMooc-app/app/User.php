@@ -15,7 +15,8 @@ class User extends Authenticatable
     /** Laratrust */
     // use LaratrustUserTrait; // เรียกใช้ trait
 
-    public function canInside(){
+    public function canInside()
+    {
         return !($this->type_user != 'admin' && $this->type_user != 'teach');
     }
 
@@ -49,16 +50,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function adjusts()
-       {
-           return $this->hasMany('App\adjust','user_id');
-       }
+    {
+        return $this->hasMany('App\adjust', 'user_id');
+    }
 
+    public function Profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
        public function answers()
        {
-           return $this->belongsToMany('App\answer','user_answer');
+           return $this->belongsToMany('App\answer','user_answer')->withTimestamps();
        }
        public function courses()
        {
            return $this->belongsToMany('App\course','course_user')->withPivot('role');
+       }
+
+       public function scores()
+       {
+           return $this->belongsToMany('App\quiz','scores')->withPivot('score','time')->withTimestamps();
        }
 }

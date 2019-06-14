@@ -34,49 +34,95 @@ $adminOnly = auth()->user()->type_user == 'admin';
             </div>
         </div>
     </div> --}}
-    <div class="ce-container table-responsive">
-        <table class="display table table-hover " id="staff">
-            <thead>
-                <tr>
-                    <th>ลำดับ</th>
-                    <th>ชื่อ</th>
-                    <th>ตำแหน่ง</th>
-                    <th class="text-center">
-                        @if ($adminOnly)
-                        <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal"
-                            data-target="#Add_user">
-                            <i class="fas fa-user"></i> Add
-                        </button>
-                        @endif
-                    </th>
-                </tr>
-            </thead>
+    <div class="ce-container">
+        <div class="row">
+            <div class="col-md-10 mb-4">
+                <h4>Teacher Table</h4>
+                <div class="table-responsive">
+                    <table class="display table table-hover " id="staff">
+                        <thead>
+                            <tr>
+                                <th scope="col">ลำดับ</th>
+                                <th>ชื่อ</th>
+                                <th>ตำแหน่ง</th>
+                                <th class="text-center">
+                                    @if ($adminOnly)
+                                    <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal"
+                                        data-target="#Add_user">
+                                        <i class="fas fa-user"></i> Add
+                                    </button>
+                                    @endif
+                                </th>
+                            </tr>
+                        </thead>
 
-            <tbody>
-                @foreach ($teachers as $i => $teacher)
-                <tr>
-                    <td>{{$i+1}}</td>
-                    <td>{{$teacher->name}}</td>
-                    @php
-                    $roles = $teacher->courses->where('id',$course->id)->pop()->pivot->role;
-                    @endphp
-                    @if ($roles == 1)
-                    <td>Main Teacher</td>
-                    @elseif($roles == 2)
-                    <td>Sub Teacher</td>
-                    @else
-                    <td></td>
-                    @endif
-                    <td>
-                        <button class=" btn btn-outline-warning" onclick="edit_user({{$teacher->id}})">Eidt</button>
-                        <button class=" btn btn-outline-danger" onclick="delete_user({{$teacher->id}})">Delete</button>
-                    </td>
-                </tr>
-                @endforeach
+                        <tbody>
+                            @foreach ($teachers as $i => $teacher)
+                            <tr>
+                                <th scope="row">{{$i+1}}</th>
+                                <td>{{$teacher->name}}</td>
+                                @php
+                                $roles = $teacher->courses->where('id',$course->id)->pop()->pivot->role;
+                                @endphp
+                                @if ($roles == 1)
+                                <td>Main Teacher</td>
+                                @elseif($roles == 2)
+                                <td>Sub Teacher</td>
+                                @else
+                                <td></td>
+                                @endif
+                                <td>
+                                    <button class=" btn btn-outline-warning" onclick="edit_user({{$teacher->id}})"><i
+                                            class="fas fa-edit    "></i></button>
+                                    <button class=" btn btn-outline-danger" onclick="delete_user({{$teacher->id}})"><i
+                                            class="fa fa-trash" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-10 offset-md-2 mb-4">
+                <h4>Student Table</h4>
+                <div class="table-responsive">
+                    <table class="table display table-hover" id="std_course">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th>เริ่มเรียน</th>
+                                <th>ชื่อ</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>11/02/2562</td>
+                                <td>Supakit kitjanabumrungsak</td>
+                                <td>
+                                    <button class="btn btn-outline-warning btn-md"><i
+                                            class="fas fa-edit    "></i></button>
+                                    <button class="btn btn-outline-danger btn-md"><i class="fas fa-trash"
+                                            aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <h4 class="ce-name">Top Scroll</h4>
+            <div class="col-md-12">
+                    <div class="jumbotron">
+                            Wait...
+                        </div>
+            </div>
+            {{-- <div class="col-md-4">
 
-            </tbody>
-        </table>
-
+            </div> --}}
+        </div>
     </div>
 </div>
 <form action="delete_user" method="post" id="delete_user">
@@ -131,6 +177,9 @@ $adminOnly = auth()->user()->type_user == 'admin';
 <script>
     $(document).ready(function () {
         $('#staff').DataTable();
+    });
+    $(document).ready(function () {
+        $('#std_course').DataTable();
     });
 
     function delete_user(id) {

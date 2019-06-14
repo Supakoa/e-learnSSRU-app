@@ -18,6 +18,7 @@ class CreateQuizzesTable extends Migration
             $table->string('name');
             $table->text('detail')->nullable();
             $table->text('image')->nullable();
+            $table->integer('time')->default(30);
             $table->integer('count_play')->default(0);
             $table->float('rate', 5, 2)->default(0);
             $table->integer('status')->default(0);

@@ -1,7 +1,7 @@
 @extends('layouts.appViewer')
+{{-- {{dd($lessons)}} --}}
 
 @section('content')
-
 <div class="row">
         <div class="col-md-2 p-0">
             @include('std_viewer.nav-left.Nav-left',[$now_content,$lessons])

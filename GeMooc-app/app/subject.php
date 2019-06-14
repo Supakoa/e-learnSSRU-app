@@ -12,9 +12,9 @@ class subject extends Model
 
     public $timestamps = true;
 
-       public function courses()
-       {
-           return $this->hasMany('App\course');
-       }
+    public function courses()
+    {
+        return $this->hasMany('App\course');
+    }
 
 }
