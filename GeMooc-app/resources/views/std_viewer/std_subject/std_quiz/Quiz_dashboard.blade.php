@@ -135,7 +135,6 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                                             <div class="charts__chart chart--blue" data-percent="{{ round($percen_show_75,2)}}%" style="width: {{$percen_show_75}}%"></div>
                                             <span>76-100</span>
                                             <div class="charts__chart chart--green" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%"></div>
-
                                         </div><!-- /.charts -->
 
                                     </div>

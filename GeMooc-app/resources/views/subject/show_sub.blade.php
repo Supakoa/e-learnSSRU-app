@@ -29,7 +29,7 @@
         @if ($courses->count() > 0)
         <div class="row mb-3 justify-content-center">
             @foreach ($courses as $course)
-            <div class="col-md-4">
+            <div class="col-md-4 mb-2">
                 <div class="card shadow" style="width: 18rem;">
                     <div class="ce-body-cog">
                         @if ($i == 'green')

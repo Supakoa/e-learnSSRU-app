@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}">
 

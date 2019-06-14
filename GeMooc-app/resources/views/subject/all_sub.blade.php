@@ -22,7 +22,7 @@
         <div class="row mb-3 justify-content-center">
         {{-- {{dd($sub)}} --}}
             @foreach ($sub as $sub)
-            <div class="col-md-4 h-100">
+            <div class="col-md-4 h-100 mb-2">
                 <div class="card shadow " style="width: 18rem;">
                     <div class="ce-body-cog">
                         @if ($i == 'green')
