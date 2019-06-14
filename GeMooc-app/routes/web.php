@@ -56,17 +56,7 @@ Route::group(['middleware' => ['mdgStudent']], function () {
             echo "Success";
         }
     });
-    Route::post('get_time', function () {
-        $time = session('time');
-        if($time>=0){
-            $time--;
-            session(['time'=>$time]);
-            echo $time;
-        }else{
-            echo 0;
-        }
 
-    });
 
     // Route::get('test', function ($id) {
 
@@ -136,7 +126,17 @@ Route::group(['middleware' => ['mdgStudent']], function () {
     Route::get('/std_view/course/content/{content}', 'Std_viewer@show_content');
     Route::post('/std_view/course/content/{content}/submit_quiz', 'Std_viewer@submit_quiz');
     Route::get('/std_view/course/content/{content}/dashboard', 'Std_viewer@show_dashboard');
+    Route::post('get_time', function () {
+        $time = session('time');
+        if($time>=0){
+            $time--;
+            session(['time'=>$time]);
+            echo $time;
+        }else{
+            echo 0;
+        }
 
+    });
 
     // Route::get('/std_viewer/test/text', function(){
     //     return view('std_viewer.std_subject.std_course.content.CT_text');

@@ -43,8 +43,13 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                                     <div class="col-md-4">
                                         <button class="btn-light btn-sm ce-disable" disabled="disabled"><i
                                                 class="fas fa-list"></i> {{$quiz->questions->count()}} ข้อ</button>
+                                                @php
+                                                    $quiz_time = $quiz->time;
+                                                    $quiz_time_min  =  (int)($quiz_time/60);
+                                                    $quiz_time_sec  =  (int)($quiz_time%60);
+                                                @endphp
                                         <button class="btn-light btn-sm ce-disable" disabled="disabled"><i
-                                                class="fas fa-clock"></i> {{$quiz->time}} วินาที</button>
+                                                class="fas fa-clock"></i> {{$quiz_time_min}} นาที</button>
                                     </div>
                                     <div class="col-md-8 text-right">
                                         <button class="btn-light btn-sm"><i class="fas fa-search"></i>
@@ -76,7 +81,7 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                                 @php
                                 $question_number = $quiz->questions->count();
                                 $percen_question = (int)(($score_now->pivot->score / $question_number)*100);
-                                $percen_time = (int)((($quiz->time - $score_now->pivot->time) / $quiz->time)*100);
+                                $percen_time = (int)(($score_now->pivot->time / $quiz->time)*100);
                                 @endphp
                                 <div class="row">
                                     <div class="col-md-6 text-center">
@@ -85,8 +90,11 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                                     </div>
                                     <div class="col-md-6 text-center">
                                         <div class="progress-circle" data-progress="{{$percen_time}}"></div>
-                                        <p>ใช้เวลาทั้งหมด {{$quiz->time - $score_now->pivot->time}}(วินาที) จาก
-                                            {{$quiz->time}}(วินาที)</p>
+                                        @php
+                                            $use_time = $score_now->pivot->time;
+                                        @endphp
+                                        <p>ใช้เวลาทั้งหมด {{(int)($use_time/60).' นาที '.(int)($use_time%60)}} วินาที จาก
+                                            {{$quiz_time_min}} นาที</p>
                                     </div>
                                 </div>
                             </div>
@@ -142,31 +150,53 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                     <div class="col-md-12 ">
                         <div class="card overflow-auto ce-hiddenScollbar" style="height:100%; max-height :300px">
                             <div class="card-body" >
-                                <div class="table-responsive ">
-                                    <table class="table table-hover nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th>วันที่สอบ</th>
-                                                <th>ชื่อผู้สอบ</th>
-                                                <th>คะแนน</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $your_scores = auth()->user()->scores()->wherePivot('quiz_id',$quiz->id)->orderBy('scores.created_at','desc')->get();
-                                            @endphp
-                                            @foreach ($your_scores as $key=>$score)
-                                                <tr>
-                                                    <th scope="row">{{$key+1}}</th>
-                                                    <td>{{$score->pivot->created_at}}</td>
-                                                    <td>{{auth()->user()->name}}</td>
-                                                    <td>{{$score->pivot->score}}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                <div class="container">
+                                    <div class="page-header">
+                                        <h5>ประวัติการสอบ</h5>
+                                    </div>
+                                    <div class="container">
+                                        <div class="table-responsive ">
+                                            <table class="table table-hover nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th>วันที่สอบ</th>
+                                                        <th>ชื่อผู้สอบ</th>
+                                                        <th>คะแนน</th>
+                                                        <th>เวลาที่ใช้ไป</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @php
+                                                        $your_scores = auth()->user()->scores()->wherePivot('quiz_id',$quiz->id)->orderBy('scores.created_at','desc')->get();
+                                                    @endphp
+                                                    @foreach ($your_scores as $key=>$score)
+                                                        <tr>
+                                                            <th scope="row">{{$key+1}}</th>
+                                                            <td>{{$score->pivot->created_at}}</td>
+                                                            <td>{{auth()->user()->name}}</td>
+                                                            <td>{{$score->pivot->score}}</td>
+                                                            @php
+                                                                $time =  $score->pivot->time;
+                                                                $min = (int)($time/60);
+                                                                $sec = (int)($time%60);
+                                                                if($min<10){
+                                                                    $min = '0'.$min;
+                                                                }
+                                                                if($sec<10){
+                                                                    $sec = '0'.$sec;
+                                                                }
+                                                            @endphp
+                                                            <td>{{$min }} นาที {{$sec}} วินาที</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
