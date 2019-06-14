@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', 'ProfileController@index');
         Route::post('/profile/updateImage', 'ProfileController@updatePhoto');
         Route::post('/profile/upddateProfile', 'ProfileController@update');
-        
+
         Route::get('/', 'HomeController@index')->name('dashboard.home');
         Route::get('/home', 'HomeController@index')->name('dashboard.home');
         Route::get('/yourprofile', 'HomeController@YourProfile');
@@ -56,7 +56,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/quiz/edit', function(){
             return view('quiz.Edit');
         });
-
 
 
         Route::post('ajaximage', function () {
