@@ -250,7 +250,7 @@
             </div>
             <div class="modal-body">
                 <div class="ce-container">
-                    <div class="container text-center mb-3" style="background:red">
+                    <div class="container text-center mb-3">
                         <img src="https://s.aolcdn.com/dims-global/dims3/GLOB/legacy_thumbnail/640x400/quality/80/https://s.aolcdn.com/commerce/autodata/images/USC80SUC181A021001.jpg"
                             class="img-fluid img-rounded" alt="">
                     </div>
