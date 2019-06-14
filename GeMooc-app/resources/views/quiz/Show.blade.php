@@ -265,11 +265,11 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <div class="offset-md-1 col-md-5">
+                        <div class="offset-md-2 col-md-5">
                             <label for="setName">Quiz name:</label>
                             <input type="text" name="" class="form-control" id="setName">
                         </div>
-                        <div class="col-md-4 offset-md-1">
+                        <div class="col-md-3">
                             <label for="setTime">ตั้งค่าเวลา: (นาที)</label>
                             <input type="number" name="" class="form-control" id="setTime">
                         </div>
