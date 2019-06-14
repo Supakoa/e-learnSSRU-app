@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function (){
     });
     Route::group(['middleware' => ['mdgStudent']], function () {
         Route::get('/profile', 'ProfileController@index');
+        
         // Route::post('/profile/updateImage', 'ProfileController@updatePhoto');
         // Route::post('/profile/upddateProfile', 'ProfileController@update');
 
@@ -59,7 +60,6 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/quiz/edit', function(){
             return view('quiz.Edit');
         });
-
 
 
         Route::post('ajaximage', function () {

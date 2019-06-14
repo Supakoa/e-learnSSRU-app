@@ -63,14 +63,13 @@
             </li>
             @endif --}}
             @else
-            <li>
-                @if (auth()->user()->profile->image!=null)
-                <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
+            <li class="dropdown" style="display:flex">
+                    @if (auth()->user()->profile->image!=null)
+                    <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
+
                 @else
                 <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
                 @endif
-            </li>
-            <li class="dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
