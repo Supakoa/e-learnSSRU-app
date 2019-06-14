@@ -16,7 +16,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function YourProfile(){
+    public function myProfile(){
         return view('admin-teach.yourprofile.Yourprofile');
     }
 
@@ -27,6 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dd(auth()->user());
+        if(auth()->user()->type_user == 'student'){
+            return view('std_viewer.std_home.index');
+
+        }
         return view('dashboard.home');
     }
 }
