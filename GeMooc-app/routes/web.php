@@ -53,8 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/quiz/show', function () {
             return view('quiz.Show');
         });
-        Route::get('/quiz/edit', function(){
-            return view('quiz.Edit');
+        Route::get('/quiz/dashboard', function(){
+            return view('quiz.Dashboard');
         });
 
 
