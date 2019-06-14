@@ -9,11 +9,15 @@
     <h1 class="ce-name">Show - Quiz : </h1>
     <div class="row justify-content-end">
         <div class="ce-card-btn">
-            <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal"> <i
-                    class="fas fa-folder-plus"></i> </button>
+            <button href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#edit_Modal">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal">
+                <i class="fas fa-folder-plus"></i>
+            </button>
         </div>
     </div>
-    <div class="ce-container">
+    <div class="ce-container mb-5">
         <div class="row mb-5">
             {{-- demo --}}
             @if ($quiz->questions->count()>0)
@@ -103,11 +107,11 @@
             @endforeach
             @else
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Now,Have have a Quiz !!!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                <strong>Now,Have have a Quiz !!!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             @endif
         </div>
     </div>
@@ -230,6 +234,57 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" form="question_form">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleName" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleName">Edit your quiz</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ce-container">
+                    <div class="container text-center mb-3" style="background:red">
+                        <img src="https://s.aolcdn.com/dims-global/dims3/GLOB/legacy_thumbnail/640x400/quality/80/https://s.aolcdn.com/commerce/autodata/images/USC80SUC181A021001.jpg"
+                            class="img-fluid img-rounded" alt="">
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile04">
+                                    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="offset-md-1 col-md-5">
+                            <label for="setName">Quiz name:</label>
+                            <input type="text" name="" class="form-control" id="setName">
+                        </div>
+                        <div class="col-md-4 offset-md-1">
+                            <label for="setTime">ตั้งค่าเวลา: (นาที)</label>
+                            <input type="number" name="" class="form-control" id="setTime">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-md-2 col-md-8">
+                            <label for="setDetail">รายละเอียด:</label>
+                            <textarea name="name" id="setDetail" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
