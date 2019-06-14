@@ -7,14 +7,21 @@
     </div>
     {{-- {{$quiz->name}} --}}
     <h1 class="ce-name">Show - Quiz : </h1>
-    <div class="row justify-content-end">
-        <div class="ce-card-btn">
-            <button href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#edit_Modal">
-                <i class="fas fa-edit"></i>
-            </button>
-            <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal">
-                <i class="fas fa-folder-plus"></i>
-            </button>
+    <div class="row ">
+        <div class="col-md-2 text-left">
+            <a href="{{url('/quiz/dashboard')}}" class="btn btn-block btn-md btn-outline-info">
+                <i class="fas fa-tachometer-alt"></i>
+            </a>
+        </div>
+        <div class="col-md-6 offset-md-4 text-right">
+            <div class="ce-card-btn">
+                <button href="#" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#edit_Modal">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button href="#" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#Add_Modal">
+                    <i class="fas fa-folder-plus"></i>
+                </button>
+            </div>
         </div>
     </div>
     <div class="ce-container mb-5">
