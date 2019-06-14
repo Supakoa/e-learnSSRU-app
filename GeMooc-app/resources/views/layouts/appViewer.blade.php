@@ -50,21 +50,22 @@
                 </li>
                 @else
                 <li>
-                        <a href="#" class="nav-link"><i class="fas fa-home"></i></a>
+                        <a href="{{ url('/std_view/subject') }}" class="nav-link"><i class="fas fa-book-open    "></i></a>
                     </li>
                 <li>
-                    <img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" alt="...">
+                    <a href="{{ url('/std_view/home') }}" class="nav-link"><i class="fas fa-home"></i></a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown" style="display:flex">
+                    <img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" alt="...">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        {{ Auth::user()->name }}</i><span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a style="color:black;" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
-                            {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
+                            {{ __('Log-out ') }} <i class="fas fa-sign-out-alt"></i>
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

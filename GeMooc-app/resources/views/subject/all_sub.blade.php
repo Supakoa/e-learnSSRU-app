@@ -8,6 +8,8 @@
             @php
                 $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
                 $adminOnly = auth()->user()->type_user == 'admin';
+
+                $i = 'green';
             @endphp
             @if ($adminOnly)
             <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
@@ -23,6 +25,12 @@
             <div class="col-md-4 h-100">
                 <div class="card shadow " style="width: 18rem;">
                     <div class="ce-body-cog">
+                        @if ($i == 'green')
+                        <div class="led green"></div>
+                        @else
+                        <div class="led red"></div>
+
+                        @endif
                         @if ($adminOnly)
                         <a class="ce-cog-btn send_ajax" onclick="edit_subject({{$sub->id}})"><i
                             class="fas fa-cogs"></i></a>

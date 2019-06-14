@@ -11,8 +11,10 @@
         <div class="justify-content-end row mb-2">
             <div class="ce-card-btn">
                 @php
-                    $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
-                    $adminOnly = auth()->user()->type_user == 'admin';
+                $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
+                $adminOnly = auth()->user()->type_user == 'admin';
+
+                $i = 'green';
                 @endphp
                 @if ($adminOnly)
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#Add_Modal">Add</button>
@@ -30,9 +32,15 @@
             <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
                     <div class="ce-body-cog">
+                        @if ($i == 'green')
+                        <div class="led green"></div>
+                        @else
+                        <div class="led red"></div>
+
+                        @endif
                         @if ($adminOnly)
                         <a class="ce-cog-btn send_ajax" onclick="edit_course({{$course->id}})"><i
-                            class="fas fa-cogs"></i></a>
+                                class="fas fa-cogs"></i></a>
                         @endif
                         <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
                     </div>
@@ -108,9 +116,6 @@
 
 @section('js')
 <script>
-
-
-
     $(document).ready(function () {
         $.ajaxSetup({
             headers: {
@@ -122,28 +127,33 @@
 
     function edit_course(id) {
         $.ajax({
-                type: "post",
-                url: "{{url('course/modal/edit')}}",
-                data: {id :id},
-                dataType: "html",
-                success: function (response) {
+            type: "post",
+            url: "{{url('course/modal/edit')}}",
+            data: {
+                id: id
+            },
+            dataType: "html",
+            success: function (response) {
                 $('#div_modal').html(response);
                 $('#Edit_Course_Modal').modal("show");
-                }
-            });
+            }
+        });
     }
+
     function edit_subject(id) {
-            $.ajax({
-                type: "post",
-                url: "{{url('subject/modal/edit')}}",
-                data: {id :id},
-                dataType: "html",
-                success: function (response) {
+        $.ajax({
+            type: "post",
+            url: "{{url('subject/modal/edit')}}",
+            data: {
+                id: id
+            },
+            dataType: "html",
+            success: function (response) {
                 $('#div_modal').html(response);
                 $('#Edit_Modal').modal("show");
-                }
-            });
-        }
+            }
+        });
+    }
 
 </script>
 @endsection
