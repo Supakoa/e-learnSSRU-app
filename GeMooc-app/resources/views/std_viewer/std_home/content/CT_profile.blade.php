@@ -1,8 +1,8 @@
 <div class="ce-container">
     <div class="row mt-3 mb-3">
-        <div class="col-md-4 offset-md-4 ce-cog-body ce-bg" style="overflow:hidden">
+        <div class="col-md-4 offset-md-4 ce-cog-body ce-bg text-center" style="overflow:hidden">
             <div class="ce-cog-btn"><i class="fas fa-upload"></i></div>
-            <img src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v246-tent-33-business_2.jpg?auto=format&bg=F4F4F3&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-1.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=51a0272e271def3b71a4151b78bc5360"
+            <img src="https://placeholder.pics/svg/200x200"
                 class="rounded mx-auto d-block" height="200" width="100%" class="rounded" alt="">
         </div>
     </div>
@@ -45,7 +45,7 @@
     <div class="ce-line"></div>
     <div class="row text-center">
         <div class="col-md-4 offset-4">
-            <button onclick="$('#profile').submit();" class="btn btn-outline-info btn-md"><i class="fas fa-save"></i>
+            <button  class="btn btn-outline-info btn-md"><i class="fas fa-save"></i>
                 Save</button>
         </div>
     </div>
