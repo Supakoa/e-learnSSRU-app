@@ -121,24 +121,52 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    time = 'Wait...';
+    time = 'Start !!';
     width = 0;
     success = 0;
     percent = 0;
     questions_number = {{$quiz->questions->count()}};
     ckecked = [];
     var timeleft = get_time();
+
+    $(document).ready(function () {
+        up_percent();
+
+        Swal.fire({
+        title: "{{$quiz->name}}",
+        html: `{{$quiz->questions->count().' ข้อ '.($quiz->time/60).' นาที'}}`,
+        type: 'info',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Start !!!!'
+        }).then((result) => {
+        if (result.value) {
+            countdown ();
+            $( ".question_number").first().trigger( "click" );
+        }
+        })
+    });
+
+
+    function countdown (){
         var downloadTimer = setInterval(function(){
-            $('#timeleft').val(timeleft);
-            minute =  parseInt(timeleft/60)
-            sec = timeleft%60
-            if(minute<10){
-                minute = '0'+minute
+            if(timeleft!='Start !!'){
+                $('#timeleft').val({{$quiz->time}}-timeleft);
+                minute =  parseInt(timeleft/60)
+                sec = timeleft%60
+                if(minute<10){
+                    minute = '0'+minute
+                }
+                if(sec<10){
+                    sec = '0'+sec
+                }
+                $("#countdown").html(minute + ' : ' + sec);
+            }else{
+                $("#countdown").html("Start !!");
             }
-            if(sec<10){
-                sec = '0'+sec
-            }
-            $("#countdown").html(minute + ' : ' + sec);
+
+
+
             if(timeleft <= 0){
                 clearInterval(downloadTimer);
                 $("#countdown").html("Time Out");
@@ -151,11 +179,7 @@
 
             timeleft = get_time();
         }, 1000);
-    $(document).ready(function () {
-        $( ".question_number").first().trigger( "click" );
-
-    });
-
+    }
 
     function get_time() {
         $.ajax({
@@ -164,7 +188,6 @@
                 cache: false,
                 success: function (response) {
                     time =  response;
-
                 }
 
             });
@@ -200,7 +223,12 @@
     $('#submit_quiz').click(function (e) {
         e.preventDefault();
         if(success<questions_number){
-            $('#form_all_question').submit();
+            // $('#form_all_question').submit();
+            Swal.fire({
+            type: 'error',
+            title: 'ไม่สามารถส่งได้',
+            text: 'กรุณาทำให้ครบทุกข้อ'
+            })
 
         }else{
             $('#form_all_question').submit();
