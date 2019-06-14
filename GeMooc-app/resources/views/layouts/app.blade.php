@@ -68,8 +68,7 @@
                     <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
 
                 @else
-                <img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" alt="">
-
+                <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
                 @endif
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" v-pre>
