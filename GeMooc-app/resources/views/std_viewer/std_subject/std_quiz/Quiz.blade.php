@@ -134,16 +134,16 @@
 
         Swal.fire({
         title: "{{$quiz->name}}",
-        html: `{{$quiz->questions->count().' ข้อ '.($quiz->time/60).' นาที'}}`,
+        text: `{{$quiz->questions->count().' ข้อ '.($quiz->time/60).' นาที'}}`,
         type: 'info',
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Start !!!!'
         }).then((result) => {
-        if (result.value) {
+
             countdown ();
             $( ".question_number").first().trigger( "click" );
-        }
+       
         })
     });
 
