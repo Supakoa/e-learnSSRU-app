@@ -64,7 +64,7 @@
             @endif --}}
             @else
             <li>
-                <img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" alt="...">
+            <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
             </li>
             <li class="dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -108,9 +108,9 @@
                     </li>
                 </a>
                 @if ($teach)
-                <a href="{{ url('/yourprofile')}}">
+                <a href="{{ url('/profile') }}">
                     <li>
-                        Your Prefile
+                        Your Profile
                     </li>
                 </a>
                 @endif

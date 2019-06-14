@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\profile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +41,10 @@ class teachController extends Controller
             'email' => $data['email'],
             'type_user' => 'teach',
             'password' => Hash::make($data['password']),
+        ]);
+
+        profile::create([
+            'user_id' => $sekai->id,
         ]);
 
         // auth()->user()->create([

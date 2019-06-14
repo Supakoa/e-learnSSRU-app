@@ -37,7 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
     Route::group(['middleware' => ['mdgStudent']], function () {
-
+        Route::get('/profile', 'ProfileController@index');
+        Route::post('/profile/updateImage', 'ProfileController@updatePhoto');
+        Route::post('/profile/upddateProfile', 'ProfileController@update');
+        
         Route::get('/', 'HomeController@index')->name('dashboard.home');
         Route::get('/home', 'HomeController@index')->name('dashboard.home');
         Route::get('/yourprofile', 'HomeController@YourProfile');
