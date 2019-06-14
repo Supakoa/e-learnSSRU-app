@@ -4,12 +4,17 @@
 <div class="card ce-card">
     <h1 class="ce-name">Teach database</h1>
     {{-- <p>My way is teach!!</p> --}}
-    <button class="btn btn-outline-success mb-1" data-toggle="modal" data-target="#createNewTeach"><strong>create new
-            user</strong></button>
-
-    <div class="ce-container table-responsive">
+    <div class="row">
+        <div class="col-md-4 offset-md-8 text-right">
+            <button class="btn btn-outline-success mb-1" data-toggle="modal" data-target="#createNewTeach">
+                <strong>create new user </strong><i class="fa fa-user" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <div class="ce-container">
         @if ($user->count()>0)
-        <table class="table table-hover display table-bordered" id="teachTable">
+        <div class="table-responsive">
+            <table class="table table-hover display table-bordered " id="teachTable">
                 <thead>
                     <tr>
                         <th>Username</th>
@@ -23,8 +28,8 @@
                     <tr>
 
                         {{--
-                            send form id to delete record.
-                        --}}
+                                        send form id to delete record.
+                                    --}}
                         <form action="/teach/{{ $user->id }}" id="formDelete{{ $user->id }}" method="post">
                             @csrf
                             @method('DELETE')
@@ -44,13 +49,14 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         @else
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Now, this page Empty!</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+            <strong>Now, this page Empty!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         @endif
 
 
@@ -102,7 +108,6 @@
 
 @section('js')
 <script>
-
     $(document).ready(function () {
         $.ajaxSetup({
             headers: {
@@ -126,7 +131,7 @@
             cancelButtonText: 'ยกเลิก',
         }).then((result) => {
             if (result.value) {
-                $('#formDelete'+obj).submit();
+                $('#formDelete' + obj).submit();
             }
         });
     };
@@ -136,12 +141,14 @@
     */
     const openEditModal = (id) => {
         alert(id);
-        $.post("/teach/"+id+"/editModal", {id:id},
+        $.post("/teach/" + id + "/editModal", {
+                id: id
+            },
             function (response, textStatus, jqXHR) {
                 $('#tmpModalToHere').html(response);
-            $('#editTeach').modal('show');
+                $('#editTeach').modal('show');
             }
-        ).then((result)=> {
+        ).then((result) => {
             $('#tmpModalToHere').html(response);
             $('#editTeach').modal('show');
         });

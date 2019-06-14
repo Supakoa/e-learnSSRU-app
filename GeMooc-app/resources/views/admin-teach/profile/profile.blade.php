@@ -8,7 +8,7 @@
     <div class="ce-name">{{ auth()->user()->name }}</div>
     <div class="ce-container">
         <div class="row mt-3 mb-3">
-            <div class="col-md-4 offset-md-4 ce-cog-body ce-bg" style="overflow:hidden">
+            <div class="col-md-4 offset-md-4 ce-cog-body ce-bg text-center" style="overflow:hidden">
                 <form action="/profile/updateImage" enctype="multipart/form-data" id="updateFile" method="POST">
                     @csrf
 
@@ -17,7 +17,7 @@
                 </form>
                 <div onclick="$('#upload').trigger('click'); return false;" class="ce-cog-btn"><i
                         class="fas fa-upload"></i></div>
-                <img src="/storage/{{ auth()->user()->profile->image }}" class="rounded mx-auto d-block" height=""
+                <img src="/storage/{{ auth()->user()->profile->image }}" class="rounded mx-auto d-block" height="200"
                     width="100%" class="rounded" alt="">
             </div>
         </div>
@@ -84,8 +84,6 @@
                     </div>
                 </div>
             </form>
-
-
         </div>
         <div class="ce-line"></div>
         <div class="row text-center">

@@ -65,11 +65,9 @@
             @else
             <li>
                 @if (auth()->user()->profile->image!=null)
-                    <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
-
+                <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
                 @else
-                <img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" alt="">
-
+                <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
                 @endif
             </li>
             <li class="dropdown">
@@ -113,7 +111,7 @@
                         DashBoard
                     </li>
                 </a>
-                @if ($teach)
+                @if ($both)
                 <a href="{{ url('/profile') }}">
                     <li>
                         Your Profile

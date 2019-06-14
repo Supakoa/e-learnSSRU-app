@@ -50,6 +50,9 @@
                 </li>
                 @else
                 <li>
+                        <a href="#" class="nav-link"><i class="fas fa-home"></i></a>
+                    </li>
+                <li>
                     <img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" alt="...">
                 </li>
                 <li class="dropdown">
@@ -93,7 +96,7 @@
 
 
 
-@yield('modal')
+    @yield('modal')
 
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}

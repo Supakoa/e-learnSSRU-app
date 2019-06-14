@@ -250,7 +250,7 @@
             </div>
             <div class="modal-body">
                 <div class="ce-container">
-                    <div class="container text-center mb-3" style="background:red">
+                    <div class="container text-center mb-3">
                         <img src="https://s.aolcdn.com/dims-global/dims3/GLOB/legacy_thumbnail/640x400/quality/80/https://s.aolcdn.com/commerce/autodata/images/USC80SUC181A021001.jpg"
                             class="img-fluid img-rounded" alt="">
                     </div>
@@ -265,11 +265,11 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <div class="offset-md-1 col-md-5">
+                        <div class="offset-md-2 col-md-5">
                             <label for="setName">Quiz name:</label>
                             <input type="text" name="" class="form-control" id="setName">
                         </div>
-                        <div class="col-md-4 offset-md-1">
+                        <div class="col-md-3">
                             <label for="setTime">ตั้งค่าเวลา: (นาที)</label>
                             <input type="number" name="" class="form-control" id="setTime">
                         </div>

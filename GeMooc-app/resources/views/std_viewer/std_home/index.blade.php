@@ -13,15 +13,15 @@
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                         aria-controls="profile" aria-selected="false">Profile</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                         aria-controls="contact" aria-selected="false">Contact</a>
-                </li>
+                </li> --}}
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">@yield('payment')</div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">@include('std_viewer.std_home.content.CT_home')</div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">@include('std_viewer.std_home.content.CT_profile')</div>
+                {{-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">_Blank</div> --}}
             </div>
         </div>
     </div>

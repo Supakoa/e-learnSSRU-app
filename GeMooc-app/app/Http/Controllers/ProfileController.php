@@ -89,7 +89,7 @@ class ProfileController extends Controller
             'description' => $d2['description'],
         ]);
 
-        return redirect('profile');
+        return redirect()->back()->with('success', ['ok love you.']);
     }
 
     public function updatePhoto(Request $request)
@@ -110,7 +110,7 @@ class ProfileController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect("/profile");
+        return redirect()->back()->with('success', ['ok love you.']);
     }
 
     /**
