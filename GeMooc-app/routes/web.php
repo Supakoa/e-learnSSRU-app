@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function (){
     });
     Route::group(['middleware' => ['mdgStudent']], function () {
         Route::get('/profile', 'ProfileController@index');
-        
+
         // Route::post('/profile/updateImage', 'ProfileController@updatePhoto');
         // Route::post('/profile/upddateProfile', 'ProfileController@update');
 
@@ -52,7 +52,9 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/test', 'test_sumernote@index');
 
         Route::get('/payment-setting', 'payment@Home');
-        Route::get('/report', 'Report@index');
+
+        // report
+        Route::resource('/report', 'ReportController');
 
         Route::get('/quiz/show', function () {
             return view('quiz.Show');

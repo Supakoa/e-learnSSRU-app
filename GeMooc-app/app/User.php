@@ -73,4 +73,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\quiz', 'scores')->withPivot('score', 'time')->withTimestamps();
     }
+
+    public function reports()
+    {
+        return $this->hasMany('App\report', 'user_id');
+    }
 }
