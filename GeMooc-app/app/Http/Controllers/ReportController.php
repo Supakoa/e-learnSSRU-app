@@ -31,21 +31,37 @@ class ReportController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @param  \App\report
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,report $report)
     {
-        //
+        $data = request();
+
+        // report::created([
+        //     'from_Page' => $data['from_page'],
+        //     'user_id' => $data['user_id'],
+        //     'title' => $data['topic'],
+        //     'description' => $data['description'],
+        // ]);
+
+        $newReport = new report();
+        $newReport->from_Page = $data['from_page'];
+        $newReport->user_id = $data['user_id'];
+        $newReport->title = $data['topic'];
+        $newReport->description = $data['description'];
+        $newReport->save();
+
+        return redirect()->back();
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\report  $report
-     * @return \Illuminate\Http\Response
-     */
+      * Display the specified resource.
+      *
+      * @param  \App\report  $report
+      * @return \Illuminate\Http\Response
+      */
     public function show(report $report, Request $request)
     {
         $reports = report::find($report->id);
