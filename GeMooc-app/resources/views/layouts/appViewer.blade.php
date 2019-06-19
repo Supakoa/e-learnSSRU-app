@@ -113,10 +113,10 @@
                 <hr style="border:3px solid #ddd">
 
                 <label for="email"><b>Topic</b></label>
-                <input type="text" placeholder="Enter Email" name="topic" id="topic" required>
+                <input type="text" placeholder="Enter Topic" name="topic" id="topic" required>
 
                 <label for="psw"><b>Description</b></label>
-                <textarea class="form-control" name="description" id="description" cols="10" rows="3" required></textarea><hr>
+                <textarea class="form-control" placeholder="Enter Description" name="description" id="description" cols="10" rows="3" required></textarea><hr>
 
                 <button type="submit" class="btn">send <i class="fas fa-paper-plane"></i></button>
                 <button type="button" class="btn cancel" onclick="$('#myForm').hide();$('#myButton').show();">close <i class="fas fa-times"></i></button>
