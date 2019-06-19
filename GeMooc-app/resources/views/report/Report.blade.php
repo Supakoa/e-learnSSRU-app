@@ -21,18 +21,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($i == 1)
+                        @if ($reports)
+                        @foreach ($reports as $report)
                         <tr>
                             <th scope="row">1</th>
-                            <td>พังไปหมดเลยค่ะช่วงล่างหนู</td>
-                            <td>จิ๋มกระจั๊บ</td>
+                            <td>{{ $report->title }}</td>
+                            <td>{{ $report->user->name }}</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-sm btn-outline-info " data-toggle="modal"
-                                    data-target="#show">
+                                <button onclick="openModal({{ $report }})" type="button" class="btn btn-sm btn-outline-info ">
                                     <i class="fas fa-book-open"></i>
                                 </button>
                             </td>
                         </tr>
+                        @endforeach
                         @else
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Now, Data Empty!</strong>
@@ -45,61 +46,43 @@
                 </table>
             </div>
         </div>
-
     </div>
 </div>
+
 @endsection
 
 @section('modal')
-<div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="contentModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title" id="contentModal">
-                    <h5>เรื่อง: </h5>
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <dl class="row">
-                    <dt class="col-md-2 text-center">
-                        เนื้อหา:
-                    </dt>
-                    <dd class="col-md-8 order-2 ">
-                        Bootstrap sets basic global display, typography, and link styles. When more control is needed,
-                        check out the textual utility classes.
-
-                        Use a native font stack that selects the best font-family for each OS and device.
-                        For a more inclusive and accessible type scale, we assume the browser default root font-size
-                        (typically 16px) so visitors can customize their browser defaults as needed.
-                        Use the $font-family-base, $font-size-base, and $line-height-base attributes as our typographic
-                        base applied to the.
-                        Set the global link color via $link-color and apply link underlines only on :hover.
-                        Use $body-bg to set a background-color on the body (#fff by default).
-                        These styles can be found within _reboot.scss, and the global variables are defined in
-                        _variables.scss. Make sure to set $font-size-base in rem.
-                    </dd>
-                </dl>
-                <hr>
-                <dl class="row">
-                    <dt class="col-md-2 offset-md-6 text-right">
-                        วันที่ส่ง:
-                    </dt>
-                    <dd class="col-md-4">14/06/2019</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
+<div id="tmpModalToHere"></div>
 @endsection
 
 @section('js')
 <script>
+
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
     $(document).ready(function () {
         $('#report').DataTable();
     });
+
+    const openModal = (obj) => {
+        $.get("/report/"+obj.id,
+            {obj:obj},
+            function (response, textStatus, jqXHR) {
+                console.log(response);
+                $('#tmpModalToHere').html(response);
+                $('#showReport').modal('show');
+            },
+        ).then((result)=> {
+            $('#tmpModalToHere').html(response);
+            $('#showReport').modal('show');
+        });
+    };
 
 </script>
 @endsection
