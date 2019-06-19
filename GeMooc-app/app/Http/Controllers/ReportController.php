@@ -37,8 +37,8 @@ class ReportController extends Controller
      */
     public function store(Request $request,report $report)
     {
-        $data = $request;
-        $result = report::created([
+        $data = request();
+        report::created([
             'from_Page' => $data['from_page'],
             'user_id' => $data['user_id'],
             'title' => $data['topic'],
@@ -49,11 +49,11 @@ class ReportController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\report  $report
-     * @return \Illuminate\Http\Response
-     */
+      * Display the specified resource.
+      *
+      * @param  \App\report  $report
+      * @return \Illuminate\Http\Response
+      */
     public function show(report $report, Request $request)
     {
         $reports = report::find($report->id);
