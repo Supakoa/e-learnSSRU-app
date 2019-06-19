@@ -28,10 +28,10 @@
                 <div class="card" style="width: 11rem;">
                     <img class="card-img-top" src="https://i.ytimg.com/vi/tsjd7xdgfjA/maxresdefault.jpg"
                         alt="Card image cap">
-                        <div class="progress" style="height: 10px;">
-                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%"
+                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <a href="#" class="btn btn-primary btn-sm">go to course</a>

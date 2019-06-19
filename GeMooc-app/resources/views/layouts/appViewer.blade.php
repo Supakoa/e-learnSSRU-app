@@ -34,6 +34,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    {{--
+        messenger box
+    --}}
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
+
 </head>
 
 <body>
@@ -50,8 +56,8 @@
                 </li>
                 @else
                 <li>
-                        <a href="{{ url('/std_view/subject') }}" class="nav-link"><i class="fas fa-book-open    "></i></a>
-                    </li>
+                    <a href="{{ url('/std_view/subject') }}" class="nav-link"><i class="fas fa-book-open    "></i></a>
+                </li>
                 <li>
                     <a href="{{ url('/std_view/home') }}" class="nav-link"><i class="fas fa-home"></i></a>
                 </li>
@@ -89,13 +95,32 @@
         </div>
 
     </div>
+
     <div class="footer">
         <div class="text">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
+
+        <button class="open-button" id="myButton" onclick="$('#myForm').show();$('#myButton').hide();">send problem <i class="far fa-paper-plane"></i></<i></button>
+
+        <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h2>Send Problem</h2>
+                <h1><i class="far fa-envelope"></i></h1>
+                <hr style="border:3px solid #ddd">
+
+                <label for="email"><b>Topic</b></label>
+                <input type="text" placeholder="Enter Email" name="topic" id="topic" required>
+
+                <label for="psw"><b>Description</b></label>
+                <textarea class="form-control" name="description" id="description" cols="10" rows="3" required></textarea><hr>
+
+                <button type="submit" class="btn">send <i class="fas fa-paper-plane"></i></button>
+                <button type="button" class="btn cancel" onclick="$('#myForm').hide();$('#myButton').show();">close <i class="fas fa-times"></i></button>
+            </form>
+        </div>
+
     </div>
-
-
 
     @yield('modal')
 

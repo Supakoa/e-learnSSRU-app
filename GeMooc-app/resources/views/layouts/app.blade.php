@@ -35,6 +35,11 @@
     {{-- sweetalert2 naja --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
+    {{--
+        messenger box
+    --}}
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
+
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
