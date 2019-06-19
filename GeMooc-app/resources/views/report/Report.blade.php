@@ -17,6 +17,7 @@
                             <th scope="col">ลำดับ</th>
                             <th>ชื่อเรื่อง</th>
                             <th>ชื่อผู้ส่ง</th>
+                            <th>ชนิดผู้ใช้งาน</th>
                             <th>Show</th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                             <th scope="row">1</th>
                             <td>{{ $report->title }}</td>
                             <td>{{ $report->user->name }}</td>
+                            <td>{{ $report->user->type_user }}</td>
                             <td class="text-center">
                                 <button onclick="openModal({{ $report }})" type="button" class="btn btn-sm btn-outline-info ">
                                     <i class="fas fa-book-open"></i>

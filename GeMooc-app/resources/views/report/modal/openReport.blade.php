@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="contentModal">
-                <h5>เรื่อง: {{ $reports->title }}</h5>
+                <h5>ที่มา: {{ $reports->from_Page }}</h5>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
