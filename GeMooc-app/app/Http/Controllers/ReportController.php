@@ -38,12 +38,20 @@ class ReportController extends Controller
     public function store(Request $request,report $report)
     {
         $data = request();
-        report::created([
-            'from_Page' => $data['from_page'],
-            'user_id' => $data['user_id'],
-            'title' => $data['topic'],
-            'description' => $data['description'],
-        ]);
+
+        // report::created([
+        //     'from_Page' => $data['from_page'],
+        //     'user_id' => $data['user_id'],
+        //     'title' => $data['topic'],
+        //     'description' => $data['description'],
+        // ]);
+
+        $newReport = new report();
+        $newReport->from_Page = $data['from_page'];
+        $newReport->user_id = $data['user_id'];
+        $newReport->title = $data['topic'];
+        $newReport->description = $data['description'];
+        $newReport->save();
 
         return redirect()->back();
     }
