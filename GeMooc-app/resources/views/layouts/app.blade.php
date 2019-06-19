@@ -70,8 +70,8 @@
             @endif --}}
             @else
             <li class="dropdown" style="display:flex">
-                    @if (auth()->user()->profile->image!=null)
-                    <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
+                @if (auth()->user()->profile->image!=null)
+                <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
 
                 @else
                 <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
@@ -106,15 +106,15 @@
         @else
         <section>
             @php
-                $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
-                $adminOnly = auth()->user()->type_user == 'admin';
-                $teach = auth()->user()->type_user == 'teach';
+            $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
+            $adminOnly = auth()->user()->type_user == 'admin';
+            $teach = auth()->user()->type_user == 'teach';
             @endphp
             <ul class="nav-links2 ">
                 {{-- <a href="{{ url('/home')}}">
-                    <li>
-                        DashBoard
-                    </li>
+                <li>
+                    DashBoard
+                </li>
                 </a> --}}
                 @if ($both)
                 <a href="{{ url('/profile') }}">
@@ -138,11 +138,11 @@
                 </a>
                 @endif
                 @if ($adminOnly)
-                    <a href="{{ url('/teach')}}">
-                        <li>
-                            Teach
-                        </li>
-                    </a>
+                <a href="{{ url('/teach')}}">
+                    <li>
+                        Teach
+                    </li>
+                </a>
                 @endif
                 @if ($adminOnly)
                 <a href="{{ url('/student')}}">
@@ -153,9 +153,9 @@
                 @endif
                 {{-- @if ($adminOnly)
                 <a href="{{ url('/payment-setting')}}">
-                    <li>
-                        Payment Setting
-                    </li>
+                <li>
+                    Payment Setting
+                </li>
                 </a>
                 @endif --}}
             </ul>
@@ -164,6 +164,8 @@
         <div class="content container-fluid">
             @include('inc.alert')
             @yield('content')
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><i
+                    class="fas fa-arrow-circle-up    "></i></button>
         </div>
     </div>
     <div class="footer">
@@ -200,26 +202,56 @@
         }
         $('form').submit(function (e) {
 
-            $('button[type=submit]').attr('disabled','');
+            $('button[type=submit]').attr('disabled', '');
             Swal.fire({
                 title: 'Wait a minute !',
                 // timer: 2000,
                 onBeforeOpen: () => {
                     Swal.showLoading()
                 }
-                });
+            });
         });
         $('.send_ajax').click(function (e) {
             var btn = $(this);
             btn.addClass('.ce-disable', true);
             // btn.prop('disabled',true);
-            setTimeout(function(){
+            setTimeout(function () {
                 btn.removeClass('.ce-disable', true);
                 // btn.prop('disabled',false);
-            },1000);
+            }, 1000);
 
             // alert("123");
-         });
+        });
+
+    </script>
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+                $('#myBtn').fadeIn(200); // Fade in the arrow
+            } else {
+                $('#myBtn').fadeOut(200); // Else fade out the arrow
+            }
+        });
+        $('#myBtn').click(function () { // When arrow is clicked
+            $('body,html').animate({
+                scrollTop: 0 // Scroll to top of body
+            }, 1800);
+        });
+
+
+        // window.onscroll = function() {scrollFunction()};
+
+        // function scrollFunction() {
+        //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        //     document.getElementById("myBtn").style.display = "block";
+        //   } else {
+        //     document.getElementById("myBtn").style.display = "none";
+        //   }
+        // }
+        // function topFunction() {
+        //   document.body.scrollTop = 0;
+        //   document.documentElement.scrollTop = 0;
+        // }
 
     </script>
     @yield('js')

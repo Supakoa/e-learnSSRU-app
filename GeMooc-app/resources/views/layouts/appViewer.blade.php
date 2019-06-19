@@ -92,6 +92,9 @@
         <div class="content container-fluid">
 
             @yield('content')
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><i
+                    class="fas fa-arrow-circle-up    "></i></button>
+
         </div>
 
     </div>
@@ -151,6 +154,21 @@
         function goBack() {
             window.history.back();
         }
+
+    </script>
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+                $('#myBtn').fadeIn(200); // Fade in the arrow
+            } else {
+                $('#myBtn').fadeOut(200); // Else fade out the arrow
+            }
+        });
+        $('#myBtn').click(function () { // When arrow is clicked
+            $('body,html').animate({
+                scrollTop: 0 // Scroll to top of body
+            }, 1800);
+        });
 
     </script>
     @yield('js')

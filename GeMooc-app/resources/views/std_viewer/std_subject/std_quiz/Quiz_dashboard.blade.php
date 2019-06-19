@@ -100,10 +100,10 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                     </div>
                 </div>
             </div>
-            <div class="col-md-6"  style="height:100%;">
-                <div class="row"  style="height:50%;">
+            <div class="col-md-6 h-100">
+                <div class="row h-50">
                     <div class="col-md-12 mb-2 overflow-auto ce-hiddenScollbar" >
-                        <div class="card" style="height:100%;">
+                        <div class="card h-100">
                             <div class="card-body">
                                 <div class="container">
                                     <div class="page-header">
@@ -143,9 +143,9 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                         </div>
                     </div>
                 </div>
-                <div class="row"  style="height:50%;">
+                <div class="row h-50">
                     <div class="col-md-12 ">
-                        <div class="card overflow-auto ce-hiddenScollbar" style="height:100%; max-height :300px">
+                        <div class="card overflow-auto ce-hiddenScollbar h-100" style="max-height :300px">
                             <div class="card-body" >
                                 <div class="container">
                                     <div class="page-header">
