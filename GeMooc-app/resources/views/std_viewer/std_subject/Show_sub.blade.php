@@ -7,7 +7,7 @@
         <div class="row justify-content-center mb-4">
             @if ($subjects->count()>0)
                 @foreach ($subjects as $subject)
-                <div class="col-md-3">
+                <div class="col-md-3 mb-2">
                         <div class="card" style="width: auto;">
                             <div class="card-body">
                         <img src="/storage/{{$subject->sm_banner}}" class="card-img-top" width="80%" >

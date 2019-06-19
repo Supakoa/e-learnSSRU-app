@@ -104,7 +104,8 @@
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
 
-        <button class="open-button" id="myButton" onclick="$('#myForm').show();$('#myButton').hide();">send problem <i class="far fa-paper-plane"></i></<i></button>
+        <button class="open-button" id="myButton" onclick="$('#myForm').show();$('#myButton').hide();">send problem <i
+                class="far fa-paper-plane"></i></button>
 
         <div class="form-popup" id="myForm">
             <form action="/action_page.php" class="form-container">
@@ -116,10 +117,13 @@
                 <input type="text" placeholder="Enter Topic" name="topic" id="topic" required>
 
                 <label for="psw"><b>Description</b></label>
-                <textarea class="form-control" placeholder="Enter Description" name="description" id="description" cols="10" rows="3" required></textarea><hr>
+                <textarea class="form-control" placeholder="Enter Description" name="description" id="description"
+                    cols="10" rows="3" required></textarea>
+                <hr>
 
                 <button type="submit" class="btn">send <i class="fas fa-paper-plane"></i></button>
-                <button type="button" class="btn cancel" onclick="$('#myForm').hide();$('#myButton').show();">close <i class="fas fa-times"></i></button>
+                <button type="button" class="btn cancel" onclick="$('#myForm').hide();$('#myButton').show();">close <i
+                        class="fas fa-times"></i></button>
             </form>
         </div>
 
@@ -168,6 +172,20 @@
             $('body,html').animate({
                 scrollTop: 0 // Scroll to top of body
             }, 1800);
+        });
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+                $('#myButton').stop().animate({
+                    'height': '4rem'
+                }, 0);
+                $('#myButton').css('background-color', 'red');
+            }else{
+                $('#myButton').css('background-color', 'rgb(0,0,0,.6)');
+                $('#myButton').stop().animate({
+                    'height': '2rem',
+                }, 20);
+            }
         });
 
     </script>
