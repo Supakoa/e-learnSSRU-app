@@ -10,6 +10,7 @@
 <section id="home" class="ce-contentbody">
     <div class="ce-container">
         @include('content.Home')
+        
     </div>
 </section>
 <section id="subject" class="ce-contentbody">

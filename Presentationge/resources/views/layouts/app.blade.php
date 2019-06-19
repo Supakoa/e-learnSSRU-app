@@ -52,6 +52,8 @@
 
         <div class="ce-content pt-5">
             @yield('content')
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><i
+                    class="fas fa-arrow-circle-up    "></i></button>
         </div>
 
         <div class="footer">
@@ -84,6 +86,26 @@
         $(function () {
             $(".box").draggable();
         });
+
+    </script>
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+                $('#myBtn').fadeIn(200); // Fade in the arrow
+            } else {
+                $('#myBtn').fadeOut(200); // Else fade out the arrow
+            }
+        });
+        $('#myBtn').click(function () { // When arrow is clicked
+            $('body,html').animate({
+                scrollTop: 0 // Scroll to top of body
+            }, 1800);
+        });
+
+        $(".nav-links li a").animate({
+            height: "toggle",
+            opacity: "toggle"
+        }, "slow");
 
     </script>
 </body>

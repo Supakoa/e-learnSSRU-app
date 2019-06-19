@@ -50,8 +50,8 @@
                 </li>
                 @else
                 <li>
-                        <a href="{{ url('/std_view/subject') }}" class="nav-link"><i class="fas fa-book-open    "></i></a>
-                    </li>
+                    <a href="{{ url('/std_view/subject') }}" class="nav-link"><i class="fas fa-book-open    "></i></a>
+                </li>
                 <li>
                     <a href="{{ url('/std_view/home') }}" class="nav-link"><i class="fas fa-home"></i></a>
                 </li>
@@ -86,6 +86,9 @@
         <div class="content container-fluid">
 
             @yield('content')
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><i
+                    class="fas fa-arrow-circle-up    "></i></button>
+
         </div>
 
     </div>
@@ -126,6 +129,21 @@
         function goBack() {
             window.history.back();
         }
+
+    </script>
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+                $('#myBtn').fadeIn(200); // Fade in the arrow
+            } else {
+                $('#myBtn').fadeOut(200); // Else fade out the arrow
+            }
+        });
+        $('#myBtn').click(function () { // When arrow is clicked
+            $('body,html').animate({
+                scrollTop: 0 // Scroll to top of body
+            }, 1800);
+        });
 
     </script>
     @yield('js')
