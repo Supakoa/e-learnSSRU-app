@@ -31,13 +31,21 @@ class ReportController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @param  \App\report
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,report $report)
     {
-        //
+        $data = $request;
+        $result = report::created([
+            'from_Page' => $data['from_page'],
+            'user_id' => $data['user_id'],
+            'title' => $data['topic'],
+            'description' => $data['description'],
+        ]);
+
+        return redirect()->back();
     }
 
     /**

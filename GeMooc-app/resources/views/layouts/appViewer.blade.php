@@ -107,10 +107,17 @@
         <button class="open-button" id="myButton" onclick="$('#myForm').show();$('#myButton').hide();">send problem <i class="far fa-paper-plane"></i></<i></button>
 
         <div class="form-popup" id="myForm">
-            <form action="/action_page.php" class="form-container">
+            <form action="/report" method="POST" class="form-container">
+                @csrf
+                @method('POST')
+
                 <h2>Send Problem</h2>
                 <h1><i class="far fa-envelope"></i></h1>
                 <hr style="border:3px solid #ddd">
+
+                {{-- hidden item --}}
+                <input type="hidden" name="from_page" id="from_page" value="{{ url()->current() }}">
+                <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
 
                 <label for="email"><b>Topic</b></label>
                 <input type="text" placeholder="Enter Topic" name="topic" id="topic" required>
@@ -171,6 +178,14 @@
         });
 
     </script>
+
+    {{--
+        pp script naja
+    --}}
+    <script>
+
+    </script>
+
     @yield('js')
 </body>
 
