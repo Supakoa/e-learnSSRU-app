@@ -104,33 +104,44 @@
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
 
-        <button class="open-button" id="myButton" onclick="$('#myForm').show();$('#myButton').hide();">send problem <i
+        <button class="open-button" id="myButton"
+            onclick="$('#myForm').show();$('#myButton').hide();$('#myBtn').hide();"><i
                 class="far fa-paper-plane"></i></button>
 
         <div class="form-popup" id="myForm">
-            <form action="/report" method="POST" class="form-container">
+            <form action="/report" method="POST">
                 @csrf
                 @method('POST')
+                <div class="ce-close">
+                    <i onclick="$('#myForm').hide();$('#myButton').show();$('#myBtn').show()" class="fas fa-times"></i>
+                </div>
+                <div class="form-container">
+                    <div class="head-popup pb-3">Send Problem <i class="far fa-envelope"></i></div>
+                    {{-- <hr style="border:1px solid #ddd"> --}}
 
-                <h2>Send Problem</h2>
-                <h1><i class="far fa-envelope"></i></h1>
-                <hr style="border:3px solid #ddd">
+                    {{-- hidden item --}}
+                    <input type="hidden" name="from_page" id="from_page" value="{{ url()->current() }}">
+                    <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
 
-                {{-- hidden item --}}
-                <input type="hidden" name="from_page" id="from_page" value="{{ url()->current() }}">
-                <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+                    <label for="email" id="a"><b>Topic</b></label>
+                    <input type="text" placeholder="Enter Topic" name="topic" id="topic" required>
 
-                <label for="email"><b>Topic</b></label>
-                <input type="text" placeholder="Enter Topic" name="topic" id="topic" required>
+                    <label for="psw"><b>Description</b></label>
+                    <textarea class="form-control" placeholder="Enter Description" name="description" id="description"
+                        cols="10" rows="3" required></textarea>
 
-                <label for="psw"><b>Description</b></label>
-                <textarea class="form-control" placeholder="Enter Description" name="description" id="description"
-                    cols="10" rows="3" required></textarea>
-                <hr>
-
-                <button type="submit" class="btn">send <i class="fas fa-paper-plane"></i></button>
-                <button type="button" class="btn cancel" onclick="$('#myForm').hide();$('#myButton').show();">close <i
-                        class="fas fa-times"></i></button>
+                    <div class="row text-center">
+                        <div class="col-md-6 text-right">
+                            <button type="submit"  id="sendBtn">send <i
+                                    class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <div class="col-md-6 ">
+                            <button type="button" class="cancel"
+                                onclick="$('#myForm').hide();$('#myButton').show();$('#myBtn').show()">close <i
+                                    class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
 
@@ -168,6 +179,7 @@
 
     </script>
     <script>
+        $('.nav-links').fadeIn().delay(1500);
         $(window).scroll(function () {
             if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
                 $('#myBtn').fadeIn(200); // Fade in the arrow
@@ -182,16 +194,22 @@
         });
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-                $('#myButton').stop().animate({
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 35) {
+                $('#myButton').animate({
                     'height': '4rem'
-                }, 0);
-                $('#myButton').css('background-color', 'red');
-            }else{
-                $('#myButton').css('background-color', 'rgb(0,0,0,.6)');
+                }, 200);
+                $('#myButton').css({
+                    'background-color': '#ff99ff',
+                    "border": "2px solid #fff"
+                });
+            } else {
+                $('#myButton').css({
+                    'background': 'rgb(0,0,0,.6)',
+                    'border': 'none'
+                }, 600);
                 $('#myButton').stop().animate({
                     'height': '2rem',
-                }, 20);
+                }, 80);
             }
         });
 
