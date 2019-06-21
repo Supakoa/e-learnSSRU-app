@@ -23,7 +23,7 @@
             <div class="col-md-4 h-100 mb-2">
                 <div class="card shadow " style="width: 18rem;">
                     <div class="ce-body-cog">
-                        @if ($i == 'green')
+                        @if ($sub->status)
                         <div class="led green"></div>
                         @else
                         <div class="led red"></div>
