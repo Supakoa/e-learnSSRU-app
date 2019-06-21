@@ -31,16 +31,16 @@
         @endforeach
     </ul>
 </section>
-<div class="card mt-5" style="width: auto;">
-        <div class="card-body">
-    <img src="" class="card-img-top" width="80%" >
-            <hr>
-            <h5 class="card-title">.</h5>
-            <p class="card-text"></p>
-        <a href="#" class="btn btn-primary btn-sm" >ลงทะเบียน </a>
+<div class="card mt-5 ml-3" style="width: 11em; position:fixed">
+    <div class="card-body">
+        <img src=".." class="card-img-top" width="80%">
+        <hr>
+        <h5 class="card-title">The name this course.</h5>
+        {{-- <p class="card-text">Detail this</p> --}}
+        <a href="#" class="btn btn-primary btn-sm">ลงทะเบียน </a>
         <a href="#" class="btn btn-outline-info btn-sm" hidden> เริ่มเรียน</a>
-        </div>
     </div>
+</div>
 
 @section('js')
 <script>
