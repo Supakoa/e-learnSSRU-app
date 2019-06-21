@@ -99,10 +99,26 @@ class subject_c extends Controller
      */
     public function show($id)
     {
-        $course = sub::find($id);
-        $sub = $course;
-        // dd($sub) ;
-        return view('subject.show_sub')->with('courses', $course->courses)->with('sub', $sub);
+        $subject = sub::find($id);
+        $adminOnly = auth()->user()->type_user == 'admin';
+        $teacherOnly = auth()->user()->type_user == 'teach';
+        if($adminOnly){
+            $courses = $subject->courses;
+        }elseif($teacherOnly){
+
+                $courses_user = auth()->user()->courses;
+                $courses_subject = $subject->courses;
+
+                $sum = $courses_subject->intersect($courses_user);
+
+            if($sum->count()==0){
+                return redirect('/subject')->with('error', 'Noooooo');
+            }else{
+                $courses = auth()->user()->courses;
+            }
+        }
+
+        return view('subject.show_sub')->with('courses', $courses)->with('sub', $subject);
     }
 
     /**
