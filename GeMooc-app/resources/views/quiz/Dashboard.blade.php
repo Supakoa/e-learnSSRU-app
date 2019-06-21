@@ -35,9 +35,17 @@
                         <div class="field-scroll">
                             <div class="best-scroll">
                                 <span>คะแนน</span>
+                                <p>99</p>
+                                <div class="text-right pl-3">
+                                    <small class="text-muted">/100</small>
+                                </div>
                             </div>
                             <div class="best-time">
                                 <span>เวลา</span>
+                                <p class="mb-0">16</p>
+                                <div class="text-right pl-3">
+                                    <small class="text-muted">minutes</small>
+                                </div>
                             </div>
                         </div>
                     </div>
