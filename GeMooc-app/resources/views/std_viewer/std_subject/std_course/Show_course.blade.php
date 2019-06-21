@@ -6,7 +6,7 @@
     <div class="ce-container">
         {{-- Banner  --}}
         <div class="row justify-content-center mb-4">
-                <img src="/storage/{{$subject->xl_banner}}" class="card-img-top"  >
+            <img src="{{ url("/storage/".$subject->xl_banner) }}" class="card-img-top"  >
         </div>
         <div class="row mb-4">
             <div class="col-md-8">

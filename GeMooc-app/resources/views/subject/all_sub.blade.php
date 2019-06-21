@@ -34,7 +34,7 @@
                             class="fas fa-cogs"></i></a>
                         @endif
 
-                        <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
+                        <img class="card-img-top" src="{{ url("/storage/".$sub->sm_banner) }}">
                     </div>
                     <div class="card-body" style="background-color: white;">
                         <h5 class="card-title">{{$sub->name}}</h5>

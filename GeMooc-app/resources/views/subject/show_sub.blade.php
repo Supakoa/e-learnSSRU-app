@@ -5,7 +5,7 @@
     <div class="justify-content-start mb-2">
         <a href="#" class="ce-arrow" style="font-size:25px" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
     </div>
-    <img src="/storage/{{$sub->xl_banner}}" alt="" style="width: 100%;height: auto;">
+    <img src="{{ url("/storage/".$sub->xl_banner) }}" alt="" style="width: 100%;height: auto;">
     <h1 class="ce-name">Subject : {{$sub->name}}</h1>
     <div class="ce-container">
         <div class="justify-content-end row mb-2">
@@ -42,7 +42,7 @@
                         <a class="ce-cog-btn send_ajax" onclick="edit_course({{$course->id}})"><i
                                 class="fas fa-cogs"></i></a>
                         @endif
-                        <img class="card-img-top" src="/storage/{{$course->sm_banner}}" alt="">
+                        <img class="card-img-top" src="{{ url("/storage/".$course->sm_banner) }}" alt="">
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{$course->name}}</h5>

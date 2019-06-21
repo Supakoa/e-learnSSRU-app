@@ -57,7 +57,7 @@
                                 <dt>{{$question->name}}</dt>
                             </div>
                             <div class="col-md-4">
-                                <img src="/storage/{{$question->image}}"
+                                <img src="{{ url("/storage/".$question->image) }}"
                                     class="rounded" width="auto" height="auto" style="max-width: 100%;max-height: 150px"
                                     >
                             </div>

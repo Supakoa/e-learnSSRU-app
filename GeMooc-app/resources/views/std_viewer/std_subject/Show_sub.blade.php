@@ -10,7 +10,7 @@
             <div class="col-md-3 mb-2">
                 <div class="card" style="width: auto;">
                     <div class="card-body">
-                        <img src="/storage/{{$subject->sm_banner}}" class="card-img-top" width="80%">
+                        <img src="{{ url("/storage/".$subject->sm_banner) }}" class="card-img-top" width="80%">
                         <hr>
                         <h5 class="card-title">{{$subject->name}}.</h5>
                         <p class="card-text">{{$subject->detail}}</p>
