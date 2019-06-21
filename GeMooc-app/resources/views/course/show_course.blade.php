@@ -11,7 +11,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="mb-3">
-            <img src="{{url('/storage/{{$course->xl_banner}}')}}" class="img-fluid" width="100%" height="auto"
+            <img src="{{url('/storage/.$course->xl_banner')}}" class="img-fluid" width="100%" height="auto"
                 alt="Responsive image">
         </div>
     </div>
