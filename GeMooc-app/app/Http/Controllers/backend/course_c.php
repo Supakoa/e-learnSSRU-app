@@ -92,14 +92,20 @@ class course_c extends Controller
     public function show($id)
     {
         $courses = auth()->user()->courses;
-        if($courses->where('id',$id)->count()==0){
-            return redirect('/subject')->with('error', 'Noooooo');
-        }else{
-            // $courses = auth()->user()->courses;
+        $adminOnly = auth()->user()->type_user == 'admin';
+        $teacherOnly = auth()->user()->type_user == 'teach';
+        if($adminOnly){
             $lesson = course::findorfail($id);
             $course_name = $lesson;
+        }else{
+            if($courses->where('id',$id)->count()==0){
+                return redirect('/subject')->with('error', 'Noooooo');
+            }else{
+                // $courses = auth()->user()->courses;
+                $lesson = course::findorfail($id);
+                $course_name = $lesson;
+            }
         }
-
         return view('course.show_course')->with('lessons', $lesson->lessons)->with('course', $course_name);
     }
 
