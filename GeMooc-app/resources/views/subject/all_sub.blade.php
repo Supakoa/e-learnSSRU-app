@@ -8,12 +8,10 @@
             @php
                 $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
                 $adminOnly = auth()->user()->type_user == 'admin';
-
                 $i = 'green';
             @endphp
             @if ($adminOnly)
-            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
-                    Subject</button>
+            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
             @endif
         </div>
     </div>
@@ -36,7 +34,7 @@
                             class="fas fa-cogs"></i></a>
                         @endif
 
-                        <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
+                        <img class="card-img-top" src="{{ url("/storage/".$sub->sm_banner) }}">
                     </div>
                     <div class="card-body" style="background-color: white;">
                         <h5 class="card-title">{{$sub->name}}</h5>

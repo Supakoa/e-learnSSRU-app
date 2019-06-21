@@ -6,7 +6,7 @@
     <div class="ce-container">
         {{-- Banner  --}}
         <div class="row justify-content-center mb-4">
-                <img src="/storage/{{$subject->xl_banner}}" class="card-img-top"  >
+            <img src="{{ url("/storage/".$subject->xl_banner) }}" class="card-img-top"  >
         </div>
         <div class="row mb-4">
             <div class="col-md-8">
@@ -39,7 +39,7 @@
                                 <td>{{$course->created_at}}</td>
                                 <td>ต้องเพิ่มใหม่</td>
                                 <td>ต้องเพิ่มใหม่</td>
-                            <td colspan="3"><a href="../course/{{$course->id}}" class="btn btn-info btn-sm btn-block">Go </a></td>
+                                <td colspan="3"><a href="{{ url("../course/".$course->id) }}" class="btn btn-info btn-sm btn-block">Go </a></td>
                             </tr>
                         @endforeach
 
