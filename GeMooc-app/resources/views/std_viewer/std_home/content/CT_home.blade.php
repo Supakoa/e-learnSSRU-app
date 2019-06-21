@@ -3,8 +3,12 @@
         <h5 class="ce-name col-md-4 offset-md-4">
             กำลังเรียน...
         </h5>
-        <div class="row mb-1 justify-content-center">
-            <div class="col-md-12 ">
+        <div class="row mb-1 justify-content-center mb-3" style="min-height:40vh">
+            @php
+                $courses = auth()->user()->courses;
+            @endphp
+            @foreach ($courses as $course)
+            <div class="col-md-3">
                 <div class="card" style="width: 11rem;">
                     <img class="card-img-top" src="https://i.ytimg.com/vi/tsjd7xdgfjA/maxresdefault.jpg"
                         alt="Card image cap">
@@ -13,17 +17,18 @@
                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <a href="#" class="btn btn-primary btn-sm">go to course</a>
+                        <h5 class="card-title">{{ $course->name }}</h5>
+                        <a href="std_view/course/2" target="_blank" class="btn btn-primary btn-sm">Get started</a>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
         <div class="ce-line"></div>
         <h5 class="ce-name col-md-4 offset-md-4">
             คอร์สที่เรียนสำเร็จ
         </h5>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-3" style="min-height:40vh">
             <div class="col-md-12 ">
                 <div class="card" style="width: 11rem;">
                     <img class="card-img-top" src="https://i.ytimg.com/vi/tsjd7xdgfjA/maxresdefault.jpg"
@@ -34,7 +39,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <a href="#" class="btn btn-primary btn-sm">go to course</a>
+                        <a href="#" class="btn btn-primary btn-sm">Open result</a>
                     </div>
                 </div>
             </div>
