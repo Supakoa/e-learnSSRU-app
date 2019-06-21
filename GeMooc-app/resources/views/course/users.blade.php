@@ -55,11 +55,13 @@ $adminOnly = auth()->user()->type_user == 'admin';
                                 @endif
                             </tr>
                         </thead>
-
                         <tbody>
-                            @foreach ($teachers as $i => $teacher)
+                            @php
+                                $i=1;
+                            @endphp
+                            @foreach ($teachers as $teacher)
                             <tr>
-                                <th scope="row">{{$i+1}}</th>
+                                <td scope="row">{{$i++}}</td>
                                 <td>{{$teacher->name}}</td>
                                 @php
                                 $roles = $teacher->courses->where('id',$course->id)->pop()->pivot->role;
@@ -80,7 +82,14 @@ $adminOnly = auth()->user()->type_user == 'admin';
                                 </td>
                                 @endif
                             </tr>
+                            {{-- @if ($i==1)
+
+                            {{dd($i)}}
+
+                            @endif --}}
+
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -98,10 +107,12 @@ $adminOnly = auth()->user()->type_user == 'admin';
                             </tr>
                         </thead>
                         <tbody>
+                                @php
+                                $i=1;
+                            @endphp
                                 @foreach ($students as $key=>$student)
                             <tr>
-
-                                <th scope="row">{{$key+1}}</th>
+                                <td scope="row">{{$i++}}</td>
                                 <td>{{$student->name}}</td>
                                 <td>{{$student->pivot->created_at}}</td>
                             </tr>

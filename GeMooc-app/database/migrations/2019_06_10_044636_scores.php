@@ -21,7 +21,6 @@ class Scores extends Migration
             $table->integer('time');
             $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
