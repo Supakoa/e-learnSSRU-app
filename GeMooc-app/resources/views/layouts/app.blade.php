@@ -71,7 +71,7 @@
             @else
             <li class="dropdown" style="display:flex">
                 @if (auth()->user()->profile->image!=null)
-                <img src="{{url('/storage/.auth()->user()->profile->image') }}" alt="...">
+                <img src="{{url('/storage/'.auth()->user()->profile->image) }}" alt="...">
 
                 @else
                 <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
