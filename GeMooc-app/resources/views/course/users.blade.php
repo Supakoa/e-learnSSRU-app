@@ -11,7 +11,7 @@ $adminOnly = auth()->user()->type_user == 'admin';
     </div>
     <div class="row justify-content-center">
         <div class="mb-3">
-            <img class="img-fluid" src="{{url('storage/'.$course->xl_banner)}}" width="100%" height="auto"
+            <img class="img-fluid" src="{{url('/storage/'.$course->xl_banner)}}" width="100%" height="auto"
                 alt="Responsive image">
         </div>
     </div>
