@@ -1,5 +1,5 @@
 @extends('layouts.app')
- 
+
 @section('content')
 <div class="card ce-card">
     <div class="justify-content-start mb-2">
@@ -262,7 +262,7 @@
                     @method('PATCH')
                     <div class="container text-center mb-3">
                         @if ($quiz->image!=null)
-                        <img src="/storage/{{$quiz->image}}"
+                        <img src="{{url('/storage/.$quiz->image')}}"
                         class="img-fluid img-rounded" alt="">
 
                         @else

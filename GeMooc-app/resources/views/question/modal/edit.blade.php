@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div> 
+            </div>
             <div class="modal-body">
                 <form action="{{url('question/'.$question->id)}}" method="post" id="question_edit_form" enctype='multipart/form-data'>
                     @csrf
@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <img src="/storage/{{$question->image}}" alt="" width="auto" height="300px" srcset="">
+                                        <img src="{{url('/storage/.$question->image')}}" alt="" width="auto" height="300px" srcset="">
                                     </div>
                                     <div class="row mb-5">
                                         <div class="offset-md-3 col-md-6">
