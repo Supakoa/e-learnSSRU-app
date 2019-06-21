@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+ 
 @section('content')
 <div class="card ce-card">
     <div class="justify-content-start mb-2">

@@ -43,7 +43,7 @@
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
-
+ 
 <body>
     <nav class="fixed-top">
         @guest

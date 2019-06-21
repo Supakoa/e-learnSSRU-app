@@ -24,7 +24,7 @@
                         {{--
                             send form id to delete record.
                         --}}
-                        <form action="/student/{{ $users->id }}" id="formDelete{{ $users->id }}" method="post">
+                        <form action="{{url('/student/'.$users->id) }}" id="formDelete{{ $users->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="id" id="id" value="{{ $users->id }}">
