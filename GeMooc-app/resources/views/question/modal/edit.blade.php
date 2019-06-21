@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
+            </div> 
             <div class="modal-body">
                 <form action="{{url('question/'.$question->id)}}" method="post" id="question_edit_form" enctype='multipart/form-data'>
                     @csrf

@@ -41,7 +41,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#subject">Subject</a></li>
                 <li><a href="#about">About us</a></li>
-                <li><a href="#fq">F&Q</a></li>
+                <li><a href="#fq">FAQ</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>

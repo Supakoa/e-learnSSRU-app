@@ -40,7 +40,7 @@
                         <h5 class="card-title">{{$sub->name}}</h5>
                         <p class="card-text">{{$sub->detail}}</p>
                         <div class="text-right ce-card-btn">
-                            <a href="/subject/{{$sub->id}}" class="btn btn-block btn-sm btn-outline-warning shadow">Go
+                            <a href="{{url('/subject/'.$sub->id)}}" class="btn btn-block btn-sm btn-outline-warning shadow">Go
                                 to Course</a>
                         </div>
                     </div>
