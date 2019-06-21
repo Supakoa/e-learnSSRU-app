@@ -8,12 +8,10 @@
             @php
                 $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
                 $adminOnly = auth()->user()->type_user == 'admin';
-
                 $i = 'green';
             @endphp
             @if ($adminOnly)
-            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
-                    Subject</button>
+            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
             @endif
         </div>
     </div>

@@ -6,7 +6,7 @@
                 <h1>edit teach user</h1>
             </div>
             <div class="modal-body">
-                <form action="/teach/{{ $user->id }}" id="formEditTeach" enctype="multipart/form-data" method="POST">
+                <form action="{{ "/teach/". $user->id }}" id="formEditTeach" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('PATCH')
 

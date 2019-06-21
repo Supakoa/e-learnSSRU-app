@@ -22,4 +22,13 @@ class content extends Model
     {
         return $this->hasOne('App\quiz','id','detail');
     }
+
+    public function progresses()
+    {
+        return $this->belongsToMany('App\User','progresses')->withPivot('percent')->withTimestamp();
+    }
+    public function progress_user($id)
+    {
+        return $this->belongsToMany('App\User','progresses')->wherePivot('user_id',$id)->withPivot('percent');
+    }
 }

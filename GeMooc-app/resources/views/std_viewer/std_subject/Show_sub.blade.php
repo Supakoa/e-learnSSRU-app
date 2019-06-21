@@ -14,7 +14,7 @@
                         <hr>
                         <h5 class="card-title">{{$subject->name}}.</h5>
                         <p class="card-text">{{$subject->detail}}</p>
-                        <a href="subject/{{$subject->id}}" class="btn btn-primary btn-sm">Course </a>
+                        <a href="{{ url("subject/".$subject->id) }}" class="btn btn-primary btn-sm">Course </a>
                     </div>
                 </div>
             </div>
