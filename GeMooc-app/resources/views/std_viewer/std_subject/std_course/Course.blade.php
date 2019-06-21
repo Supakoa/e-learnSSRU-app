@@ -29,7 +29,6 @@
                                         data-toggle="collapse" data-target="#collapse_{{$lesson->id}}"
                                         aria-expanded="true" aria-controls="collapse_{{$lesson->id}}">
                                         Chapter #1
-
                                     </button>
                                 </div>
                                 <div id="collapse_{{$lesson->id}}" class="collapse"

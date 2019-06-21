@@ -3,12 +3,12 @@
         <h5 class="ce-name col-md-4 offset-md-4">
             กำลังเรียน...
         </h5>
-        <div class="row mb-1 justify-content-center">
+        <div class="row mb-1 justify-content-center mb-3" style="min-height:40vh">
             @php
                 $courses = auth()->user()->courses;
             @endphp
             @foreach ($courses as $course)
-            <div class="col-md-3 ">
+            <div class="col-md-3">
                 <div class="card" style="width: 11rem;">
                     <img class="card-img-top" src="https://i.ytimg.com/vi/tsjd7xdgfjA/maxresdefault.jpg"
                         alt="Card image cap">
@@ -28,7 +28,7 @@
         <h5 class="ce-name col-md-4 offset-md-4">
             คอร์สที่เรียนสำเร็จ
         </h5>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-3" style="min-height:40vh">
             <div class="col-md-12 ">
                 <div class="card" style="width: 11rem;">
                     <img class="card-img-top" src="https://i.ytimg.com/vi/tsjd7xdgfjA/maxresdefault.jpg"

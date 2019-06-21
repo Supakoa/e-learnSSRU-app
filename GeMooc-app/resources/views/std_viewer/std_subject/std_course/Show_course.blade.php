@@ -7,7 +7,6 @@
         {{-- Banner  --}}
         <div class="row justify-content-center mb-4">
                 <img src="/storage/{{$subject->xl_banner}}" class="card-img-top"  >
-
         </div>
         <div class="row mb-4">
             <div class="col-md-8">
@@ -19,7 +18,7 @@
         </div>
         {{-- Course --}}
         <div class="row mb-4 ">
-            <div class="col-md-12 ">
+            <div class="col-md-8 ">
                 <h4 class="ce-name">Course</h4>
                 <table class="table  rounded-lg table-hover table-borderless">
                     <thead class="table-info">
