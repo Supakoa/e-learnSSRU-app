@@ -91,8 +91,15 @@ class course_c extends Controller
      */
     public function show($id)
     {
-        $lesson = course::findorfail($id);
-        $course_name = $lesson;
+        $courses = auth()->user()->courses;
+        if($courses->where('id',$id)->count()==0){
+            return redirect('/subject')->with('error', 'Noooooo');
+        }else{
+            // $courses = auth()->user()->courses;
+            $lesson = course::findorfail($id);
+            $course_name = $lesson;
+        }
+
         return view('course.show_course')->with('lessons', $lesson->lessons)->with('course', $course_name);
     }
 
