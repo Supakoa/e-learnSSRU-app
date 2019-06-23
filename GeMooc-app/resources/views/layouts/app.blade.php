@@ -42,6 +42,8 @@
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+
+    @include('inc.google_analytics');
 </head>
 
 <body>
