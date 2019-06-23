@@ -8,9 +8,9 @@
     </button></div>
 @endif
 <div class="justify-content-center">
-    <section class="forms-section ">
+    <section class="forms-section">
         <div class="forms">
-            <div class="form-wrapper is-active">
+            <div class="form-wrapper is-active" >
                 <button type="button" class="switcher switcher-login">
                     {{ __('Login') }}
                     <span class="underline"></span>

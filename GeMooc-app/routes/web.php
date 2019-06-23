@@ -12,6 +12,11 @@
 */
 
 use Illuminate\Support\Str;
+//New STD-viewer
+Route::get('std/login', function(){
+    return view('pagestudent.login.Login_std');
+});
+
 
 // use File;
 Auth::routes();
