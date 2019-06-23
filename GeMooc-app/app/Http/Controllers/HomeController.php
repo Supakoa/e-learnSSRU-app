@@ -29,8 +29,8 @@ class HomeController extends Controller
     {
         // dd(auth()->user());
         if(auth()->user()->type_user == 'student'){
-            return view('std_viewer.std_home.index');
-
+            // return view('std_viewer.std_home.index');
+            return redirect('/std_view/home');
         }
         return view('dashboard.home');
     }
