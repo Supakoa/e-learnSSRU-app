@@ -106,4 +106,11 @@ class QuizController extends Controller
     {
         //
     }
+
+    public function quiz_dashboard(quiz $quiz)
+    {
+
+       return view('quiz.dashboard')->with('quiz', $quiz);
+
+    }
 }

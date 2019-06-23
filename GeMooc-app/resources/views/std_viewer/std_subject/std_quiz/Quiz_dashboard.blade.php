@@ -127,7 +127,8 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                                             $percen_show_75 = $num_75/$scores*100;
                                             $percen_show_100 = $num_100/$scores*100;
                                             //dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
-                                            @endphp <span>0-25</span>
+                                            @endphp
+                                            <span>0-25</span>
                                             <div class="charts__chart chart--red" data-percent="{{ round($percen_show_25,2)}}%" style="width: {{$percen_show_25}}%"></div>
                                             <span>26-50</span>
                                             <div class="charts__chart chart--yellow" data-percent="{{ round($percen_show_50,2)}}%" style="width: {{$percen_show_50}}%"></div>

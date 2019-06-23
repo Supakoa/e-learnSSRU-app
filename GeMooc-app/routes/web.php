@@ -64,9 +64,6 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/quiz/show', function () {
             return view('quiz.Show');
         });
-        Route::get('/quiz/dashboard', function(){
-            return view('quiz.Dashboard');
-        });
 
 
         Route::post('ajaximage', function () {
@@ -104,6 +101,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::resource('/content', 'backend\content_c');
         Route::resource('/article', 'backend\articleController');
         Route::resource('/quiz', 'backend\quizController');
+        Route::get('/quiz/{quiz}/dashboard','backend\quizController@quiz_dashboard');
         Route::resource('/teach', 'backend\teachController');
         Route::resource('/question', 'backend\questionController');
         Route::resource('/student', 'backend\studentController');
