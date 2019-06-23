@@ -25,6 +25,7 @@
 
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEF2style.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFlogin.css')}}">
     <!-- fontawesom -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -48,9 +49,15 @@
             @yield('content')
         </div>
         <div class="footer">
-                <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
+            <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
         @endguest
+        <div class="switch-language">
+            <div class="custom-switch">
+                <label class="custom-control-label" for="customSwitch1">TH/US</label>
+                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            </div>
+        </div>
     </div>
 
 
