@@ -5,13 +5,13 @@ use App\subject as subject;
 use App\course as course;
 use App\content as content;
 use App\Http\Controllers\Session;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
 class Std_viewer extends Controller
 {
     public function Std_home(){
-        // dd(auth()->user()->courses);
         return view('std_viewer.std_home.index');
     }
 
