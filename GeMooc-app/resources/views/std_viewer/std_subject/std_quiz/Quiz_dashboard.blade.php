@@ -17,7 +17,7 @@ $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->firs
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3 p-0">
-                            <img src="/storage/{{$quiz->image}}" width="100%" style="max-height: 200px;max-width: 400px" alt="">
+                            <img src="{{ url("/storage/".$quiz->image) }}" width="100%" style="max-height: 200px;max-width: 400px" alt="">
                             </div>
                             <div class="col-md-9">
                                 <div class="row">

@@ -30,7 +30,7 @@
                         {{--
                                         send form id to delete record.
                                     --}}
-                        <form action="/teach/{{ $user->id }}" id="formDelete{{ $user->id }}" method="post">
+                        <form action="{{ url("/teach/". $user->id ) }}" id="formDelete{{ $user->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="id" id="id" value="{{ $user->id }}">
@@ -78,7 +78,7 @@
                 <h1>create new user</h1>
             </div>
             <div class="modal-body">
-                <form action="/teach/create" id="create" enctype="multipart/form-data" method="POST">
+                <form action="{{ url("/teach/create") }}" id="create" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('GET')
 

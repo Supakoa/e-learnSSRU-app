@@ -8,12 +8,10 @@
             @php
                 $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
                 $adminOnly = auth()->user()->type_user == 'admin';
-
                 $i = 'green';
             @endphp
             @if ($adminOnly)
-            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add
-                    Subject</button>
+            <button class="btn btn-outline-success btn-md" data-toggle="modal" data-target="#exampleModal">Add Subject</button>
             @endif
         </div>
     </div>
@@ -25,7 +23,7 @@
             <div class="col-md-4 h-100 mb-2">
                 <div class="card shadow " style="width: 18rem;">
                     <div class="ce-body-cog">
-                        @if ($i == 'green')
+                        @if ($sub->status)
                         <div class="led green"></div>
                         @else
                         <div class="led red"></div>
@@ -36,13 +34,13 @@
                             class="fas fa-cogs"></i></a>
                         @endif
 
-                        <img class="card-img-top" src="/storage/{{$sub->sm_banner}}">
+                        <img class="card-img-top" src="{{ url("/storage/".$sub->sm_banner) }}">
                     </div>
                     <div class="card-body" style="background-color: white;">
                         <h5 class="card-title">{{$sub->name}}</h5>
                         <p class="card-text">{{$sub->detail}}</p>
                         <div class="text-right ce-card-btn">
-                            <a href="/subject/{{$sub->id}}" class="btn btn-block btn-sm btn-outline-warning shadow">Go
+                            <a href="{{url('/subject/'.$sub->id)}}" class="btn btn-block btn-sm btn-outline-warning shadow">Go
                                 to Course</a>
                         </div>
                     </div>

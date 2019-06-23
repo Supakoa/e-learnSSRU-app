@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <img src="/storage/{{$question->image}}" alt="" height="500px" width="auto" srcset="">
+                                        <img src="{{url('/storage/'.$question->image)}}" alt="" height="500px" width="auto" srcset="">
                                     </div>
                                     <div class="row mb-5">
                                         <div class="offset-md-3 col-md-6">

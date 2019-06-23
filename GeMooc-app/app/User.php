@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\report', 'user_id');
     }
+
+    public function progresses()
+    {
+        return $this->belongsToMany('App\content', 'progresses')->withPivot('percent')->withTimestamps();
+    }
 }

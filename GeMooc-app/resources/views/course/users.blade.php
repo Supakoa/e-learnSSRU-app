@@ -11,7 +11,7 @@ $adminOnly = auth()->user()->type_user == 'admin';
     </div>
     <div class="row justify-content-center">
         <div class="mb-3">
-            <img class="img-fluid" src="{{url('storage/'.$course->xl_banner)}}" width="100%" height="auto"
+            <img class="img-fluid" src="{{url('/storage/'.$course->xl_banner)}}" width="100%" height="auto"
                 alt="Responsive image">
         </div>
     </div>
@@ -143,11 +143,11 @@ $adminOnly = auth()->user()->type_user == 'admin';
         </div>
     </div>
 </div>
-<form action="delete_user" method="post" id="delete_user">
+<form action="{{url('delete_user')}}" method="post" id="delete_user">
     @csrf
     <input type="hidden" name="user" id="user_id">
 </form>
-<form action="edit_user" method="post" id="edit_user">
+<form action="{{url('edit_user')}}" method="post" id="edit_user">
     @csrf
     <input type="hidden" name="user" id="user_id_edit">
     <input type="hidden" name="role" id="user_role">
@@ -166,7 +166,7 @@ $adminOnly = auth()->user()->type_user == 'admin';
                 </button>
             </div>
             <div class="modal-body">
-                <form action="add_user" method="post" id="add_user">
+                <form action="{{url('add_user')}}" method="post" id="add_user">
                     @csrf
                     <div class=" form-group">
                         <label for="user">User :</label>

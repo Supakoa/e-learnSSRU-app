@@ -9,7 +9,7 @@
     <div class="ce-container">
         <div class="row mt-3 mb-3">
             <div class="col-md-4 offset-md-4 ce-cog-body ce-bg text-center" style="overflow:hidden">
-                <form action="/profile/updateImage" enctype="multipart/form-data" id="updateFile" method="POST">
+                <form action="{{url('/profile/updateImage')}}" enctype="multipart/form-data" id="updateFile" method="POST">
                     @csrf
 
                     <input onchange="$('#updateFile').submit();" style="display:none" type="file" accept="image/*"
@@ -17,12 +17,12 @@
                 </form>
                 <div onclick="$('#upload').trigger('click'); return false;" class="ce-cog-btn"><i
                         class="fas fa-upload"></i></div>
-                <img src="/storage/{{ auth()->user()->profile->image }}" class="rounded mx-auto d-block" height="200"
+                <img src="{{url('/storage/'.auth()->user()->profile->image) }}" class="rounded mx-auto d-block" height="200"
                     width="100%" class="rounded" alt="">
             </div>
         </div>
         <div class="container">
-            <form action="profile/upddateProfile" id="profile" method="post">
+            <form action="{{url('profile/upddateProfile')}}" id="profile" method="post">
                 @csrf
                 {{-- @method('PATCH') --}}
 

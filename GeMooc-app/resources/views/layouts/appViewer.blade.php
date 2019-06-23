@@ -39,6 +39,8 @@
         messenger box
     --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
+    
+    @include('inc.google_analytics');
 
 </head>
 
