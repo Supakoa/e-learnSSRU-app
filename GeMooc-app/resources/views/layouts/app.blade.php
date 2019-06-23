@@ -42,8 +42,10 @@
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+
+    @include('inc.google_analytics');
 </head>
- 
+
 <body>
     <nav class="fixed-top">
         @guest
@@ -71,7 +73,7 @@
             @else
             <li class="dropdown" style="display:flex">
                 @if (auth()->user()->profile->image!=null)
-                <img src="/storage/{{ auth()->user()->profile->image }}" alt="...">
+                <img src="{{url('/storage/'.auth()->user()->profile->image) }}" alt="...">
 
                 @else
                 <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">

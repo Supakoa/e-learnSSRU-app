@@ -45,7 +45,7 @@
                             placeholder="Course Detail">
                     </div>
                     <div class="form-group text-center">
-                        <img src="/storage/{{$course->sm_banner}}" alt="" width="100%" srcset="">
+                        <img src="{{url('/storage/'.$course->sm_banner)}}" alt="" width="100%" srcset="">
                     </div>
                     <div class="form-group">
                         <label for="name">Cover Image (Small : 400*255) </label>
@@ -53,7 +53,7 @@
                             placeholder="Image">
                     </div>
                     <div class="form-group text-center">
-                        <img src="/storage/{{$course->xl_banner}}" alt="" width="100%" srcset="">
+                        <img src="{{url('/storage/'.$course->xl_banner)}}" alt="" width="100%" srcset="">
                     </div>
                     <div class="form-group">
                         <label for="name">Cover Image (Large : 1600*600) </label>

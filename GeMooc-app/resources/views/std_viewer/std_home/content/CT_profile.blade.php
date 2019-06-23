@@ -9,7 +9,7 @@
             </form>
             <div onclick="$('#upload').trigger('click'); return false;" class="ce-cog-btn"><i class="fas fa-upload"></i>
             </div>
-            <img src="/storage/{{ auth()->user()->profile->image }}" class="rounded mx-auto d-block" height="200"
+            <img src="{{url('/storage/.auth()->user()->profile->image') }}" class="rounded mx-auto d-block" height="200"
                 width="100%" class="rounded" alt="">
         </div>
     </div>
