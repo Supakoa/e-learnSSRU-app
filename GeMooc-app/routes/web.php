@@ -16,6 +16,9 @@ use Illuminate\Support\Str;
 Route::get('std/login', function(){
     return view('pagestudent.login.Login_std');
 });
+Route::get('std/login/register', function(){
+    return view('pagestudent.login.Register');
+});
 
 
 // use File;

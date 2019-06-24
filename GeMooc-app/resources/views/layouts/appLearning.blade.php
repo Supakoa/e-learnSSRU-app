@@ -41,7 +41,8 @@
 <body>
     <div class="cebody">
         @guest
-        @yield('navs-login')
+        @include('pagestudent.navs.Navs_login')
+        {{-- @yield('navs-login') --}}
         @yield('login')
         @else
         @yield('navs-main')
@@ -52,11 +53,11 @@
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
         @endguest
+
         <div class="switch-language">
-            <div class="custom-switch">
-                <label class="custom-control-label" for="customSwitch1">TH/US</label>
-                <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            </div>
+            <p>TH/EN</p>
+            <input type="checkbox" id="switch" />
+            <label for="switch"></label>
         </div>
     </div>
 
