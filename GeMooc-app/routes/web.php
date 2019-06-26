@@ -12,6 +12,14 @@
 */
 
 use Illuminate\Support\Str;
+//New STD-viewer
+Route::get('std/login', function(){
+    return view('pagestudent.login.Login_std');
+});
+Route::get('std/login/register', function(){
+    return view('pagestudent.login.Register');
+});
+
 
 // use File;
 Auth::routes();
@@ -30,8 +38,11 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/std_view/subject', 'Std_viewer@all_subject');
     Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
     Route::get('/std_view/course/{course}', 'Std_viewer@Std_course');
+    Route::get('/std_view/course/{course}/enroll', 'Std_viewer@course_enroll');
+
     Route::get('/std_view/course/content/{content}', 'Std_viewer@show_content');
     Route::post('/std_view/course/content/{content}/submit_quiz', 'Std_viewer@submit_quiz');
+    Route::post('/std_view/course/content/{content}/submit_article', 'Std_viewer@submit_article');
     Route::get('/std_view/course/content/{content}/dashboard', 'Std_viewer@show_dashboard');
     Route::post('get_time', function () {
         $time = session('time');
@@ -58,9 +69,6 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/quiz/show', function () {
             return view('quiz.Show');
-        });
-        Route::get('/quiz/dashboard', function(){
-            return view('quiz.Dashboard');
         });
 
 
@@ -99,6 +107,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::resource('/content', 'backend\content_c');
         Route::resource('/article', 'backend\articleController');
         Route::resource('/quiz', 'backend\quizController');
+        Route::get('/quiz/{quiz}/dashboard','backend\quizController@quiz_dashboard');
         Route::resource('/teach', 'backend\teachController');
         Route::resource('/question', 'backend\questionController');
         Route::resource('/student', 'backend\studentController');

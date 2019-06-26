@@ -193,7 +193,7 @@ class subject_c extends Controller
             $now->detail = 'Edit Subject ID ==> '.$subject->id.' |'.$detail;
             $now->save();
         }
-        return redirect('/subject/'.$subject->id)->with('success', 'Subject Update');
+        return redirect()->back()->with('success', 'Subject Update');
     }
 
     /**

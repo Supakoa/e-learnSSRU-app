@@ -39,7 +39,7 @@
                                 <td>{{$course->created_at}}</td>
                                 <td>ต้องเพิ่มใหม่</td>
                                 <td>ต้องเพิ่มใหม่</td>
-                                <td colspan="3"><a href="{{ url("../course/".$course->id) }}" class="btn btn-info btn-sm btn-block">Go </a></td>
+                                <td colspan="3"><a href="{{ url("std_view/course/".$course->id) }}" class="btn btn-info btn-sm btn-block">Go </a></td>
                             </tr>
                         @endforeach
 

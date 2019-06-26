@@ -22,7 +22,7 @@
                             $check = 'checked';
                         }
                         @endphp
-                        <input class="tgl tgl-flat" id="cb4" {{$check}} value="1" form="sub_form"  name = 'status'type="checkbox" />
+                        <input class="tgl tgl-flat ce-checkbox" id="cb4" {{$check}} value="1" form="sub_form"  name = 'status'type="checkbox" />
                         <label class="tgl-btn" for="cb4"></label>
 
                     </div>
@@ -101,4 +101,51 @@ function delete_subject(id){
             }
         });
     }
+    $('.ce-checkbox').click(function (e) {
+       if($(this).prop('checked')==true){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "เนื้อหาขอท่านต้องพร้อมเผยแพร่",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.value) {
+             $(this).prop('checked',true)
+                // Swal.fire(
+                //     '!',
+                //     'Your file has been deleted.',
+                //     'success'
+                // )
+            }else{
+             $(this).prop('checked',false)
+
+            }
+        });
+       }else{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "ผู้เรียนจะไม่สามารถเข้าถึงวิชานี้ได้",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.value) {
+             $(this).prop('checked',false)
+                // Swal.fire(
+                //     '!',
+                //     'Your file has been deleted.',
+                //     'success'
+                // )
+            }else{
+             $(this).prop('checked',true)
+            }
+        });
+       }
+
+    });
 </script>

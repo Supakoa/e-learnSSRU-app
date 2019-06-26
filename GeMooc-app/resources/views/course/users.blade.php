@@ -166,7 +166,7 @@ $adminOnly = auth()->user()->type_user == 'admin';
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('add_user')}}" method="post" id="add_user">
+                <form action="{{url('/course/'.$course->id.'/add_user')}}" method="post" id="add_user">
                     @csrf
                     <div class=" form-group">
                         <label for="user">User :</label>

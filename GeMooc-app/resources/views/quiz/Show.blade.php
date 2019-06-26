@@ -9,7 +9,7 @@
     <h1 class="ce-name">Show - Quiz : </h1>
     <div class="row ">
         <div class="col-md-2 text-left">
-            <a href="{{url('/quiz/dashboard')}}" class="btn btn-block btn-md btn-outline-info">
+            <a href="{{url('/quiz/'.$quiz->id.'/dashboard')}}" class="btn btn-block btn-md btn-outline-info">
                 <i class="fas fa-tachometer-alt"></i>
             </a>
         </div>

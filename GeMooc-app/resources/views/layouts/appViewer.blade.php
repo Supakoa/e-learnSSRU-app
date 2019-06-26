@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
     @include('inc.google_analytics');
+    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
 
 </head>
 
@@ -157,7 +158,6 @@
 
     @yield('modal')
 
-    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
     {{-- <script src="{{ asset('node_modules/datatables.net-responsive/js/dataTables.responsive.js')}}"></script> --}}
