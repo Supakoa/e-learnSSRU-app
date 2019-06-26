@@ -14,8 +14,12 @@
                     <h5 class="p-3">ช่วงคะแนนที่ทำได้</h5>
                     <div class="ce-line"></div>
                     <div class="card-body">
-                            @php
+                        @php
                             $question_number = $quiz->questions->count();
+
+                        @endphp
+                            @if ($quiz->questions->count())
+                            @php
                             $scores = $quiz->scores->count();
                             $percen_25 = (int)($question_number*0.25);
                             // dd($percen_25);
@@ -42,6 +46,19 @@
                                 <span>76-100</span>
                                 <div class="charts__chart chart--green" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%"></div>
                         </div><!-- /.charts -->
+                            @else
+                            <div class="charts ">
+                                    <span>0-25</span>
+                                    <div class="charts__chart chart--red" data-percent="0%" style="width: 0%"></div>
+                                    <span>26-50</span>
+                                    <div class="charts__chart chart--yellow" data-percent="0%" style="width: 0%"></div>
+                                    <span>51-75</span>
+                                    <div class="charts__chart chart--blue" data-percent="0%" style="width: 0%"></div>
+                                    <span>76-100</span>
+                                    <div class="charts__chart chart--green" data-percent="0%" style="width: 0%"></div>
+                            </div><!-- /.charts -->
+                            @endif
+
                     </div>
                 </div>
             </div>
@@ -55,20 +72,39 @@
                                 $score_top = $quiz->scores()->orderBy('scores.score', 'DESC')->orderBy('scores.time', 'ASC')->first();
                                 // dd($score_top);
                             @endphp
+                            @if ($score_top)
                             <div class="best-scroll">
-                                <span>คะแนน</span>
-                                <p>{{$score_top->pivot->score}}</p>
-                                <div class="text-right pl-3">
-                                    <small class="text-muted">/{{$question_number}}</small>
+                                    <span>คะแนน</span>
+                                    <p>{{$score_top->pivot->score}}</p>
+                                    <div class="text-right pl-3">
+                                        <small class="text-muted">/{{$question_number}}</small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="best-time">
-                                <span>เวลา</span>
-                                <p class="mb-0">{{(int)($score_top->pivot->time/60)." นาที ".(int)($score_top->pivot->time%60)." วินาที"}}</p>
-                                <div class="text-right pl-3">
-                                    <small class="text-muted">{{$quiz->time}} minutes</small>
+                                <div class="best-time">
+                                    <span>เวลา</span>
+                                    <p class="mb-0">{{(int)($score_top->pivot->time/60)." นาที ".(int)($score_top->pivot->time%60)." วินาที"}}</p>
+                                    <div class="text-right pl-3">
+                                        <small class="text-muted">{{$quiz->time}} minutes</small>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                            <div class="best-scroll">
+                                    <span>คะแนน</span>
+                                    <p>ไม่มีข้อมูล</p>
+                                    <div class="text-right pl-3">
+                                        <small class="text-muted">/{{$question_number}}</small>
+                                    </div>
+                                </div>
+                                <div class="best-time">
+                                    <span>เวลา</span>
+                                    <p class="mb-0">ไม่มีข้อมูล</p>
+                                    <div class="text-right pl-3">
+                                        <small class="text-muted">{{$quiz->time}} minutes</small>
+                                    </div>
+                                </div>
+                            @endif
+
+
                         </div>
                     </div>
                 </div>

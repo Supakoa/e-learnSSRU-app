@@ -16,7 +16,7 @@ class Std_viewer extends Controller
     }
 
     public function all_subject(){
-        $subjects = subject::all();
+        $subjects = subject::where('status','1')->get();
 
         return view('std_viewer.std_subject.Show_sub')->with('subjects',$subjects);
     }
@@ -30,6 +30,20 @@ class Std_viewer extends Controller
     public function Std_course(course $course){
         $lessons = $course->lessons;
         return view('std_viewer.std_subject.std_course.Course')->with('course',$course)->with('lessons',$lessons);
+    }
+    public function course_enroll(course $course){
+        $user = auth()->user();
+        // dd($user->course($course)->count());
+        if($user->type_user != 'student'){
+            return redirect()->back();
+        }elseif($user->course($course)->count()){
+            return redirect()->back()->with('error','You Can\'t Do That !!');
+        }else{
+            //เพิ่มหน้าลงทะเบียนด้วย
+            $user->courses()->attach($course);
+            return "Enroll";
+
+        }
     }
 
 
@@ -56,6 +70,7 @@ class Std_viewer extends Controller
         if($request->timeleft=="Wait..."){
                 return redirect('/std_view/course/'.$course->id);
             }
+            $user =auth()->user();
             $quiz = $content->quiz;
             $questions = $quiz->questions;
             $score = 0;
@@ -76,9 +91,21 @@ class Std_viewer extends Controller
                     }
                 }
             }
-            $temp = auth()->user()->scores()->attach($quiz,['score'=>$score,'time'=>$request->timeleft]);
+            $percent = (int)(($score/$questions->count())*100);
+            $temp = $user->scores()->attach($quiz,['score'=>$score,'time'=>$request->timeleft]);
+
+            $temp = $user->progresses()->detach($content);
+            $temp = $user->progresses()->save($content,['percent'=>$percent]);
+
             return redirect('std_view/course/content/'.$content->id.'/dashboard');
 
+    }
+    public function submit_article(content $content,Request $request){
+        $user =auth()->user();
+
+        $temp = $user->progresses()->detach($content);
+        $temp = $user->progresses()->save($content,['percent'=>100]);
+        return redirect()->back()->with('success','บันทึกข้อมูลสำเร็จ');
     }
     public function show_dashboard(content $content)
     {

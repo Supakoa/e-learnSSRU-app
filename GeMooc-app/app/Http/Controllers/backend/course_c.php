@@ -80,7 +80,7 @@ class course_c extends Controller
         $now->user_id = auth()->user()->id;
         $now->detail = "Create Course : ID ====> || ".$course->id." ||";
         $now->save();
-        return redirect('/subject/'.$request->input('sub_id'))->with('success', 'Course Created');
+        return redirect()->back()->with('success', 'Course Created');
     }
 
     /**
@@ -183,7 +183,7 @@ class course_c extends Controller
             $now->detail = 'Edit Course ID ==> '.$course->id.' |'.$detail;
             $now->save();
         }
-        return redirect('/course/'.$id)->with('success', 'Course Updated');
+        return redirect()->back()->with('success', 'Course Updated');
     }
 
     /**
