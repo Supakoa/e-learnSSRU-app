@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
+    <link rel="stylesheet" href="node_modules/slick/slick/slick.css">
+    <link rel="stylesheet" href="node_modules/slick/slick/slick-theme.css">
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
@@ -32,7 +34,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
 
     {{--messenger box--}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
@@ -41,7 +43,6 @@
 <body>
     <div class="cebody">
         @guest
-        @include('pagestudent.navs.Navs_login')
         {{-- @yield('navs-login') --}}
         @yield('login')
         @else
@@ -63,6 +64,7 @@
 
 
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
     {{-- <script src="{{ asset('node_modules/datatables.net-responsive/js/dataTables.responsive.js')}}"></script> --}}
@@ -72,10 +74,11 @@
     <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
-
+    <script src="{{asset('node_modules/jQueryWaterwheelCarouselPlugin/js/jquery.waterwheelCarousel.min.js')}}"></script>
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
+    <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
     <script>
         wow = new WOW({
             boxClass: 'wow', // default

@@ -4,7 +4,7 @@
     <div class="bg-navs" ></div>
     <div class="logo">
         <div class="log-header">
-                MOOC
+        <img src="{{url('images/logo.png')}}" alt="">
         </div>
         <div class="log-underline"></div>
         <div class="log-subheader">
