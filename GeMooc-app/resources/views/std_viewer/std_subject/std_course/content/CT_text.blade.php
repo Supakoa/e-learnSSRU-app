@@ -25,6 +25,12 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div> --}}
+                        <form action="{{url('std_view/course/content/'.$article->content->id.'/submit_article')}}" method="post" id="form_article">
+                            @csrf
+                            <div class="offset-10 col-2">
+                                <button type="submit">อ่านแล้ว</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

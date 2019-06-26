@@ -70,6 +70,7 @@ class Std_viewer extends Controller
         if($request->timeleft=="Wait..."){
                 return redirect('/std_view/course/'.$course->id);
             }
+            $user =auth()->user();
             $quiz = $content->quiz;
             $questions = $quiz->questions;
             $score = 0;
@@ -90,9 +91,21 @@ class Std_viewer extends Controller
                     }
                 }
             }
-            $temp = auth()->user()->scores()->attach($quiz,['score'=>$score,'time'=>$request->timeleft]);
+            $percent = (int)(($score/$questions->count())*100);
+            $temp = $user->scores()->attach($quiz,['score'=>$score,'time'=>$request->timeleft]);
+
+            $temp = $user->progresses()->detach($content);
+            $temp = $user->progresses()->save($content,['percent'=>$percent]);
+
             return redirect('std_view/course/content/'.$content->id.'/dashboard');
 
+    }
+    public function submit_article(content $content,Request $request){
+        $user =auth()->user();
+
+        $temp = $user->progresses()->detach($content);
+        $temp = $user->progresses()->save($content,['percent'=>100]);
+        return redirect()->back()->with('success','บันทึกข้อมูลสำเร็จ');
     }
     public function show_dashboard(content $content)
     {

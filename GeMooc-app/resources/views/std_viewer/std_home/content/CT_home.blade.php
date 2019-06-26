@@ -19,20 +19,23 @@
                         foreach($course->lessons as $lesson){
                             $sum_progress = 0;
                             $n_contents = $lesson->contents->count();
-
-                            foreach ($lesson->contents as $key=>$content) {
-                                $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
-                                if($pro = $progress->first()){
-                                    if($pro = $pro->pivot->percent){
-                                        $sum_progress += $pro;
+                            if($n_contents){
+                                foreach ($lesson->contents as $key=>$content) {
+                                    $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
+                                    if($pro = $progress->first()){
+                                        if($pro = $pro->pivot->percent){
+                                            $sum_progress += $pro;
+                                        }else{
+                                            $sum_progress += 0;
+                                        }
                                     }else{
                                         $sum_progress += 0;
                                     }
-                                }else{
-                                    $sum_progress += 0;
                                 }
+                                $sum_lesson += $sum_progress/$n_contents ;
+                            }else{
+                                $sum_lesson +=100;
                             }
-                            $sum_lesson += $sum_progress/$n_contents ;
                         }
                         $sum_course = $sum_lesson/$n_lessons;
                     }else{
@@ -47,7 +50,7 @@
                         <div class="progress" style="height: 10px;">
                             <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
                                 style="width: {{(int)($sum_course)}}%" aria-valuenow="20" aria-valuemin="0"
-                                aria-valuemax="100"></div>
+                                aria-valuemax="100">{{(int)($sum_course)}}%</div>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{$course->name}}</h5>

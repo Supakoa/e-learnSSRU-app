@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::get('/std_view/course/content/{content}', 'Std_viewer@show_content');
     Route::post('/std_view/course/content/{content}/submit_quiz', 'Std_viewer@submit_quiz');
+    Route::post('/std_view/course/content/{content}/submit_article', 'Std_viewer@submit_article');
     Route::get('/std_view/course/content/{content}/dashboard', 'Std_viewer@show_dashboard');
     Route::post('get_time', function () {
         $time = session('time');
