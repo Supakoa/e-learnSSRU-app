@@ -43,6 +43,12 @@
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
+    {{--
+        plyr .js
+    --}}
+    <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+
     @include('inc.google_analytics');
 </head>
 

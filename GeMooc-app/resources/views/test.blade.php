@@ -1,87 +1,68 @@
-
 @extends('layouts.app')
 
 @section('content')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
 
-<div class="card ce-card">
-    <h1 class="ce-name">Subject : </h1>
-        <div class="ce-container">
-            <div class=" text-right">
-                <button id="edit" class="btn btn-primary" onclick="edit()" type="button">Edit</button>
-                <button id="save" class="btn btn-primary" onclick="preview()" type="button">Preview</button>
-            </div>
-
-            <div id="summernote">
-
-            </div>
-        </div>
-
+<div class="container">
+    <button id="battle" onclick="checkMe('fuck Me')">check</button>
 </div>
+
+<div class="plyr__video-embed" id="player">
+    <iframe src="https://www.youtube.com/embed/JytX3FX_nNg" allowfullscreen allowtransparency allow="autoplay"></iframe>
+</div>
+<div id="player" data-plyr-provider="youtube" data-plyr-embed-id="JytX3FX_nNg"></div>
+
+<div class="conatiner" id="text"></div>
+
 @endsection
 
 @section('js')
 <script>
-    $(document).ready(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    const player = new Plyr(document.getElementById('player'));
+
+    if(player.play){
+        let progress = new Array(player.duration);
+        // console.log(progress.length);
+    }
+
+    function checkMe(array) {
+        alert(array);
+    }
+
+    /**
+        Omega magneto hello function
+    */
+    var i = j = 1;
+    var buffer = new Array(player.duration);
+    let videoRecord = {
+        "content_id": "1",
+        "user_id": "{{ auth()->user()->id }}",
+        "record": buffer,
+    }
+    let jsonRecord;
+    $("body").on("ready", function () {
+        console.log('ready..');
+        console.log(player.duration);
+        buffer[0] = 0;
     });
-    $('#summernote').summernote({
-        placeholder: 'มาเขียนตรงนี้',
-        height: 500,
-        callbacks: {
-            onImageUpload: function (files, editor, welEditable) {
-                sendFile(files[0], editor, welEditable);
-            },
-            onMediaDelete : function(target) {
-                deleteFile(target[0].src);
+    $("#player").on("playing", function () {
+        var timer = setInterval(function(){
+            j = i;
+            i = Math.floor(player.currentTime);
+            if(player.playing){
+                var tim = Math.floor(player.currentTime);
+                buffer[tim] = tim;
+                videoRecord.record = buffer;
+                $("#text").text(JSON.stringify(videoRecord));
+            }else{
+                console.log('stop..');
+                clearInterval(timer);
             }
-        }
+            if(i != j){
+                clearInterval(timer);
+            }
+            console.log((i++)+" : "+j);
+        }, 1000)
     });
-
-    function edit() {
-        $('#summernote').summernote({
-            focus: true
-        });
-    }
-
-    function preview() {
-        $('#summernote').summernote('destroy');
-    }
-
-    function sendFile(file, editor, welEditable) {
-        data2 = new FormData();
-        data2.append("file", file);
-        $.ajax({
-            data: data2,
-            type: 'post',
-            url: '{{url("/ajaximage")}}',
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (url) {
-                $('#summernote').summernote('insertImage', url);
-                // editor.insertImage(welEditable, url);
-            }
-
-        });
-    }
-    function deleteFile(src) {
-
-        $.ajax({
-            data: {src : src},
-            type: "POST",
-            url: '{{url("/ajaximage_delete")}}', // replace with your url
-            cache: false,
-            success: function(resp) {
-               console.log(resp);
-
-            }
-        });
-    }
 
 </script>
 @endsection

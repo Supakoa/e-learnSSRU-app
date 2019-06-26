@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth'], function (){
     // report
     Route::resource('/report', 'ReportController');
 
+    Route::get('test', 'test@test');
+
     Route::get('/std_view/home', 'Std_viewer@Std_home');
     Route::get('/std_view/subject', 'Std_viewer@all_subject');
     Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
@@ -51,8 +53,6 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/', 'HomeController@index')->name('dashboard.home');
         Route::get('/home', 'HomeController@index')->name('dashboard.home');
         Route::get('/yourprofile', 'HomeController@YourProfile');
-
-        Route::get('/test', 'test_sumernote@index');
 
         Route::get('/payment-setting', 'payment@Home');
 
