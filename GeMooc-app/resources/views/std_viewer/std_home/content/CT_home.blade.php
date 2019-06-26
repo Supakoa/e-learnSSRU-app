@@ -15,26 +15,30 @@
                     $sum_course = 0;
                     $sum_lesson = 0;
                     $n_lessons = $course->lessons->count();
+                    if($n_lessons){
+                        foreach($course->lessons as $lesson){
+                            $sum_progress = 0;
+                            $n_contents = $lesson->contents->count();
 
-                    foreach($course->lessons as $lesson){
-                        $sum_progress = 0;
-                        $n_contents = $lesson->contents->count();
-
-                        foreach ($lesson->contents as $key=>$content) {
-                            $progress = $content->progress_user($user->id);
-                            if($pro = $progress->first()){
-                                if($pro = $pro->pivot->percent){
-                                    $sum_progress += $pro;
+                            foreach ($lesson->contents as $key=>$content) {
+                                $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
+                                if($pro = $progress->first()){
+                                    if($pro = $pro->pivot->percent){
+                                        $sum_progress += $pro;
+                                    }else{
+                                        $sum_progress += 0;
+                                    }
                                 }else{
                                     $sum_progress += 0;
                                 }
-                            }else{
-                                $sum_progress += 0;
                             }
+                            $sum_lesson += $sum_progress/$n_contents ;
                         }
-                        $sum_lesson += $sum_progress/$n_contents ;
+                        $sum_course = $sum_lesson/$n_lessons;
+                    }else{
+                        $sum_course =0;
                     }
-                    $sum_course = $sum_lesson/$n_lessons;
+
                 @endphp
                 <div class="col-md-3">
                     <div class="card" style="width: 11rem;">
@@ -46,7 +50,7 @@
                                 aria-valuemax="100"></div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">name</h5>
+                            <h5 class="card-title">{{$course->name}}</h5>
                             <a href="{{ url("std_view/course/".$course->id) }}" target="_blank"
                                 class="btn btn-primary btn-sm">Get started</a>
                         </div>

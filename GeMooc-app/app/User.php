@@ -68,7 +68,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\course', 'course_user')->withPivot('role')->withTimestamps();
     }
-
+    public function course(course $course)
+    {
+        return $this->belongsToMany('App\course', 'course_user')->withPivot('role')->withTimestamps()->wherePivot('course_id',$course->id);
+    }
     public function scores()
     {
         return $this->belongsToMany('App\quiz', 'scores')->withPivot('score', 'time')->withTimestamps();

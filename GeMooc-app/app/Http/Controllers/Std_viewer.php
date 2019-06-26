@@ -16,7 +16,7 @@ class Std_viewer extends Controller
     }
 
     public function all_subject(){
-        $subjects = subject::all();
+        $subjects = subject::where('status','1')->get();
 
         return view('std_viewer.std_subject.Show_sub')->with('subjects',$subjects);
     }
@@ -30,6 +30,20 @@ class Std_viewer extends Controller
     public function Std_course(course $course){
         $lessons = $course->lessons;
         return view('std_viewer.std_subject.std_course.Course')->with('course',$course)->with('lessons',$lessons);
+    }
+    public function course_enroll(course $course){
+        $user = auth()->user();
+        // dd($user->course($course)->count());
+        if($user->type_user != 'student'){
+            return redirect()->back();
+        }elseif($user->course($course)->count()){
+            return redirect()->back()->with('error','You Can\'t Do That !!');
+        }else{
+            //เพิ่มหน้าลงทะเบียนด้วย
+            $user->courses()->attach($course);
+            return "Enroll";
+
+        }
     }
 
 

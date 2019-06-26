@@ -23,7 +23,7 @@
                     style = "background-color: rgb(189, 227, 252);";
                     @endif
                     @endif
-                    ><a href="{{url('std_view/course/content/'.$content->id)}}">{{$content->name}}</a></li>
+                    ><a class="less" href="{{url('std_view/course/content/'.$content->id)}}">{{$content->name}}</a></li>
 
                 @endforeach
             </ul>
@@ -31,50 +31,24 @@
         @endforeach
     </ul>
 </section>
-<div class="card mt-5 ml-3" style="width: 11em; position:fixed">
-    <div class="card-body">
-        <img src=".." class="card-img-top" width="80%">
-        <hr>
-        <h5 class="card-title">The name this course.</h5>
-        {{-- <p class="card-text">Detail this</p> --}}
-        <a href="#" class="btn btn-primary btn-sm">ลงทะเบียน </a>
-        <a href="#" class="btn btn-outline-info btn-sm" hidden> เริ่มเรียน</a>
-    </div>
-</div>
+    @if (auth()->user()->course($course)->count())
 
-@section('js')
-<script>
-    $(function () {
-        var Accordion = function (el, multiple) {
-            this.el = el || {};
-            // more then one submenu open?
-            this.multiple = multiple || false;
 
-            var dropdownlink = this.el.find('.ce-dropdownlink');
-            dropdownlink.on('click', {
-                    el: this.el,
-                    multiple: this.multiple
-                },
-                this.dropdown);
-        };
 
-        Accordion.prototype.dropdown = function (e) {
-            var $el = e.data.el,
-                $this = $(this),
-                //this is the ul.ce-submenuItems
-                $next = $this.next();
+    @else
 
-            $next.slideToggle();
-            $this.parent().toggleClass('open');
+    <div class="card mt-5 ml-3" style="width: 11em; position:fixed">
+            <div class="card-body">
+                <img src="{{url('/storage/'.$course->sm_banner)}}" class="card-img-top" width="80%">
+                <hr>
+                <small>กรุณาลงทะเบียน</small>
+                <h5 class="card-title">{{$course->name}}</h5>
+                {{-- <p class="card-text">Detail this</p> --}}
+                <a href="{{url()->current().'/enroll'}}" class="btn btn-primary btn-sm">ลงทะเบียน </a>
+                <a href="#" class="btn btn-outline-info btn-sm" hidden> เริ่มเรียน</a>
+            </div>
+        </div>
+    @endif
 
-            if (!e.data.multiple) {
-                //show only one menu at the same time
-                $el.find('.ce-submenuItems').not($next).slideUp().parent().removeClass('open');
-            }
-        }
 
-        var accordion = new Accordion($('.ce-accordion-menu'), false);
-    })
 
-</script>
-@endsection

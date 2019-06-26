@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/std_view/subject', 'Std_viewer@all_subject');
     Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
     Route::get('/std_view/course/{course}', 'Std_viewer@Std_course');
+    Route::get('/std_view/course/{course}/enroll', 'Std_viewer@course_enroll');
+
     Route::get('/std_view/course/content/{content}', 'Std_viewer@show_content');
     Route::post('/std_view/course/content/{content}/submit_quiz', 'Std_viewer@submit_quiz');
     Route::get('/std_view/course/content/{content}/dashboard', 'Std_viewer@show_dashboard');

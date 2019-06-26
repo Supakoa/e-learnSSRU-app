@@ -122,3 +122,43 @@
     </div>
 </div>
 @endsection
+@section('js')
+<script>
+    $(function () {
+        var Accordion = function (el, multiple) {
+            this.el = el || {};
+            // more then one submenu open?
+            this.multiple = multiple || false;
+
+            var dropdownlink = this.el.find('.ce-dropdownlink');
+            dropdownlink.on('click', {
+                    el: this.el,
+                    multiple: this.multiple
+                },
+                this.dropdown);
+        };
+
+        Accordion.prototype.dropdown = function (e) {
+            var $el = e.data.el,
+                $this = $(this),
+                //this is the ul.ce-submenuItems
+                $next = $this.next();
+
+            $next.slideToggle();
+            $this.parent().toggleClass('open');
+
+            if (!e.data.multiple) {
+                //show only one menu at the same time
+                $el.find('.ce-submenuItems').not($next).slideUp().parent().removeClass('open');
+            }
+        }
+
+        var accordion = new Accordion($('.ce-accordion-menu'), false);
+    })
+    @if (auth()->user()->course($course)->count())
+    @else
+        $('.less').prop('href','#');
+    @endif
+
+</script>
+@endsection
