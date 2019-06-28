@@ -23,6 +23,10 @@ Route::get('std/login/register', function(){
 
 // use File;
 Auth::routes();
+Route::prefix('login')->group(function () {
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
+    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.provider.callback');
+});
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/std_view/course/quiz/previewquiz', 'Std_viewer@Std_quizPreview');
 

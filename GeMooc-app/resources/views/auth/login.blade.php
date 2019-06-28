@@ -122,7 +122,9 @@
         </div>
     </section>
 </div>
-
+<a href="{{url('/login/facebook')}}">
+<button class="btn btn-info">Facebook Login !!!!</button>
+</a>
 @endsection
 @section('js')
 <script>

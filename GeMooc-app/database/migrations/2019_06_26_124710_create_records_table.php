@@ -17,7 +17,7 @@ class CreateRecordsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('content_id');
             $table->unsignedBigInteger('user_id');
-            $table->json('record');
+            $table->longText('record')->nullnable();
             $table->integer('percent');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
