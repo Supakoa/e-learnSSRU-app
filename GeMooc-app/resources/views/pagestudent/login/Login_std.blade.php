@@ -9,7 +9,7 @@
                 <form action="POST">
                     <div class="forms-title">
                         <p>ลงชื่อเข้าใช้</p>
-        <img src="{{url('images/logo.png')}}" alt="">
+                        <img src="{{url('images/logo.png')}}" alt="">
 
                     </div>
                     <div class="forms-header">
@@ -41,5 +41,150 @@
             </div>
         </div>
     </div>
+    <div class="switch-language">
+        <p>TH/EN</p>
+        <input type="checkbox" id="switch" />
+        <label for="switch"></label>
+    </div>
 </div>
+<div id="section2">
+    <div class="container-header">
+        คอร์สเรียนออนไลน์ฟรีที่สวนสุนันทา | www.mooc.ssru.ac.th
+        <div class="container-underline"></div>
+    </div>
+    <div class="container-content">
+        <p>
+            มาร่วมฝึกทักษะ ความคิด ความสามารถ และสติปัญญา
+        </p>
+        <p>
+            เพื่อพัฒนาศักยภาพของตนเอง
+        </p>
+    </div>
+</div>
+<div id="section3">
+    <div class="bg-blur">
+        {{-- <div class="section-navs">
+            <ul>
+                <li>
+                    <img src="" alt=""> SSRU
+                </li>
+                <li>
+                    <a href="#">วิชา</a>
+                </li>
+                <li>
+                    <a href="#">คู่มือการใช้งาน</a>
+                </li>
+                <li>
+                    <a href="#">คำถาม</a>
+                </li>
+                <li>username <img src="" alt=""></li>
+            </ul>
+        </div>
+        <div class="section-header">
+            <p>หลักสูตรที่เปิดสอน</p>
+            <div class="section-underline"></div>
+        </div>
+        <div class="section-content">
+            <div class="container">
+                <div class="center">
+                    <div class="boxs">
+                        <img src="https://i.ytimg.com/vi/-qagpwPP-VU/maxresdefault.jpg" alt="1">
+                        <p>
+                            ตอนที่ 1
+                        </p>
+                    </div>
+                    <div class="boxs">
+                        <img src="https://i.ytimg.com/vi/zH54sNsjuOE/maxresdefault.jpg" alt="2">
+                        <p>
+                            ตอนที่ 2
+                        </p>
+                    </div>
+                    <div class="boxs">
+                        <img src="https://i.ytimg.com/vi/TT_nFrsTers/maxresdefault.jpg" alt="3">
+                        <p>
+                            ตอนที่ 3
+                        </p>
+                    </div>
+                    <div class="boxs">
+                        <img src="https://i.ytimg.com/vi/rilFfbm7j8k/maxresdefault.jpg" alt="4">
+                        <p>
+                            ตอนที่ 4
+                        </p>
+                    </div>
+                    <div class="boxs">
+                        <img src="https://i.ytimg.com/vi/tDURYzS9y2k/maxresdefault.jpg" alt="5">
+                        <p>
+                            ตอนที่ 5
+                        </p>
+                    </div>
+                    <div class="boxs">
+                        <img src="https://i.ytimg.com/vi/ekyho8DoTqg/maxresdefault.jpg" alt="6">
+                        <p>
+                            ตอนที่ 6
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div> --}}
+    </div>
+</div>
+@endsection
+
+@section('js')
+<script>
+    $(document).ready(function () {
+        $('.your-class').slick({
+            centerMode: true
+        });
+    });
+    $('.center').click(function (e) {
+        e.preventDefault();
+        var currentSlide = $('.center').slick('slickCurrentSlide');
+        // currentSlide.css('width:','100px');
+    // alert(currentSlide);
+    //  $(this).find( "[data-slick-index="+currentSlide+"]" ).css( "padding", "80px" );
+    });
+    $('.center').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    var CurrentSlideDom=$(slick.$slides.get(currentSlide));
+    var NextSlideDom=$(slick.$slides.get(nextSlide));
+    console.log(CurrentSlideDom.html());
+
+});
+    $(document).ready(function () {
+        $('.center').slick({
+            centerMode: true,
+            centerPadding: '80px',
+            slidesToShow: 3,
+            // adaptiveHeight: true,
+            // dots: true,
+            // infinite: true,
+            // slidesToScroll: 1,
+            focusOnSelect: true,
+            touchMove: true,
+            // autoplay: true,
+            // autoplaySpeed: 3000,
+            responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '60px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '60px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    });
+
+</script>
 @endsection

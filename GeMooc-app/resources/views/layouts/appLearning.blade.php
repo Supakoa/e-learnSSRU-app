@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
-    <link rel="stylesheet" href="node_modules/slick/slick/slick.css">
-    <link rel="stylesheet" href="node_modules/slick/slick/slick-theme.css">
+    <link rel="stylesheet" href="{{ asset('node_modules/slick/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('node_modules/slick/slick/slick-theme.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('node_modules/3d-slider/style.css')}}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
@@ -55,11 +56,7 @@
         </div>
         @endguest
 
-        <div class="switch-language">
-            <p>TH/EN</p>
-            <input type="checkbox" id="switch" />
-            <label for="switch"></label>
-        </div>
+
     </div>
 
 
@@ -79,6 +76,8 @@
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
     <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
+    {{-- <script src="{{ asset('node_modules/slick/slick/jq-migrate.min.js')}}"></script> --}}
+{{-- <script src="{{asset('node_modules/3d-slider/app.js')}}"></script> --}}
     <script>
         wow = new WOW({
             boxClass: 'wow', // default
@@ -128,13 +127,6 @@
                 }, 80);
             }
         });
-
-    </script>
-
-    {{--
-        pp script naja
-    --}}
-    <script>
 
     </script>
 
