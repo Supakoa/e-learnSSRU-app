@@ -93,9 +93,16 @@ class Std_viewer extends Controller
             }
             $percent = (int)(($score/$questions->count())*100);
             $temp = $user->scores()->attach($quiz,['score'=>$score,'time'=>$request->timeleft]);
+            if($user->progresse($content)->count()){
+                if($user->progresse($content)->first()->pivot->percent < $percent){
+                    $temp = $user->progresses()->detach($content);
+                    $temp = $user->progresses()->save($content,['percent'=>$percent]);
+                    // dd($temp);
+                }
+            }else{
+                $temp = $user->progresses()->save($content,['percent'=>$percent]);
+            }
 
-            $temp = $user->progresses()->detach($content);
-            $temp = $user->progresses()->save($content,['percent'=>$percent]);
 
             return redirect('std_view/course/content/'.$content->id.'/dashboard');
 
