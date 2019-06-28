@@ -62,11 +62,11 @@
     </div>
 </div>
 <div id="section3">
-    <div class="bg-blur">
-        {{-- <div class="section-navs">
+        <div class="bg-blur"></div>
+        <div class="section-navs">
             <ul>
-                <li>
-                    <img src="" alt=""> SSRU
+                <li style="display:flex">
+                    <img src="{{url('images/logo.png')}}" class="img-fluid d-block" alt=""> SSRU
                 </li>
                 <li>
                     <a href="#">วิชา</a>
@@ -80,7 +80,7 @@
                 <li>username <img src="" alt=""></li>
             </ul>
         </div>
-        <div class="section-header">
+         <div class="section-header">
             <p>หลักสูตรที่เปิดสอน</p>
             <div class="section-underline"></div>
         </div>
@@ -92,42 +92,61 @@
                         <p>
                             ตอนที่ 1
                         </p>
+                        <p style="color:lawngreen">
+                                เปิดรับสมัคร
+                            </p>
                     </div>
                     <div class="boxs">
                         <img src="https://i.ytimg.com/vi/zH54sNsjuOE/maxresdefault.jpg" alt="2">
                         <p>
                             ตอนที่ 2
                         </p>
+                        <p style="color:lawngreen">
+                                เปิดรับสมัคร
+                            </p>
                     </div>
                     <div class="boxs">
                         <img src="https://i.ytimg.com/vi/TT_nFrsTers/maxresdefault.jpg" alt="3">
                         <p>
                             ตอนที่ 3
                         </p>
+                        <p style="color:lawngreen">
+                                เปิดรับสมัคร
+                            </p>
                     </div>
                     <div class="boxs">
                         <img src="https://i.ytimg.com/vi/rilFfbm7j8k/maxresdefault.jpg" alt="4">
                         <p>
                             ตอนที่ 4
                         </p>
+                        <p style="color:lawngreen">
+                                เปิดรับสมัคร
+                            </p>
                     </div>
                     <div class="boxs">
                         <img src="https://i.ytimg.com/vi/tDURYzS9y2k/maxresdefault.jpg" alt="5">
                         <p>
                             ตอนที่ 5
                         </p>
+                        <p style="color:lawngreen">
+                                เปิดรับสมัคร
+                            </p>
                     </div>
                     <div class="boxs">
                         <img src="https://i.ytimg.com/vi/ekyho8DoTqg/maxresdefault.jpg" alt="6">
                         <p>
                             ตอนที่ 6
                         </p>
+                        <p style="color:lawngreen">
+                            เปิดรับสมัคร
+                        </p>
                     </div>
                 </div>
-
+                <div class="let-course">
+                    <button>เริ่มหลักสูตร</button>
+                </div>
             </div>
-        </div> --}}
-    </div>
+        </div>
 </div>
 @endsection
 
