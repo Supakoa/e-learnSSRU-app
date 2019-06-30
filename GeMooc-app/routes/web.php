@@ -20,6 +20,9 @@ Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
 Route::get('test', 'test@duplicate_subject');
+Route::get('std/login/forget-password', function(){
+    return view('pagestudent.login.Forget');
+});
 
 
 // use File;
