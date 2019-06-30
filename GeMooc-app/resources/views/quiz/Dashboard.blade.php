@@ -36,6 +36,8 @@
                             $percen_show_75 = $num_75/$scores*100;
                             $percen_show_100 = $num_100/$scores*100;
                             //dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
+                            }else{
+                                $percen_show_25 = $percen_show_50 =$percen_show_75 = $percen_show_100 = 0;
                             }
 
                             @endphp
