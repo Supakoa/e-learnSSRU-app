@@ -31,23 +31,23 @@
                     <div class="col-md-6">
                         <label for="pass">รหัสผ่าน</label>
                         <i class="fab fa-expeditedssl"></i>
-                        <input type="text" class="form-control" name="" id="pass">
+                        <input type="pass" class="form-control" name="" id="pass">
                     </div>
                     <div class="col-md-6">
                         <label for="re-pass">ยืนยันรหัสผ่าน</label>
-                        <input type="text" class="form-control" name="" id="re-pass">
+                        <input type="pass" class="form-control" name="" id="re-pass">
                     </div>
                 </div>
                 <div class="row" id="gen">
                     <div class="col-xs-6">
                         <label class="ck-container">เพศชาย
-                            <input type="checkbox" >
+                            <input type="checkbox">
                             <span class="checkmark"></span>
                         </label>
                     </div>
                     <div class="col-xs-6">
                         <label class="ck-container">เพศหญิง
-                            <input type="checkbox" >
+                            <input type="checkbox">
                             <span class="checkmark"></span>
                         </label>
                     </div>
