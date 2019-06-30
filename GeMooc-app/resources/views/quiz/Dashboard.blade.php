@@ -21,7 +21,8 @@
                             @if ($quiz->questions->count())
                             @php
                             $scores = $quiz->scores->count();
-                            $percen_25 = (int)($question_number*0.25);
+                            if($scores){
+                                $percen_25 = (int)($question_number*0.25);
                             // dd($percen_25);
                             $percen_50 = (int)($question_number*0.50);
                             $percen_75 = (int)($question_number*0.75);
@@ -35,6 +36,8 @@
                             $percen_show_75 = $num_75/$scores*100;
                             $percen_show_100 = $num_100/$scores*100;
                             //dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
+                            }
+
                             @endphp
                         <div class="charts ">
                                 <span>0-25</span>
