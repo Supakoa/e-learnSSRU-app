@@ -22,6 +22,7 @@ Route::get('std/login/register', function(){
 Route::get('std/login/forget-password', function(){
     return view('pagestudent.login.Forget');
 });
+Route::get('test', 'test@export');
 
 
 // use File;
@@ -39,7 +40,6 @@ Route::group(['middleware' => 'auth'], function (){
     // report
     Route::resource('/report', 'ReportController');
 
-    Route::get('test', 'test@test');
 
     Route::get('/std_view/home', 'Std_viewer@Std_home');
     Route::get('/std_view/subject', 'Std_viewer@all_subject');
