@@ -1,6 +1,6 @@
 {{-- @extends('layouts.appLearning') --}}
 
-<nav  class="fixed-top" style="background: #ddd;opacity: 0.7;height:12vh">
+<nav  class="fixed-top" style="background: #ddd;opacity: 0.7;height:12vh;z-index:3">
     <div class="bg-navs" ></div>
     <div class="logo">
         <div class="log-header">
