@@ -20,7 +20,7 @@ Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
 Route::get('std/login/forget-password', function(){
-    return view('pagestudent.login.Forget');
+    return view('pagestudent.message-box.Message_box');
 });
 Route::get('test', 'test@export');
 

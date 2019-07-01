@@ -43,18 +43,15 @@
 
 <body>
     <div class="cebody">
-        {{-- @guest --}}
-        {{-- @yield('navs-login') --}}
+        {{-- @guest
         @yield('login')
-        {{-- @else --}}
-        {{-- @yield('navs-main') --}}
-        <div class="content">
-            @yield('content')
-        </div>
-        {{-- <div class="footer">
+        @else --}}
+        @yield('index')
+        {{-- @endguest --}}
+        {{-- @include('pagestudent.message-box.Message_box')
+        <div class="footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div> --}}
-        {{-- @endguest --}}
 
 
     </div>
@@ -77,7 +74,7 @@
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
     <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
     {{-- <script src="{{ asset('node_modules/slick/slick/jq-migrate.min.js')}}"></script> --}}
-{{-- <script src="{{asset('node_modules/3d-slider/app.js')}}"></script> --}}
+    {{-- <script src="{{asset('node_modules/3d-slider/app.js')}}"></script> --}}
     <script>
         wow = new WOW({
             boxClass: 'wow', // default
@@ -94,6 +91,11 @@
 
     </script>
     <script>
+        $('button .btn-messageBox').click(f v.unction(e) {
+            e.preventDefault();
+            $('.messageBox-body').css('display', 'none');
+        });
+
         $('.nav-links').fadeIn().delay(1500);
         $(window).scroll(function () {
             if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
