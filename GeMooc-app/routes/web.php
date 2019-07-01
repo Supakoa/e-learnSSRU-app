@@ -19,18 +19,20 @@ Route::get('std/login', function(){
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
+Route::get('test', 'test@duplicate_subject');
 Route::get('std/login/forget-password', function(){
     return view('pagestudent.message-box.Message_box');
 });
-Route::get('test', 'test@export');
 
 
 // use File;
 Auth::routes();
+
 Route::prefix('login')->group(function () {
     Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
     Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.provider.callback');
 });
+
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/std_view/course/quiz/previewquiz', 'Std_viewer@Std_quizPreview');
 
@@ -40,6 +42,8 @@ Route::group(['middleware' => 'auth'], function (){
     // report
     Route::resource('/report', 'ReportController');
 
+    // record
+    Route::resource('/record', 'RecordController');
 
     Route::get('/std_view/home', 'Std_viewer@Std_home');
     Route::get('/std_view/subject', 'Std_viewer@all_subject');

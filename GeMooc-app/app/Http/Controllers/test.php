@@ -14,9 +14,49 @@ use App\Http\Controllers\Controller;
 
 class test extends Controller
 {
-    public function test()
+    public function duplicate_subject()
     {
-        dd(course::All()->toArray());
+       $subject = subject::find(2);
+       $clone = $subject->replicate();
+       $clone->save();
+        foreach ($subject->courses as $course) {
+
+            $clone_course = $course->replicate();
+            $clone->courses()->save($clone_course);
+            foreach($course->lessons as $lesson){
+                $clone_lesson = $lesson->replicate();
+                $clone_course->lessons()->save($clone_lesson);
+                foreach($lesson->contents as $content){
+                    $clone_content =  $content->replicate();
+                    // $clone_content->detail=
+                    $clone_lesson->contents()->save($clone_content);
+
+                    if($clone_content->type == 1){
+                       //video
+                    }elseif($clone_content->type == 2){
+                        //article
+                        $clone_article = $content->article->replicate();
+                        $clone_article->save();
+                        $clone_content->detail = $clone_article->id;
+                        $clone_content->article()->save($clone_article);
+                        $clone_content->save();
+
+                    }elseif($clone_content->type == 3){
+                        //quiz
+                        $clone_quiz = $content->quiz->replicate();
+                        $clone_article->save();
+                        $clone_content->detail = $clone_article->id;
+                        $clone_content->quiz()->save($clone_quiz);
+                        $clone_content->save();
+
+                    }
+                }
+            }
+
+
+
+        }
+    dd($clone->courses);
     }
     /**
  * @param array $columnNames

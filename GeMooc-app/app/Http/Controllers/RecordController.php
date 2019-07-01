@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\record;
+use App\record as record;
 use Illuminate\Http\Request;
+use function GuzzleHttp\json_encode;
+use function GuzzleHttp\json_decode;
 
 class RecordController extends Controller
 {
@@ -35,7 +37,24 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jsonPack = json_decode($request->muuwan);
+        $ake = record::where('content_id', $jsonPack->content_id)->where('user_id', $jsonPack->user_id)->get();
+        if($ake->first() == null){
+            $newRecord = new record();
+            $newRecord->content_id = $jsonPack->content_id;
+            $newRecord->user_id = $jsonPack->user_id;
+            $newRecord->record = json_encode($jsonPack->record);
+            $newRecord->percent = $jsonPack->percent;
+            $newRecord->save();
+        }else{
+            $updateRecord = record::where('content_id', $jsonPack->content_id)->where('user_id', $jsonPack->user_id)->first();
+            $updateRecord->content_id = $jsonPack->content_id;
+            $updateRecord->user_id = $jsonPack->user_id;
+            $updateRecord->record = json_encode($jsonPack->record);
+            $updateRecord->percent = $jsonPack->percent;
+            $updateRecord->save();
+        }
+        // return response(json_encode($jsonPack));
     }
 
     /**

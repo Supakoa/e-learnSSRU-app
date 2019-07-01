@@ -35,11 +35,30 @@
             </div>
         </div>
     </div>
+    {{--
+        test send form refresh
+    --}}
+    <form action="/record" method="post">
+        @csrf
+        @method('post')
+        <input id="recordItem" name="muuwan" type="hidden" value="sutima">
+        <button onclick="takeRecord()" type="button" class="btn btn-outline-primary">takeRecord</button>
+        <button type="submit" class="btn btn-outline-primary">send</button>
+    </form>
 </div>
 @endsection
 
 @section('js')
 <script>
+
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
     const player = new Plyr(document.getElementById('player'));
 
     /**
@@ -53,12 +72,21 @@
         "content_id": "{{ $now_content->id }}",
         "user_id": "{{ auth()->user()->id }}",
         "record": buffer,
+        "percent": 0,
     }
     let jsonRecord;
     $("body").on("ready", function () {
         console.log('ready..');
         console.log(player.duration);
         buffer[0] = 0;
+        var recorder = setInterval(function(){
+            $.post("/record", {'muuwan': JSON.stringify(videoRecord)},
+                function (data, textStatus, jqXHR) {
+                    console.log('store ..'+ data);
+                    // alert(data);
+                },
+            );
+        },5000);
     });
     $("#player").on("dblclick", function () {
         doubleClick = true;
@@ -75,6 +103,7 @@
                     const tim = Math.floor(player.currentTime);
                     buffer[tim] = tim;
                     videoRecord.record = buffer;
+                    videoRecord.percent = Math.floor(((buffer.length-(buffer.length - buffer.filter(String).length))/player.duration)*100);
                     $("#text").text(JSON.stringify(videoRecord));
                     if( i != j  && click){
                         console.log('skip..');
@@ -91,6 +120,16 @@
             doubleClick = false;
         }
     });
+    // new function play
+    $('#player').on("click", function () {
+        if(player.playing){
+
+        }
+    });
+
+    function takeRecord(){
+        $("#recordItem").val(JSON.stringify(videoRecord));
+    }
 
 </script>
 @endsection
