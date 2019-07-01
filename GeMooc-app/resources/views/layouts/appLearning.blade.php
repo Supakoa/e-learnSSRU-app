@@ -43,18 +43,18 @@
 
 <body>
     <div class="cebody">
-        @guest
+        {{-- @guest --}}
         {{-- @yield('navs-login') --}}
         @yield('login')
-        @else
-        @yield('navs-main')
+        {{-- @else --}}
+        {{-- @yield('navs-main') --}}
         <div class="content">
             @yield('content')
         </div>
-        <div class="footer">
+        {{-- <div class="footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-        </div>
-        @endguest
+        </div> --}}
+        {{-- @endguest --}}
 
 
     </div>
