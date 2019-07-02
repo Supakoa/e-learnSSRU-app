@@ -43,15 +43,15 @@
 
 <body>
     <div class="cebody">
-        {{-- @guest
+        @guest
         @yield('login')
-        @else --}}
-        @yield('index')
-        {{-- @endguest --}}
-        {{-- @include('pagestudent.message-box.Message_box')
+        @else
+        {{-- @yield('index') --}}
+        @endguest
+        @include('pagestudent.message-box.Message_box')
         <div class="footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-        </div> --}}
+        </div>
 
 
     </div>
