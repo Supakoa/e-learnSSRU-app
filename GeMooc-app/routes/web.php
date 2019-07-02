@@ -20,8 +20,9 @@ Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
 Route::get('test', 'test@duplicate_subject');
-Route::get('std/login/forget-password', function(){
-    return view('pagestudent.message-box.Message_box');
+
+Route::get('std/login/workshop', function(){
+    return view('pagestudent.index.Index');
 });
 
 

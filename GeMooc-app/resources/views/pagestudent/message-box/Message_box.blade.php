@@ -11,8 +11,7 @@
         </section>
         <section id="sec2">
             <label for="detail">คำอธิบายลักษณะ</label>
-            <input class="form-control" type="text">
-            {{-- <textarea class="form-control" rows="5" cols="10" type="text" id="789"> --}}
+            <textarea name="" id="detail" cols="30" rows="6"></textarea>
         </section>
         <section id="sec3">
             <button type="submit">
