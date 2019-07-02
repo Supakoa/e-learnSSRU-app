@@ -85,11 +85,12 @@
 {{-- วิชา --}}
 <div id="section3">
     <div class="bg-blur"></div>
-    <div class="section-navs">
-        <ul>
-            <li style="display:flex">
-                <img src="{{url('images/logo.png')}}" class="img-fluid d-block" alt=""> SSRU
-            </li>
+    <nav class="section-navs">
+            <div class="logo">
+                    <img src="{{url('images/logo.png')}}" alt="">
+                    <h5>SSRU</h5>
+                </div>
+        <ul class="nav-links">
             <li>
                 <a href="#">วิชา</a>
             </li>
@@ -99,16 +100,16 @@
             <li>
                 <a href="#">คำถาม</a>
             </li>
-            {{-- <li>username <img src="" alt=""></li> --}}
         </ul>
-    </div>
+        <div class="user-id"></div>
+    </nav>
     <div class="section-header">
         <p>หลักสูตรที่เปิดสอน</p>
         <div class="section-underline"></div>
     </div>
     <div class="section-content">
         <div class="container">
-            <div class="center">
+            {{-- <div class="center">
                 <div class="boxs">
                     <img src="https://i.ytimg.com/vi/-qagpwPP-VU/maxresdefault.jpg" alt="1">
                     <p>
@@ -181,7 +182,7 @@
                         <button>เริ่มหลักสูตร</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             {{-- <div class="let-course">
                 <button>เริ่มหลักสูตร</button>
             </div> --}}

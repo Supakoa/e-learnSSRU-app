@@ -20,6 +20,7 @@
     {{-- <link rel="stylesheet" href="{{asset('node_modules/3d-slider/style.css')}}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEindex.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
 
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
@@ -47,8 +48,8 @@
         @yield('login')
         @else --}}
         @yield('index')
-        {{-- @endguest --}}
-        {{-- @include('pagestudent.message-box.Message_box')
+        {{-- @endguest
+        @include('pagestudent.message-box.Message_box')
         <div class="footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div> --}}
