@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-2 p-0">
-        {{-- @include('std_viewer.nav-left.Nav-left',[$now_content,$lessons]) --}}
+        @include('std_viewer.nav-left.Nav-left',[$now_content,$lessons])
     </div>
     <div class="col-md-10">
         <div class="card ce-card">
@@ -45,6 +45,9 @@
         <button onclick="takeRecord()" type="button" class="btn btn-outline-primary">takeRecord</button>
         <button type="submit" class="btn btn-outline-primary">send</button>
     </form>
+    @php
+        echo '<script>console.log('.isset($record).');</script>';
+    @endphp
 </div>
 @endsection
 
@@ -69,11 +72,22 @@
     var doubleClick = false;
     var buffer = new Array(player.duration);
     let videoRecord = {
-        "content_id": "{{ $now_content->id }}",
-        "user_id": "{{ auth()->user()->id }}",
-        "record": buffer,
-        "percent": 0,
+            "content_id": "{{ $now_content->id }}",
+            "user_id": "{{ auth()->user()->id }}",
+            "record": buffer,
+            "percent": 0,
     }
+    @if (isset($record))
+        console.log('have in record..');
+        videoRecord = {
+            "content_id": "{{ $record->content_id }}",
+            "user_id": "{{ $record->user_id }}",
+            "record": "{{ $record->record }}",
+            "percent": "{{ $record->percent }}",
+        }
+        console.log(videoRecord);
+    @endif
+    $("#text").text(JSON.stringify(videoRecord));
     let jsonRecord;
     $("body").on("ready", function () {
         console.log('ready..');
@@ -103,7 +117,7 @@
                     const tim = Math.floor(player.currentTime);
                     buffer[tim] = tim;
                     videoRecord.record = buffer;
-                    videoRecord.percent = Math.floor(((buffer.length-(buffer.length - buffer.filter(String).length))/player.duration)*100);
+                    videoRecord.percent = Math.floor(((buffer.length - (buffer.length - buffer.filter(String).length)) / player.duration) * 100);
                     $("#text").text(JSON.stringify(videoRecord));
                     if( i != j  && click){
                         console.log('skip..');
@@ -115,15 +129,9 @@
                 }
                 console.log((i++)+" : "+j);
                 click = false;
-            }, 1000);
+            }, 1000/player.speed);
         }else{
             doubleClick = false;
-        }
-    });
-    // new function play
-    $('#player').on("click", function () {
-        if(player.playing){
-
         }
     });
 

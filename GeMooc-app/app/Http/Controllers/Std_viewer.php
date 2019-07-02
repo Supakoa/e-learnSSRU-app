@@ -6,8 +6,10 @@ use App\course as course;
 use App\content as content;
 use App\Http\Controllers\Session;
 use Illuminate\Support\Facades\DB;
+use App\record as record;
 
 use Illuminate\Http\Request;
+use function GuzzleHttp\json_decode;
 
 class Std_viewer extends Controller
 {
@@ -52,7 +54,12 @@ class Std_viewer extends Controller
         $course = $content->lesson->course;
         // dd($course);
         if($content->type==1){
-            return view('std_viewer.std_subject.std_course.content.CT_video')->with('lessons',$course->lessons)->with('now_content',$content);
+            $ake = record::where('content_id', $content->id)->where('user_id', auth()->user()->id)->first();
+            if($ake == null){
+                return view('std_viewer.std_subject.std_course.content.CT_video')->with('lessons', $course->lessons)->with('now_content', $content);
+            }else{
+                return view('std_viewer.std_subject.std_course.content.CT_video')->with('lessons', $course->lessons)->with('now_content', $content)->with('record', json_decode($ake));
+            }
         }elseif($content->type==2){
             $article = $content->article;
             return view('std_viewer.std_subject.std_course.content.CT_text')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
