@@ -108,7 +108,7 @@
     </div>
     <div class="section-content">
         <div class="container">
-            <div class="center pb-3">
+            <div class="center">
                 <div class="boxs">
                     <img src="https://i.ytimg.com/vi/-qagpwPP-VU/maxresdefault.jpg" alt="1">
                     <p>
@@ -227,7 +227,6 @@
             centerMode: true,
             centerPadding: '140px',
             slidesToShow: 1,
-            adaptiveHeight: true,
             dots: true,
             infinite: true,
             slidesToScroll: 1,
