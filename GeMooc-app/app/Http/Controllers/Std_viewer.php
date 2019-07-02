@@ -52,7 +52,7 @@ class Std_viewer extends Controller
         $course = $content->lesson->course;
         // dd($course);
         if($content->type==1){
-            return view('std_viewer.std_subject.std_course.content.CT_video')->with('lessons',$course->lessons)->with('now_content',$content);
+            return view('std_viewer.std_subject.std_course.content.CT_video')->with('lessons',$course->lessons)->with('now_content',$content)->with('course',$course);
         }elseif($content->type==2){
             $article = $content->article;
             return view('std_viewer.std_subject.std_course.content.CT_text')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
