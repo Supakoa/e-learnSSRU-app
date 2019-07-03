@@ -44,13 +44,13 @@
 
 <body>
     <div class="cebody">
-        @guest
+        {{-- @guest --}}
         @yield('login')
-        @else
+        {{-- @else --}}
         @yield('index')
         <button onclick="topFunction()" id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
-        @endguest
+        {{-- @endguest --}}
         @include('pagestudent.message-box.Message_box')
         <div class="footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
