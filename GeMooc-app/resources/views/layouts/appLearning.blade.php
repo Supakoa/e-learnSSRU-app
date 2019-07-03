@@ -44,7 +44,7 @@
 
 <body>
     <div class="cebody">
-        {{-- @guest
+        @guest
         @yield('login')
         @else --}}
         @yield('index')
