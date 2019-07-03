@@ -42,27 +42,33 @@
                 <div class="your-course-body">
                     <div class="container">
                         <div class="your-course-slide" style="color:#fff">
-                            <div>your content
+                            <div>
+                                <p>subject name</p>
+                                <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                                    height="150" width="150" class="rounded">
+                            </div>
+                            <div>
+                                <p>subject name</p>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
+                            <div>
+                                <p>subject name</p>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
+                            <div>
+                                <p>subject name</p>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
+                            <div>
+                                <p>subject name</p>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
-                                <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                                    height="150" width="150" class="rounded ">
-                            </div>
-                            <div>your content
+                            <div>
+                                <p>subject name</p>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
@@ -72,10 +78,9 @@
                 <div class="your-course-footer">
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="progress" style="heigth:100%">
-                                <div class="progress-bar progress-bar-striped" role="progressbar"
-                                    style="width: 10%;" aria-valuenow="10" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -97,27 +102,33 @@
                 <div class="finish-course-body">
                     <div class="container">
                         <div class="your-course-slide" style="color:#fff">
-                            <div>your content
+                            <div>
+                                <button>ผลลัพธ์</button>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
+                            <div>
+                                <button>ผลลัพธ์</button>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
+                            <div>
+                                <button>ผลลัพธ์</button>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
+                            <div>
+                                <button>ผลลัพธ์</button>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
+                            <div>
+                                <button>ผลลัพธ์</button>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
-                            <div>your content
+                            <div>
+                                <button>ผลลัพธ์</button>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                                     height="150" width="150" class="rounded ">
                             </div>
