@@ -123,7 +123,7 @@
                 </div>
                 <div class="your-course-footer">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-sm-8">
                             <div class="progress">
                                 <div class="progress-bar" id ="progress_bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
                                     aria-valuemin="0" aria-valuemax="100"></div>
@@ -133,11 +133,6 @@
                             <a id="btn_course" href="#"><button  >เริ่มคอร์ส</button></a>
 
                         </div>
-                    </div>
-                    <div class="left-footer">
-
-                    </div>
-                    <div class="right-footer">
                     </div>
                 </div>
             </div>
@@ -192,7 +187,8 @@
     $('.your-course-slide').slick({
         dots: true,
         infinite: false,
-        respondTo: 'window',
+        centerMode: true,
+        centerPadding: '60px',
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 1,
