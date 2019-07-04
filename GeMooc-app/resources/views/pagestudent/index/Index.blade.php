@@ -42,6 +42,52 @@
                 <div class="your-course-body">
                     <div class="container">
                         <div class="your-course-slide" style="color:#fff">
+                            @php
+                                $user = auth()->user();
+
+                                $courses = $user->courses;
+
+                            @endphp
+                            @foreach ($courses as $course)
+                            @php
+                            $sum_course = 0;
+                            $sum_lesson = 0;
+                            $n_lessons = $course->lessons->count();
+                            if($n_lessons){
+                                foreach($course->lessons as $lesson){
+                                    $sum_progress = 0;
+                                    $n_contents = $lesson->contents->count();
+                                    if($n_contents){
+                                        foreach ($lesson->contents as $key=>$content) {
+                                            $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
+                                            if($pro = $progress->first()){
+                                                if($pro = $pro->pivot->percent){
+                                                    $sum_progress += $pro;
+                                                }else{
+                                                    $sum_progress += 0;
+                                                }
+                                            }else{
+                                                $sum_progress += 0;
+                                            }
+                                        }
+                                        $sum_lesson += $sum_progress/$n_contents ;
+                                    }else{
+                                        $sum_lesson +=100;
+                                    }
+                                }
+                                $sum_course = $sum_lesson/$n_lessons;
+                            }else{
+                                $sum_course =0;
+                            }
+
+                            @endphp
+                            <div class="course_progress" course_id="{{$course->id}}" progress ="{{$sum_course}}">
+                            <p>{{$course->name}}</p>
+                                <img src="{{url('storage/'.$course->sm_banner)}}"
+                                    height="150" width="150" class="rounded">
+                            </div>
+                            @endforeach
+
                             <div>
                                 <p>subject name</p>
                                 <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
@@ -79,12 +125,12 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                <div class="progress-bar" id ="progress_bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <button>เริ่มคอร์ส</button>
+                            <a id="btn_course" href="#"><button  >เริ่มคอร์ส</button></a>
 
                         </div>
                     </div>
@@ -176,5 +222,16 @@
         ]
     });
 
+    $('.course_progress').click(function (e) {
+        e.preventDefault();
+        id = $(this).attr('course_id')
+        // alert(id)
+        progress = $(this).attr('progress')
+        // alert(progress)
+
+        $('#progress_bar').css('width', progress+'%')
+        $('#btn_course').attr('href','eiei/'+id)
+
+    });
 </script>
 @endsection

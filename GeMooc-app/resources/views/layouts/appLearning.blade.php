@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEF2style.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFlogin.css')}}">
     <!-- fontawesom -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <!-- Fonts -->
@@ -40,6 +40,9 @@
 
     {{--messenger box--}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
+    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
+    <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
+
 </head>
 
 <body>
@@ -60,7 +63,6 @@
     </div>
 
 
-    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
@@ -75,7 +77,6 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-    <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
     {{-- <script src="{{ asset('node_modules/slick/slick/jq-migrate.min.js')}}"></script> --}}
     {{-- <script src="{{asset('node_modules/3d-slider/app.js')}}"></script> --}}
     <script>
