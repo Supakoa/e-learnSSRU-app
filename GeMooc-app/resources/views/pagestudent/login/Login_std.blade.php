@@ -99,23 +99,32 @@
 {{-- วิชา --}}
 <div id="section3">
     <div class="bg-blur"></div>
-    <nav class="section-navs">
+    <nav >
             <div class="logo">
                     <img src="{{url('images/logo.png')}}" alt="">
+                    <div class="log-underline-img"></div>
                     <h5>SSRU</h5>
                 </div>
         <ul class="nav-links">
             <li>
                 <a href="#">วิชา</a>
+                <div class="li-underline"></div>
             </li>
             <li>
                 <a href="#">คู่มือการใช้งาน</a>
+                <div class="li-underline"></div>
             </li>
             <li>
                 <a href="#">คำถาม</a>
+                <div class="li-underline"></div>
             </li>
         </ul>
         <div class="user-id"></div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </nav>
     <div class="section-header">
         <p>หลักสูตรที่เปิดสอน</p>
