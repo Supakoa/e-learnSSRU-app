@@ -88,36 +88,7 @@
                             </div>
                             @endforeach
 
-                            <div>
-                                <p>subject name</p>
-                                <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                                    height="150" width="150" class="rounded">
-                            </div>
-                            <div>
-                                <p>subject name</p>
-                                <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                                    height="150" width="150" class="rounded ">
-                            </div>
-                            <div>
-                                <p>subject name</p>
-                                <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                                    height="150" width="150" class="rounded ">
-                            </div>
-                            <div>
-                                <p>subject name</p>
-                                <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                                    height="150" width="150" class="rounded ">
-                            </div>
-                            <div>
-                                <p>subject name</p>
-                                <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                                    height="150" width="150" class="rounded ">
-                            </div>
-                            <div>
-                                <p>subject name</p>
-                                <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                                    height="150" width="150" class="rounded ">
-                            </div>
+
                         </div>
                     </div>
                 </div>
