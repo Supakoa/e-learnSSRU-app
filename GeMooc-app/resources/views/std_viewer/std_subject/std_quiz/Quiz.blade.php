@@ -184,7 +184,7 @@
     function get_time() {
         $.ajax({
                 type: "POST",
-                url: "/get_time",
+                url: "{{url("/get_time")}}",
                 cache: false,
                 success: function (response) {
                     time =  response;

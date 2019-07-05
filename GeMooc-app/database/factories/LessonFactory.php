@@ -2,11 +2,12 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\article;
+use App\lesson;
 use Faker\Generator as Faker;
 
-$factory->define(article::class, function (Faker $faker) {
+$factory->define(lesson::class, function (Faker $faker) {
+
     return [
-        'rawdata'=>$faker->city,
+        'name' => $faker->province,
     ];
 });
