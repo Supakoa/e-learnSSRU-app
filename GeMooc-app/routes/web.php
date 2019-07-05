@@ -24,6 +24,9 @@ Route::get('test', 'test@duplicate_subject');
 Route::get('std/login/workshop', function(){
     return view('pagestudent.index.Index');
 });
+Route::get('std/login/workshop', function(){
+    return view('pagestudent.profile.Profile');
+});
 
 
 // use File;
