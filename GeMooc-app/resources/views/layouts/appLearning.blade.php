@@ -51,7 +51,7 @@
         @yield('login')
         {{-- @else --}}
         @yield('index')
-        <button onclick="topFunction()" id="myBtn" title="Go to top"><i
+        <button id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
         {{-- @endguest --}}
         @include('pagestudent.message-box.Message_box')
@@ -95,12 +95,12 @@
 
     </script>
     <script>
-        $('button .btn-messageBox').click(f v.unction(e) {
-            e.preventDefault();
-            $('.messageBox-body').css('display', 'none');
-        });
+        // $('button .btn-messageBox').click(f v.unction(e) {
+        //     e.preventDefault();
+        //     $('.messageBox-body').css('display', 'none');
+        // });
 
-        $('.nav-links').fadeIn().delay(1500);
+        // $('.nav-links').fadeIn().delay(1500);
         $(window).scroll(function () {
             if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
                 $('#myBtn').fadeIn(200); // Fade in the arrow
@@ -114,25 +114,37 @@
             }, 1800);
         });
 
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 35) {
-                $('#myButton').animate({
-                    'height': '4rem'
-                }, 200);
-                $('#myButton').css({
-                    'background-color': '#ff99ff',
-                    "border": "2px solid #fff"
-                });
-            } else {
-                $('#myButton').css({
-                    'background': 'rgb(0,0,0,.6)',
-                    'border': 'none'
-                }, 600);
-                $('#myButton').stop().animate({
-                    'height': '2rem',
-                }, 80);
-            }
-        });
+        // $(window).scroll(function () {
+        //     if ($(window).scrollTop() + $(window).height() >= $(document).height() - 35) {
+        //         $('#myButton').animate({
+        //             'height': '4rem'
+        //         }, 200);
+        //         $('#myButton').css({
+        //             'background-color': '#ff99ff',
+        //             "border": "2px solid #fff"
+        //         });
+        //     } else {
+        //         $('#myButton').css({
+        //             'background': 'rgb(0,0,0,.6)',
+        //             'border': 'none'
+        //         }, 600);
+        //         $('#myButton').stop().animate({
+        //             'height': '2rem',
+        //         }, 80);
+        //     }
+        // });
+
+        // function scrollFunction() {
+        //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        //     document.getElementById("myBtn").style.display = "block";
+        //   } else {
+        //     document.getElementById("myBtn").style.display = "none";
+        //   }
+        // }
+        // function topFunction() {
+        //   document.body.scrollTop = 0;
+        //   document.documentElement.scrollTop = 0;
+        // }
 
     </script>
 

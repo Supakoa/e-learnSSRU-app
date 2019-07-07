@@ -3,24 +3,11 @@
 @section('login')
 @include('pagestudent.navs.Navs_login')
 {{-- ลืมรหัสผ่าน --}}
-<div class="forms-forget-modal"
-    style="background-image:url('https://www.sociopoolindia.com/wp-content/uploads/2014/04/work-bg.jpg')">
-    <div class="forms-forget-header">
-        <img src="{{url('images/logo.png')}}" alt="">
-        <div class="forms-forget-close"><i class="fas fa-times    "></i></div>
-    </div>
-    <div class="forms-forget-password">
-        <form action="" method="POST">
-            <label for="forget-password">รีเซ็ตรหัสผ่าน</label>
-            <div class="forms-input">
-                <i class="fas fa-envelope"></i>
-                <input class="form-control" type="email" name="" id="forget-password" placeholder="อีเมล">
-                <button type="submit" class="forms-forget-btn">รีเซ็ตรหัสผ่าน</button>
-            </div>
-        </form>
-    </div>
-</div>
+@include('pagestudent.login.Forget')
 {{-- ลืมรหัสผ่าน --}}
+{{-- แก้ไขโปรไฟล์ --}}
+ิ@include('pagestudent.profile.Profile')
+{{-- แก้ไขโปรไฟล์ --}}
 {{-- ลงชื่อเข้าใช้ --}}
 <div class="ce-bgimg" style="background-image:url('../../images/cebody-bg.jpeg');">
     <div class="body-login">
@@ -99,23 +86,32 @@
 {{-- วิชา --}}
 <div id="section3">
     <div class="bg-blur"></div>
-    <nav class="section-navs">
+    <nav >
             <div class="logo">
                     <img src="{{url('images/logo.png')}}" alt="">
+                    <div class="log-underline-img"></div>
                     <h5>SSRU</h5>
                 </div>
         <ul class="nav-links">
             <li>
                 <a href="#">วิชา</a>
+                <div class="li-underline"></div>
             </li>
             <li>
                 <a href="#">คู่มือการใช้งาน</a>
+                <div class="li-underline"></div>
             </li>
             <li>
                 <a href="#">คำถาม</a>
+                <div class="li-underline"></div>
             </li>
         </ul>
         <div class="user-id"></div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </nav>
     <div class="section-header">
         <p>หลักสูตรที่เปิดสอน</p>
