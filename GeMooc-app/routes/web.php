@@ -19,7 +19,7 @@ Route::get('std/login', function(){
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
-Route::get('test', 'test@test');
+Route::get('test', 'test@duplicate_subject');
 
 Route::get('std/login/workshop', function(){
     return view('pagestudent.index.Index');

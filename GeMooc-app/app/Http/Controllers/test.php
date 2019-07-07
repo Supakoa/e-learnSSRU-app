@@ -14,13 +14,6 @@ use App\Http\Controllers\Controller;
 
 class test extends Controller
 {
-    public function test()
-    {
-
-        $sum = 10 ;
-        for($i=$sum-1;$i>0;$sum*=$i--);
-        dd($sum);
-    }
     public function duplicate_subject()
     {
        $subject = subject::find(2);
