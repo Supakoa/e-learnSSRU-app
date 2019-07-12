@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEF2style.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFlogin.css')}}">
     <!-- fontawesom -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css"
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <!-- Fonts -->

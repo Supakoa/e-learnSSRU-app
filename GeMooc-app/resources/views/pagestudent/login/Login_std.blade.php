@@ -5,16 +5,13 @@
 {{-- ลืมรหัสผ่าน --}}
 @include('pagestudent.login.Forget')
 {{-- ลืมรหัสผ่าน --}}
-{{-- แก้ไขโปรไฟล์ --}}
-ิ@include('pagestudent.profile.Profile')
-{{-- แก้ไขโปรไฟล์ --}}
 {{-- ลงชื่อเข้าใช้ --}}
 <div class="ce-bgimg" style="background-image:url('../../images/cebody-bg.jpeg');">
     <div class="body-login">
         <div class="forms-login">
             <div class="forms-login-content">
                 <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                    @csrf
                     <div class="forms-title">
                         <p>ลงชื่อเข้าใช้</p>
                         <img src="{{url('images/logo.png')}}" height="100%" width="100%" alt="">
@@ -28,17 +25,19 @@
                     <div class="forms-body">
                         <hr class="hr-text" data-content="OR">
                         <div name="input">
-                                <input id="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                                placeholder="อีเมลล์" value="{{ old('email') }}" type="email" autocomplete="email" required>
-                                @error('email')
-                                <span class="invalid-feedback" style="border-radius:15px" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                            <input id="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                                placeholder="อีเมลล์" value="{{ old('email') }}" type="email" autocomplete="email"
+                                required>
+                            @error('email')
+                            <span class="invalid-feedback" style="border-radius:15px" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                             {{-- <input type="text" class="form-control" placeholder="อีเมลล์"> --}}
                             <div class="input-group">
-                                <input id="password"  name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="รหัสผ่าน" required
-                                autocomplete="current-password">
+                                <input id="password" name="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" placeholder="รหัสผ่าน"
+                                    required autocomplete="current-password">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fas fa-eye"></i></span>
                                 </div>
@@ -86,12 +85,12 @@
 {{-- วิชา --}}
 <div id="section3">
     <div class="bg-blur"></div>
-    <nav >
-            <div class="logo">
-                    <img src="{{url('images/logo.png')}}" alt="">
-                    <div class="log-underline-img"></div>
-                    <h5>SSRU</h5>
-                </div>
+    <nav>
+        <div class="logo">
+            <img src="{{url('images/logo.png')}}" alt="">
+            <div class="log-underline-img"></div>
+            <h5>SSRU</h5>
+        </div>
         <ul class="nav-links">
             <li>
                 <a href="#">วิชา</a>
@@ -113,6 +112,9 @@
             <div class="line3"></div>
         </div>
     </nav>
+    {{-- แก้ไขโปรไฟล์ --}}
+    @include('pagestudent.profile.Profile')
+    {{-- แก้ไขโปรไฟล์ --}}
     <div class="section-header">
         <p>หลักสูตรที่เปิดสอน</p>
         <div class="section-underline"></div>

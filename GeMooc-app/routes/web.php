@@ -12,10 +12,24 @@
 */
 
 use Illuminate\Support\Str;
-//New STD-viewer
-Route::get('std/login', function(){
-    return view('pagestudent.login.Login_std');
+//New admin-teacher
+Route::get('at/index', function(){
+    return view('admin-teach.webapp.login.Index');
 });
+
+Route::get('at/index/admin', function(){
+    return view('admin-teach.webapp.content.Index');
+});
+
+Route::get('at/index/admin/subject', function(){
+    return view('admin-teach.webapp.content.subject.Subject');
+});
+
+Route::get('at/index/admin/subject/course', function(){
+    return view('admin-teach.webapp.content.subject.courses.Course');
+});
+
+//New STD-viewer
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
