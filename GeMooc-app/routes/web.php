@@ -29,6 +29,10 @@ Route::get('at/index/admin/subject/course', function(){
     return view('admin-teach.webapp.content.subject.courses.Course');
 });
 
+Route::get('at/index/admin/subject/course/content', function(){
+    return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
+});
+
 //New STD-viewer
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
