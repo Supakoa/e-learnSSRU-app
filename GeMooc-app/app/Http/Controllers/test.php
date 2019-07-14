@@ -56,7 +56,7 @@ class test extends Controller
 
 
         }
-    dd($clone->courses);
+    // dd($clone->courses);
     }
     /**
  * @param array $columnNames

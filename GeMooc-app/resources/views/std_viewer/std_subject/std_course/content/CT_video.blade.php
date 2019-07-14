@@ -1,7 +1,6 @@
 @extends('layouts.appViewer')
 
 @section('content')
-
 <div class="row">
     <div class="col-md-2 p-0">
         @include('std_viewer.nav-left.Nav-left',[$now_content,$lessons])
@@ -48,10 +47,11 @@
     @php
         echo '<script>console.log('.isset($record).');</script>';
     @endphp
+    {{-- {{ dd(gettype(json_decode($record->record))) }} --}}
 </div>
 @endsection
 
-@section('js')
+@section('js2')
 <script>
 
     $(document).ready(function () {
@@ -80,12 +80,13 @@
     @if (isset($record))
         console.log('have in record..');
         videoRecord = {
-            "content_id": "{{ $record->content_id }}",
-            "user_id": "{{ $record->user_id }}",
-            "record": "{{ $record->record }}",
-            "percent": "{{ $record->percent }}",
+            "content_id": {{ $record->content_id }},
+            "user_id": {{ $record->user_id }},
+            "record": {{ $record->record }},
+            "percent": {{ $record->percent }},
         }
-        console.log(videoRecord);
+        buffer = {{ $record->record }};
+        console.log(videoRecord.record);
     @endif
     $("#text").text(JSON.stringify(videoRecord));
     let jsonRecord;

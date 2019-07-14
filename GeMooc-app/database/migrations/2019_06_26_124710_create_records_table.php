@@ -15,8 +15,11 @@ class CreateRecordsTable extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->unsignedBigInteger('content_id');
             $table->unsignedBigInteger('user_id');
+
+            // main
             $table->longText('record')->nullnable();
             $table->integer('percent');
 

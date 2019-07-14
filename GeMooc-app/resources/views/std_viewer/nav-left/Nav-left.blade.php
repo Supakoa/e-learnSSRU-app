@@ -1,5 +1,5 @@
 <section id="ce-navleft fixed-top">
-
+    {{-- {{ dd($now_content->get()) }} --}}
         <ul class="ce-accordion-menu">
             @foreach ($lessons as $key => $lesson)
             @php
@@ -30,7 +30,7 @@
                     @foreach ($lesson->contents as $content)
                     @php
                         $sum_lesson = 0;
-                        $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
+                        $progress = $content->progress_user($user->id)->orderBy('progresses.created_at', 'desc');
                         if($pro = $progress->first()){
                             if($pro = $pro->pivot->percent){
                                 $sum_progress += $pro;

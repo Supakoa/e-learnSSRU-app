@@ -12,6 +12,13 @@
 */
 
 use Illuminate\Support\Str;
+use App\Mail\newMail;
+
+//New STD-viewer
+Route::get('std/login', function(){
+    return view('pagestudent.login.Login_std');
+});
+
 //New admin-teacher
 Route::get('at/index', function(){
     return view('admin-teach.webapp.login.Index');
@@ -37,11 +44,18 @@ Route::get('at/index/admin/subject/course/content', function(){
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
+
+// test
+Route::get('test', 'test_sumernote@index');
+Route::get('/email', function () {
+ return new newMail();
+});
+
+Route::get('std/login/forget-password', function(){
+    return view('pagestudent.message-box.Message_box');
+});
 Route::get('test', 'test@duplicate_subject');
 
-Route::get('std/login/workshop', function(){
-    return view('pagestudent.index.Index');
-});
 Route::get('std/login/workshop', function(){
     return view('pagestudent.profile.Profile');
 });

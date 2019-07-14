@@ -48,17 +48,15 @@ class Std_viewer extends Controller
         }
     }
 
-
      public function show_content(content $content)
     {
         $course = $content->lesson->course;
-        // dd($course);
         if($content->type==1){
             $ake = record::where('content_id', $content->id)->where('user_id', auth()->user()->id)->first();
             if($ake == null){
                 return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content);
             }else{
-                return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content)->with('record', json_decode($ake));
+                return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content)->with('record', $ake);
             }
         }elseif($content->type==2){
             $article = $content->article;
@@ -71,6 +69,7 @@ class Std_viewer extends Controller
 
         }
     }
+
     public function submit_quiz(content $content,Request $request){
         $course = $content->lesson->course;
 
@@ -103,7 +102,7 @@ class Std_viewer extends Controller
             if($user->progresse($content)->count()){
                 if($user->progresse($content)->first()->pivot->percent < $percent){
                     $temp = $user->progresses()->detach($content);
-                    $temp = $user->progresses()->save($content,['percent'=>$percent]);
+                    $temp = $user->progresses()->save($content, ['percent'=>$percent]);
                     // dd($temp);
                 }
             }else{
