@@ -6,7 +6,7 @@
     <div class="underline-title"></div>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row m-3">
         <div class="col-md-4">
             <button class="btn-add">
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -17,7 +17,6 @@
             <button class="btn-edit"><i class="fas fa-cog    "></i></button>
         </div>
     </div>
-
     <div class="accordion" id="accordionExample">
         <div class="course-content shadow" id="headingOne">
             <div class="content">
@@ -31,7 +30,7 @@
                             <div class="col-md-4 icon-status">
                                 <label>
                                     <i class="fas fa-video"></i>
-                                    -
+                                    1
                                 </label>
                             </div>
                             <div class="col-md-4 icon-status">

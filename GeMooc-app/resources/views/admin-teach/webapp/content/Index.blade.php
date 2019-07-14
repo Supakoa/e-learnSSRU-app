@@ -3,9 +3,17 @@
 @section('wrap-body')
 <div class="ce-main">
     <nav>
-        <div class="logo"></div>
-        <ul class="nav-links">
-            <li><a href="#">log-out</a></li>
+        <div class="logo">
+            <img src="{{url('images/logo.png')}}" alt="">
+            <div class="log-underline-img"></div>
+            <h5>SSRU</h5>
+        </div>
+        <ul class="nav-links justify-content-end">
+            <li>
+                <a href="#">
+                    ออกจากระบบ <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </li>
         </ul>
     </nav>
     <div class="main-body">

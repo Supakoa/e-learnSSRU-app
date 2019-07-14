@@ -6,7 +6,7 @@
     <div class="underline-title"></div>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row m-3">
         <div class="offset-md-8 col-md-4 text-right">
             <button id="add_subject">เพิ่มวิชา</button>
         </div>

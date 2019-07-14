@@ -75,39 +75,39 @@
             @guest
             <li>
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-            @else
-            <li class="dropdown" style="display:flex">
-                @if (auth()->user()->profile->image!=null)
-                <img src="{{url('/storage/'.auth()->user()->profile->image) }}" alt="...">
+    </li>
+    @else
+    <li class="dropdown" style="display:flex">
+        @if (auth()->user()->profile->image!=null)
+        <img src="{{url('/storage/'.auth()->user()->profile->image) }}" alt="...">
 
-                @else
-                <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
-                @endif
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
+        @else
+        <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
+        @endif
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ Auth::user()->name }} <span class="caret"></span>
+        </a>
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                        {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
-                    </a>
+                {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
+            </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </li>
-            @endguest
-        </ul>
-
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </div>
+    </li>
+    @endguest
+    </ul>
+
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
     </nav>
     <div class="cebody">
         @guest
@@ -175,7 +175,11 @@
         <div class="wrap-body">
             @yield('wrap-body')
         </div>
-        <div class="wrap-footer"></div>
+        <div class="wrap-footer">
+            <div class="text">
+                <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
+            </div>
+        </div>
     </div>
 
 
