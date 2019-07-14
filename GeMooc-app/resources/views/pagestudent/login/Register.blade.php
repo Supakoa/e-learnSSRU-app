@@ -4,58 +4,70 @@
 <div class="ce-bgimg" style="background-image:url('../../images/bg-register.jpg');">
     <div class="body-register">
         <div class="forms-register">
-            <div class="register-title">
-                ลงทะเบียนเข้าสู่ระบบ
-                <div class="underline-title"></div>
-            </div>
-            <div class="register-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="name">ชื่อ</label>
-                        <i class="fas fa-user"></i>
-                        <input type="text" class="form-control" name="" id="name">
+            <form action="{{ route('register') }}" method="post">
+                <div class="register-title">
+                    ลงทะเบียนเข้าสู่ระบบ
+                    <div class="underline-title"></div>
+                </div>
+                <div class="register-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="fname">ชื่อ</label>
+                            <i class="fas fa-user"></i>
+                            <input type="text" class="form-control" name="fname" id="fname" required autocomplete="fname" value="{{ old('fname') }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lname">นามสกุล</label>
+                            <input type="text" class="form-control" name="lname" id="lname"  required autocomplete="lname"  value="{{ old('lname') }}">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="lname">นามสกุล</label>
-                        <input type="text" class="form-control" name="" id="lname">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="Email">อีเมลล์</label>
+                            <i class="far fa-envelope"></i>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="Email" id="email" value="{{ old('email') }}" required autocomplete="email">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="pass">รหัสผ่าน</label>
+                            <i class="fab fa-expeditedssl"></i>
+                            <input type="pass" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" id="pass">
+                            @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="re-pass">ยืนยันรหัสผ่าน</label>
+                            <input type="pass" class="form-control" name="password_confirmation" required autocomplete="new-password" id="re-pass">
+                        </div>
+                    </div>
+                    <div class="row" id="gen">
+                        <div class="col-xs-6">
+                            <label class="ck-container">เพศชาย
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-xs-6">
+                            <label class="ck-container">เพศหญิง
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="Email">อีเมลล์</label>
-                        <i class="far fa-envelope"></i>
-                        <input type="email" class="form-control" name="" id="Email">
-                    </div>
+                <div class="register-footer">
+                    <button>ลงทะเบียน</button>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="pass">รหัสผ่าน</label>
-                        <i class="fab fa-expeditedssl"></i>
-                        <input type="pass" class="form-control" name="" id="pass">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="re-pass">ยืนยันรหัสผ่าน</label>
-                        <input type="pass" class="form-control" name="" id="re-pass">
-                    </div>
-                </div>
-                <div class="row" id="gen">
-                    <div class="col-xs-6">
-                        <label class="ck-container">เพศชาย
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="col-xs-6">
-                        <label class="ck-container">เพศหญิง
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="register-footer">
-                <button>ลงทะเบียน</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -20,6 +20,7 @@
     {{-- <link rel="stylesheet" href="{{asset('node_modules/3d-slider/style.css')}}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEindex.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
 
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
@@ -39,25 +40,29 @@
 
     {{--messenger box--}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
+    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
+    <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
+
 </head>
 
 <body>
     <div class="cebody">
-        {{-- @guest
+        {{-- @guest --}}
         @yield('login')
-        @else --}}
+        {{-- @else --}}
         @yield('index')
+        <button id="myBtn" title="Go to top"><i
+            class="fas fa-arrow-circle-up    "></i></button>
         {{-- @endguest --}}
-        {{-- @include('pagestudent.message-box.Message_box')
+        @include('pagestudent.message-box.Message_box')
         <div class="footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-        </div> --}}
+        </div>
 
 
     </div>
 
 
-    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
@@ -72,7 +77,6 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-    <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
     {{-- <script src="{{ asset('node_modules/slick/slick/jq-migrate.min.js')}}"></script> --}}
     {{-- <script src="{{asset('node_modules/3d-slider/app.js')}}"></script> --}}
     <script>
@@ -91,12 +95,12 @@
 
     </script>
     <script>
-        $('button .btn-messageBox').click(f v.unction(e) {
-            e.preventDefault();
-            $('.messageBox-body').css('display', 'none');
-        });
+        // $('button .btn-messageBox').click(f v.unction(e) {
+        //     e.preventDefault();
+        //     $('.messageBox-body').css('display', 'none');
+        // });
 
-        $('.nav-links').fadeIn().delay(1500);
+        // $('.nav-links').fadeIn().delay(1500);
         $(window).scroll(function () {
             if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
                 $('#myBtn').fadeIn(200); // Fade in the arrow
@@ -110,25 +114,37 @@
             }, 1800);
         });
 
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 35) {
-                $('#myButton').animate({
-                    'height': '4rem'
-                }, 200);
-                $('#myButton').css({
-                    'background-color': '#ff99ff',
-                    "border": "2px solid #fff"
-                });
-            } else {
-                $('#myButton').css({
-                    'background': 'rgb(0,0,0,.6)',
-                    'border': 'none'
-                }, 600);
-                $('#myButton').stop().animate({
-                    'height': '2rem',
-                }, 80);
-            }
-        });
+        // $(window).scroll(function () {
+        //     if ($(window).scrollTop() + $(window).height() >= $(document).height() - 35) {
+        //         $('#myButton').animate({
+        //             'height': '4rem'
+        //         }, 200);
+        //         $('#myButton').css({
+        //             'background-color': '#ff99ff',
+        //             "border": "2px solid #fff"
+        //         });
+        //     } else {
+        //         $('#myButton').css({
+        //             'background': 'rgb(0,0,0,.6)',
+        //             'border': 'none'
+        //         }, 600);
+        //         $('#myButton').stop().animate({
+        //             'height': '2rem',
+        //         }, 80);
+        //     }
+        // });
+
+        // function scrollFunction() {
+        //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        //     document.getElementById("myBtn").style.display = "block";
+        //   } else {
+        //     document.getElementById("myBtn").style.display = "none";
+        //   }
+        // }
+        // function topFunction() {
+        //   document.body.scrollTop = 0;
+        //   document.documentElement.scrollTop = 0;
+        // }
 
     </script>
 
