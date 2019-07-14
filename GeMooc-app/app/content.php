@@ -9,10 +9,13 @@ class content extends Model
     //
     // protected $primaryKey = 'con_id';
 
+    protected $guarded = [];
+
     public function lesson()
     {
         return $this->belongsTo('App\lesson');
     }
+
     public function article()
     {
         return $this->hasOne('App\article','id','detail');
@@ -25,10 +28,15 @@ class content extends Model
 
     public function progresses()
     {
-        return $this->belongsToMany('App\User','progresses')->withPivot('percent')->withTimestamp();
+        return $this->belongsToMany('App\User', 'progresses')->withPivot('percent')->withTimestamp();
     }
+
     public function progress_user($id)
     {
-        return $this->belongsToMany('App\User','progresses')->wherePivot('user_id',$id)->withPivot('percent');
+        return $this->belongsToMany('App\User', 'progresses')->wherePivot('user_id', $id)->withPivot('percent');
+    }
+
+    public function records(){
+        return $this->belongsToMany('App\User', 'records')->withPivot('record', 'percent')->withTimestamps();
     }
 }

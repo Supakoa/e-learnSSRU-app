@@ -12,6 +12,8 @@
 */
 
 use Illuminate\Support\Str;
+use App\Mail\newMail;
+
 //New STD-viewer
 Route::get('std/login', function(){
     return view('pagestudent.login.Login_std');
@@ -19,7 +21,12 @@ Route::get('std/login', function(){
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
-Route::get('test', 'test@duplicate_subject');
+
+Route::get('test', 'test_sumernote@index');
+Route::get('/email', function () {
+ return new newMail();
+});
+
 Route::get('std/login/forget-password', function(){
     return view('pagestudent.message-box.Message_box');
 });
