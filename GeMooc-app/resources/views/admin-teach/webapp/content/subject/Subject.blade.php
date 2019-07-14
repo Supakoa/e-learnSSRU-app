@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="offset-md-8 col-md-4 text-right">
-            <button class="" id="add_subject">เพิ่มวิชา</button>
+            <button id="add_subject">เพิ่มวิชา</button>
         </div>
     </div>
     <div class="row">

@@ -8,8 +8,8 @@
 <div class="container">
     <div class="row">
         <div class="offset-md-8 col-md-4 text-right">
-            <button><i class="fas fa-folder-plus"></i></button>
-            <button><i class="fas fa-cog    "></i></button>
+            <button class="btn-add"><i class="fas fa-folder-plus"></i></button>
+            <button class="btn-edit"><i class="fas fa-cog    "></i></button>
         </div>
     </div>
     <div class="row">
