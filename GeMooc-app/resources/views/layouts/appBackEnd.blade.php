@@ -183,7 +183,7 @@
     </div>
 
 
-    {{-- @yield('modal') --}}
+    @yield('modal')
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
