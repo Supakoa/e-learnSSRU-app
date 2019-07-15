@@ -110,7 +110,7 @@ class course_c extends Controller
                 $course_name = $lesson;
             }
         }
-        return view('course.show_course')->with('lessons', $lesson->lessons)->with('course', $course_name);
+        return view('admin-teach.webapp.content.subject.courses.coursecontent.Content')->with('lessons', $lesson->lessons)->with('course', $course_name);
     }
 
     /**
