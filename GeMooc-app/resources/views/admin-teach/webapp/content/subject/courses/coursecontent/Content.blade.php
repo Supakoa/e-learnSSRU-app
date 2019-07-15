@@ -1,5 +1,4 @@
 @extends('admin-teach.webapp.content.Index')
-
 @section('main-content')
 <div class="main-content-header">
     <p id="your_course">{{$course->name}}</p>
@@ -86,7 +85,7 @@
                             </label>
                         </div>
                         <div class="collapse-2">
-                        <button onclick="window.location.href('{{url('content/'.$content->id)}}')">{{$content->name}}</button>
+                        <button onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</button>
                         </div>
                         <div class="collapse-3">
                             <button>
