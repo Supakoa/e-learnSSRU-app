@@ -6,23 +6,22 @@
     <div class="underline-title"></div>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row m-3">
         <div class="col-md-4">
-            <button>
+            <button class="btn-add">
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
             </button>
         </div>
         <div class="col-md-4 offset-md-4 text-right">
-            <button><i class="fas fa-folder-plus"></i></button>
-            <button><i class="fas fa-cog    "></i></button>
+            <button class="btn-add"><i class="fas fa-folder-plus"></i></button>
+            <button class="btn-edit"><i class="fas fa-cog    "></i></button>
         </div>
     </div>
-
     <div class="accordion" id="accordionExample">
-        <div class="course-content" id="headingOne">
-            <div class="content" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+        <div class="course-content shadow" id="headingOne">
+            <div class="content">
+                <div class="content-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                 aria-controls="collapseOne">
-                <div class="content-header">
                     <p>บทที่ 1 การลบล้างความคิดเดิม</p>
                 </div>
                 <div class="content-tail">
@@ -31,7 +30,7 @@
                             <div class="col-md-4 icon-status">
                                 <label>
                                     <i class="fas fa-video"></i>
-                                    -
+                                    1
                                 </label>
                             </div>
                             <div class="col-md-4 icon-status">
@@ -63,9 +62,9 @@
                 </div>
             </div>
         </div>
-        <div id="collapseOne" class="container collapse show" aria-labelledby="headingOne"
+        <div id="collapseOne" class="container collapse " aria-labelledby="headingOne"
             data-parent="#accordionExample">
-            <div class="course-content-collapse">
+            <div class="course-content-collapse shadow">
                 <div class="course-collapse-body">
                     <div class="collapse-1">
                         <label>
@@ -85,7 +84,7 @@
                 <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
 
-            <div class="course-content-collapse">
+            <div class="course-content-collapse shadow">
                 <div class="course-collapse-body">
                     <div class="collapse-1">
                         <label>
@@ -105,7 +104,7 @@
                 <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
 
-            <div class="course-content-collapse">
+            <div class="course-content-collapse shadow">
                 <div class="course-collapse-body">
                     <div class="collapse-1">
                         <label>

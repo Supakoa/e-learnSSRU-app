@@ -88,6 +88,10 @@ class User extends Authenticatable
     }
     public function progresse(content $content)
     {
-        return $this->belongsToMany('App\content', 'progresses')->withPivot('percent')->withTimestamps()->wherePivot('content_id',$content->id);
+        return $this->belongsToMany('App\content', 'progresses')->withPivot('percent')->withTimestamps()->wherePivot('content_id', $content->id);
+    }
+
+    public function records(){
+        return $this->belongsToMany('App\content', 'records')->withPivot('record','percent')->withTimestamps();
     }
 }
