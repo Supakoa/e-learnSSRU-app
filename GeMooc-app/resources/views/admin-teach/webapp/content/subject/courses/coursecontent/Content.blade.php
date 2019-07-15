@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div id="collapseOne" class="container collapse " aria-labelledby="headingOne"
+        <div id="collapseOne" class="container collapse border" aria-labelledby="headingOne"
             data-parent="#accordionExample">
             <div class="course-content-collapse shadow">
                 <div class="course-collapse-body">
@@ -81,7 +81,6 @@
                         </button>
                     </div>
                 </div>
-                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
 
             <div class="course-content-collapse shadow">
@@ -101,7 +100,6 @@
                         </button>
                     </div>
                 </div>
-                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
 
             <div class="course-content-collapse shadow">

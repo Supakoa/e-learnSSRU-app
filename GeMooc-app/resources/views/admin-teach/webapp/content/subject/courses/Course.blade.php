@@ -74,7 +74,7 @@
         @endforeach
 
 
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             <div class="card-subject">
                 <div class="card-subject-header">
                     <div class="status-bar" style="background:red"></div>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -223,7 +223,7 @@
         });
     }
     </script>
-@endsection
+ @endsection
 
 ิ
 @section('js')

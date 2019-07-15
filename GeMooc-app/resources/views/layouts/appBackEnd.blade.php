@@ -16,11 +16,6 @@
     <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}"> --}}
     <!-- CEFstyle -->
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}"> --}}
 
@@ -28,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFstyle3.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFlogIn.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceMain.css')}}">
-
+    @yield('links')
 
     <!-- fontawesom -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
