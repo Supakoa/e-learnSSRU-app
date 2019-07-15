@@ -44,22 +44,41 @@
                         <input type="text" class="form-control" name="detail" value="{{$course->detail}}"
                             placeholder="Course Detail">
                     </div>
-                    <div class="form-group text-center">
-                        <img src="{{url('/storage/'.$course->sm_banner)}}" alt="" width="100%" srcset="">
-                    </div>
                     <div class="form-group">
-                        <label for="name">Cover Image (Small : 400*255) </label>
-                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_sm"
-                            placeholder="Image">
+                        <div class="row">
+                            <div class="col">
+                                    <label for="name">Open</label>
+                                    <input type="date" class="form-control" name="open" value="{{$course->open}}">
+                            </div>
+                            <div class="col">
+                                    <label for="name">Close</label>
+                                    <input type="date" class="form-control" name="close" value="{{$course->close}}" >
+                            </div>
+                        </div>
+
+
                     </div>
-                    <div class="form-group text-center">
-                        <img src="{{url('/storage/'.$course->xl_banner)}}" alt="" width="100%" srcset="">
-                    </div>
+                    {{-- <div class="form-group">
+
+                    </div> --}}
                     <div class="form-group">
-                        <label for="name">Cover Image (Large : 1600*600) </label>
-                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image_xl"
-                            placeholder="Image">
+                            <div class="row">
+                                <div class="col">
+                                        <label for="name">Total</label>
+                                        <input type="number" class="form-control" name="total" value="{{$course->total}}" placeholder="Course Name">
+                                </div>
+                                <div class="col">
+                                        <label for="name">Cover Image</label>
+                                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
+                                            placeholder="Image">
+                                </div>
+                            </div>
                     </div>
+
+                    <div class="form-group text-center">
+                            <img src="{{url('/storage/'.$course->image)}}" alt="" width="100%" srcset="">
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">

@@ -16,7 +16,7 @@
         <div class="col-md-4 mb-3">
                 <div class="card-subject">
                     <div class="card-subject-header">
-                    <img src="storage/{{$subject->image}}"
+                    <img src="{{url('storage/'.$subject->image)}}"
                             class="shadow" width="100%" height="100%">
                         <div class="status"></div>
                     </div>

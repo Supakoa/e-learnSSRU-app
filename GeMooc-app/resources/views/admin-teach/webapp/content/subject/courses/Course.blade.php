@@ -39,11 +39,16 @@
     </div>
     <div class="row">
     @foreach ($courses as $course)
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
             <div class="card-subject">
                 <div class="card-subject-header">
+                    @if ($course->status)
                     <div class="status-bar" style="background: #6BB844;"></div>
-                <img src="{{url('storage/'.$course->image)}}"
+                    @else
+                    <div class="status-bar" style="background: red;"></div>
+                    @endif
+
+                        <img src="{{url('storage/'.$course->image)}}"
                         class="shadow" width="100%" height="100%">
                 </div>
                 <div class="card-subject-body">
@@ -65,7 +70,7 @@
                     </div>
                     <div class="btn-subject">
                     <a href="{{url('course/'.$course->id)}}"><button>ไปที่คอร์ส</button></a>
-                        <a><i class="fas fa-cog    " onclick="edit_course({{$course->id}})"></i></a>
+                        <a><i class="fas fa-cog send_ajax " onclick="edit_course({{$course->id}})"></i></a>
                     </div>
                 </div>
             </div>
