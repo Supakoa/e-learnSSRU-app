@@ -74,7 +74,7 @@
                         </label>
                     </div>
                     <div class="collapse-2">
-                        <a href="#">การลบล้างความคิดเดิม</a>
+                        <button>การลบล้างความคิดเดิม</button>
                     </div>
                     <div class="collapse-3">
                         <button>
@@ -93,7 +93,7 @@
                         </label>
                     </div>
                     <div class="collapse-2">
-                        <a href="#">การลบล้างความคิดเดิม</a>
+                        <button >การลบล้างความคิดเดิม</button>
                     </div>
                     <div class="collapse-3">
                         <button>
@@ -112,7 +112,7 @@
                         </label>
                     </div>
                     <div class="collapse-2">
-                        <a href="#">การลบล้างความคิดเดิม</a>
+                        <button>การลบล้างความคิดเดิม</button>
                     </div>
                     <div class="collapse-3">
                         <button>
