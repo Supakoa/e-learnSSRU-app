@@ -26,19 +26,19 @@
                 </div>
             </div>
             <ul class="nav-links-left">
-                <a href="#">
+            <a href="{{url('at/index/admin/subject')}}">
                     <li>วิชา</li>
                 </a>
-                <a href="#">
+            <a href="{{url('at/index/admin/profile')}}">
                     <li>แก้ไขโปรไฟล์</li>
                 </a>
-                <a href="#">
+                <a href="{{url('at/index/admin/report')}}">
                     <li>รายงาน</li>
                 </a>
-                <a href="#">
+                <a href="{{url('at/index/admin/teacher')}}">
                     <li>ผู้สอน</li>
                 </a>
-                <a href="#">
+                <a href="{{url('at/index/admin/student')}}">
                     <li>ผู้เรียน</li>
                 </a>
             </ul>
