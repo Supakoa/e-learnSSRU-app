@@ -2,7 +2,7 @@
 
 @section('main-content')
 <div class="main-content-header">
-    <p id="your_course">Your content</p>
+    <p id="your_course">{{$course->name}}</p>
     <div class="underline-title"></div>
 </div>
 <div class="container">
@@ -18,11 +18,12 @@
         </div>
     </div>
     <div class="accordion" id="accordionExample">
-        <div class="course-content shadow" id="headingOne">
+        @foreach ($lessons as $key=>$lesson)
+        <div class="course-content shadow" id="heading{{$lesson->id}}">
             <div class="content">
-                <div class="content-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                aria-controls="collapseOne">
-                    <p>บทที่ 1 การลบล้างความคิดเดิม</p>
+                <div class="content-header" data-toggle="collapse" data-target="#collapse{{$lesson->id}}" aria-expanded="true"
+                aria-controls="collapse{{$lesson->id}}">
+                    <p>บทที่ {{$key.' '.$lesson->name}} </p>
                 </div>
                 <div class="content-tail">
                     <div class="row">
@@ -30,19 +31,19 @@
                             <div class="col-md-4 icon-status">
                                 <label>
                                     <i class="fas fa-video"></i>
-                                    1
+                                    {{$lesson->contents->where('type','1')->count()}}
                                 </label>
                             </div>
                             <div class="col-md-4 icon-status">
                                 <label>
                                     <i class="fas fa-clipboard-list"></i>
-                                    5
+                                    {{$lesson->contents->where('type','2')->count()}}
                                 </label>
                             </div>
                             <div class="col-md-4 icon-status">
                                 <label>
                                     <i class="fa fa-question" aria-hidden="true"></i>
-                                    1
+                                    {{$lesson->contents->where('type','3')->count()}}
                                 </label>
                             </div>
                         </div>
@@ -62,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div id="collapseOne" class="container collapse border" aria-labelledby="headingOne"
+        <div id="collapse{{$lesson->id}}" class="container collapse " aria-labelledby="heading{{$lesson->id}}"
             data-parent="#accordionExample">
             <div class="course-content-collapse shadow">
                 <div class="course-collapse-body">
@@ -122,6 +123,7 @@
                 <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection
