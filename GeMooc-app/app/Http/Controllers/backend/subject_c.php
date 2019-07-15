@@ -35,7 +35,7 @@ class subject_c extends Controller
                 $sub = $sub->push($subject);
             }
         }
-        return view('subject.all_sub')->with('sub', $sub);
+        return view('admin-teach.webapp.content.subject.Subject')->with('subjects', $sub);
 
     }
 
@@ -46,10 +46,10 @@ class subject_c extends Controller
      */
     public function create()
     {
-        //
-        $sub = sub::all();
+        // //
+        // $sub = sub::all();
 
-        return view('subject.create')->with('sub', $sub);
+        // return view('subject.create')->with('sub', $sub);
     }
 
     /**
@@ -67,7 +67,7 @@ class subject_c extends Controller
         ]) ;
 
         if($request->hasFile('cover_image')){
-            $imagePath = request('cover_image')->store('cover_image_subject/sm','public');
+            $imagePath = request('cover_image')->store('cover_image_subject','public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,225);
             $image->save();
             $fileNameToStore =  $imagePath;
@@ -80,9 +80,7 @@ class subject_c extends Controller
         $subject->name = $request->input('name');
         $subject->detail = $request->input('detail');
         // $subject->user_id = auth()->user()->id;
-        $subject->sm_banner = $fileNameToStore;
-        $subject->xl_banner = 'cover_image_subject/xl/no_image.jpg';
-        // $subject->xl_banner = $fileNameToStore;
+        $subject->image = $fileNameToStore;
         $subject->save();
         $now = new adjust;
         $now->user_id = auth()->user()->id;
@@ -118,7 +116,7 @@ class subject_c extends Controller
             }
         }
 
-        return view('subject.show_sub')->with('courses', $courses)->with('sub', $subject);
+        return view('admin-teach.webapp.content.subject.courses.Course')->with('courses', $courses)->with('subject', $subject);
     }
 
     /**
@@ -158,22 +156,15 @@ class subject_c extends Controller
             $subject->status = 0;
 
         }
-        if($request->hasFile('cover_image_xl')){
-            $imagePath = request('cover_image_xl')->store('cover_image_subject/xl','public');
+        if($request->hasFile('cover_image')){
+            $imagePath = request('cover_image')->store('cover_image_subject','public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1600,600);
             $image->save();
-            $detail .= '|XL_Banner : '.$subject->xl_banner.' ====> '.$imagePath.'|';
-            $subject->xl_banner = $imagePath;
+            $detail .= '|cover_image : '.$subject->image.' ====> '.$imagePath.'|';
+            $subject->image = $imagePath;
 
         }
-        if($request->hasFile('cover_image_sm')){
-            $imagePath = request('cover_image_sm')->store('cover_image_subject/sm','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,255);
-            $image->save();
-            $detail .= '|SM_Banner : '.$subject->sm_banner.' ====> '.$imagePath.'|';
-            $subject->sm_banner = $imagePath;
 
-        }
 
         // Create subject
         if( $subject->name != $request->input('name')){
