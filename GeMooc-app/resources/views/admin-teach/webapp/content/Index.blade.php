@@ -45,6 +45,8 @@
         </div>
         <div class="main-content">
             <div class="main-content-body">
+                    @include('inc.alert')
+
                 @yield('main-content')
             </div>
         </div>
