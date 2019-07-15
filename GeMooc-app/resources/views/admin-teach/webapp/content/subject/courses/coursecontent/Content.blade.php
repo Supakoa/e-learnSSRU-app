@@ -1,5 +1,8 @@
 @extends('admin-teach.webapp.content.Index')
 
+@section('links')
+
+@endsection
 @section('main-content')
 <div class="main-content-header">
     <p id="your_course">{{$course->name}}</p>
@@ -93,7 +96,7 @@
                         </label>
                     </div>
                     <div class="collapse-2">
-                        <button >การลบล้างความคิดเดิม</button>
+                        <button > การลบล้างความคิดเดิม</button>
                     </div>
                     <div class="collapse-3">
                         <button>

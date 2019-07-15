@@ -1,7 +1,7 @@
 @extends('layouts.appBackEnd')
 
 @section('wrap-body')
-<div class="ce-main">
+<div class="ce-main"  >
     <nav>
         <div class="logo">
             <img src="{{url('images/logo.png')}}" alt="">

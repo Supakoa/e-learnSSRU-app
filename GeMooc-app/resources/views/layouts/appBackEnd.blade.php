@@ -21,7 +21,6 @@
 
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFstyle3.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFlogIn.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceMain.css')}}">
     @yield('links')
 
@@ -168,7 +167,10 @@
     <div class="wrap-container">
         <div class="wrap-header"></div>
         <div class="wrap-body">
-            @yield('wrap-body')
+            <div class="ce-bgimg" style="background-image:url('https://www.beartai.com/wp-content/uploads/2016/12/bg-hero.png')">
+                <div class="bg-blur"></div>
+                    @yield('wrap-body')
+            </div>
         </div>
         <div class="wrap-footer">
             <div class="text">
