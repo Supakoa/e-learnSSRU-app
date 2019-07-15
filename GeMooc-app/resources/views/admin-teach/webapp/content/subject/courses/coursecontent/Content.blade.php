@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div id="collapse{{$lesson->id}}" class="container collapse border" aria-labelledby="heading{{$lesson->id}}"
+        <div id="collapse{{$lesson->id}}" class="container collapse border rounded-lg p-5" aria-labelledby="heading{{$lesson->id}}"
             data-parent="#accordionExample">
             <div class="course-content-collapse shadow">
                 <div class="course-collapse-body">
@@ -121,9 +121,7 @@
                     </div>
                 </div>
             </div>
-
-            <a class="add-content" href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
-
+            <button class="add-content" ><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
         @endforeach
     </div>

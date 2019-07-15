@@ -23,8 +23,6 @@
 <div class="container">
     <div class="row m-3">
         <div class="offset-md-8 col-md-4 text-right">
-
-
             @php
             $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
             $adminOnly = auth()->user()->type_user == 'admin';
