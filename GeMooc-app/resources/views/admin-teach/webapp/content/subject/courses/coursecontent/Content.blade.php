@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div id="collapse{{$lesson->id}}" class="container collapse border rounded-lg p-5" aria-labelledby="heading{{$lesson->id}}"
+        <div id="collapse{{$lesson->id}}" class="container bg-gray collapse border p-5" aria-labelledby="heading{{$lesson->id}}"
             data-parent="#accordionExample">
             @foreach ($lesson->contents as $content)
             <div class="course-content-collapse shadow">
@@ -89,7 +89,7 @@
                             </label>
                         </div>
                         <div class="collapse-2">
-                        <button onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</button>
+                        <button onclick="window.location.href='{{url('content/'.$content->id.'editor')}}'">{{$content->name}}</button>
                         </div>
                         <div class="collapse-3">
                             <button>
@@ -100,44 +100,6 @@
                 </div>
 
             @endforeach
-
-            {{-- <div class="course-content-collapse shadow">
-                <div class="course-collapse-body">
-                    <div class="collapse-1">
-                        <label>
-                            <i class="fas fa-clipboard-list"></i>
-                            5
-                        </label>
-                    </div>
-                    <div class="collapse-2">
-                        <button > การลบล้างความคิดเดิม</button>
-                    </div>
-                    <div class="collapse-3">
-                        <button>
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-content-collapse shadow">
-                <div class="course-collapse-body">
-                    <div class="collapse-1">
-                        <label>
-                            <i class="fa fa-question" aria-hidden="true"></i>
-                            1
-                        </label>
-                    </div>
-                    <div class="collapse-2">
-                        <button>การลบล้างความคิดเดิม</button>
-                    </div>
-                    <div class="collapse-3">
-                        <button>
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </div> --}}
             <button class="add-content" data-toggle="modal"
             data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
