@@ -5,8 +5,17 @@
 @endsection
 @section('main-content')
 <div class="main-content-header">
-    <p id="your_course">{{$course->name}}</p>
-    <div class="underline-title"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="text-left ml-5 mt-3">
+                <a href="#" class="ml-5"><i class="fas fa-chevron-left"></i></a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p id="your_course">{{$course->name}}</p>
+            <div class="underline-title"></div>
+        </div>
+    </div>
 </div>
 <div class="container">
     <div class="row m-3">
@@ -16,7 +25,8 @@
             </button>
         </div>
         <div class="col-md-4 offset-md-4 text-right">
-            <button class="btn-add"  data-toggle="modal" data-target="#Add_Modal"><i class="fas fa-folder-plus" ></i></button>
+            <button class="btn-add" data-toggle="modal" data-target="#Add_Modal"><i
+                    class="fas fa-folder-plus"></i></button>
             <button class="btn-edit"><i class="fas fa-cog    "></i></button>
         </div>
     </div>
@@ -24,8 +34,8 @@
         @foreach ($lessons as $key=>$lesson)
         <div class="course-content shadow" id="heading{{$lesson->id}}">
             <div class="content">
-                <div class="content-header" data-toggle="collapse" data-target="#collapse{{$lesson->id}}" aria-expanded="true"
-                aria-controls="collapse{{$lesson->id}}">
+                <div class="content-header" data-toggle="collapse" data-target="#collapse{{$lesson->id}}"
+                    aria-expanded="true" aria-controls="collapse{{$lesson->id}}">
                     <p>บทที่ {{($key+1).' '.$lesson->name}} </p>
                 </div>
                 <div class="content-tail">
@@ -57,8 +67,8 @@
                                 </button>
                             </div>
                             <div class="col-md-6 icon-status">
-                                <button id="trash-btn">
-                                    <i class="fa fa-trash"  onclick="delete_lesson('{{$lesson->id}}')" aria-hidden="true"></i>
+                                <button id="trash-btn" onclick="delete_lesson('{{$lesson->id}}')">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -66,48 +76,49 @@
                 </div>
             </div>
         </div>
-        <div id="collapse{{$lesson->id}}" class="container bg-gray collapse border p-5" aria-labelledby="heading{{$lesson->id}}"
-            data-parent="#accordionExample">
+        <div id="collapse{{$lesson->id}}" class="container bg-gray collapse border p-5"
+            aria-labelledby="heading{{$lesson->id}}" data-parent="#accordionExample">
             @foreach ($lesson->contents as $content)
             <div class="course-content-collapse shadow">
-                    <div class="course-collapse-body">
-                        <div class="collapse-1">
-                            <label>
-                                @switch($content->type)
-                                    @case(1)
-                                        <i class="fas fa-video"></i>
-                                        @break
-                                    @case(2)
-                                    <i class="fas fa-clipboard-list"></i>
-                                        @break
-                                    @case(3)
-                                    <i class="fa fa-question" aria-hidden="true"></i>
-                                        @break
-                                    @default
+                <div class="course-collapse-body">
+                    <div class="collapse-1">
+                        <label>
+                            @switch($content->type)
+                            @case(1)
+                            <i class="fas fa-video"></i>
+                            @break
+                            @case(2)
+                            <i class="fas fa-clipboard-list"></i>
+                            @break
+                            @case(3)
+                            <i class="fa fa-question" aria-hidden="true"></i>
+                            @break
+                            @default
 
-                                @endswitch
-                            </label>
-                        </div>
-                        <div class="collapse-2">
-                        <button onclick="window.location.href='{{url('content/'.$content->id.'editor')}}'">{{$content->name}}</button>
-                        </div>
-                        <div class="collapse-3">
-                            <button>
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
-                        </div>
+                            @endswitch
+                        </label>
+                    </div>
+                    <div class="collapse-2">
+                        <button
+                            onclick="window.location.href='{{url('content/'.$content->id.'editor')}}'">{{$content->name}}</button>
+                    </div>
+                    <div class="collapse-3">
+                        <button>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </div>
+            </div>
 
             @endforeach
-            <button class="add-content" data-toggle="modal"
-            data-target="#Add_Modal_content" onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <button class="add-content" data-toggle="modal" data-target="#Add_Modal_content"
+                onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
         @endforeach
     </div>
 </div>
 <div id="div_delete">
-    </div>
+</div>
 @endsection
 @section('modal')
 <div class="modal fade" id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

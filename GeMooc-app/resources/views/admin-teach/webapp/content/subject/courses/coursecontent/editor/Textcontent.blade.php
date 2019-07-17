@@ -5,9 +5,19 @@
 @endsection
 @section('main-content')
 <div class="card p-4">
-    <div class="text-center">
-        <h5>that content</h5>
-    </div><hr>
+        <div class="row">
+                <div class="col-md-4">
+                    <div class="text-left">
+                            <a href="#"><i class="fas fa-chevron-left"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <h4>Subject : </h4>
+                    </div>
+                </div>
+            </div>
+            <hr>
     <div class="card-body">
         <div class="text-right mb-3">
             <a href="{{url('/article/'.$article->id.'/edit')}}" class="btn btn-md btn-outline-warning"> <i

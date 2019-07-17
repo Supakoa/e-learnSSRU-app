@@ -13,41 +13,50 @@
 @section('main-content')
 
 <div class="card p-4">
-    <div class="text-center">
-            <h4>Subject : </h4>
-    </div><hr>
-
-        <div class=" text-right mb-4">
-            <button id="edit" class="btn btn-outline-warning" onclick="edit()" type="button"><i
-                    class="fas fa-cog"></i></button>
-            <button id="save" class="btn btn-outline-info" onclick="preview()" type="button"><i
-                    class="fas fa-eye"></i></button>
-        </div>
-
-        <div id="summernote">
-            @if ($article->rawdata == "กรุณาเพิ่มเนื้อหา")
-                <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-                    <strong>{!!$article->rawdata!!}!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @else
-            {!!$article->rawdata!!}
-            @endif
-
-        </div>
-        <form action="{{url('/article/'.$article->id)}}" method="post" id="form_article">
-            @csrf
-            @method('PATCH')
-            <input type="hidden" name="rawdata" id="rawdata">
-            <div class=" text-right">
-                <br>
-                <button class="btn btn-outline-success" id="btn_save" type="submit">Save</button>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="text-left">
+                    <a href="#"><i class="fas fa-chevron-left"></i></a>
             </div>
-
-        </form>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <h4>Subject : </h4>
+            </div>
+        </div>
     </div>
+    <hr>
+    <div class=" text-right mb-3">
+        <button id="edit" class="btn btn-outline-warning" onclick="edit()" type="button"><i
+                class="fas fa-cog"></i></button>
+        <button id="save" class="btn btn-outline-info" onclick="preview()" type="button"><i
+                class="fas fa-eye"></i></button>
+    </div>
+
+    <div id="summernote">
+        @if ($article->rawdata == "กรุณาเพิ่มเนื้อหา")
+        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+            <strong>{!!$article->rawdata!!}!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @else
+        {!!$article->rawdata!!}
+        @endif
+
+    </div>
+    <form action="{{url('/article/'.$article->id)}}" method="post" id="form_article">
+        @csrf
+        @method('PATCH')
+        <input type="hidden" name="rawdata" id="rawdata">
+        <div class=" text-right">
+            <br>
+            <button class="btn btn-outline-success" id="btn_save" type="submit">Save</button>
+        </div>
+
+    </form>
+</div>
 
 </div>
 
@@ -78,7 +87,8 @@
             onMediaDelete: function (target) {
                 deleteFile(target[0].src);
             }
-        }, codemirror: { // codemirror options
+        },
+        codemirror: { // codemirror options
             theme: 'monokai'
         }
     });

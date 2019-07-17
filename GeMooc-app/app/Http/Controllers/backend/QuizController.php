@@ -48,7 +48,7 @@ class QuizController extends Controller
      */
     public function show(quiz $quiz)
     {
-        return view('quiz.show')->with('quiz', $quiz);
+        return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Quizcontent')->with('quiz', $quiz);
 
     }
 
