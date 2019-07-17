@@ -52,120 +52,7 @@
 </head>
 
 <body>
-    {{-- <nav class="fixed-top">
-        @guest
-        <div class="logo">
-            GE-Mooc E-Learning
-        </div>
-        @else
-        <div class="burger2">
-            <div class="line4"></div>
-            <div class="line5"></div>
-            <div class="line6"></div>
-        </div>
-        @endguest
-        <ul class="nav-links">
-            <!-- Authentication Links -->
-            @guest
-            <li>
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-    </li>
-    @else
-    <li class="dropdown" style="display:flex">
-        @if (auth()->user()->profile->image!=null)
-        <img src="{{url('/storage/'.auth()->user()->profile->image) }}" alt="...">
-
-        @else
-        <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
-        @endif
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ Auth::user()->name }} <span class="caret"></span>
-        </a>
-
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </div>
-    </li>
-    @endguest
-    </ul>
-
-    <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-    </nav>
-    <div class="cebody">
-        @guest
-        @else
-        <section>
-            @php
-            $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
-            $adminOnly = auth()->user()->type_user == 'admin';
-            $teach = auth()->user()->type_user == 'teach';
-            @endphp
-            <ul class="nav-links2 ">
-                @if ($both)
-                <a href="{{ url('/profile') }}">
-                    <li>
-                        Your Profile
-                    </li>
-                </a>
-                @endif
-                @if ($both)
-                <a href="{{ url('/subject')}}">
-                    <li>
-                        Subject
-                    </li>
-                </a>
-                @endif
-                @if ($adminOnly)
-                <a href="{{ url('/report')}}">
-                    <li>
-                        Report
-                    </li>
-                </a>
-                @endif
-                @if ($adminOnly)
-                <a href="{{ url('/teach')}}">
-                    <li>
-                        Teach
-                    </li>
-                </a>
-                @endif
-                @if ($adminOnly)
-                <a href="{{ url('/student')}}">
-                    <li>
-                        Student
-                    </li>
-                </a>
-                @endif
-            </ul>
-        </section>
-        @endguest
-        <div class="content container-fluid">
-            @include('inc.alert')
-            @yield('content')
-            <button onclick="topFunction()" id="myBtn" title="Go to top"><i
-                    class="fas fa-arrow-circle-up    "></i></button>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="text">
-            <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-        </div>
-    </div> --}}
-
     <div class="wrap-container">
-        <div class="wrap-header"></div>
         <div class="wrap-body">
             <div class="ce-bgimg" style = '@yield('background','background-image:url("https://www.beartai.com/wp-content/uploads/2016/12/bg-hero.png")')'
             >
@@ -174,9 +61,7 @@
             </div>
         </div>
         <div class="wrap-footer">
-            <div class="text">
                 <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-            </div>
         </div>
     </div>
 
