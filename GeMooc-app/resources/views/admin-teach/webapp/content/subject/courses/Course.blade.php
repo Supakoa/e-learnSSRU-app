@@ -1,5 +1,8 @@
 
 @extends('admin-teach.webapp.content.Index')
+@section('background')
+background-image:url("{{url('storage/'.$subject->image)}}")
+@endsection
 @php
         function formatDateThat($strDate)
     {
@@ -32,7 +35,7 @@
                 <button class="btn-add" data-toggle="modal" data-target="#Add_Modal"><i class="fas fa-folder-plus"></i></button>
                 @endif
                 @if ($adminOnly)
-                <button class="btn-edit"><i class="fas fa-cog send_ajax" onclick="edit_subject({{$subject->id}})"></i></button>
+                <button class="btn-edit send_ajax"><i class="fas fa-cog " onclick="edit_subject({{$subject->id}})"></i></button>
                 @endif
             </div>
         </div>

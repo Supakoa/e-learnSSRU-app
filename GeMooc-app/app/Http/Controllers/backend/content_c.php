@@ -140,6 +140,8 @@ class content_c extends Controller
      */
     public function destroy($id)
     {
-        //
+        $content = content::find($id);
+        $content->delete();
+        return redirect()->back()->with('success', 'Content Deleted');
     }
 }

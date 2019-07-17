@@ -1,5 +1,9 @@
 @extends('admin-teach.webapp.content.Index')
 
+@section('background')
+background-image:url("{{url('storage/'.$course->image)}}")
+@endsection
+
 @section('links')
 
 @endsection
@@ -11,13 +15,13 @@
 <div class="container">
     <div class="row m-3">
         <div class="col-md-4">
-            <button class="btn-add">
+            <button class="btn-add" onclick=" window.location.href = ' {{url('course/'.$course->id.'/users')}} '">
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
             </button>
         </div>
         <div class="col-md-4 offset-md-4 text-right">
             <button class="btn-add"  data-toggle="modal" data-target="#Add_Modal"><i class="fas fa-folder-plus" ></i></button>
-            <button class="btn-edit"><i class="fas fa-cog    "></i></button>
+            <button class="btn-edit send_ajax"  onclick="edit_course('{{$course->id}}')"><i class="fas fa-cog    "></i></button>
         </div>
     </div>
     <div class="accordion" id="accordionExample">
@@ -52,13 +56,13 @@
                         </div>
                         <div class="col-md-6 row">
                             <div class="col-md-6 icon-status">
-                                <button id="edit-btn">
-                                    <i class="fas fa-pencil-alt    "></i>
+                                <button id="edit-btn" data-toggle="modal" data-target="#edit_lesson_Modal"  onclick="edit_lesson({{$lesson}})" >
+                                    <i class="fas fa-pencil-alt    " ></i>
                                 </button>
                             </div>
                             <div class="col-md-6 icon-status">
-                                <button id="trash-btn">
-                                    <i class="fa fa-trash"  onclick="delete_lesson('{{$lesson->id}}')" aria-hidden="true"></i>
+                                <button id="trash-btn" onclick="delete_lesson('{{$lesson->id}}')" aria-hidden="true">
+                                    <i class="fa fa-trash"></i>
                                 </button>
                             </div>
                         </div>
@@ -92,7 +96,7 @@
                         <button onclick="window.location.href='{{url('content/'.$content->id.'editor')}}'">{{$content->name}}</button>
                         </div>
                         <div class="collapse-3">
-                            <button>
+                            <button onclick="delete_content('{{$content->id}}')">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </button>
                         </div>
@@ -135,6 +139,38 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" form="lesson_form">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_lesson_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit_lesson_text">Edit Lesson Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form_edit_lesson" action="" method="post" enctype='multipart/form-data' id="lesson_form">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="course_id" value="{{$course->id}}">
+                    <input type="hidden" name="lesson_id" id="lesson_id_edit" value="">
+                    <div class="form-group">
+                        <label for="name">lesson Name</label>
+                        <input type="text" class="form-control" name="name" id="lesson_name" placeholder="lesson Name">
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="form_edit_lesson">Save changes</button>
             </div>
         </div>
     </div>
@@ -196,9 +232,20 @@
 
     });
 
+
+
     function add_content(lesson) {
+        // alert(lesson)
         $('#lesson_id').val(lesson.id);
         $('#add_content_header').html('Create Content : ' + lesson.name);
+    }
+    function edit_lesson(lesson) {
+        // alert(lesson)
+        $('#form_edit_lesson').attr('action', '{{url('')}}/lesson/'+lesson.id);
+        $('#lesson_id_edit').val(lesson.id);
+        $('#lesson_name').val(lesson.name);
+
+        $('#edit_lesson_text').html('Edit : ' + lesson.name);
     }
     // $('#content_url').hide();
     $('#content_type').change(function (e) {
@@ -232,6 +279,33 @@
             if (result.value) {
 
                 $('#form_del_lesson').submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        });
+    }
+
+    function delete_content(id) {
+        form = `<form action="{{url('content/` + id + `')}}" method="post" id='form_del_content'>
+                        @csrf
+                        @method('DELETE')
+                    </form>`;
+        $('#div_delete').html(form);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Contents will be deleted. (ต้องแก้คำมั้ง)",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                $('#form_del_content').submit();
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',

@@ -167,7 +167,8 @@
     <div class="wrap-container">
         <div class="wrap-header"></div>
         <div class="wrap-body">
-            <div class="ce-bgimg" style="background-image:url('https://www.beartai.com/wp-content/uploads/2016/12/bg-hero.png')">
+            <div class="ce-bgimg" style = '@yield('background','background-image:url("https://www.beartai.com/wp-content/uploads/2016/12/bg-hero.png")')'
+            >
                 <div class="bg-blur"></div>
                     @yield('wrap-body')
             </div>
@@ -219,11 +220,11 @@
         });
         $('.send_ajax').click(function (e) {
             var btn = $(this);
-            btn.addClass('.ce-disable', true);
-            // btn.prop('disabled',true);
+            // btn.addClass('.ce-disable', true);
+            btn.prop('disabled',true);
             setTimeout(function () {
-                btn.removeClass('.ce-disable', true);
-                // btn.prop('disabled',false);
+                // btn.removeClass('.ce-disable', true);
+                btn.prop('disabled',false);
             }, 1000);
 
             // alert("123");
