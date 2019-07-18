@@ -10,10 +10,13 @@
         </div>
         <ul class="nav-links justify-content-end">
             <li>
-                <a href="#">
+            <a href="#" onclick="$('#logout-form').submit()">
                     ออกจากระบบ <i class="fas fa-sign-out-alt"></i>
                 </a>
             </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </ul>
     </nav>
     <div class="main-body">

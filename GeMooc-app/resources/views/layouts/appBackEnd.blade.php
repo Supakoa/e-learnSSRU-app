@@ -104,6 +104,8 @@
             });
         });
         $('.send_ajax').click(function (e) {
+            // alert("123");
+
             var btn = $(this);
             // btn.addClass('.ce-disable', true);
             btn.prop('disabled',true);
@@ -112,7 +114,6 @@
                 btn.prop('disabled',false);
             }, 1000);
 
-            // alert("123");
         });
 
     </script>
