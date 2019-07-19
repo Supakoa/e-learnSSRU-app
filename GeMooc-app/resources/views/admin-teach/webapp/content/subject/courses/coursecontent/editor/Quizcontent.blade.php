@@ -43,7 +43,7 @@
         <div class="quiz-card">
             <div class="row">
                 <div class="col-md-4 p-4">
-                    <p>1</p>
+                    <p class="pl-3">1</p>
                 </div>
                 <div class="offset-md-4 col-md-4 text-right p-4">
                     <button>
@@ -58,21 +58,21 @@
                 <div class="col-md-4 pl-1 pb-1 text-center">
                     <img class="rounded mx-auto d-block" src="https://news.nationalgeographic.com/content/dam/news/2018/05/17/you-can-train-your-cat/02-cat-training-NationalGeographic_1484324.ngsversion.1526587209178.adapt.1900.1.jpg" width="85%" height="90%" alt="">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8" id="question">
                     <dd>
                         การมองโลกในแง่ดีมากเกินไปจะส่งผลเสียอย่างไร
                     </dd>
                     <div class="row">
                         <div class="col-md-6">
-                            <ul>
-                                <li><input type="radio" name="" id=""> Lorem ipsum</li>
-                                <li><input type="radio" name="" id=""> Phasellus iaculis</li>
+                            <ul class="queslist">
+                                <li><input type="radio" name="" id=""> 1. Lorem ipsum</li>
+                                <li><input type="radio" name="" id=""> 2. Phasellus iaculis</li>
                             </ul>
                         </div>
                         <div class="col-md-6 ">
-                            <ul>
-                                <li><input type="radio" name="" id=""> Lorem ipsum</li>
-                                <li><input type="radio" name="" id=""> Phasellus iaculis</li>
+                            <ul class="queslist">
+                                <li><input type="radio" name="" id=""> 3. Lorem ipsum</li>
+                                <li><input type="radio" name="" id=""> 4. Phasellus iaculis</li>
                             </ul>
                         </div>
                     </div>
