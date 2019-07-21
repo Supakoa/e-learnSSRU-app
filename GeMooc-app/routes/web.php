@@ -12,6 +12,14 @@
 */
 
 use Illuminate\Support\Str;
+use App\Mail\newMail;
+use App\Http\Controllers\laravelExcelTest;
+
+// //New STD-viewer
+// Route::get('std/login', function(){
+//     return view('pagestudent.login.Login_std');
+// });
+
 //New admin-teacher
 Route::get('at/index', function(){
     return view('admin-teach.webapp.login.Index');
@@ -37,12 +45,18 @@ Route::get('course/{content}/editor', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
 });
 
+// test
+Route::get('test', 'test_sumernote@index');
+Route::get('/email', function () {
+ return new newMail();
+});
+Route::get('userExport', 'laravelExcelTest@export');
 
 //New STD-viewer
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
-Route::get('test', 'test@duplicate_subject');
+// Route::get('test', 'test@duplicate_subject');
 
 Route::get('std/login/workshop', function(){
     return view('pagestudent.index.Index');
