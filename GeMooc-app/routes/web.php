@@ -15,10 +15,10 @@ use Illuminate\Support\Str;
 use App\Mail\newMail;
 use App\Http\Controllers\laravelExcelTest;
 
-//New STD-viewer
-Route::get('std/login', function(){
-    return view('pagestudent.login.Login_std');
-});
+// //New STD-viewer
+// Route::get('std/login', function(){
+//     return view('pagestudent.login.Login_std');
+// });
 
 //New admin-teacher
 Route::get('at/index', function(){
@@ -41,9 +41,8 @@ Route::get('at/index/admin/subject/course/content', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
 });
 
-//New STD-viewer
-Route::get('std/login/register', function(){
-    return view('pagestudent.login.Register');
+Route::get('course/{content}/editor', function(){
+    return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
 });
 
 // test
@@ -53,11 +52,15 @@ Route::get('/email', function () {
 });
 Route::get('userExport', 'laravelExcelTest@export');
 
-Route::get('std/login/forget-password', function(){
-    return view('pagestudent.message-box.Message_box');
+//New STD-viewer
+Route::get('std/login/register', function(){
+    return view('pagestudent.login.Register');
 });
 // Route::get('test', 'test@duplicate_subject');
 
+Route::get('std/login/workshop', function(){
+    return view('pagestudent.index.Index');
+});
 Route::get('std/login/workshop', function(){
     return view('pagestudent.profile.Profile');
 });

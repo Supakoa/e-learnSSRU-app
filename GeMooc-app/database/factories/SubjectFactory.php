@@ -9,8 +9,7 @@ $factory->define(subject::class, function (Faker $faker ) {
         'name' => $faker->province,
         'detail' => $faker->city,
         'status' => 1,
-        'sm_banner' => 'cover_image_subject/sm/no_image.jpg',
-        'xl_banner' => 'cover_image_subject/xl/no_image.jpg'
+        'image' => 'cover_image_subject/no_image.jpg',
 
     ];
 });

@@ -54,7 +54,10 @@ class course_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image' => 'image|nullable|max:10000'
+            'open' => 'required',
+            'close' => 'required',
+            'total' => 'required',
+            'cover_image' => 'image|nullable|max:10000',
         ]) ;
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_course/sm','public');
@@ -62,7 +65,7 @@ class course_c extends Controller
             $image->save();
             $fileNameToStore =  $imagePath;
         } else {
-            $fileNameToStore =  'cover_image_course/sm/no_image.jpg';
+            $fileNameToStore =  'cover_image_course/no_image.jpg';
         }
 
         // Create course
@@ -70,10 +73,11 @@ class course_c extends Controller
         $course->name = $request->input('name');
         $course->detail = $request->input('detail');
         // $course->user_id = auth()->user()->id;
-        $course->sm_banner = $fileNameToStore;
-        $course->xl_banner = 'cover_image_course/xl/no_image.jpg';
+        $course->image = $fileNameToStore;
         $course->subject_id = $request->input('sub_id');
-
+        $course->open = $request->input('open');
+        $course->close = $request->input('close');
+        $course->total = $request->input('total');
         $course->save();
 
         $now = new adjust;
@@ -106,7 +110,7 @@ class course_c extends Controller
                 $course_name = $lesson;
             }
         }
-        return view('course.show_course')->with('lessons', $lesson->lessons)->with('course', $course_name);
+        return view('admin-teach.webapp.content.subject.courses.coursecontent.Content')->with('lessons', $lesson->lessons)->with('course', $course_name);
     }
 
     /**
@@ -132,8 +136,10 @@ class course_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image_sm' => 'image|nullable|max:10000',
-            'cover_image_xl' => 'image|nullable|max:10000'
+            'open' => 'required',
+            'close' => 'required',
+            'total' => 'required',
+            'cover_image' => 'image|nullable|max:10000',
         ]) ;
         $detail = '';
         $course = course::find($id);
@@ -144,22 +150,13 @@ class course_c extends Controller
             $course->status = 0;
         }
 
-        if($request->hasFile('cover_image_xl')){
-            $imagePath = request('cover_image_xl')->store('cover_image_course/xl','public');
+        if($request->hasFile('cover_image')){
+            $imagePath = request('cover_image')->store('cover_image_course','public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1600,600);
             $image->save();
-            $detail .= '|XL_Banner : '.$course->xl_banner.' ====> '.$imagePath.'|';
+            $detail .= '|Banner : '.$course->xl_banner.' ====> '.$imagePath.'|';
             $fileNameToStore =  $imagePath;
-            $course->xl_banner = $fileNameToStore;
-
-        }
-        if($request->hasFile('cover_image_sm')){
-            $imagePath = request('cover_image_sm')->store('cover_image_course/sm','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,255);
-            $image->save();
-            $detail .= '|SM_Banner : '.$course->sm_banner.' ====> '.$imagePath.'|';
-            $fileNameToStore =  $imagePath;
-            $course->sm_banner = $fileNameToStore;
+            $course->image = $fileNameToStore;
 
         }
 
@@ -172,6 +169,10 @@ class course_c extends Controller
             $detail .= '|Detail : '.$course->detail.' ====> '.$request->input('detail').'|';
         }
         $course->detail = $request->input('detail');
+        $course->open = $request->input('open');
+        $course->close = $request->input('close');
+        $course->total = $request->input('total');
+
         // $course->user_id = auth()->user()->id;
         // $course->sm_banner = $fileNameToStore;
         // $course->course_id = $request->input('sub_id');

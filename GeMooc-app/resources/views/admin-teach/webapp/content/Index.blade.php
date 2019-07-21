@@ -1,11 +1,22 @@
 @extends('layouts.appBackEnd')
 
 @section('wrap-body')
-<div class="ce-main">
+<div class="ce-main"  >
     <nav>
-        <div class="logo"></div>
-        <ul class="nav-links">
-            <li><a href="#">log-out</a></li>
+        <div class="logo">
+            <img src="{{url('images/logo.png')}}" alt="">
+            <div class="log-underline-img"></div>
+            <h5>SSRU</h5>
+        </div>
+        <ul class="nav-links justify-content-end">
+            <li>
+            <a href="#" onclick="$('#logout-form').submit()">
+                    ออกจากระบบ <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </ul>
     </nav>
     <div class="main-body">
@@ -18,25 +29,26 @@
                 </div>
             </div>
             <ul class="nav-links-left">
-                <a href="#">
+            <a href="{{url('subject')}}">
                     <li>วิชา</li>
                 </a>
-                <a href="#">
+            <a href="{{url('profile')}}">
                     <li>แก้ไขโปรไฟล์</li>
                 </a>
-                <a href="#">
+                <a href="{{url('report')}}">
                     <li>รายงาน</li>
                 </a>
-                <a href="#">
+                <a href="{{url('teach')}}">
                     <li>ผู้สอน</li>
                 </a>
-                <a href="#">
+                <a href="{{url('student')}}">
                     <li>ผู้เรียน</li>
                 </a>
             </ul>
         </div>
         <div class="main-content">
             <div class="main-content-body">
+                @include('inc.alert')
                 @yield('main-content')
             </div>
         </div>

@@ -98,7 +98,14 @@ class lesson_c extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required'
+            ]) ;
+        $lesson = lesson::find($id);
+        $lesson->name = $request->input('name');
+        $lesson->save();
+        return redirect('/course/'.$request->input('course_id'))->with('success', 'Lesson Edited');
+
     }
 
     /**

@@ -16,19 +16,13 @@
     <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}"> --}}
     <!-- CEFstyle -->
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}"> --}}
 
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFstyle3.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFlogIn.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceMain.css')}}">
-
+    @yield('links')
 
     <!-- fontawesom -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -58,128 +52,21 @@
 </head>
 
 <body>
-    {{-- <nav class="fixed-top">
-        @guest
-        <div class="logo">
-            GE-Mooc E-Learning
-        </div>
-        @else
-        <div class="burger2">
-            <div class="line4"></div>
-            <div class="line5"></div>
-            <div class="line6"></div>
-        </div>
-        @endguest
-        <ul class="nav-links">
-            <!-- Authentication Links -->
-            @guest
-            <li>
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-            @else
-            <li class="dropdown" style="display:flex">
-                @if (auth()->user()->profile->image!=null)
-                <img src="{{url('/storage/'.auth()->user()->profile->image) }}" alt="...">
-
-                @else
-                <img src="https://image.flaticon.com/icons/png/512/126/126327.png" alt="">
-                @endif
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a style="color:black" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                        {{ __('Log-out ') }}<i class="fas fa-sign-out-alt"></i>
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </li>
-            @endguest
-        </ul>
-
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
-    <div class="cebody">
-        @guest
-        @else
-        <section>
-            @php
-            $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
-            $adminOnly = auth()->user()->type_user == 'admin';
-            $teach = auth()->user()->type_user == 'teach';
-            @endphp
-            <ul class="nav-links2 ">
-                @if ($both)
-                <a href="{{ url('/profile') }}">
-                    <li>
-                        Your Profile
-                    </li>
-                </a>
-                @endif
-                @if ($both)
-                <a href="{{ url('/subject')}}">
-                    <li>
-                        Subject
-                    </li>
-                </a>
-                @endif
-                @if ($adminOnly)
-                <a href="{{ url('/report')}}">
-                    <li>
-                        Report
-                    </li>
-                </a>
-                @endif
-                @if ($adminOnly)
-                <a href="{{ url('/teach')}}">
-                    <li>
-                        Teach
-                    </li>
-                </a>
-                @endif
-                @if ($adminOnly)
-                <a href="{{ url('/student')}}">
-                    <li>
-                        Student
-                    </li>
-                </a>
-                @endif
-            </ul>
-        </section>
-        @endguest
-        <div class="content container-fluid">
-            @include('inc.alert')
-            @yield('content')
-            <button onclick="topFunction()" id="myBtn" title="Go to top"><i
-                    class="fas fa-arrow-circle-up    "></i></button>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="text">
-            <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-        </div>
-    </div> --}}
-
     <div class="wrap-container">
-        <div class="wrap-header"></div>
         <div class="wrap-body">
-            @yield('wrap-body')
+            <div class="ce-bgimg" style = '@yield('background','background-image:url("https://www.beartai.com/wp-content/uploads/2016/12/bg-hero.png")')'
+            >
+                <div class="bg-blur"></div>
+                    @yield('wrap-body')
+            </div>
         </div>
-        <div class="wrap-footer"></div>
+        <div class="wrap-footer">
+                <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
+        </div>
     </div>
 
 
-    {{-- @yield('modal') --}}
+    @yield('modal')
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
@@ -217,15 +104,16 @@
             });
         });
         $('.send_ajax').click(function (e) {
+            // alert("123");
+
             var btn = $(this);
-            btn.addClass('.ce-disable', true);
-            // btn.prop('disabled',true);
+            // btn.addClass('.ce-disable', true);
+            btn.prop('disabled',true);
             setTimeout(function () {
-                btn.removeClass('.ce-disable', true);
-                // btn.prop('disabled',false);
+                // btn.removeClass('.ce-disable', true);
+                btn.prop('disabled',false);
             }, 1000);
 
-            // alert("123");
         });
 
     </script>

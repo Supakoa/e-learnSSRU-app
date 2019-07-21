@@ -92,7 +92,21 @@ class content_c extends Controller
      */
     public function show($id)
     {
-        //
+        $content = content::find($id);
+        switch ($content->type) {
+            case 1:
+                return redirect('video/'.$content->detail);
+                break;
+            case 2:
+                return redirect('article/'.$content->detail);
+                break;
+            case 3:
+                return redirect('quiz/'.$content->detail);
+                break;
+            default:
+
+                break;
+        }
     }
 
     /**
@@ -126,6 +140,8 @@ class content_c extends Controller
      */
     public function destroy($id)
     {
-        //
+        $content = content::find($id);
+        $content->delete();
+        return redirect()->back()->with('success', 'Content Deleted');
     }
 }

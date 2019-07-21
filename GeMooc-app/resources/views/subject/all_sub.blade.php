@@ -99,7 +99,6 @@
     </div>
 </div>
 
-<div id="sub_modal">
 </div>
 
 @endsection

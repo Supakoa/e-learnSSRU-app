@@ -23,6 +23,10 @@ class course extends Model
        {
            return $this->belongsToMany('App\user','course_user')->withPivot('role');
        }
+       public function students()
+       {
+           return $this->belongsToMany('App\user','course_user')->withPivot('role')->where('type_user','student');
+       }
        public function users_main()
        {
            return $this->belongsToMany('App\user','course_user')->withPivot('role')->wherePivot('role',1);

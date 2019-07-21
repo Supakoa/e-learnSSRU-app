@@ -18,8 +18,7 @@ class CreateSubjectsTable extends Migration
             $table->string('name');
             $table->text('detail')->nullable();
             $table->integer('status')->default(0);
-            $table->text('sm_banner')->nullable();
-            $table->text('xl_banner')->nullable();
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

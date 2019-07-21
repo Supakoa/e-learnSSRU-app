@@ -52,7 +52,7 @@ class ArticleController extends Controller
     {
         $content = content::where('detail',$article->id)->first();;
         // dd($content);
-        return view('article.show')->with('article', $article)->with('content',  $content);
+        return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Textcontent')->with('article', $article)->with('content',  $content);
     }
 
     /**
@@ -66,7 +66,7 @@ class ArticleController extends Controller
         //
         $content = content::where('detail',$article->id)->first();;
 
-        return  view('article.edit')->with('article', $article)->with('content',  $content);
+        return  view('admin-teach.webapp.content.subject.courses.coursecontent.editor.text.Editor')->with('article', $article)->with('content',  $content);
     }
 
     /**
