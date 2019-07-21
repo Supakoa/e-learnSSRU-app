@@ -40,7 +40,9 @@
 @endsection
 @section('js')
 <script>
+
     $(document).ready(function () {
+        ScrollReveal().reveal('.card-subject', { interval: 100 });
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

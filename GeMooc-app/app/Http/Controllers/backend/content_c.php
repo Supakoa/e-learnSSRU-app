@@ -95,7 +95,8 @@ class content_c extends Controller
         $content = content::find($id);
         switch ($content->type) {
             case 1:
-                return redirect('video/'.$content->detail);
+                // return redirect('video/'.$content->detail);
+                return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Videocontent');
                 break;
             case 2:
                 return redirect('article/'.$content->detail);
