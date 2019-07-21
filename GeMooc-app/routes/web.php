@@ -13,6 +13,7 @@
 
 use Illuminate\Support\Str;
 use App\Mail\newMail;
+use App\Http\Controllers\laravelExcelTest;
 
 //New STD-viewer
 Route::get('std/login', function(){
@@ -50,11 +51,12 @@ Route::get('test', 'test_sumernote@index');
 Route::get('/email', function () {
  return new newMail();
 });
+Route::get('userExport', 'laravelExcelTest@export');
 
 Route::get('std/login/forget-password', function(){
     return view('pagestudent.message-box.Message_box');
 });
-Route::get('test', 'test@duplicate_subject');
+// Route::get('test', 'test@duplicate_subject');
 
 Route::get('std/login/workshop', function(){
     return view('pagestudent.profile.Profile');
