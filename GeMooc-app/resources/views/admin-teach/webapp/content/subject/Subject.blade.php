@@ -14,21 +14,20 @@
     <div class="row">
         @foreach ($subjects as $subject)
         <div class="col-md-4 mb-3">
-                <div class="card-subject">
-                    <div class="card-subject-header">
-                    <img src="{{url('storage/'.$subject->image)}}"
-                            class="shadow" width="100%" height="100%">
-                        <div class="status"></div>
-                    </div>
-                    <div class="card-subject-body">
-                        <p>{{$subject->name}}</p>
-                        <div class="btn-subject">
-                                <a href="{{url('subject/'.$subject->id)}}"><button>ไปที่วิชา</button></a>
-                            <a  onclick="edit_subject({{$subject->id}})"><i class="fas fa-cog    "></i></a>
-                        </div>
+            <div class="card-subject">
+                <div class="card-subject-header">
+                    <img src="{{url('storage/'.$subject->image)}}" class="shadow" width="100%" height="100%">
+                    <div class="status"></div>
+                </div>
+                <div class="card-subject-body">
+                    <p>{{$subject->name}}</p>
+                    <div class="section-subject-btn">
+                        <button class="btn-subject" onclick="window.location.href='{{url('subject/'.$subject->id)}}'">ไปที่วิชา</button>
+                        <i onclick="edit_subject({{$subject->id}})" class="fas fa-cog btn-cogs"></i>
                     </div>
                 </div>
             </div>
+        </div>
         @endforeach
 
     </div>
@@ -40,8 +39,8 @@
 
 @endsection
 @section('js')
-    <script>
-     $(document).ready(function () {
+<script>
+    $(document).ready(function () {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -63,5 +62,6 @@
             }
         });
     }
-    </script>
+
+</script>
 @endsection

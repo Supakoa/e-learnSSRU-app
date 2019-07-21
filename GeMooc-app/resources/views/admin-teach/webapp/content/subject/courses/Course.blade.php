@@ -79,9 +79,9 @@ background-image:url("{{url('storage/'.$subject->image)}}")
                                 </li>
                             </ul>
                         </div>
-                        <div class="btn-subject">
-                        <a href="{{url('course/'.$course->id)}}"><button>ไปที่คอร์ส</button></a>
-                            <a><i class="fas fa-cog send_ajax " onclick="edit_course({{$course->id}})"></i></a>
+                        <div class="section-subject-btn">
+                        <button class="btn-subject" onclick="window.location.href='{{url('course/'.$course->id)}}'">ไปที่คอร์ส</button>
+                            <i class="fas fa-cog send_ajax btn-cogs" onclick="edit_course({{$course->id}})"></i>
                         </div>
                     </div>
                 </div>
