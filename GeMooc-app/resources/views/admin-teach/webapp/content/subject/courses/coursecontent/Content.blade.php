@@ -46,20 +46,20 @@ background-image:url("{{url('storage/'.$course->image)}}")
                 <div class="content-tail">
                     <div class="row">
                         <div class="col-md-6 row">
-                            <div class="col-md-4 icon-status">
+                            <div class="col-md-4 icon-status" id="ics">
                                 <label>
                                     <i class="fas fa-video"></i>
                                     {{$lesson->contents->where('type','1')->count()}}
                                 </label>
                             </div>
-                            <div class="col-md-4 icon-status">
+                            <div class="col-md-4 icon-status" id="ics">
                                 <label>
                                     <i class="fas fa-clipboard-list"></i>
                                     {{$lesson->contents->where('type','2')->count()}}
                                 </label>
                             </div>
-                            <div class="col-md-4 icon-status">
-                                <label>
+                            <div class="col-md-4 icon-status" id="ics">
+                                <label >
                                     <i class="fa fa-question" aria-hidden="true"></i>
                                     {{$lesson->contents->where('type','3')->count()}}
                                 </label>

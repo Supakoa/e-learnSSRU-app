@@ -19,8 +19,8 @@
             </div>
     <div class="card-body">
         <div class="text-right mb-4">
-            <a href="{{url('/article/'.$article->id.'/edit')}}" class="btn btn-md btn-outline-warning"> <i
-                    class="fas fa-cog"></i></a>
+            <button onclick="window.location.href='{{url('/article/'.$article->id.'/edit')}}'" class="btn-edit"> <i
+                    class="fas fa-cog"></i></button>
         </div>
         @if ($article->rawdata == "กรุณาเพิ่มเนื้อหา")
         <div id="summernote">

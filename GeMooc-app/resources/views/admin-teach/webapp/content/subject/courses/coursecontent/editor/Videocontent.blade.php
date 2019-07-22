@@ -20,12 +20,13 @@
     </div>
     <div class="card-body">
         <div class="text-right mb-3">
-            <button><i class="fas fa-cog    "></i></button>
+            <button class="btn-edit-video"><i class="fas fa-cog    "></i></button>
         </div>
         <div class="container-video">
-            <video autoplay loop src="https://www.youtube.com/watch?v=CpGzulhubP8&list=RDf8MxUZBCvIs&index=27">
-
-            </video>
+            <div class="embed-responsive embed-responsive-16by9 ce-video-content">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/j0BXziyrFIo?list=RDf8MxUZBCvIs"
+                    allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 </div>

@@ -27,10 +27,10 @@
     </div>
     <hr>
     <div class=" text-right mb-4">
-        <button id="edit" class="btn btn-outline-warning" onclick="edit()" type="button"><i
-                class="fas fa-cog"></i></button>
-        <button id="save" class="btn btn-outline-info" onclick="preview()" type="button"><i
+            <button id="save" class="btn-add" onclick="preview()" type="button"><i
                 class="fas fa-eye"></i></button>
+        <button id="edit" class="btn-edit" onclick="edit()" type="button"><i
+                class="fas fa-cog"></i></button>
     </div>
 
     <div id="summernote">
@@ -52,7 +52,7 @@
         <input type="hidden" name="rawdata" id="rawdata">
         <div class=" text-right">
             <br>
-            <button class="btn btn-outline-success" id="btn_save" type="submit">Save</button>
+            <button class="btn-add" style="width:100%;" id="btn_save" type="submit"><i class="far fa-save"></i> บันทึก</button>
         </div>
 
     </form>
