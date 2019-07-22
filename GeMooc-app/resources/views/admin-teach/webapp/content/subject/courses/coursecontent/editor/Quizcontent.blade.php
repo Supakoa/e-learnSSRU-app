@@ -7,7 +7,7 @@
 @section('main-content')
 
 <div class="card p-4" style="background:#F8F8F8;">
-    <div class="row">
+    <div class="row" style="border-bottom:2px solid #707070">
         <div class="col-md-4">
             <div class="text-left">
                 <a href="#"><i class="fas fa-chevron-left"></i></a>
@@ -19,7 +19,6 @@
             </div>
         </div>
     </div>
-    <hr>
     <div class="row">
         <div class="col-md-4">
             <button class="btn-dashboard" onclick="window.location.href = '{{url('/quiz/'.$quiz->id.'/dashboard')}}'">
@@ -57,7 +56,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 pl-1 pb-1 pt-0 text-center">
-                    <img class="rounded mx-auto d-block q-img" src="{{url('storage/'.$question->image)}}" width="auto"
+                    <img class="rounded mx-auto d-block w-75 img-fluid" src="{{url('storage/'.$question->image)}}" width="auto"
                         height="auto">
                 </div>
                 <div class="col-md-8" id="question">
@@ -123,7 +122,7 @@
                                         <div class="col-md-10">
                                             <ul>
                                                 <li>
-                                                    <div class="row">
+                                                    <div class="row m-2">
                                                         <label for="answer[]" class="col-sm-2 col-form-label">1.</label>
                                                         <div class="col-sm-8">
                                                             <input name="answer[]" type="text" class="form-control">
@@ -140,7 +139,7 @@
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="row">
+                                                    <div class="row m-2">
                                                         <label for="answer[]" class="col-sm-2 col-form-label">2.</label>
                                                         <div class="col-md-8">
                                                             <input name="answer[]" type="text" class="form-control">
@@ -156,7 +155,7 @@
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="row">
+                                                    <div class="row m-2">
                                                         <label for="answer[]" class="col-sm-2 col-form-label">3.</label>
                                                         <div class="col-md-8">
                                                             <input name="answer[]" type="text" class="form-control">
@@ -172,7 +171,7 @@
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="row">
+                                                    <div class="row m-2">
                                                         <label for="answer[]" class="col-sm-2 col-form-label">4.</label>
                                                         <div class="col-md-8">
                                                             <input name="answer[]" type="text" class="form-control">

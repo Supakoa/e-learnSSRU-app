@@ -29,8 +29,10 @@ background-image:url("{{url('storage/'.$course->image)}}")
             </button>
         </div>
         <div class="col-md-4 offset-md-4 text-right">
-            <button class="btn-add"  data-toggle="modal" data-target="#Add_Modal"><i class="fas fa-folder-plus" ></i></button>
-            <button class="btn-edit send_ajax"  onclick="edit_course('{{$course->id}}')"><i class="fas fa-cog    "></i></button>
+            <button class="btn-add" data-toggle="modal" data-target="#Add_Modal"><i
+                    class="fas fa-folder-plus"></i></button>
+            <button class="btn-edit send_ajax" onclick="edit_course('{{$course->id}}')"><i
+                    class="fas fa-cog    "></i></button>
         </div>
     </div>
     <div class="accordion" id="accordionExample">
@@ -65,8 +67,9 @@ background-image:url("{{url('storage/'.$course->image)}}")
                         </div>
                         <div class="col-md-6 row">
                             <div class="col-md-6 icon-status">
-                                <button id="edit-btn" data-toggle="modal" data-target="#edit_lesson_Modal"  onclick="edit_lesson({{$lesson}})" >
-                                    <i class="fas fa-pencil-alt    " ></i>
+                                <button id="edit-btn" data-toggle="modal" data-target="#edit_lesson_Modal"
+                                    onclick="edit_lesson({{$lesson}})">
+                                    <i class="fas fa-pencil-alt    "></i>
                                 </button>
                             </div>
                             <div class="col-md-6 icon-status">
@@ -98,26 +101,25 @@ background-image:url("{{url('storage/'.$course->image)}}")
                             @break
                             @default
 
-                                @endswitch
-                            </label>
-                        </div>
-                        <div class="collapse-2">
-                        <button onclick="window.location.href='{{url('content/'.$content->id.'editor')}}'">{{$content->name}}</button>
-                        </div>
-                        <div class="collapse-3">
-                            <button onclick="delete_content('{{$content->id}}')">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
-                        </div>
+                            @endswitch
+                        </label>
+                    </div>
+                    <div class="collapse-2">
+                        <button
+                            onclick="window.location.href='{{url('content/'.$content->id.'editor')}}'">{{$content->name}}</button>
+                    </div>
+                    <div class="collapse-3">
+                        <button onclick="delete_content('{{$content->id}}')">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-
             @endforeach
             <button class="add-content" data-toggle="modal" data-target="#Add_Modal_content"
-                onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
-        @endforeach
+    @endforeach
     </div>
 </div>
 <div id="div_delete">
@@ -249,6 +251,7 @@ background-image:url("{{url('storage/'.$course->image)}}")
         $('#lesson_id').val(lesson.id);
         $('#add_content_header').html('Create Content : ' + lesson.name);
     }
+
     function edit_lesson(lesson) {
         // alert(lesson)
         $('#form_edit_lesson').attr('action', '{{url('')}}/lesson/'+lesson.id);

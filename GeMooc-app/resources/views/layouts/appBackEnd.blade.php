@@ -70,6 +70,7 @@
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
     <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
     <script src="{{ asset('node_modules/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>

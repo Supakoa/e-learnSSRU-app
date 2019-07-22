@@ -26,7 +26,7 @@
         </div>
     </div>
     <hr>
-    <div class=" text-right mb-3">
+    <div class=" text-right mb-4">
         <button id="edit" class="btn btn-outline-warning" onclick="edit()" type="button"><i
                 class="fas fa-cog"></i></button>
         <button id="save" class="btn btn-outline-info" onclick="preview()" type="button"><i

@@ -1,5 +1,6 @@
 @extends('layouts.appBackEnd')
 
+
 @section('wrap-body')
 <div class="ce-main"  >
     <nav>
