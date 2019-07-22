@@ -7,6 +7,7 @@ use App\content as content;
 use Illuminate\Http\Request;
 use App\Exports\UsersExport;
 use App\Exports\subjectExport;
+use App\Exports\quizExport;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
@@ -100,6 +101,9 @@ public function subject_csv() {
 }
 public function export()
     {
-        return Excel::download(new subjectExport, 'users.xlsx');
+        return Excel::download(new quizExport, 'quiz.csv', \Maatwebsite\Excel\Excel::CSV);
+    //     return (new quizExport)->download('quiz.csv', \Maatwebsite\Excel\Excel::CSV, [
+    //         'Content-Type' => 'text/csv',
+    //   ]);
     }
 }

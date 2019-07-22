@@ -12,6 +12,7 @@ class SubjectExport implements FromCollection
     */
     public function collection()
     {
+        
         return subject::find(1)->courses()->get();
     }
 }
