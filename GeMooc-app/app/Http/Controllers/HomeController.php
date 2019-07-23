@@ -32,6 +32,6 @@ class HomeController extends Controller
             // return view('std_viewer.std_home.index');
             return redirect('/std_view/home');
         }
-        return view('dashboard.home');
+        return redirect('/subject');;
     }
 }

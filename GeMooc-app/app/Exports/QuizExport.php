@@ -14,15 +14,15 @@ class QuizExport implements FromCollection
     {
         $sum = collect();
         $quiz = quiz::find(2);
-        foreach ($quiz->questions as $key => $question) {
-            // $question->prepend('001');
-            $sum = $sum->push($question);
-            foreach ($question->answers as $key => $answer) {
-                // $answer->prepend('002');
-                $sum = $sum->push($answer);
-            }
-        }
-        return $sum;
-        // return $quiz;
+        // foreach ($quiz->questions as $key => $question) {
+        //     // $question->prepend('001');
+        //     $sum = $sum->push($question);
+        //     foreach ($question->answers as $key => $answer) {
+        //         // $answer->prepend('002');
+        //         $sum = $sum->push($answer);
+        //     }
+        // }
+        // return $sum;
+        return $quiz->questions;
     }
 }

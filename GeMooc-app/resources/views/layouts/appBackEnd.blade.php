@@ -49,13 +49,13 @@
     <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
+    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
 </head>
 
 <body>
     <div class="wrap-container">
         <div class="wrap-body">
-            <div class="ce-bgimg" style = '@yield('background','background-image:url("https://www.beartai.com/wp-content/uploads/2016/12/bg-hero.png")')'
-            >
+            <div class="ce-bgimg" style = 'background-image:url("@yield('background','https://www.beartai.com/wp-content/uploads/2016/12/bg-hero.png')")'>
                 <div class="bg-blur"></div>
                     @yield('wrap-body')
             </div>
@@ -67,7 +67,6 @@
 
 
     @yield('modal')
-    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
     <script src="https://unpkg.com/scrollreveal@4"></script>

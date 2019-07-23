@@ -1,6 +1,6 @@
 @extends('admin-teach.webapp.content.Index')
 @section('background')
-background-image:url("{{url('storage/'.$subject->image)}}")
+{{url('storage/'.$subject->image)}}\
 @endsection
 @php
 function formatDateThat($strDate)

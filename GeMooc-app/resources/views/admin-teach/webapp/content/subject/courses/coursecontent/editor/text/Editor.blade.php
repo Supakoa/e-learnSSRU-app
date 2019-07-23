@@ -1,5 +1,7 @@
 @extends('admin-teach.webapp.content.Index')
-
+@section('background')
+{{url('storage/'.$course->image)}}
+@endsection
 @section('links')
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css">
