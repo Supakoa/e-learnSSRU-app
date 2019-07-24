@@ -12,7 +12,7 @@ background-image:url("{{url('storage/'.$course->image)}}")
     <div class="row">
         <div class="col-md-4">
             <div class="text-left ml-5 mt-3">
-                <a href="#" class="ml-5"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="ml-5 btn-back"><i class="fas fa-chevron-left"></i></a>
             </div>
         </div>
         <div class="col-md-4">

@@ -8,7 +8,7 @@
         <div class="row" style="border-bottom:2px solid #707070">
                 <div class="col-md-4">
                     <div class="text-left">
-                            <a href="#"><i class="fas fa-chevron-left"></i></a>
+                            <a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a>
                     </div>
                 </div>
                 <div class="col-md-4">
