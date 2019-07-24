@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class question extends Model
 {
+    protected $fillable = ['name','quiz_id'];
     public function answers()
        {
            return $this->hasMany('App\answer');

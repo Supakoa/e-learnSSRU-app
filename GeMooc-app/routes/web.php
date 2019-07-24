@@ -58,6 +58,8 @@ Route::get('std/login/register', function(){
 });
 Route::get('test', 'test@export');
 
+Route::post('import', 'test@import');
+
 Route::get('std/login/workshop', function(){
     return view('pagestudent.index.Index');
 });

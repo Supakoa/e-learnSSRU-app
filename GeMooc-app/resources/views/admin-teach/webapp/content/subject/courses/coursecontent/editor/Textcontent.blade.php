@@ -1,5 +1,7 @@
 @extends('admin-teach.webapp.content.Index')
-
+@section('background')
+{{url('storage/'.$course->image)}}
+@endsection
 @section('links')
 
 @endsection

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Exports\UsersExport;
 use App\Exports\subjectExport;
 use App\Exports\quizExport;
+use App\Imports\QuizImport;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
@@ -99,11 +100,18 @@ public function subject_csv() {
     $columnNames = ['ID', 'NAME'];//replace this with your own array of string column headers
     return self::getCsv($columnNames, $rows);
 }
-public function export()
+    public function export()
     {
-        return Excel::download(new quizExport, 'quiz.csv', \Maatwebsite\Excel\Excel::CSV);
+        return Excel::download(new quizExport, 'quiz.xlsx');
     //     return (new quizExport)->download('quiz.csv', \Maatwebsite\Excel\Excel::CSV, [
     //         'Content-Type' => 'text/csv',
     //   ]);
+    }
+    public function import(Request $request)
+    {
+        // dd($request->file('file'));
+        Excel::import(new QuizImport,$request->file('file'));
+
+        return redirect('/')->with('success', 'All good!');
     }
 }
