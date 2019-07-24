@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('admin-teach.profile.profile');
+        // return view('admin-teach.webapp.content.profile.Profile');
     }
 
     /**

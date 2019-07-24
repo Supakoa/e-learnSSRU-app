@@ -16,7 +16,7 @@ class ReportController extends Controller
     public function index()
     {
         $reports = report::all();
-        return view('report.Report',compact('reports'));
+        return view('admin-teach.webapp.content.report.Report',compact('reports'));
     }
 
     /**

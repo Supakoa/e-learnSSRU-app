@@ -33,7 +33,7 @@
             <a href="{{url('subject')}}">
                     <li>วิชา</li>
                 </a>
-            <a href="{{url('profile')}}">
+            <a onclick="show()" href="#">
                     <li>แก้ไขโปรไฟล์</li>
                 </a>
                 <a href="{{url('report')}}">
@@ -53,11 +53,20 @@
                 @yield('main-content')
             </div>
         </div>
+        @include('admin-teach.webapp.content.profile.Profile')
+
     </div>
 </div>
 @endsection
 @section('js')
-<script src="">
-
+<script>
+    // $('#openProfile').click(function (e) {
+    //     e.preventDefault();
+    //     $('.container-profile').css('margin-left', '0');
+    // });
+    // $('.closeProfile').click(function (e) {
+    //     e.preventDefault();
+    //     $('.container-profile').css('margin-left', '-100%');
+    // });
 </script>
 @endsection

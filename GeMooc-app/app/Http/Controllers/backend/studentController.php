@@ -20,7 +20,7 @@ class studentController extends Controller
     public function index()
     {
         $user = DB::table('users')->where('type_user','student')->get();
-        return view('student.student',compact('user'));
+        return view('admin-teach.webapp.content.student.Student',compact('user'));
     }
 
     /**
