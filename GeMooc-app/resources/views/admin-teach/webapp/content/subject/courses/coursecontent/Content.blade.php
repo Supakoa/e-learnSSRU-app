@@ -215,6 +215,10 @@ background-image:url("{{url('storage/'.$course->image)}}")
                             <option value="2">Text</option>
                             <option value="3">Quiz</option>
                         </select>
+                        <div class="selectTypeVideo">
+                            <input type="radio" name="videoType" id="videoType" value="url">url
+                            <input type="radio" name="videoType" id="videoType" value="file">file
+                        </div>
                         {{-- <input type="text" class="form-control" name="name" placeholder="content Name"> --}}
                     </div>
                     <div class="form-group" id="content_url">

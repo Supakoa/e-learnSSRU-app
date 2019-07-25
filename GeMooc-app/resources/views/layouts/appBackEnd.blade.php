@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -48,6 +49,10 @@
     --}}
     <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+
+    {{-- edit profile --}}
+    @stack('styleEditProfile')
+    @stack('scriptEditProfile')
 
 </head>
 

@@ -60,7 +60,7 @@ class test_sumernote extends Controller
         // } else {
         //     echo "Message sent!";
         // }
-        return view('test');
+        return view('admin-teach.profile.newProfile');
     }
 
 }

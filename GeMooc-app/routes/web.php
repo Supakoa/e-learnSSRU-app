@@ -45,12 +45,16 @@ Route::get('course/{content}/editor', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
 });
 
-// test
+/**
+ *  all test route
+ * */
 Route::get('test', 'test_sumernote@index');
 Route::get('/email', function () {
  return new newMail();
 });
 Route::get('userExport', 'laravelExcelTest@export');
+// Route::get('uploadVideo', 'VideoController@index');
+Route::resource('/video', 'VideoController');
 
 //New STD-viewer
 Route::get('std/login/register', function(){
@@ -77,6 +81,7 @@ Route::prefix('login')->group(function () {
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/std_view/course/quiz/previewquiz', 'Std_viewer@Std_quizPreview');
 
+    // profile
     Route::post('/profile/updateImage', 'ProfileController@updatePhoto');
     Route::post('/profile/upddateProfile', 'ProfileController@update');
 
@@ -86,6 +91,7 @@ Route::group(['middleware' => 'auth'], function (){
     // record
     Route::resource('/record', 'RecordController');
 
+    // student_view
     Route::get('/std_view/home', 'Std_viewer@Std_home');
     Route::get('/std_view/subject', 'Std_viewer@all_subject');
     Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
@@ -96,6 +102,8 @@ Route::group(['middleware' => 'auth'], function (){
     Route::post('/std_view/course/content/{content}/submit_quiz', 'Std_viewer@submit_quiz');
     Route::post('/std_view/course/content/{content}/submit_article', 'Std_viewer@submit_article');
     Route::get('/std_view/course/content/{content}/dashboard', 'Std_viewer@show_dashboard');
+
+
     Route::post('get_time', function () {
         $time = session('time');
         if($time>=0){
@@ -105,8 +113,9 @@ Route::group(['middleware' => 'auth'], function (){
         }else{
             echo 0;
         }
-
     });
+
+
     Route::group(['middleware' => ['mdgStudent']], function () {
         Route::get('/profile', 'ProfileController@index');
 

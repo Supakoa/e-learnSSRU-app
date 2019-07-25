@@ -14,7 +14,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        return view('test');
     }
 
     /**
@@ -35,7 +35,12 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('videoSquare')){
+            $file = $request->file('videoSquare');
+            $filename = $file->getClientOriginalName();
+            $path = public_path()."/storage/videos";
+            $file->move($path, $filename);
+        }
     }
 
     /**
