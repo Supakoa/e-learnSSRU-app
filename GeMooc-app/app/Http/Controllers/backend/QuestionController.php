@@ -162,6 +162,6 @@ class QuestionController extends Controller
     {
          $id = $request->id;
          $question = question::find($id);
-         return view('question.modal.edit')->with('question', $question);
+         return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.modal_question.edit')->with('question', $question);
     }
 }

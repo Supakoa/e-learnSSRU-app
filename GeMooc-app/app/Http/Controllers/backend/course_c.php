@@ -206,7 +206,7 @@ class course_c extends Controller
          $id = $request->id;
          $course = course::find($id);
 
-         return view('course.modal.edit')->with('course', $course);
+         return view('admin-teach.webapp.content.subject.courses.modal.edit')->with('course', $course);
     }
     public function users(course $course)
     {

@@ -21,7 +21,7 @@
         </ul>
 
     </nav>
-    
+
     <div class="main-body">
         <div class="nav-left">
             <div class="nav-profile">
@@ -91,6 +91,9 @@
                 @yield('main-content')
             </div>
         </div>
+        
+        {{-- new income --}}
+        @include('admin-teach.webapp.content.profile.Profile')
 
     </div>
 
@@ -98,7 +101,14 @@
 @endsection
 
 @section('js')
-<script src="">
-
+<script>
+    // $('#openProfile').click(function (e) {
+    //     e.preventDefault();
+    //     $('.container-profile').css('margin-left', '0');
+    // });
+    // $('.closeProfile').click(function (e) {
+    //     e.preventDefault();
+    //     $('.container-profile').css('margin-left', '-100%');
+    // });
 </script>
 @endsection

@@ -1,16 +1,18 @@
 @extends('admin-teach.webapp.content.Index')
-
+@section('background')
+{{url('storage/'.$course->image)}}
+@endsection
 @section('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
 @endsection
 
 @section('main-content')
 
-<div class="card p-4" style="background:#F8F8F8;">
+<div class="card p-4 h-100 pb-4" style="background:#F8F8F8;min-height:120vh">
     <div class="row" style="border-bottom:2px solid #707070">
         <div class="col-md-4">
             <div class="text-left">
-                <a href="#"><i class="fas fa-chevron-left"></i></a>
+                <a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a>
             </div>
         </div>
         <div class="col-md-4">
@@ -19,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row m-3">
         <div class="col-md-4">
             <button class="btn-dashboard" onclick="window.location.href = '{{url('/quiz/'.$quiz->id.'/dashboard')}}'">
                 <i class="fas fa-tachometer-alt"></i>
@@ -27,7 +29,7 @@
         </div>
         <div class="col-md-4 offset-4 text-right">
             <button class="btn-edit-quiz " data-toggle="modal" data-target="#edit_Modal">
-                <i class="fas fa-pencil-alt    "></i>
+                <i class="fas fa-pencil-alt"></i>
             </button>
 
             <button class="btn-add-quiz" data-toggle="modal" data-target="#Add_Modal">
@@ -56,8 +58,8 @@
             </div>
             <div class="row">
                 <div class="col-md-4 pl-1 pb-1 pt-0 text-center">
-                    <img class="rounded mx-auto d-block w-75 img-fluid" src="{{url('storage/'.$question->image)}}" width="auto"
-                        height="auto">
+                    <img class="rounded mx-auto d-block w-75 img-fluid" src="{{url('storage/'.$question->image)}}"
+                        width="auto" height="auto">
                 </div>
                 <div class="col-md-8" id="question">
                     <dd>
@@ -67,7 +69,7 @@
                         @foreach ($question->answers as $key => $answer )
                         <div class="col-md-6">
                             <input type="radio" name="{{$answer->question->id}}" @if ($answer->correct)
-                            checked style= "background-color:green"
+                            checked style="background-color:green;"
                             @endif id="{{$answer->id}}" value="{{$answer->id}}" disabled>
                             <label for="{{$answer->id}}" @if ($answer->correct)
                                 style= "background-color:green;"

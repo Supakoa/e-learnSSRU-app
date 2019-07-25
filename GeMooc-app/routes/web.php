@@ -21,25 +21,25 @@ use App\Http\Controllers\laravelExcelTest;
 // });
 
 //New admin-teacher
-Route::get('at/index', function(){
-    return view('admin-teach.webapp.login.Index');
-});
+// Route::get('at/index', function(){
+//     return view('admin-teach.webapp.login.Index');
+// });
 
-Route::get('at/index/admin', function(){
-    return view('admin-teach.webapp.content.Index');
-});
+// Route::get('at/index/admin', function(){
+//     return view('admin-teach.webapp.content.Index');
+// });
 
-Route::get('at/index/admin/subject', function(){
-    return view('admin-teach.webapp.content.subject.Subject');
-});
+// Route::get('at/index/admin/subject', function(){
+//     return view('admin-teach.webapp.content.subject.Subject');
+// });
 
-Route::get('at/index/admin/subject/course', function(){
-    return view('admin-teach.webapp.content.subject.courses.Course');
-});
+// Route::get('at/index/admin/subject/course', function(){
+//     return view('admin-teach.webapp.content.subject.courses.Course');
+// });
 
-Route::get('at/index/admin/subject/course/content', function(){
-    return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
-});
+// Route::get('at/index/admin/subject/course/content', function(){
+//     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
+// });
 
 Route::get('course/{content}/editor', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
@@ -60,7 +60,9 @@ Route::resource('/video', 'VideoController');
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
-// Route::get('test', 'test@duplicate_subject');
+Route::get('test', 'test@export');
+
+Route::post('import', 'test@import');
 
 Route::get('std/login/workshop', function(){
     return view('pagestudent.index.Index');

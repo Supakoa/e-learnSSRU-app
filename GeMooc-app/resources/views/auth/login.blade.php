@@ -125,6 +125,12 @@
 <a href="{{url('/login/facebook')}}">
 <button class="btn btn-info">Facebook Login !!!!</button>
 </a>
+
+<form action="{{url('/import')}}" method="post" enctype="multipart/form-data">
+    @csrf
+    <input type="file" name="file" >
+    <button type="submit">Goooo</button>
+</form>
 @endsection
 @section('js')
 <script>

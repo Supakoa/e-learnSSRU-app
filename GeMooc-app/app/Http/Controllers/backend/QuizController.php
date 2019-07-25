@@ -48,7 +48,8 @@ class QuizController extends Controller
      */
     public function show(quiz $quiz)
     {
-        return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Quizcontent')->with('quiz', $quiz);
+        $course = $quiz->content->lesson->course;
+        return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Quizcontent')->with('quiz', $quiz)->with('course', $course);;
         // return view('quiz.show')->with('quiz', $quiz);
 
     }
@@ -110,8 +111,9 @@ class QuizController extends Controller
 
     public function quiz_dashboard(quiz $quiz)
     {
-
-       return view('quiz.dashboard')->with('quiz', $quiz);
+        $course = $quiz->content->lesson->course;
+        // dd( $course );
+       return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.dashboard.DashboardQuiz')->with('quiz', $quiz)->with('course', $course);;
 
     }
 }
