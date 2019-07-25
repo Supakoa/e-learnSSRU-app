@@ -206,6 +206,6 @@ class subject_c extends Controller
    {
         $id = $request->id;
         $subject = sub::find($id);
-        return view('subject.modal.edit')->with('sub', $subject);
+        return view('admin-teach.webapp.content.subject.modal.edit')->with('sub', $subject);
    }
 }
