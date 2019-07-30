@@ -45,6 +45,10 @@ Route::get('course/{content}/editor', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
 });
 
+Route::get('admin', function(){
+    return view('admin-teach.webapp.content.admin.Admin');
+});
+
 /**
  *  all test route
  * */

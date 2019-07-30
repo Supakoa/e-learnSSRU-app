@@ -197,9 +197,6 @@
 <script>
     $(document).ready(function () {
             $('#userScroll').DataTable();
-        }
-
-    );
-
+        });
 </script>
 @endsection
