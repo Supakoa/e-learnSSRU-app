@@ -7,25 +7,18 @@
 @section('main-content')
 <div class="col-md-4 offset-md-4">
     <div class="text-center">
-        <h2 style="border-bottom:2px solid gray;padding:10px;">ผู้สอน</h2>
+            <h2 style="border-bottom:2px solid gray;padding:10px;">ผู้ดูแลระบบ</h2>
     </div>
 </div>
 <div class="card">
-    <div class="col-md-4 offset-md-8">
-        <div class="text-right">
-            <button class="btn-add-people">
-                Add
-            </button>
-        </div>
-    </div>
     <div class="card-body table-responsive">
-        <table class="display table table-hover" id="tableTeach">
+        <table class="table display table-hover table-bordered" id="tableAdmin">
             <thead class="text-center">
                 <tr>
-                    <th scope="col">ลำดับ</th>
+                    <th scope="row">ลำดับ</th>
                 </tr>
             </thead>
-            <tbody class="text-center">
+            <tbody>
                 <tr>
 
                 </tr>
@@ -36,5 +29,9 @@
 @endsection
 
 @section('js')
-
+<script src="">
+    $(document).ready(function () {
+        $('#tableAdmin').DataTable();
+    });
+</script>
 @endsection
