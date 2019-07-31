@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\quiz as quiz;
 use Maatwebsite\Excel\Concerns\FromCollection;
 // use Illuminate\Support\Collection;
+
 class QuizExport implements FromCollection
 {
     /**
