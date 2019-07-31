@@ -91,7 +91,7 @@
                 @yield('main-content')
             </div>
         </div>
-        
+
         {{-- new income --}}
         @include('admin-teach.webapp.content.profile.Profile')
 

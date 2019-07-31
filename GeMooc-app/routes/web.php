@@ -50,17 +50,17 @@ Route::get('course/{content}/editor', function(){
  * */
 Route::get('test', 'test_sumernote@index');
 Route::get('/email', function () {
- return new newMail();
+    return new newMail();
 });
-Route::get('userExport', 'laravelExcelTest@export');
+// Route::get('userExport', 'laravelExcelTest@export');
 // Route::get('uploadVideo', 'VideoController@index');
-Route::resource('/video', 'VideoController');
+// Route::resource('/video', 'VideoController');
 
 //New STD-viewer
 Route::get('std/login/register', function(){
     return view('pagestudent.login.Register');
 });
-Route::get('test', 'test@export');
+// Route::get('test', 'test@export');
 
 Route::post('import', 'test@import');
 
