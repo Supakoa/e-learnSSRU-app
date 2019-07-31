@@ -20,7 +20,7 @@ class teachController extends Controller
     public function index()
     {
         $user = DB::table('users')->where('type_user','teach')->get();
-        return view('admin-teach.webapp.content.teach.Teach',compact('user'));
+        return view('admin-teach.webapp.content.teacher.Teach',compact('user'));
     }
 
     /**

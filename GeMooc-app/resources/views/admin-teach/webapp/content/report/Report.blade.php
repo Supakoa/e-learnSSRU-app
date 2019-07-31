@@ -10,9 +10,9 @@
             <h2 style="border-bottom:2px solid gray;padding:10px;">รายงานปัญหา</h2>
     </div>
 </div>
-<div class="card">
+<div class="card bg-card">
     <div class="card-body table-responsive">
-        <table class="daplay table table-hover table-bordered" id="tableReport">
+        <table class="display table table-hover table-borderless" id="tableReport">
             <thead>
                 <tr class="text-center">
                     <th scope="col">ลำดับ</th>
