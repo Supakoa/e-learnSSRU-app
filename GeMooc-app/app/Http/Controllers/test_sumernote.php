@@ -10,7 +10,7 @@ class test_sumernote extends Controller
 {
     public function index()
     {
-        return view('admin-teach.profile.newProfile');
+        return view('admin-teach.webapp.login.LoginAT');
     }
 
 }
