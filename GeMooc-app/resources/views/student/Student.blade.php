@@ -7,7 +7,7 @@
             user</strong></button>
     <div class="ce-container table-responsive">
 
-        @if ($user->count()>0)
+        @if ($user->count() > 0)
             <table class="table table-hover display table-bordered" id="studentTable">
                 <thead>
                     <tr>

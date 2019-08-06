@@ -19,8 +19,9 @@ class teachController extends Controller
      */
     public function index()
     {
-        $user = DB::table('users')->where('type_user','teach')->get();
-        return view('admin-teach.webapp.content.teacher.Teach',compact('user'));
+        // $user = DB::table('users')->where('type_user','teach')->get();
+        $users = User::all()->where('type_user', 'teach');
+        return view('admin-teach.webapp.content.teacher.Teach',compact('users'));
     }
 
     /**
@@ -91,7 +92,8 @@ class teachController extends Controller
 
         $teachUser = User::find($request->id);
         // $user = DB::table('users')->where('id',$reques->id)->get();
-        return view('teach.modal.editTeach')->with('user',$teachUser);
+        // return view('teach.modal.editTeach')->with('user',$teachUser);
+        return view('admin-teach.webapp.content.teacher.modal.editTeach')->with('user',$teachUser);
     }
 
     /**
@@ -122,7 +124,7 @@ class teachController extends Controller
      */
     public function destroy($id)
     {
-
+        
         $result = DB::table('users')->where('id', '=', $id)->delete();
 
         return redirect('/teach');
