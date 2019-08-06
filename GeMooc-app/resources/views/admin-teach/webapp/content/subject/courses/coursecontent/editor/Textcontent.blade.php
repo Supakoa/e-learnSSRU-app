@@ -6,8 +6,17 @@
 
 @endsection
 @section('main-content')
+
 <div class="card p-4">
+        @php
+        $course = $article->content->lesson->course;
+    @endphp
+    <div>
+<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a href="{{url('/course/'.$course->id)}}">{{$article->content->lesson->name}}</a> / <a href="{{url('/article/'.$article->id)}}">{{$article->content->name}}</a>
+</div>
+<br>
         <div class="row" style="border-bottom:2px solid #707070">
+
                 <div class="col-md-4">
                     <div class="text-left">
                             <a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a>
@@ -15,7 +24,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="text-center">
-                        <h4>Subject : </h4>
+                    <h4>{{$article->content->name}}</h4>
                     </div>
                 </div>
             </div>

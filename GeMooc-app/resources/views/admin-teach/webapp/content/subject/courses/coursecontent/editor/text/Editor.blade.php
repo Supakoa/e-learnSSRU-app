@@ -1,6 +1,6 @@
 @extends('admin-teach.webapp.content.Index')
 @section('background')
-{{url('storage/'.$course->image)}}
+{{url('storage/'.$course->image)}}\
 @endsection
 @section('links')
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
@@ -15,6 +15,14 @@
 @section('main-content')
 
 <div class="card p-4">
+        @php
+        $course = $article->content->lesson->course;
+        @endphp
+        <div>
+        <a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> /
+        <a href="{{url('/course/'.$course->id)}}">{{$article->content->lesson->name}}</a> / <a href="{{url('/article/'.$article->id)}}">{{$article->content->name}}</a> / <a href="{{url('/article/'.$article->id.'/edit')}}">แก้ไข</a>
+        </div>
+        <br>
     <div class="row">
         <div class="col-md-4">
             <div class="text-left">
@@ -23,7 +31,7 @@
         </div>
         <div class="col-md-4">
             <div class="text-center">
-                <h4>Subject : </h4>
+                <h4>บทความ : {{$article->content->name}}</h4>
             </div>
         </div>
     </div>
