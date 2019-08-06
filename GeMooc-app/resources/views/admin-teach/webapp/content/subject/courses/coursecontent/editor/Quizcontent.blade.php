@@ -1,6 +1,6 @@
 @extends('admin-teach.webapp.content.Index')
 @section('background')
-{{url('storage/'.$course->image)}}
+{{url('storage/'.$course->image)}}\
 @endsection
 @section('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">

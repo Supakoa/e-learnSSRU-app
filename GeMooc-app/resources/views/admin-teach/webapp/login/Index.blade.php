@@ -5,7 +5,7 @@
 {{-- ลืมรหัสผ่าน --}}
 @include('pagestudent.login.Forget')
 {{-- ลืมรหัสผ่าน --}}
-@include('admin-teach.admin.login.LogInAT')
+@include('admin-teach.webapp.login.LoginAT')
 {{-- @include('') --}}
 @endsection
 

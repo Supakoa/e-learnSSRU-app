@@ -61,7 +61,7 @@ Route::get('/email', function () {
 // Route::resource('/video', 'VideoController');
 
 //New STD-viewer
-Route::get('std/login/register', function(){
+Route::get('/register', function(){
     return view('pagestudent.login.Register');
 });
 // Route::get('test', 'test@export');

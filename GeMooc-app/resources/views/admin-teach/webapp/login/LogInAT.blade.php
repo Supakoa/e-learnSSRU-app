@@ -41,7 +41,7 @@
                         </div>
                         <div class="forms-body-footer">
                             <a href="{{ url('std/login/forget-password')}}" class="btn-forget">ลืมรหัสผ่าน</a>
-                            <a href="{{ url('std/login/register')}}" class="btn-regis">ลงทะเบียน</a>
+                            <a href="{{ url('/register')}}" class="btn-regis">ลงทะเบียน</a>
                         </div>
                     </div>
                     <div class="forms-footer">
