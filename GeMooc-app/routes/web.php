@@ -29,9 +29,10 @@ Route::get('course/{content}/editor', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
 });
 
-Route::get('admin', function(){
-    return view('admin-teach.webapp.content.admin.Admin');
-});
+// owl admin route
+// Route::get('admin', function(){
+//     return view('admin-teach.webapp.content.admin.Admin');
+// });
 
 /**
  *  all test route
@@ -164,6 +165,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::resource('/teach', 'backend\teachController');
         Route::resource('/question', 'backend\questionController');
         Route::resource('/student', 'backend\studentController');
+        Route::resource('/admin', 'admin');
 
         /**
          * Route course
