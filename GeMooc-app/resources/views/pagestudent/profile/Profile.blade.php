@@ -10,6 +10,15 @@
                 width="100" alt="">
             <a href="">picture profile</a>
         </div>
-        <div class="forms-profile-content"></div>
+        <div class="forms-profile-content">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,13 +1,13 @@
 @extends('admin-teach.webapp.content.Index')
 
-@section('links')
+@push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
-@endsection
+@endpush
 
 @section('main-content')
 <div class="offset-md-4 col-md-4">
     <div class="text-center">
-            <h2 style="border-bottom:2px solid gray;padding:10px;">รายงานปัญหา</h2>
+        <h2 style="border-bottom:2px solid gray;padding:10px;">รายงานปัญหา</h2>
     </div>
 </div>
 <div class="card bg-card">
@@ -22,22 +22,58 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                $i = 0;
+                @endphp
+                @foreach ($reports as $report)
+                @php
+                    $user = DB::select('select * from users where id = ?', [$report->user_id]);
+                @endphp
                 <tr class="text-center">
-                    <th scope="row">1</th>
-                    <td>เพิ่มบทเรียนไม่ได้</td>
-                    <td>ดร.หุดา วงษ์ยิ้ม</td>
-                    <td><a href="#">ผู้สอน <i class="fas fa-chevron-down text-right"></i></a></td>
+                    <th scope="row">{{++$i}}</th>
+                    <td>{{$report->title}}</td>
+                    <td>{{$user[0]->name}}</td>
+                    <td><a onclick="openModal({{ $report }})" href="#">{{$user[0]->type_user}} <i class="fas fa-chevron-down text-right"></i></a></td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 </div>
 @endsection
 
+@section('modal')
+<div id="tmpModalToHere"></div>
+@endsection
+
 @section('js')
-    <script>
-        $(document).ready(function () {
-            $('#tableReport').DataTable();
+<script>
+
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
-    </script>
+    });
+
+    const openModal = (obj) => {
+        $.get("/report/"+obj.id,
+            {obj:obj},
+            function (response, textStatus, jqXHR) {
+                console.log(response);
+                $('#tmpModalToHere').html(response);
+                $('#showReport').modal('show');
+            },
+        ).then((result)=> {
+            $('#tmpModalToHere').html(response);
+            $('#showReport').modal('show');
+        });
+    };
+
+    $(document).ready(function () {
+        $('#tableReport').DataTable();
+    });
+
+</script>
 @endsection

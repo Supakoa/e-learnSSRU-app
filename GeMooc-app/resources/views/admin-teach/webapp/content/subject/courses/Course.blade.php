@@ -2,6 +2,9 @@
 @section('background')
 {{url('storage/'.$subject->image)}}\
 @endsection
+@push('links')
+
+@endpush
 @php
 function formatDateThat($strDate)
 {
@@ -101,14 +104,56 @@ return "$strDay $strMonthThai $strYear";
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Course</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="course-head">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Course</h5>
+                </div>
             </div>
             <div class="modal-body">
                 <form action="{{url('/course')}}" method="post" enctype='multipart/form-data' id="course_form">
                     @csrf
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="courseName">ชื่อคอร์ส</label>
+                                <input id="courseName" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="courseOpen">เปิดรับสมัคร</label>
+                                        <input id="courseOpen" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="startDate">วันที่เปิดรับสมัคร</label>
+                                        <input id="startDate" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="endDate">วันที่ปิดรับสมัคร</label>
+                                        <input class="form-control" id="endDate" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+
+
+
                     <input type="hidden" name="sub_id" value="{{$subject->id}}">
                     <div class="form-group">
                         <label for="name">Course Name</label>
@@ -139,7 +184,7 @@ return "$strDay $strMonthThai $strYear";
 @section('js')
 <script>
     $(document).ready(function () {
-        ScrollReveal().reveal('.card-subject', { interval: 100 });
+        // ScrollReveal().reveal('.card-subject', { interval: 100 });
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -177,41 +222,6 @@ return "$strDay $strMonthThai $strYear";
             }
         });
     }
-
-    // $('.responsive').slick({
-    //     dots: true,
-    //     infinite: false,
-    //     speed: 300,
-    //     slidesToShow: 4,
-    //     slidesToScroll: 4,
-    //     responsive: [{
-    //             breakpoint: 1024,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 3,
-    //                 infinite: true,
-    //                 dots: true
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 600,
-    //             settings: {
-    //                 slidesToShow: 2,
-    //                 slidesToScroll: 2
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 480,
-    //             settings: {
-    //                 slidesToShow: 1,
-    //                 slidesToScroll: 1
-    //             }
-    //         }
-    //         // You can unslick at a given breakpoint now by adding:
-    //         // settings: "unslick"
-    //         // instead of a settings object
-    //     ]
-    // });
 
 </script>
 @endsection

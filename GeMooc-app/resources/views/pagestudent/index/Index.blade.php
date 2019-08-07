@@ -32,7 +32,10 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">แก้ไขโปรไฟล์</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">ออกจากระบบ</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ออกจากระบบ</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
         </li>
     </ul>
@@ -171,7 +174,6 @@
         dots: true,
         infinite: false,
         respondTo: 'window',
-        // centerMode:true,
         centerPadding:'60px',
         speed: 300,
         slidesToShow: 4,

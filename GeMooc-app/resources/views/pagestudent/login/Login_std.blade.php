@@ -68,6 +68,10 @@
 </div>
 {{-- ลงชื่อเข้าใช้ --}}
 
+{{-- แก้ไขโปรไฟล์ --}}
+@include('pagestudent.profile.Profile')
+{{-- แก้ไขโปรไฟล์ --}}
+
 <div id="section2">
     <div class="container-header">
         คอร์สเรียนออนไลน์ฟรีที่สวนสุนันทา | www.mooc.ssru.ac.th
@@ -82,8 +86,11 @@
         </p>
     </div>
 </div>
+
+
+
 {{-- วิชา --}}
-<div id="section3">
+{{-- <div id="section3">
     <div class="bg-blur"></div>
     <nav>
         <div class="logo">
@@ -112,9 +119,7 @@
             <div class="line3"></div>
         </div>
     </nav>
-    {{-- แก้ไขโปรไฟล์ --}}
-    @include('pagestudent.profile.Profile')
-    {{-- แก้ไขโปรไฟล์ --}}
+
     <div class="section-header">
         <p>หลักสูตรที่เปิดสอน</p>
         <div class="section-underline"></div>
@@ -144,7 +149,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 {{-- วิชา --}}
 
 @endsection
@@ -156,11 +161,11 @@
         $('.forms-forget-modal').css('margin-left', '0');
         // $('nav').css('display', 'none');
     });
-    $(document).ready(function () {
-        $('.your-class').slick({
-            centerMode: true
-        });
-    });
+    // $(document).ready(function () {
+    //     $('.your-class').slick({
+    //         centerMode: true
+    //     });
+    // });
     $('.forms-forget-close').click(function (e) {
         e.preventDefault();
         $('.forms-forget-modal').css('margin-left', '-100%');
@@ -189,8 +194,6 @@
             slidesToScroll: 1,
             focusOnSelect: true,
             touchMove: true,
-            // autoplay: true,
-            // autoplaySpeed: 3000,
             responsive: [{
                     breakpoint: 768,
                     settings: {
@@ -212,6 +215,5 @@
             ]
         });
     });
-
 </script>
 @endsection
