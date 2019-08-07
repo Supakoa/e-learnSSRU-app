@@ -9,20 +9,29 @@
         <i class="far fa-envelope"></i>
     </div>
     <div class="messageBox-content">
-        <section id="sec1">
-            <label for="content-header">หัวข้อปัญหา</label>
-            <input class="form-control" type="text" id="content-header">
-        </section>
-        <section id="sec2">
-            <label for="detail">คำอธิบายลักษณะ</label>
-            <textarea style="width:100%;" name="" id="detail" cols="30" rows="6"></textarea>
-        </section>
-        <section id="sec3">
-            <button type="submit">
-                <i class="fas fa-paper-plane"></i>
-                รายงาน
-            </button>
-        </section>
+        <form action="/report" method="post">
+            @csrf
+            @method('POST')
+
+            {{-- hidden item --}}
+            <input type="hidden" name="from_page" id="from_page" value="{{ url()->current() }}">
+            <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+
+            <section id="sec1">
+                <label for="content-header">หัวข้อปัญหา</label>
+                <input name="topic" class="form-control" type="text" id="content-header" required>
+            </section>
+            <section id="sec2">
+                <label for="detail">คำอธิบายลักษณะ</label>
+                <textarea name="description" style="width:100%;" name="" id="detail" cols="30" rows="6" required></textarea>
+            </section>
+            <section id="sec3">
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                    รายงาน
+                </button>
+            </section>
+        </form>
     </div>
 </div>
 
