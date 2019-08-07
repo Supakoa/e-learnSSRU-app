@@ -174,7 +174,6 @@
         dots: true,
         infinite: false,
         respondTo: 'window',
-        // centerMode:true,
         centerPadding:'60px',
         speed: 300,
         slidesToShow: 4,
