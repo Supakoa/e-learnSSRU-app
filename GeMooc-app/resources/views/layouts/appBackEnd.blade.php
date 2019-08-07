@@ -20,10 +20,8 @@
     <!-- CEFstyle -->
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}"> --}}
 
-    <!-- CEFstyle -->
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFstyle3.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceMain.css')}}">
-    @yield('links')
+
+    @stack('links')
 
     {{-- google font --}}
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
@@ -39,17 +37,13 @@
     {{-- sweetalert2 naja --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
-    {{--
-        messenger box
-    --}}
+    {{-- messenger box --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
-    {{--
-        plyr .js
-    --}}
+    {{-- plyr .js --}}
     <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 

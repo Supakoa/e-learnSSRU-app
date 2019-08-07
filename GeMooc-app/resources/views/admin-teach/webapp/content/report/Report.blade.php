@@ -1,8 +1,8 @@
 @extends('admin-teach.webapp.content.Index')
 
-@section('links')
+@push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
-@endsection
+@endpush
 
 @section('main-content')
 <div class="offset-md-4 col-md-4">
