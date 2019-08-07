@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('pagestudent.login.Register')
 
-@section('content')
+{{-- @section('content')
 <div class="container">
     <div class="row justify-content-start">
         <div class="col-md-8">
@@ -74,4 +74,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

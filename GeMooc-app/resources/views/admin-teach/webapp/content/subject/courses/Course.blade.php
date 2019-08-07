@@ -19,11 +19,13 @@ return "$strDay $strMonthThai $strYear";
 }
 @endphp
 @section('main-content')
+<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$subject->id)}}">{{$subject->name}}</a>
+
 <div class="main-content-header">
     <div class="row">
         <div class="col-md-4">
             <div class="text-left ml-5 mt-3">
-                <a href="#" class="ml-5 btn-back"><i class="fas fa-chevron-left"></i></a>
+                {{-- <i href="#" class="ml-5 btn-back"><i class="fas fa-chevron-left"></i></i> --}}
             </div>
         </div>
         <div class="col-md-4">

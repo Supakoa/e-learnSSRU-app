@@ -14,7 +14,10 @@ use function GuzzleHttp\json_decode;
 class Std_viewer extends Controller
 {
     public function Std_home(){
-        return view('std_viewer.std_home.index');
+        // old view
+        // return view('std_viewer.std_home.index');
+        // new view
+        return view('pagestudent.index.index');
     }
 
     public function all_subject(){
@@ -44,7 +47,6 @@ class Std_viewer extends Controller
             //เพิ่มหน้าลงทะเบียนด้วย
             $user->courses()->attach($course);
             return "Enroll";
-
         }
     }
 

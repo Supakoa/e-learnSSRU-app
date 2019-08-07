@@ -1,11 +1,12 @@
 @extends('layouts.appBackEnd')
 
 @section('wrap-body')
-    @include('pagestudent.navs.Navs_login')
-    {{-- ลืมรหัสผ่าน --}}
-    @include('pagestudent.login.Forget')
-    {{-- ลืมรหัสผ่าน --}}
-    @include('admin-teach.admin.login.LogInAT')
+@include('pagestudent.navs.Navs_login')
+{{-- ลืมรหัสผ่าน --}}
+@include('pagestudent.login.Forget')
+{{-- ลืมรหัสผ่าน --}}
+@include('admin-teach.webapp.login.LoginAT')
+{{-- @include('') --}}
 @endsection
 
 @section('js')

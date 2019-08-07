@@ -19,7 +19,8 @@ class studentController extends Controller
      */
     public function index()
     {
-        $user = DB::table('users')->where('type_user','student')->get();
+        // $user = DB::table('users')->where('type_user','student')->get();
+        $user = User::all()->where('type_user', 'student');
         return view('admin-teach.webapp.content.student.Student',compact('user'));
     }
 
@@ -82,7 +83,8 @@ class studentController extends Controller
     public function edit(Request $request)
     {
         $user = User::find($request->id);
-        return view('student.modal.editStudent')->with('user',$user);
+        // return view('student.modal.editStudent')->with('user',$user);
+        return view('admin-teach.webapp.content.student.modal.editStudent')->with('user',$user);
     }
 
     /**

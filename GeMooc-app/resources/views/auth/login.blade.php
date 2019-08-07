@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('admin-teach.webapp.login.Index')
 
-@section('content')
+{{-- @section('content')
 @if (Session::has('message'))
 <div class="alert alert-warning">{{ Session::get('message') }}<button type="button" class="close" data-dismiss="alert"
         aria-label="Close">
@@ -144,4 +144,4 @@
     })
 
 </script>
-@endsection
+@endsection --}}

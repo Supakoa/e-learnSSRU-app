@@ -5,11 +5,18 @@
         <div class="forms-forget-close"><i class="fas fa-times    "></i></div>
     </div>
     <div class="forms-forget-password">
-        <form action="" method="POST">
+        <form action="{{ route('password.email') }}" method="POST">
+            @csrf
             <label for="forget-password">รีเซ็ตรหัสผ่าน</label>
             <div class="forms-input">
                 <i class="fas fa-envelope"></i>
-                <input class="form-control" type="email" name="" id="forget-password" placeholder="อีเมล">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                 <button type="submit" class="forms-forget-btn">รีเซ็ตรหัสผ่าน</button>
             </div>
         </form>

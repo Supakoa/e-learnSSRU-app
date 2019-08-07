@@ -38,7 +38,7 @@ class VideoController extends Controller
         if($request->hasFile('videoSquare')){
             $file = $request->file('videoSquare');
             $filename = $file->getClientOriginalName();
-            $path = public_path()."/storage/videos";
+            $path = public_path()."\storage"."\\"."videos";
             $file->move($path, $filename);
         }
     }

@@ -45,12 +45,11 @@ Route::get('/email', function () {
 // Route::resource('/video', 'VideoController');
 
 //New STD-viewer
-Route::get('std/login/register', function(){
+Route::get('/register', function(){
     return view('pagestudent.login.Register');
 });
 // Route::get('test', 'test@export');
-
-Route::post('import', 'test@import');
+// Route::post('import', 'test@import');
 
 Route::get('std/login/workshop', function(){
     return view('pagestudent.index.Index');
@@ -70,6 +69,9 @@ Route::prefix('login')->group(function () {
 
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/std_view/course/quiz/previewquiz', 'Std_viewer@Std_quizPreview');
+
+    // video
+    Route::resource('/video', 'VideoController');
 
     // profile
     Route::post('/profile/updateImage', 'ProfileController@updatePhoto');

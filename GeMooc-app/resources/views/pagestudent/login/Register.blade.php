@@ -3,8 +3,11 @@
 @section('login')
 <div class="ce-bgimg" style="background-image:url('../../images/bg-register.jpg');">
     <div class="body-register">
+            @include('inc.alert')
+
         <div class="forms-register">
             <form action="{{ route('register') }}" method="post">
+                @csrf
                 <div class="register-title">
                     ลงทะเบียนเข้าสู่ระบบ
                     <div class="underline-title"></div>
@@ -25,7 +28,7 @@
                         <div class="col-md-12">
                             <label for="Email">อีเมลล์</label>
                             <i class="far fa-envelope"></i>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="Email" id="email" value="{{ old('email') }}" required autocomplete="email">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" required autocomplete="email">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -37,7 +40,7 @@
                         <div class="col-md-6">
                             <label for="pass">รหัสผ่าน</label>
                             <i class="fab fa-expeditedssl"></i>
-                            <input type="pass" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" id="pass">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" id="pass">
                             @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -46,7 +49,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="re-pass">ยืนยันรหัสผ่าน</label>
-                            <input type="pass" class="form-control" name="password_confirmation" required autocomplete="new-password" id="re-pass">
+                            <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" id="re-pass">
                         </div>
                     </div>
                     <div class="row" id="gen">

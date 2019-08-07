@@ -1,6 +1,6 @@
 @extends('admin-teach.webapp.content.Index')
 @section('background')
-{{url('storage/'.$course->image)}}
+{{url('storage/'.$course->image)}}\
 @endsection
 @section('links')
 <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
@@ -8,6 +8,16 @@
 @endsection
 @section('main-content')
 <div class="card p-4">
+        @php
+        $course = $quiz->content->lesson->course;
+        @endphp
+        <div>
+        <a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> /
+        <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a href="{{url('/course/'.$course->id)}}">{{$quiz->content->lesson->name}}</a> /
+        <a href="{{url('/quiz/'.$quiz->id)}}">{{$quiz->content->name}}</a> /
+        <a href="{{url('/quiz/'.$quiz->id.'/dashboard')}}">ภาพรวม</a>
+        </div>
+        <br>
     <div class="row" style="border-bottom:2px solid #707070">
         <div class="col-md-4">
             <div class="text-left"><a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a></div>
