@@ -65,7 +65,7 @@ class ReportController extends Controller
     public function show(report $report, Request $request)
     {
         $reports = report::find($report->id);
-        return view('report.modal.openReport')->with('reports',$reports);
+        return view('admin-teach.webapp.content.report.modal.openReport')->with('reports',$reports);
     }
 
     /**
