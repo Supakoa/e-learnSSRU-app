@@ -100,12 +100,9 @@ public function subject_csv() {
     $columnNames = ['ID', 'NAME'];//replace this with your own array of string column headers
     return self::getCsv($columnNames, $rows);
 }
-    public function export()
+    public function export($id)
     {
-        return Excel::download(new quizExport, 'quiz.xlsx');
-    //     return (new quizExport)->download('quiz.csv', \Maatwebsite\Excel\Excel::CSV, [
-    //         'Content-Type' => 'text/csv',
-    //   ]);
+        return (new quizExport($id))->download('quiz.xlsx');
     }
     public function import(Request $request)
     {
