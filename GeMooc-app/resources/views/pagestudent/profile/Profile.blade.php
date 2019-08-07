@@ -8,6 +8,15 @@
             <img src="https://cdn.pixabay.com/photo/2017/02/23/13/05/profile-2092113_960_720.png" height="100" width="100" alt="">
             <a href="">picture profile</a>
         </div>
-        <div class="forms-profile-content"></div>
+        <div class="forms-profile-content">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>

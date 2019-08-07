@@ -15,31 +15,15 @@ use Illuminate\Support\Str;
 use App\Mail\newMail;
 use App\Http\Controllers\laravelExcelTest;
 
-// //New STD-viewer
-// Route::get('std/login', function(){
-//     return view('pagestudent.login.Login_std');
-// });
+//New STD-viewer
+Route::get('std/login', function(){
+    return view('pagestudent.login.Login_std');
+});
 
 //New admin-teacher
-// Route::get('at/index', function(){
-//     return view('admin-teach.webapp.login.Index');
-// });
-
-// Route::get('at/index/admin', function(){
-//     return view('admin-teach.webapp.content.Index');
-// });
-
-// Route::get('at/index/admin/subject', function(){
-//     return view('admin-teach.webapp.content.subject.Subject');
-// });
-
-// Route::get('at/index/admin/subject/course', function(){
-//     return view('admin-teach.webapp.content.subject.courses.Course');
-// });
-
-// Route::get('at/index/admin/subject/course/content', function(){
-//     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
-// });
+Route::get('at/index', function(){
+    return view('admin-teach.webapp.login.Index');
+});
 
 Route::get('course/{content}/editor', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
