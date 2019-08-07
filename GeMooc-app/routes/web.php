@@ -37,7 +37,7 @@ Route::get('course/{content}/editor', function(){
 /**
  *  all test route
  * */
-Route::get('test', 'test_sumernote@index');
+Route::get('test/{id}', 'test@export');
 Route::get('/email', function () {
     return new newMail();
 });

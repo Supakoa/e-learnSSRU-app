@@ -1,5 +1,11 @@
 @extends('layouts.appBackEnd')
 
+@push('links')
+<!-- CEFstyle -->
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFstyle3.css')}}">
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceMain.css')}}">
+@endpush
+
 @section('wrap-body')
 <div class="ce-main">
     <nav>
