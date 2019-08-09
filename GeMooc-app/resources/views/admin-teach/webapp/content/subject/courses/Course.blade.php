@@ -3,7 +3,7 @@
 {{url('storage/'.$subject->image)}}\
 @endsection
 @push('links')
-
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
 @endpush
 @php
 function formatDateThat($strDate)
@@ -108,7 +108,7 @@ return "$strDay $strMonthThai $strYear";
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h5 class="modal-title" id="exampleModalLabel">Create Course</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มคอร์ส</h5>
                 </div>
             </div>
             <div class="modal-body">
@@ -146,9 +146,21 @@ return "$strDay $strMonthThai $strYear";
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="lession">บทเรียน</label>
+                                        <textarea class="form-control" name="" id="lession" rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
-
+                            <div class="bg-addimg">
+                                <button class="btn-addimg">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -190,7 +202,6 @@ return "$strDay $strMonthThai $strYear";
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
     });
 
     function edit_course(id) {

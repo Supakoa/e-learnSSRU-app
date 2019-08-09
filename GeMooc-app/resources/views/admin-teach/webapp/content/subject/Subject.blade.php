@@ -1,5 +1,9 @@
 @extends('admin-teach.webapp.content.Index')
 
+@push('links')
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
+@endpush
+
 @section('main-content')
 <div class="main-content-header">
     <p>วิชา</p>
