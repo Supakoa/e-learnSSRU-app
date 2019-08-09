@@ -111,7 +111,7 @@ return "$strDay $strMonthThai $strYear";
                     <h5 class="modal-title" id="exampleModalLabel">เพิ่มคอร์ส</h5>
                 </div>
             </div>
-            <div class="modal-body">
+            <div class="modal-body pl-5 pr-5">
                 <form action="{{url('/course')}}" method="post" enctype='multipart/form-data' id="course_form">
                     @csrf
                     <div class="row">
@@ -207,8 +207,6 @@ return "$strDay $strMonthThai $strYear";
         </div>
     </div>
 </div>
-
-
 @endsection
 @section('js')
 <script>
