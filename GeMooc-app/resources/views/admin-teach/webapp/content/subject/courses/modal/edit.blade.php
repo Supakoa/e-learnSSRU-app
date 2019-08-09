@@ -68,7 +68,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center p-4">
-                                <input type="file" hidden id="">
+                                    <input type="file" hidden id="">
                                     <button class="btn-upimg">เลือกไฟล์ภาพ</button>
                                 </div>
                             </div>
@@ -120,70 +120,66 @@
                         }
                         @endphp
                         <input class="tgl tgl-flat" id="cb4" name="status" {{$check}} form="course_form" value='1'
-                            type="checkbox" />
-                        <label class="tgl-btn" for="cb4"></label>
+        type="checkbox" />
+        <label class="tgl-btn" for="cb4"></label>
 
-                    </div>
-                    <div class="col-md-1 text-right">
-                        <button class="btn btn-outline-danger btn-sm" onclick="delete_course('{{$course->id}}')"><i
-                                class="fa fa-trash" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-                <form action="{{url('course/'.$course->id)}}" method="post" enctype='multipart/form-data'
-                    id="course_form">
-                    @csrf
-                    @method('PATCH')
-                    <div class="form-group">
-                        <label for="name">Course Name</label>
-                        <input type="text" class="form-control" name="name" value="{{$course->name}}"
-                            placeholder="Course Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="detail">Detail</label>
-                        <input type="text" class="form-control" name="detail" value="{{$course->detail}}"
-                            placeholder="Course Detail">
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col">
-                                <label for="name">Open</label>
-                                <input type="date" class="form-control" name="open" value="{{$course->open}}">
-                            </div>
-                            <div class="col">
-                                <label for="name">Close</label>
-                                <input type="date" class="form-control" name="close" value="{{$course->close}}">
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col">
-                                <label for="name">Total</label>
-                                <input type="number" class="form-control" name="total" value="{{$course->total}}"
-                                    placeholder="Course Name">
-                            </div>
-                            <div class="col">
-                                <label for="name">Cover Image</label>
-                                <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
-                                    placeholder="Image">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group text-center">
-                        <img src="{{url('/storage/'.$course->image)}}" alt="" width="100%" srcset="">
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="course_form">Save changes</button>
-            </div>
-        </div> --}}
     </div>
+    <div class="col-md-1 text-right">
+        <button class="btn btn-outline-danger btn-sm" onclick="delete_course('{{$course->id}}')"><i class="fa fa-trash"
+                aria-hidden="true"></i></button>
+    </div>
+</div>
+<form action="{{url('course/'.$course->id)}}" method="post" enctype='multipart/form-data' id="course_form">
+    @csrf
+    @method('PATCH')
+    <div class="form-group">
+        <label for="name">Course Name</label>
+        <input type="text" class="form-control" name="name" value="{{$course->name}}" placeholder="Course Name">
+    </div>
+    <div class="form-group">
+        <label for="detail">Detail</label>
+        <input type="text" class="form-control" name="detail" value="{{$course->detail}}" placeholder="Course Detail">
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <label for="name">Open</label>
+                <input type="date" class="form-control" name="open" value="{{$course->open}}">
+            </div>
+            <div class="col">
+                <label for="name">Close</label>
+                <input type="date" class="form-control" name="close" value="{{$course->close}}">
+            </div>
+        </div>
+
+
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <label for="name">Total</label>
+                <input type="number" class="form-control" name="total" value="{{$course->total}}"
+                    placeholder="Course Name">
+            </div>
+            <div class="col">
+                <label for="name">Cover Image</label>
+                <input type="file" class="form-control btn" style="padding:3px" name="cover_image" placeholder="Image">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group text-center">
+        <img src="{{url('/storage/'.$course->image)}}" alt="" width="100%" srcset="">
+    </div>
+
+</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary" form="course_form">Save changes</button>
+</div>
+</div> --}}
+</div>
 </div>
 <form action="{{url('course/'.$course->id)}}" method="post" id='form_del_Course'>
     @csrf
