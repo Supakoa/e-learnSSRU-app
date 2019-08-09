@@ -20,7 +20,7 @@
     <!-- CEFstyle -->
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}"> --}}
 
-
+    {{-- css --}}
     @stack('links')
 
     {{-- google font --}}
@@ -47,53 +47,57 @@
     <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
-    {{-- edit profile --}}
-    @stack('styleEditProfile')
-    @stack('scriptEditProfile')
+    {{-- edit profile
+        @stack('styleEditProfile')
+        @stack('scriptEditProfile') --}}
 
-    {{-- new-subject --}}
-    @stack('styleNewSubject');
-    @stack('scriptNewSubject');
+        {{-- new-subject
+            @stack('styleNewSubject')
+            @stack('scriptNewSubject') --}}
 
-    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
-</head>
+            <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
+        </head>
 
-<body>
-    <div class="wrap-container">
-        <div class="wrap-body">
-            <div class="ce-bgimg" style = 'background-image:url("@yield('background','https://www.beartai.com/wp-content/uploads/2016/12/bg-hero.png')")'>
-                <div class="bg-blur"></div>
-                    @yield('wrap-body')
+        <body>
+            <div class="wrap-container">
+                <div class="wrap-body">
+                    <div class="ce-bgimg" style = 'background-image:url("@yield('background','https://data.1freewallpapers.com/download/pine-forest-path.jpg')")'>
+                        <div class="bg-blur"></div>
+                        @yield('wrap-body')
+                    </div>
+                </div>
+                <div class="wrap-footer">
+                    <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
+                </div>
             </div>
-        </div>
-        <div class="wrap-footer">
-                <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-        </div>
-    </div>
 
 
-    @yield('modal')
-    <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
-    <script src="{{ asset('node_modules/popper.min.js')}}"></script>
-    <script src="https://unpkg.com/scrollreveal@4"></script>
-    <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
-    <script src="{{ asset('node_modules/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
-    <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
-    <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+            @yield('modal')
+            <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
+            <script src="{{ asset('node_modules/popper.min.js')}}"></script>
+            <script src="https://unpkg.com/scrollreveal@4"></script>
+            <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+            <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
+            <script src="{{ asset('node_modules/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+            <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+            <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+            {{--
+                script file to here
+            --}}
+            @stack('script')
 
-    <!-- CEFstyle -->
-    <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-    <script>
-        wow = new WOW({
-            boxClass: 'wow', // default
-            animateClass: 'animated', // default
-            offset: 0, // default
-            mobile: true, // default
-            live: true // default
-        })
-        wow.init();
+            <!-- CEFstyle -->
+            <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
+            <script>
+                wow = new WOW({
+                    boxClass: 'wow', // default
+                    animateClass: 'animated', // default
+                    offset: 0, // default
+                    mobile: true, // default
+                    live: true // default
+                })
+                wow.init();
 
         function goBack() {
             window.history.back();

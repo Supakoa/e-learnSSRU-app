@@ -1,11 +1,12 @@
 @extends('admin-teach.webapp.content.Index')
 
-@push('styleNewSubject')
+@push('link')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/subject/new/new.css') }}">
 @endpush
 
-@push('scriptNewSubject')
+@push('script')
 <script src="{{ asset('node_modules/CEFstyle/subject/new/new.js') }}"></script>
+@endpush
 
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">

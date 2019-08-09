@@ -118,7 +118,7 @@ return "$strDay $strMonthThai $strYear";
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="courseName">ชื่อคอร์ส</label>
-                                <input id="courseName" class="form-control" type="text">
+                                <input id="courseName" name="name" class="form-control" type="text">
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@ return "$strDay $strMonthThai $strYear";
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="lession">บทเรียน</label>
-                                        <textarea class="form-control" name="" id="lession" rows="4"></textarea>
+                                        <textarea class="form-control" name="detail" id="lession" rows="4"></textarea>
                                     </div>
                                 </div>
                             </div>
