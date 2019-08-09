@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-4 offset-md-8">
             <div class="text-right">
-                <button class="btn-add-people">
+                <button class="btn-add-people" data-toggle="modal" data-target="#createNewAdmin">
                     <i class="fas fa-user-plus"></i>
                 </button>
             </div>
@@ -35,29 +35,131 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                $i = 0;
+                @endphp
+                @foreach ($users as $user)
                 <tr class="text-center">
-                    <th scope="row">1</th>
+
+                    {{--
+                            send form id to delete record.
+                        --}}
+                    <form action="{{url('/admin/'.$user->id) }}" id="formDelete{{ $user->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="id" id="id" value="{{ $user->id }}">
+                    </form>
+
+                    <th scope="row">{{ ++$i }}</th>
                     <td>
-                        ผู้ดูแลระบบ1
+                        {{ $user->name }}
                     </td>
                     <td>
-                        admin123@gmail.com
+                        {{ $user->email}}
                     </td>
                     <td>
-                        <button class="btn-edit-list"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn-delete-list"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <button onclick="openEditModal({{$user->id}})" class="btn-edit-list"><i
+                                class="fas fa-pencil-alt"></i></button>
+                        <button onclick="deleteAdmin({{$user->id}})" class="btn-delete-list"><i class="fa fa-trash"
+                                aria-hidden="true"></i></button>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 </div>
 @endsection
 
+{{--
+    modal create new teach
+--}}
+@section('modal')
+<div class="modal fade" id="createNewAdmin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>create new user</h1>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/create" id="createAdmin" enctype="multipart/form-data" method="POST">
+                    @csrf
+                    @method('GET')
+
+                    <p>Username</p>
+                    <input class="form-control mb-1" type="text" name="username" id="username">
+                    <p>Password</p>
+                    <input type="text" class="form-control mb-1" name="password" id="password">
+                    <p>Confirm Password</p>
+                    <input type="text" class="form-control mb-1" name="confirmPassword" id="confirmPassword">
+                    <p>Email</p>
+                    <input type="text" class="form-control mb-1" name="email" id="email">
+                    <p>Confirm Email</p>
+                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button form="createAdmin" type="submit" class="btn btn-warning">create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tmpModalToHere"></div>
+
+@endsection
+
 @section('js')
 <script>
     $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
+    /**
+        function when onclick will delete with id.
+    */
+    const deleteAdmin = (obj) => {
+        Swal.fire({
+            title: 'ยืนยันการลบ?',
+            text: "ข้อมูลจะถูกลบออกจากฐานข้อมูล",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ลบ',
+            cancelButtonText: 'ยกเลิก',
+        }).then((result) => {
+            if (result.value) {
+                $('#formDelete' + obj).submit();
+            }
+        });
+    };
+
+    /**
+        open modal
+    */
+    const openEditModal = (id) => {
+        alert(id);
+        $.post("/admin/" + id + "/editModal", {
+                id: id
+            },
+            function (response, textStatus, jqXHR) {
+                $('#tmpModalToHere').html(response);
+                $('#editAdmin').modal('show');
+            }
+        ).then((result) => {
+            $('#tmpModalToHere').html(response);
+            $('#editAdmin').modal('show');
+        });
+    }
+
+    $(document).ready(function () {
         $('#tableAdmin').DataTable();
     });
+
 </script>
 @endsection

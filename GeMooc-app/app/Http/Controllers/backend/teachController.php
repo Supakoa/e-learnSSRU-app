@@ -124,7 +124,7 @@ class teachController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $result = DB::table('users')->where('id', '=', $id)->delete();
 
         return redirect('/teach');

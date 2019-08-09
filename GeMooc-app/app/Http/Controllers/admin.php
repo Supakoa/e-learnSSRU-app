@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -10,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class studentController extends Controller
+class admin extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +18,8 @@ class studentController extends Controller
      */
     public function index()
     {
-        // $user = DB::table('users')->where('type_user','student')->get();
-        $user = User::all()->where('type_user', 'student');
-        return view('admin-teach.webapp.content.student.Student',compact('user'));
+        $users = User::all()->where('type_user', 'admin');
+        return view('admin-teach.webapp.content.admin.Admin',compact('users'));
     }
 
     /**
@@ -40,7 +38,7 @@ class studentController extends Controller
         $sekai = User::create([
             'name' => $data['username'],
             'email' => $data['email'],
-            'type_user' => 'student',
+            'type_user' => 'admin',
             'password' => Hash::make($data['password']),
         ]);
 
@@ -48,8 +46,7 @@ class studentController extends Controller
             'user_id' => $sekai->id,
         ]);
 
-        return redirect('/student');
-
+        return redirect('/admin');
     }
 
     /**
@@ -83,8 +80,7 @@ class studentController extends Controller
     public function edit(Request $request)
     {
         $user = User::find($request->id);
-        // return view('student.modal.editStudent')->with('user',$user);
-        return view('admin-teach.webapp.content.student.modal.editStudent')->with('user',$user);
+        return view('admin-teach.webapp.content.admin.modal.editAdmin')->with('user',$user);
     }
 
     /**
@@ -104,7 +100,7 @@ class studentController extends Controller
         $user->name = $data['username'];
         $user->email = $data['email'];
         $user->save();
-        return redirect('/student');
+        return redirect('/admin');
     }
 
     /**
@@ -116,7 +112,6 @@ class studentController extends Controller
     public function destroy($id)
     {
         $result = DB::table('users')->where('id', '=', $id)->delete();
-
-        return redirect('/student');
+        return redirect('/admin');
     }
 }
