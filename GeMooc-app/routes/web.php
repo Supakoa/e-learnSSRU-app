@@ -178,18 +178,17 @@ Route::group(['middleware' => 'auth'], function (){
         /**
          * Route teach
          */
-        // Route::get('/teach', 'teach@Teach');
-        // Route::post('/teach/create', 'teach@createTeach');
-        // Route::delete('/teach/{user}', 'teach@deleteTeach');
         Route::post('teach/{user}/editModal', 'backend\teachController@edit');
 
         /**
          * Route Student
          */
-        // Route::get('/student', 'student@Student');
-        // Route::post('student/create', 'student@createStudent');
-        // Route::delete('student/{user}', 'student@deleteStudent');
         Route::post('student/{user}/editModal', 'backend\studentController@edit');
+
+        /**
+         * Route admin
+         */
+        Route::post('admin/{id}/editModal', 'admin@edit');
 
 
         // Administrator & SuperAdministrator Control Panel Routes

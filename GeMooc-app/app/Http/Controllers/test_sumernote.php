@@ -13,7 +13,6 @@ class test_sumernote extends Controller
 {
     public function index()
     {
-        return view('admin-teach.webapp.content.admin.Admin');
+        return view('admin-teach.webapp.content.subject.Subject');
     }
-
 }
