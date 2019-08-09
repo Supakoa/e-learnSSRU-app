@@ -3,8 +3,12 @@
 @push('styleNewSubject')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/subject/new/new.css') }}">
 @endpush
+
 @push('scriptNewSubject')
 <script src="{{ asset('node_modules/CEFstyle/subject/new/new.js') }}"></script>
+
+@push('links')
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
 @endpush
 
 @section('main-content')

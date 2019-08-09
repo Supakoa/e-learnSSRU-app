@@ -1,5 +1,10 @@
 @extends('layouts.appBackEnd')
 
+@push('links')
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFstyle3.css')}}">
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFlogIn.css')}}">
+@endpush
+
 @section('wrap-body')
 @include('pagestudent.navs.Navs_login')
 {{-- ลืมรหัสผ่าน --}}
