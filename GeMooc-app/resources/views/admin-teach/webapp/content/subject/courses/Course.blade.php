@@ -155,18 +155,17 @@ return "$strDay $strMonthThai $strYear";
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 p-5">
                             <div class="bg-addimg">
+                                <input type="file" hidden id="">
                                 <button class="btn-addimg">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
-
-
-
-                    <input type="hidden" name="sub_id" value="{{$subject->id}}">
+                    {{-- อันเก่า --}}
+                    {{-- <input type="hidden" name="sub_id" value="{{$subject->id}}">
                     <div class="form-group">
                         <label for="name">Course Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Course Name">
@@ -180,12 +179,30 @@ return "$strDay $strMonthThai $strYear";
                         <label for="name">Cover Image</label>
                         <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
                             placeholder="Image">
-                    </div>
+                    </div> --}}
+                    {{-- อันเก่า --}}
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="course_form">Save changes</button>
+                <div class="row p-4">
+                    <div class="col-md-6 text-information">
+                        <div class="row">
+                            <div class="offset-md-8 col-md-4">
+                                <div class="custom-control custom-switch p-3">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                    <label class="custom-control-label" for="customSwitch1">ออนไลน์</label>
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            *หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจตุรัส
+                            เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณพอดี
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" id="submit-course">บันทึก</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
