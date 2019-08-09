@@ -1,5 +1,12 @@
 @extends('admin-teach.webapp.content.Index')
 
+@push('styleNewSubject')
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/subject/new/new.css') }}">
+@endpush
+
+@push('scriptNewSubject')
+<script src="{{ asset('node_modules/CEFstyle/subject/new/new.js') }}"></script>
+
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
 @endpush
@@ -37,9 +44,30 @@
     </div>
 </div>
 @endsection
+
 @section('modal')
+<div class="modal fade" id="newSubject">
+    {{-- set center --}}
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="newModalBody">
+            <div class="modal-header">
+                <h3>เพิ่มรายวิชา</h3>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <p>ชื่อวิชา</p>
+                <input type="text" name="" id="">
+                <p>รายระเอียด</p>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <input type="file" name="" id="">
+                <p>*หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจัตุรัส เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณภาพดี</p>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="sub_modal"></div>
 @endsection
+
 @section('js')
 <script>
 
@@ -50,6 +78,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+        $('#newSubject').modal('show');
     });
 
     function edit_subject(id) {

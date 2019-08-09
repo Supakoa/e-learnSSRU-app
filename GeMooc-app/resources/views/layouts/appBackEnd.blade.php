@@ -51,6 +51,10 @@
     @stack('styleEditProfile')
     @stack('scriptEditProfile')
 
+    {{-- new-subject --}}
+    @stack('styleNewSubject');
+    @stack('scriptNewSubject');
+
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
 </head>
 
