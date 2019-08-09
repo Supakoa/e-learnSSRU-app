@@ -128,7 +128,7 @@ return "$strDay $strMonthThai $strYear";
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="courseOpen">เปิดรับสมัคร</label>
-                                        <input id="courseOpen" class="form-control" type="text">
+                                        <input id="courseOpen" class="form-control" name="total" type="text">
                                     </div>
                                 </div>
                             </div>
@@ -136,13 +136,13 @@ return "$strDay $strMonthThai $strYear";
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="startDate">วันที่เปิดรับสมัคร</label>
-                                        <input id="startDate" class="form-control" type="text">
+                                        <input id="startDate" class="form-control" name="open" type="text">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="endDate">วันที่ปิดรับสมัคร</label>
-                                        <input class="form-control" id="endDate" type="text">
+                                        <input class="form-control" id="endDate" name="close" type="text">
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@ return "$strDay $strMonthThai $strYear";
                         </div>
                         <div class="col-md-6 p-5">
                             <div class="bg-addimg">
-                                <input type="file" hidden id="">
+                                <input type="file" name="cover_image" hidden id="">
                                 <button class="btn-addimg">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
