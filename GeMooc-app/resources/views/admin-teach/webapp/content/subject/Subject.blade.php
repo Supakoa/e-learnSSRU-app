@@ -1,15 +1,12 @@
 @extends('admin-teach.webapp.content.Index')
 
-@push('link')
-<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/subject/new/new.css') }}">
-@endpush
-
 @push('script')
 <script src="{{ asset('node_modules/CEFstyle/subject/new/new.js') }}"></script>
 @endpush
 
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/subject/new/new.css') }}">
 @endpush
 
 @section('main-content')
@@ -34,7 +31,8 @@
                 <div class="card-subject-body">
                     <p>{{$subject->name}}</p>
                     <div class="section-subject-btn">
-                        <button class="btn-subject" onclick="window.location.href='{{url('subject/'.$subject->id)}}'">ไปที่วิชา</button>
+                        <button class="btn-subject"
+                            onclick="window.location.href='{{url('subject/'.$subject->id)}}'">ไปที่วิชา</button>
                         <i onclick="edit_subject({{$subject->id}})" class="fas fa-cog btn-cogs"></i>
                     </div>
                 </div>
@@ -47,31 +45,62 @@
 @endsection
 
 @section('modal')
+<div id="sub_modal"></div>
 <div class="modal fade" id="newSubject">
     {{-- set center --}}
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="newModalBody">
             <div class="modal-header">
-                <h3>เพิ่มรายวิชา</h3>
-                <hr>
+                <div class="sub-head">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5>เพิ่มรายวิชา</h5>
+                </div>
             </div>
             <div class="modal-body">
-                <p>ชื่อวิชา</p>
-                <input type="text" name="" id="">
-                <p>รายระเอียด</p>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-                <input type="file" name="" id="">
-                <p>*หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจัตุรัส เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณภาพดี</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="AddName">ชื่อวิชา</label>
+                            <input class="form-control" type="text" name="" id="AddName">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="AddDetail">รายระเอียด</label>
+                            <textarea name="" class="form-control" id="AddDetail" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bg-addimg">
+                            <button class="btn-addimg">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <input type="file" hidden name="" id="">
+                <div class="container text-left p-3">
+                    <p class="text-note">*หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจัตุรัส
+                        เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณภาพดี</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="cebtn-save">บักทึก</button>
             </div>
         </div>
     </div>
 </div>
-<div id="sub_modal"></div>
 @endsection
 
 @section('js')
 <script>
-
     $(document).ready(function () {
         // ScrollReveal().reveal('.card-subject', { interval: 100 });
         $.ajaxSetup({
