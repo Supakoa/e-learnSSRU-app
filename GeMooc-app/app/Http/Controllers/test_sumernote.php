@@ -13,6 +13,6 @@ class test_sumernote extends Controller
 {
     public function index()
     {
-        return view('admin-teach.webapp.content.subject.Subject');
+        return view('std_viewer.std_subject.std_course.content.CT_video');
     }
 }

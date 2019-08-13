@@ -287,15 +287,19 @@
 
         if ($(this).val() == '1') {
             $('#typeVideo').show();
+            $('#content_url').show();
         } else {
             $('#typeVideo').hide();
+            $('#content_url').hide();
         }
     });
 
     $('input[name=videoType]').change(function (e) {
         e.preventDefault();
 
-        let videoType = $("input[name=videoType]").val();
+        $('#content_url').show();
+
+        let videoType = $('input[name=videoType]:checked').val();
 
         switch (videoType) {
             case 'youtube':
@@ -305,7 +309,7 @@
                 break;
 
             case 'file':
-                $('#content_url').html('<input type="file" class="form-control" name="videoFile" id="videoFile" required>');
+                $('#content_url').html('<label for="url">File Video</label><input type="file" class="form-control" name="videoFile" id="videoFile" required>');
                 break;
         }
     });

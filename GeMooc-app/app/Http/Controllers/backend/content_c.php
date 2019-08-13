@@ -6,6 +6,7 @@ use App\content as content;
 use App\adjust as adjust;
 use App\article as article;
 use App\quiz as quiz;
+use App\video as video;
 use Illuminate\Http\Request;
 
 class content_c extends Controller
@@ -46,7 +47,7 @@ class content_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'type' => 'required'
-        ]) ;
+        ]);
 
         // Create content
         $content = new content;
@@ -54,8 +55,25 @@ class content_c extends Controller
         $content->type = $request->input('type');
         $content->lesson_id = $request->input('lesson_id');
         $content->save();
+
         if($content->type=='1'){
-            $content->detail = $request->input('url');
+            $newVideo = new video();
+            $newVideo->name = $request->name;
+            $newVideo->type = $request->videoType;
+
+            if ($request->videoType == 'url') {
+                $content->data = $request->url;
+            } else {
+                $file = $request->file('videoFile');
+                $filename = $file->getClientOriginalName();
+                $path = public_path()."\storage"."\\"."videos";
+                $file->move($path, $filename);
+
+                $newVideo->data = $path.'\\'.$filename;
+            }
+            $newVideo->poster = '';
+            $newVideo->save();
+            $content->detail = $newVideo->id;
         }elseif($content->type=='2'){
             $article = new article;
             $article->rawdata = "กรุณาเพิ่มเนื้อหา";
