@@ -158,7 +158,7 @@ return "$strDay $strMonthThai $strYear";
                         <div class="col-md-6 p-5">
                             <div class="bg-addimg">
                                 <input type="file" name="cover_image" hidden id="">
-                                <button class="btn-addimg">
+                                <button class="btn-addimg" type="button">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
