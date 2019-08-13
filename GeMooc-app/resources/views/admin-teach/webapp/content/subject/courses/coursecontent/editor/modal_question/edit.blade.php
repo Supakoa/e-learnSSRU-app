@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('question'.$qusetion->id)}}" method="post" id="question_edit_form" enctype='multipart/form-data'>
+                <form action="{{url('question/'.$question->id)}}" method="post" id="question_edit_form" enctype='multipart/form-data'>
                     @csrf
                     @method('PATCH')
                     <div class="ce-container">
@@ -26,7 +26,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <img src="{{url('/storage/'.$question->image)}}" alt="" height="500px" width="auto" srcset="">
+
+                                        <img src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}" alt="" height="300px" width="auto" srcset="">
                                     </div>
                                     <div class="row mb-5">
                                         <div class="offset-md-3 col-md-6">
@@ -48,9 +49,9 @@
                                                             <input name="answer[]" type="text" value="{{$answer->name}}" class="form-control">
                                                             </div>
                                                             @php
-                                                                $check = ''
+                                                                $check = '';
                                                                 if($answer->correct!=0){
-                                                                    $check = 'checked'
+                                                                    $check = 'checked';
                                                                 }
                                                             @endphp
                                                             <div class="col-md-2">

@@ -42,6 +42,11 @@
             <button class="btn-add-quiz" data-toggle="modal" data-target="#Add_Modal">
                 <i class="fas fa-folder-plus"></i>
             </button>
+
+        <a href="{{url('quiz/export/'.$quiz->id)}}"><button>Export</button></a>
+        <button class="btn-import-quiz" data-toggle="modal" data-target="#import_Modal">
+           Import
+        </button>
         </div>
     </div>
     <div class="text-center">
@@ -65,7 +70,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 pl-1 pb-1 pt-0 text-center">
-                    <img class="rounded mx-auto d-block w-75 img-fluid" src="{{url('storage/'.$question->image)}}"
+                    <img class="rounded mx-auto d-block w-75 img-fluid" src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}"
                         width="auto" height="auto">
                 </div>
                 <div class="col-md-8" id="question">
@@ -270,6 +275,31 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" form="edit_quiz" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="import_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleName" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleName">Import quiz</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ce-container">
+                    <form action="{{url('quiz/import/'.$quiz->id)}}" method="post" enctype="multipart/form-data" id='import_quiz'>
+                        @csrf
+                        <input type="file" name="import" id="">
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" form="import_quiz" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

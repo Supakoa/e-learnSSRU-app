@@ -203,6 +203,9 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::post('course/modal/edit', 'backend\course_c@modal_edit');
         Route::post('question/modal/edit', 'backend\questionController@modal_edit');
+        Route::get('quiz/export/{id}', 'backend\quizController@export');
+        Route::post('quiz/import/{id}', 'backend\quizController@import');
+
 
     });
 

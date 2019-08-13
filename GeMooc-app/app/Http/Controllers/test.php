@@ -107,7 +107,7 @@ public function subject_csv() {
     public function import(Request $request)
     {
         // dd($request->file('file'));
-        Excel::import(new QuizImport,$request->file('file'));
+        Excel::import(new QuizImport,$request->file('import'));
 
         return redirect('/')->with('success', 'All good!');
     }
