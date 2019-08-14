@@ -57,12 +57,12 @@ class content_c extends Controller
         $content->save();
 
         if($content->type=='1'){
-            $newVideo = new video();
+            $newVideo = new video;
             $newVideo->name = $request->name;
             $newVideo->type = $request->videoType;
 
-            if ($request->videoType == 'url') {
-                $content->data = $request->url;
+            if ($request->videoType == 'youtube') {
+                $newVideo->data = $request->url;
             } else {
                 $file = $request->file('videoFile');
                 $filename = $file->getClientOriginalName();
@@ -111,7 +111,6 @@ class content_c extends Controller
     public function show($id)
     {
         $content = content::find($id);
-        dd($content);
         switch ($content->type) {
             case 1:
                 return redirect('video/'.$content->detail);
