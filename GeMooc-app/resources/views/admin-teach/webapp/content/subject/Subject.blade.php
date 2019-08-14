@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row m-3">
         <div class="offset-md-8 col-md-4 text-right">
-            <button id="add_subject">เพิ่มวิชา</button>
+            <button onclick="add_subject()" id="add_subject">เพิ่มวิชา</button>
         </div>
     </div>
     <div class="row">
@@ -109,8 +109,11 @@
             }
         });
 
-        $('#newSubject').modal('show');
     });
+
+    function add_subject(){
+        $('#newSubject').modal('show');
+    }
 
     function edit_subject(id) {
         $.ajax({

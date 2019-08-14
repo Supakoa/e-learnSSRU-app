@@ -49,8 +49,8 @@ return "$strDay $strMonthThai $strYear";
                     class="fas fa-folder-plus"></i></button>
             @endif
             @if ($adminOnly)
-            <button class="btn-edit send_ajax"><i class="fas fa-cog "
-                    onclick="edit_subject({{$subject->id}})"></i></button>
+            <button class="btn-edit send_ajax"
+            onclick="edit_subject({{$subject->id}})"><i class="fas fa-cog "></i></button>
             @endif
         </div>
     </div>
