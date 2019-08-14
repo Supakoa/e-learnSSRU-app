@@ -1,7 +1,9 @@
 @extends('admin-teach.webapp.content.Index')
+
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
+
 @section('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceVideo.css')}}">
 @endsection
@@ -24,12 +26,52 @@
         <div class="text-right mb-3">
             <button class="btn-edit-video"><i class="fas fa-cog    "></i></button>
         </div>
-        <div class="container-video">
+        {{-- owl iframe --}}
+        {{-- <div class="container-video">
             <div class="embed-responsive embed-responsive-16by9 ce-video-content">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/j0BXziyrFIo?list=RDf8MxUZBCvIs"
-                    allowfullscreen></iframe>
+                <iframe id="showVideo" class="embed-responsive-item" src="" allowfullscreen></iframe>
+            </div>
+        </div> --}}
+        <div class="container-video">
+            <div class="row justify-content-center mb-5">
+                <div class="col">
+                    <div class="plyr__video-embed" id="player">
+                        <iframe id="showVideo" src="/storage/videos/vardroopsija.mp4" allowfullscreen allowtransparency
+                            allow="autoplay"></iframe>
+                    </div>
+                    <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="aSQwI3rDETk"></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    let typeVideo = {!! $video->type == 'file' !!};
+    let dataVideo = {!! $video->data !!};
+
+    if (typeVideo) {
+        alert(dataVideo);
+        $('#showVideo').attr('src', '/'+dataVideo);
+    }
+
+    function getId(url) {
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+
+        if (match && match[2].length == 11) {
+            return match[2];
+        } else {
+            return 'error';
+        }
+    }
+
+    var videoId = getId('http://www.youtube.com/watch?v=zbYf5_S7oJo');
+
+    var iframeMarkup = '<iframe width="560" height="315" src="//www.youtube.com/embed/' +
+        videoId + '" frameborder="0" allowfullscreen></iframe>';
+
+</script>
 @endsection

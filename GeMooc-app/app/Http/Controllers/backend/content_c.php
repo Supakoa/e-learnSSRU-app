@@ -69,7 +69,7 @@ class content_c extends Controller
                 $path = public_path()."\storage"."\\"."videos";
                 $file->move($path, $filename);
 
-                $newVideo->data = $path.'\\'.$filename;
+                $newVideo->data = '/storage/videos/'.$filename;
             }
             $newVideo->poster = '';
             $newVideo->save();
@@ -111,10 +111,11 @@ class content_c extends Controller
     public function show($id)
     {
         $content = content::find($id);
+        dd($content);
         switch ($content->type) {
             case 1:
-                // return redirect('video/'.$content->detail);
-                return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Videocontent');
+                return redirect('video/'.$content->detail);
+                // return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Videocontent');
                 break;
             case 2:
                 return redirect('article/'.$content->detail);
