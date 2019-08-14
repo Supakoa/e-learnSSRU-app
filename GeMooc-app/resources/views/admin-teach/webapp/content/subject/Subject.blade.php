@@ -25,10 +25,10 @@
         <div class="col-md-4 mb-3">
             <div class="card-subject">
                 <div class="card-subject-header">
-                    <img src="{{url('storage/'.$subject->image)}}" class="shadow" width="100%" height="100%">
+                    <img src="{{url('storage/'.$subject->image)}}" class="shadow" width="80%" height="100%">
                     <div class="status"></div>
                 </div>
-                <div class="card-subject-body">
+                <div class="card-subject-body pt-2">
                     <p>{{$subject->name}}</p>
                     <div class="section-subject-btn">
                         <button class="btn-subject"
@@ -50,33 +50,43 @@
     {{-- set center --}}
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="newModalBody">
-            <div class="modal-header">
-                <div class="sub-head">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h5>เพิ่มรายวิชา</h5>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="AddName">ชื่อวิชา</label>
-                            <input class="form-control" type="text" name="" id="AddName">
-                        </div>
+            <form action="{{url('subject')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <div class="sub-head">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5>เพิ่มรายวิชา</h5>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="AddDetail">รายระเอียด</label>
-                            <textarea name="" class="form-control" id="AddDetail" rows="5"></textarea>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="AddName">ชื่อวิชา</label>
+                                <input class="form-control" type="text" name="name" id="AddName">
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="AddDetail">รายระเอียด</label>
+                                <textarea name="detail" class="form-control" id="AddDetail" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="AddFile">รูปประจำวิชา</label>
+                                <input type="file" name="cover_image" id="AddFile">
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="row">
+                    {{-- <div class="row">
                     <div class="col-md-12">
                         <div class="bg-addimg">
                             <button class="btn-addimg">
@@ -84,16 +94,17 @@
                             </button>
                         </div>
                     </div>
+                </div> --}}
+                    {{-- <input type="file" hidden name="cover_image" id=""> --}}
+                    <div class="container text-left p-3">
+                        <p class="text-note">*หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจัตุรัส(1000*1000)
+                            เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณภาพดี</p>
+                    </div>
                 </div>
-                <input type="file" hidden name="" id="">
-                <div class="container text-left p-3">
-                    <p class="text-note">*หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจัตุรัส
-                        เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณภาพดี</p>
+                <div class="modal-footer">
+                    <button type="submit" class="cebtn-save">บันทึก</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="cebtn-save">บักทึก</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

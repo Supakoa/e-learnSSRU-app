@@ -22,7 +22,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="nameSubject">ชื่อวิชา</label>
-                            <input class="form-control" id="nameSubject" type="text">
+                            <input type="text" class="form-control" name="name" value="{{$sub->name}}"
+                            placeholder="ชื่อวิชา">
                         </div>
                     </div>
                 </div>
@@ -30,15 +31,17 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="detailSubject">รายละเอียด</label>
-                            <textarea id="detailSubject" class="form-control" rows="5"></textarea>
+                            <textarea id="detailSubject" class="form-control" name="detail" rows="5"placeholder="รายละเอียดวิชา">{{$sub->detail}}</textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row ce01">
                     <div class="col-md-12 text-center">
                         <div class="bg-addimg">
-                            <img src="..." alt="...">
+                                <img src="{{ url("/storage/".$sub->image) }}" alt="" width="80%" srcset="">
                         </div>
+                        <label for="name">Cover Image (1000*1000) </label>
+                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
                         <button class="btn-upimg m-2">เลือกไฟล์ภาพ</button>
                     </div>
                 </div>
@@ -68,6 +71,25 @@
             @method('PATCH')
             <input type="hidden" name="sub_id" value="{{$sub->id}}">
 
+                    <div class="form-group">
+                        <label for="name">Subject Name</label>
+                        <input type="text" class="form-control" name="name" value="{{$sub->name}}"
+                            placeholder="Subject Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="detail">Detail</label>
+                        <input type="text" class="form-control" name="detail" value="{{$sub->detail}}"
+                            placeholder="Subject Detail">
+                    </div>
+                    <div class="form-group text-center">
+                        <img src="{{ url("/storage/".$sub->image) }}" alt="" width="80%" srcset="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Cover Image (1000*1000) </label>
+                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
+                    </div>
+
+                </form>
             <div class="form-group">
                 <label for="name">Subject Name</label>
                 <input type="text" class="form-control" name="name" value="{{$sub->name}}" placeholder="Subject Name">
