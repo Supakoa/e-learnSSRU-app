@@ -108,7 +108,7 @@
                     </div>
                     <div class="collapse-2">
                         <button
-                            onclick="window.location.href='{{url('content/'.$content->id.'editor')}}'">{{$content->name}}</button>
+                            onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</button>
                     </div>
                     <div class="collapse-3">
                         <button onclick="delete_content('{{$content->id}}')">

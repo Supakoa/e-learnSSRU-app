@@ -51,53 +51,67 @@
         @stack('styleEditProfile')
         @stack('scriptEditProfile') --}}
 
-        {{-- new-subject
+    {{-- new-subject
             @stack('styleNewSubject')
             @stack('scriptNewSubject') --}}
 
-            <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
-        </head>
+    <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
+</head>
 
-        <body>
+<body>
+    <style>
+        .bg-blur {
+            background-image: url("@yield('background','https://data.1freewallpapers.com/download/pine-forest-path.jpg')");
+
+        }
+
+    </style>
+    <div class="bg-blur"></div>
+    <div style=" position: absolute;top: 0%;left: 0%;width: 100%;">
+        @yield('wrap-body')
+        <div class="wrap-footer">
+            <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
+        </div>
+    </div>
+
+    {{--
             <div class="wrap-container">
                 <div class="wrap-body">
-                    <div class="ce-bgimg" style = 'background-image:url("@yield('background','https://data.1freewallpapers.com/download/pine-forest-path.jpg')")'>
+                    <div class="ce-bgimg" style = 'background-image:'>
                         <div class="bg-blur"></div>
                         @yield('wrap-body')
                     </div>
                 </div>
-                <div class="wrap-footer">
-                    <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-                </div>
-            </div>
+
+            </div> --}}
 
 
-            @yield('modal')
-            <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
-            <script src="{{ asset('node_modules/popper.min.js')}}"></script>
-            <script src="https://unpkg.com/scrollreveal@4"></script>
-            <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-            <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
-            <script src="{{ asset('node_modules/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
-            <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
-            <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
-            {{--
+    @yield('modal')
+    <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
+    <script src="{{ asset('node_modules/popper.min.js')}}"></script>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('node_modules/bootstrap/js/dist/util.js')}}"></script>
+    <script src="{{ asset('node_modules/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+    <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+    <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+    {{--
                 script file to here
             --}}
-            @stack('script')
+    @stack('script')
 
-            <!-- CEFstyle -->
-            <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-            <script>
-                wow = new WOW({
-                    boxClass: 'wow', // default
-                    animateClass: 'animated', // default
-                    offset: 0, // default
-                    mobile: true, // default
-                    live: true // default
-                })
-                wow.init();
+    <!-- CEFstyle -->
+    <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
+    <script>
+        wow = new WOW({
+            boxClass: 'wow', // default
+            animateClass: 'animated', // default
+            offset: 0, // default
+            mobile: true, // default
+            live: true // default
+        })
+        wow.init();
 
         function goBack() {
             window.history.back();
@@ -118,10 +132,10 @@
 
             var btn = $(this);
             // btn.addClass('.ce-disable', true);
-            btn.prop('disabled',true);
+            btn.prop('disabled', true);
             setTimeout(function () {
                 // btn.removeClass('.ce-disable', true);
-                btn.prop('disabled',false);
+                btn.prop('disabled', false);
             }, 1000);
 
         });

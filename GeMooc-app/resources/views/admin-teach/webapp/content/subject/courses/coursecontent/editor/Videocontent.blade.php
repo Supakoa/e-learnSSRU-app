@@ -36,7 +36,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col">
                     <div class="plyr__video-embed" id="player">
-                        <iframe id="showVideo" src="/storage/videos/vardroopsija.mp4" allowfullscreen allowtransparency
+                        <iframe id="showVideo" src="" allowfullscreen allowtransparency
                             allow="autoplay"></iframe>
                     </div>
                     <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="aSQwI3rDETk"></div>
@@ -49,13 +49,13 @@
 
 @section('js')
 <script>
-    let typeVideo = {!! $video->type == 'file' !!};
-    let dataVideo = {!! $video->data !!};
+    let typeVideo = '{!! $video->type !!}';
+    let dataVideo = '{!! $video->data !!}';
 
-    if (typeVideo) {
-        alert(dataVideo);
-        $('#showVideo').attr('src', '/'+dataVideo);
-    }
+    let videoId = getId(dataVideo);
+    let iframeMarkup = '//www.youtube.com/embed/' + videoId;
+
+    let inputSrc;
 
     function getId(url) {
         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -68,10 +68,12 @@
         }
     }
 
-    var videoId = getId('http://www.youtube.com/watch?v=zbYf5_S7oJo');
-
-    var iframeMarkup = '<iframe width="560" height="315" src="//www.youtube.com/embed/' +
-        videoId + '" frameborder="0" allowfullscreen></iframe>';
+    if (typeVideo == 'file') {
+        inputSrc = dataVideo;
+    }else{
+        inputSrc = iframeMarkup;
+    }
+    $('#showVideo').attr('src', inputSrc);
 
 </script>
 @endsection
