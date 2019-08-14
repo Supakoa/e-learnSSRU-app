@@ -109,6 +109,7 @@
             }
         });
 
+        // $('#newSubject').modal('show');
     });
 
     function add_subject(){
