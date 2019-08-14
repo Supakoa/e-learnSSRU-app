@@ -39,4 +39,9 @@ class content extends Model
     public function records(){
         return $this->belongsToMany('App\User', 'records')->withPivot('record', 'percent')->withTimestamps();
     }
+
+    public function video()
+    {
+        return $this->hasOne('App\video','id','detail');
+    }
 }
