@@ -109,7 +109,7 @@
             }
         });
 
-        $('#newSubject').modal('show');
+        // $('#newSubject').modal('show');
     });
 
     function edit_subject(id) {
