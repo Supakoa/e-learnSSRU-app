@@ -158,8 +158,12 @@
                 </div>
                 </form> --}}
             </div>
-            <div class="modal-footer">
-                <button class="cebtn-save">บันทึก</button>
+            <div class="modal-footer text-left">
+                <div class="row">
+                    <div class="col-md-12">
+                            <button class="cebtn-save">บันทึก</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
