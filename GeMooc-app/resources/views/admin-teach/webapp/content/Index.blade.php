@@ -111,7 +111,7 @@
 </div>
 @endsection
 
-@section('js')
+{{-- @section('js')
 <script>
     $('#openProfile').click(function (e) {
         e.preventDefault();
@@ -123,4 +123,4 @@
     });
 
 </script>
-@endsection
+@endsection --}}
