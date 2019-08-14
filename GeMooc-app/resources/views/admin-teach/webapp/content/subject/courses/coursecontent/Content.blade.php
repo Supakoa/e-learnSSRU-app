@@ -3,12 +3,12 @@
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
-
-@section('links')
-
-@endsection
+@push('links')
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
+@endpush
 @section('main-content')
-<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a>/ <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a>
+<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}}
+</a>/ <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a>
 
 <div class="main-content-header">
     <div class="row">
@@ -61,7 +61,7 @@
                                 </label>
                             </div>
                             <div class="col-md-4 icon-status" id="ics">
-                                <label >
+                                <label>
                                     <i class="fa fa-question" aria-hidden="true"></i>
                                     {{$lesson->contents->where('type','3')->count()}}
                                 </label>
@@ -119,9 +119,9 @@
             </div>
             @endforeach
             <button class="add-content" data-toggle="modal" data-target="#Add_Modal_content"
-            onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
-    @endforeach
+        @endforeach
     </div>
 </div>
 <div id="div_delete">
@@ -133,26 +133,33 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create lesson</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="course-head">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">สร้างบทเรียน</h5>
+                </div>
             </div>
             <div class="modal-body">
-                <form action="{{url('/lesson')}}" method="post" enctype='multipart/form-data' id="lesson_form">
-                    @csrf
-                    <input type="hidden" name="course_id" value="{{$course->id}}">
-                    <div class="form-group">
-                        <label for="name">lesson Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="lesson Name">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="nameLession">ชื่อบทเรียน</label>
+                            <input class="form-control" id="nameLession" type="text">
+                        </div>
                     </div>
-
-
-                </form>
+                </div>
+                {{-- <form action="{{url('/lesson')}}" method="post" enctype='multipart/form-data' id="lesson_form">
+                @csrf
+                <input type="hidden" name="course_id" value="{{$course->id}}">
+                <div class="form-group">
+                    <label for="name">lesson Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="lesson Name">
+                </div>
+                </form> --}}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="lesson_form">Save changes</button>
+                <button class="cebtn-save">บันทึก</button>
             </div>
         </div>
     </div>
@@ -273,7 +280,8 @@
 
     function edit_lesson(lesson) {
         // alert(lesson)
-        $('#form_edit_lesson').attr('action', '{{url('')}}/lesson/'+lesson.id);
+        $('#form_edit_lesson').attr('action', '{{url('
+            ')}}/lesson/' + lesson.id);
         $('#lesson_id_edit').val(lesson.id);
         $('#lesson_name').val(lesson.name);
 

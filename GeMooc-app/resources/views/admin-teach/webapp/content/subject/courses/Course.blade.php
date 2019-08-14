@@ -49,8 +49,8 @@ return "$strDay $strMonthThai $strYear";
                     class="fas fa-folder-plus"></i></button>
             @endif
             @if ($adminOnly)
-            <button class="btn-edit send_ajax"><i class="fas fa-cog "
-                    onclick="edit_subject({{$subject->id}})"></i></button>
+            <button class="btn-edit send_ajax"
+            onclick="edit_subject({{$subject->id}})"><i class="fas fa-cog "></i></button>
             @endif
         </div>
     </div>
@@ -158,7 +158,7 @@ return "$strDay $strMonthThai $strYear";
                         <div class="col-md-6 p-5">
                             <div class="bg-addimg">
                                 <input type="file" name="cover_image" hidden id="">
-                                <button class="btn-addimg">
+                                <button class="btn-addimg" type="button">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
