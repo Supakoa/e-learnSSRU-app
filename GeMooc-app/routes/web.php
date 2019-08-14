@@ -38,6 +38,7 @@ Route::get('course/{content}/editor', function(){
  *  all test route
  * */
 Route::get('test/{id}', 'test@export');
+Route::get('test', 'test_sumernote@index');
 Route::get('/email', function () {
     return new newMail();
 });
@@ -202,6 +203,9 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::post('course/modal/edit', 'backend\course_c@modal_edit');
         Route::post('question/modal/edit', 'backend\questionController@modal_edit');
+        Route::get('quiz/export/{id}', 'backend\quizController@export');
+        Route::post('quiz/import/{id}', 'backend\quizController@import');
+
 
     });
 

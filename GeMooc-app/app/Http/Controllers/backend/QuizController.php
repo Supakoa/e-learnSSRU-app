@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
+use App\Exports\quizExport;
+use App\Imports\QuizImport;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\quiz;
 use Illuminate\Http\Request;
@@ -115,5 +119,19 @@ class QuizController extends Controller
         // dd( $course );
        return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.dashboard.DashboardQuiz')->with('quiz', $quiz)->with('course', $course);;
 
+    }
+
+    public function export($id)
+    {
+        $quiz = quiz::find($id);
+        return (new quizExport($id))->download($quiz->name.'.xlsx');
+    }
+
+    public function import($id,Request $request)
+    {
+        // dd($request->file('import'));
+        Excel::import(new QuizImport($id),$request->file('import'), \Maatwebsite\Excel\Excel::XLSX);
+
+        return redirect()->back()->with('success', 'All good!');
     }
 }

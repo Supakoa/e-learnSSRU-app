@@ -25,7 +25,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="courseName">ชื่อคอร์ส</label>
-                                <input id="courseName" class="form-control" type="text">
+                                <input id="courseName" class="form-control" value="{{$course->name}}" type="text">
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="courseOpen">เปิดรับสมัคร</label>
-                                        <input id="courseOpen" class="form-control" type="text">
+                                        <input id="courseOpen" value="{{$course->total}}" class="form-control" type="number">
                                     </div>
                                 </div>
                             </div>
@@ -43,28 +43,33 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="startDate">วันที่เปิดรับสมัคร</label>
-                                        <input id="startDate" class="form-control" type="text">
+                                        <input id="startDate"  value="{{$course->open}}" class="form-control" type="date">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="endDate">วันที่ปิดรับสมัคร</label>
-                                        <input class="form-control" id="endDate" type="text">
+                                        <input class="form-control"  value="{{$course->close}}" id="endDate" type="date">
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="lession">บทเรียน</label>
-                                        <textarea class="form-control" name="" id="lession" rows="4"></textarea>
+                                        <textarea class="form-control" name="" id="lession" rows="4" disabled>
+                                                @foreach ($course->lessons as $lesson)
+                                                    {{$lesson->name}}
+                                                @endforeach
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 p-5">
                             <div class="bg-addimg">
-                                <img src="..." alt="...">
+                            <img src="{{url('/storage/'.$course->image)}}" alt="...">
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center p-4">

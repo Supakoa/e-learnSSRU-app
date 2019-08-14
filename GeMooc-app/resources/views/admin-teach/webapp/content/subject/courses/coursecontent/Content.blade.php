@@ -224,10 +224,22 @@
                             <option value="2">Text</option>
                             <option value="3">Quiz</option>
                         </select>
-                        <div class="selectTypeVideo">
-                            <input type="radio" name="videoType" id="videoType" value="url">url
-                            <input type="radio" name="videoType" id="videoType" value="file">file
+                        {{-- check type video --}}
+                        {{-- <div class="selectTypeVideo">
+                            <input type="radio" name="videoType" id="videoType" value="youtube">url
+                            <input type="radio" name="videoType" id="videoType" value="folder">file
+                        </div> --}}
+                        <div id="typeVideo">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input class="custom-control-input" type="radio" name="videoType" id="videoTypeYoutube" value="youtube" >
+                                <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input class="custom-control-input" type="radio" name="videoType" id="videoTypeFile" value="file" >
+                                <label for="videoTypeFile" class="custom-control-label">File</label>
+                            </div>
                         </div>
+
                         {{-- <input type="text" class="form-control" name="name" placeholder="content Name"> --}}
                     </div>
                     <div class="form-group" id="content_url">
@@ -246,6 +258,7 @@
 
 <div id="div_modal"></div>
 @endsection
+
 @section('js')
 <script>
     $(document).ready(function () {
@@ -255,9 +268,9 @@
             }
         });
 
+        $('#typeVideo').hide();
+
     });
-
-
 
     function add_content(lesson) {
         // alert(lesson)
@@ -274,18 +287,39 @@
 
         $('#edit_lesson_text').html('Edit : ' + lesson.name);
     }
+
+    // onchange to open video contentName
     // $('#content_url').hide();
     $('#content_type').change(function (e) {
         e.preventDefault();
 
         if ($(this).val() == '1') {
-            $('#content_url').html(
-                '<label for="url">URL Video</label><input type="text" class="form-control" name="url" placeholder="content Name" required>'
-            );
+            $('#typeVideo').show();
+            $('#content_url').show();
         } else {
-            $('#content_url').html('');
+            $('#typeVideo').hide();
+            $('#content_url').hide();
         }
+    });
 
+    $('input[name=videoType]').change(function (e) {
+        e.preventDefault();
+
+        $('#content_url').show();
+
+        let videoType = $('input[name=videoType]:checked').val();
+
+        switch (videoType) {
+            case 'youtube':
+                $('#content_url').html(
+                    '<label for="url">URL Video</label><input type="text" class="form-control" name="url" placeholder="content Name" required>'
+                );
+                break;
+
+            case 'file':
+                $('#content_url').html('<label for="url">File Video</label><input type="file" class="form-control" name="videoFile" id="videoFile" required>');
+                break;
+        }
     });
 
     function delete_lesson(id) {
