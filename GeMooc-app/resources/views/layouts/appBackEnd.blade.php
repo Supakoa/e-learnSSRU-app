@@ -59,17 +59,30 @@
         </head>
 
         <body>
+                <style>
+                        .bg-blur{
+                            background-image: url("@yield('background','https://data.1freewallpapers.com/download/pine-forest-path.jpg')");
+                            
+                        }
+                </style>
+                <div class="bg-blur"></div>
+                <div style=" position: absolute;top: 0%;left: 0%;width: 100%;" >
+                    @yield('wrap-body')
+                    <div class="wrap-footer">
+                            <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
+                        </div>
+                </div>
+
+{{--
             <div class="wrap-container">
                 <div class="wrap-body">
-                    <div class="ce-bgimg" style = 'background-image:url("@yield('background','https://data.1freewallpapers.com/download/pine-forest-path.jpg')")'>
+                    <div class="ce-bgimg" style = 'background-image:'>
                         <div class="bg-blur"></div>
                         @yield('wrap-body')
                     </div>
                 </div>
-                <div class="wrap-footer">
-                    <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
-                </div>
-            </div>
+
+            </div> --}}
 
 
             @yield('modal')

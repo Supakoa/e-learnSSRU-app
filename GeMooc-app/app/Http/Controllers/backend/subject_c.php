@@ -60,19 +60,20 @@ class subject_c extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
             'cover_image' => 'image|nullable|max:10000'
         ]) ;
-
+            // dd($request->File('cover_image'));
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_subject','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,225);
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
             $image->save();
             $fileNameToStore =  $imagePath;
         } else {
-            $fileNameToStore =  'cover_image_subject/sm/no_image.jpg';
+            $fileNameToStore =  'cover_image_subject/no_image.jpg';
         }
 
         // Create subject
@@ -142,8 +143,7 @@ class subject_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image_sm' => 'image|nullable|max:10000',
-            'cover_image_xl' => 'image|nullable|max:10000'
+            'cover_image' => 'image|nullable|max:10000'
 
         ]) ;
 
@@ -158,7 +158,7 @@ class subject_c extends Controller
         }
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_subject','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1600,600);
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
             $image->save();
             $detail .= '|cover_image : '.$subject->image.' ====> '.$imagePath.'|';
             $subject->image = $imagePath;
