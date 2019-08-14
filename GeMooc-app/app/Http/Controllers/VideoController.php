@@ -51,9 +51,8 @@ class VideoController extends Controller
      */
     public function show(video $video)
     {
-        $content = $video->content();
-        dd($content);
-        return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Videocontent')->with('course', $content)->with('video', $video);
+        $course = $video->content->lesson->course;
+        return view('admin-teach.webapp.content.subject.courses.coursecontent.editor.Videocontent')->with('course', $course)->with('video', $video);
     }
 
     /**
