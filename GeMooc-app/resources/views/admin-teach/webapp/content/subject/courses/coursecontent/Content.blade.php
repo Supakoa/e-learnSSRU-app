@@ -284,8 +284,7 @@
 
     function edit_lesson(lesson) {
         // alert(lesson)
-        $('#form_edit_lesson').attr('action', '{{url('
-            ')}}/lesson/' + lesson.id);
+        $('#form_edit_lesson').attr('action', '{{url('')}}/lesson/' + lesson.id);
         $('#lesson_id_edit').val(lesson.id);
         $('#lesson_name').val(lesson.name);
 

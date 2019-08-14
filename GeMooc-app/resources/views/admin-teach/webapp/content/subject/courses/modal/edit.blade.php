@@ -19,23 +19,32 @@
                 }
                 @endphp
 
-                <form action="{{url('/course')}}" method="post" enctype='multipart/form-data' id="course_form">
+                <form  action="{{url('course/'.$course->id)}}" method="post" enctype='multipart/form-data' id="course_form">
                     @csrf
+                    @method('patch')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="courseName">ชื่อคอร์ส</label>
-                                <input id="courseName" class="form-control" value="{{$course->name}}" type="text">
+                                <input id="courseName" name="name" class="form-control" value="{{$course->name}}" type="text">
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="courseName">รายละเอียด</label>
+                                    <input id="courseName" name="detail" class="form-control" value="{{$course->name}}" type="text">
+                                </div>
+                            </div>
+                        </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="courseOpen">เปิดรับสมัคร</label>
-                                        <input id="courseOpen" value="{{$course->total}}" class="form-control" type="number">
+                                        <input id="courseOpen" name="total" value="{{$course->total}}" class="form-control" type="number">
                                     </div>
                                 </div>
                             </div>
@@ -43,13 +52,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="startDate">วันที่เปิดรับสมัคร</label>
-                                        <input id="startDate"  value="{{$course->open}}" class="form-control" type="date">
+                                        <input id="startDate"  name="open" value="{{$course->open}}" class="form-control" type="date">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="endDate">วันที่ปิดรับสมัคร</label>
-                                        <input class="form-control"  value="{{$course->close}}" id="endDate" type="date">
+                                        <input class="form-control" name="close" value="{{$course->close}}" id="endDate" type="date">
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +83,7 @@
                             <div class="row">
                                 <div class="col-md-12 text-center p-4">
                                     <input type="file" hidden id="">
-                                    <button class="btn-upimg">เลือกไฟล์ภาพ</button>
+                                    <button type="button" class="btn-upimg">เลือกไฟล์ภาพ</button>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +107,7 @@
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <button type="submit" id="submit-course">บันทึก</button>
+                        <button type="submit" form="course_form" id="submit-course">บันทึก</button>
                     </div>
                 </div>
             </div>

@@ -111,7 +111,6 @@ class content_c extends Controller
     public function show($id)
     {
         $content = content::find($id);
-        dd($content);
         switch ($content->type) {
             case 1:
                 return redirect('video/'.$content->detail);
