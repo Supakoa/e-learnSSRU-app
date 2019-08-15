@@ -174,28 +174,30 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit_lesson_text">Edit Lesson Name</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="course-head">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="">เปลี่ยนชื่อบทเรียน</h5>
+                </div>
             </div>
             <div class="modal-body">
                 <form id="form_edit_lesson" action="" method="post" enctype='multipart/form-data' id="lesson_form">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="course_id" value="{{$course->id}}">
-                    <input type="hidden" name="lesson_id" id="lesson_id_edit" value="">
-                    <div class="form-group">
-                        <label for="name">lesson Name</label>
-                        <input type="text" class="form-control" name="name" id="lesson_name" placeholder="lesson Name">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" name="lesson_id" id="lesson_id_edit" value="">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" id="lesson_name" placeholder="lesson Name">
+                            </div>
+                        </div>
                     </div>
-
-
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="form_edit_lesson">Save changes</button>
+                <button type="submit" class="cebtn-save" form="form_edit_lesson">บันทึก</button>
             </div>
         </div>
     </div>
@@ -206,21 +208,89 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="add_content_header"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="course-head">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="">เพิ่มเนื้อหาในบทเรียน</h5>
+                </div>
             </div>
             <div class="modal-body">
                 <form action="{{url('/content')}}" method="post" enctype='multipart/form-data' id="content_form">
                     @csrf
                     <input type="hidden" name="lesson_id" id="lesson_id" value="">
                     <input type="hidden" name="course_id" value="{{$course->id}}">
-                    <div class="form-group">
-                        <label for="name">Content Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="content Name" required>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">ชื่อบทเรียน</label>
+                                <input type="text" class="form-control"  id="nameLesson" name="name" placeholder="content Name" required>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="select-type">เลือกประเภทบทเรียน</label>
+                            <div class="row" id="select-type">
+                                <div class="col-md-4 text-center">
+                                    <button class="btnVideo" type="button" data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
+                                        <i class="fas fa-video"></i>
+                                    </button>
+                                    <p class="p-2">วิดีโอ</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <button class="btnText" type="button" data-toggle="collapse" data-target="#collapseText" aria-expanded="false" aria-controls="collapseText">
+                                        <i class="fas fa-clipboard    "></i>
+                                    </button>
+                                    <p class="p-2">บทความ</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <button class="btnQuestion" type="button" data-toggle="collapse" data-target="#collapseQuiz" aria-expanded="false" aria-controls="collapseQuiz">
+                                        <i class="fas fa-question    "></i>
+                                    </button>
+                                    <p class="p-2">แบบฝึกหัด</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="collapse p-0" id="collapseVideo">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="youtubeLink">ลิงค์วิดีโอจากยูทูป</label>
+                                                <input type="text" id="youtubeLink" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse" id="collapseText">
+                                        <div class="card-body">
+                                            Next to Text page >>
+                                        </div>
+                                    </div>
+                                    <div class="collapse p-0" id="collapseQuiz">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <label for="detailQuiz" style="font-size:15px">รายละเอียด</label>
+                                                        <textarea class="form-control" name="" id="detailQuiz" rows="4"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label for="setTimequiz" style="font-size:15px">ตั้งเวลาในการตอบคำถาม</label>
+                                                        <input type="time" id="setTimequiz" name="setTimequiz"
+                                                                   min="00:15" max="03:00" required>
+                                                        <small>นาที</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="form-group">
                         <label for="name">Content type</label>
                         <select name="type" id="content_type" class="form-control" required>
                             <option value="" disabled selected>Type</option>
@@ -228,11 +298,7 @@
                             <option value="2">Text</option>
                             <option value="3">Quiz</option>
                         </select>
-                        {{-- check type video --}}
-                        {{-- <div class="selectTypeVideo">
-                            <input type="radio" name="videoType" id="videoType" value="youtube">url
-                            <input type="radio" name="videoType" id="videoType" value="folder">file
-                        </div> --}}
+
                         <div id="typeVideo">
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input class="custom-control-input" type="radio" name="videoType" id="videoTypeYoutube" value="youtube" >
@@ -244,17 +310,15 @@
                             </div>
                         </div>
 
-                        {{-- <input type="text" class="form-control" name="name" placeholder="content Name"> --}}
                     </div>
                     <div class="form-group" id="content_url">
 
-                    </div>
+                    </div> --}}
 
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-outline-primary" form="content_form">Save changes</button>
+                <button type="submit" class="cebtn-save" form="content_form">บันทึก</button>
             </div>
         </div>
     </div>

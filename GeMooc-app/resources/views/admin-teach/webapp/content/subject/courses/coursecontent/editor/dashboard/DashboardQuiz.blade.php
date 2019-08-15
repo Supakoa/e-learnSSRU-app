@@ -2,10 +2,10 @@
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
-@section('links')
+@push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
-@endsection
+@endpush
 @section('main-content')
 <div class="card p-4">
         @php
@@ -19,10 +19,7 @@
         </div>
         <br>
     <div class="row" style="border-bottom:2px solid #707070">
-        <div class="col-md-4">
-            <div class="text-left"><a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a></div>
-        </div>
-        <div class="col-md-4">
+        <div class="offset-md-4 col-md-4">
             <div class="text-center">
                 <h4>
                     Dashboard : {{$quiz->name}}
@@ -65,24 +62,24 @@
                                 @endphp
                             <div class="charts ">
                                     <span>0-25</span>
-                                    <div class="charts__chart chart--red mt-1" data-percent="{{ round($percen_show_25,2)}}%" style="width: {{$percen_show_25}}%"></div>
-                                    <span class="mt-3">26-50</span>
-                                    <div class="charts__chart chart--orang mt-1" data-percent="{{ round($percen_show_50,2)}}%" style="width: {{$percen_show_50}}%"></div>
-                                    <span class="mt-3">51-75</span>
-                                    <div class="charts__chart chart--yellow mt-1" data-percent="{{ round($percen_show_75,2)}}%" style="width: {{$percen_show_75}}%"></div>
-                                    <span class="mt-3">76-100</span>
-                                    <div class="charts__chart chart--green mt-1" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%"></div>
+                                    <div class="charts__chart chart--red mt-1" data-percent="{{ round($percen_show_25,2)}}%" style="width: {{$percen_show_25}}%;display:inline"></div>
+                                    <span class="mt-5">26-50</span>
+                                    <div class="charts__chart chart--orang mt-1" data-percent="{{ round($percen_show_50,2)}}%" style="width: {{$percen_show_50}}%;display:inline"></div>
+                                    <span class="mt-5">51-75</span>
+                                    <div class="charts__chart chart--yellow mt-1" data-percent="{{ round($percen_show_75,2)}}%" style="width: {{$percen_show_75}}%;display:inline"></div>
+                                    <span class="mt-5">76-100</span>
+                                    <div class="charts__chart chart--green mt-1" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%;display:inline"></div>
                             </div><!-- /.charts -->
                                 @else
                                 <div class="charts ">
                                         <span>0-25</span>
-                                        <div class="charts__chart chart--red mt-1" data-percent="0%" style="width: 0%"></div>
-                                        <span class="mt-3">26-50</span>
-                                        <div class="charts__chart chart--yellow mt-1" data-percent="0%" style="width: 0%"></div>
-                                        <span class="mt-3">51-75</span>
-                                        <div class="charts__chart chart--blue mt-1" data-percent="0%" style="width: 0%"></div>
-                                        <span class="mt-3">76-100</span>
-                                        <div class="charts__chart chart--green mt-1" data-percent="0%" style="width: 0%"></div>
+                                        <div class="charts__chart chart--red mt-1" data-percent="0%" style="width: 0%;display:inline"></div>
+                                        <span class="mt-5">26-50</span>
+                                        <div class="charts__chart chart--yellow mt-1" data-percent="0%" style="width: 0%;display:inline"></div>
+                                        <span class="mt-5">51-75</span>
+                                        <div class="charts__chart chart--blue mt-1" data-percent="0%" style="width: 0%;display:inline"></div>
+                                        <span class="mt-5">76-100</span>
+                                        <div class="charts__chart chart--green mt-1" data-percent="0%" style="width: 0%;display:inline"></div>
                                 </div><!-- /.charts -->
                                 @endif
 

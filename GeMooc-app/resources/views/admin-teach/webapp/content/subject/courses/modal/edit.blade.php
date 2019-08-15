@@ -11,7 +11,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">แก้ไขคอร์ส</h5>
                 </div>
             </div>
-            <div class="modal-body pl-5 pr-5">
+            <div class="modal-body pl-5 pr-5 pb-0">
                 @php
                 $check = '';
                 if($course->status!=0){
