@@ -74,7 +74,7 @@ class course_c extends Controller
         $course->detail = $request->input('detail');
         // $course->user_id = auth()->user()->id;
         $course->image = $fileNameToStore;
-        $course->subject_id = $request->input('sub_id');
+        $course->subject_id = $request->input('subject_id');
         $course->open = $request->input('open');
         $course->close = $request->input('close');
         $course->total = $request->input('total');

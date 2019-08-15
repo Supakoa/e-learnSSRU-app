@@ -96,7 +96,7 @@
                         <div class="row">
                             <div class="offset-md-8 col-md-4">
                                 <div class="custom-control custom-switch p-3">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                    <input type="checkbox" form="course_form" value="1" {{$check}} class="custom-control-input" name="status" id="customSwitch1">
                                     <label class="custom-control-label" for="customSwitch1">ออนไลน์</label>
                                 </div>
                             </div>
