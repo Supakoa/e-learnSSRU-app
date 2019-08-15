@@ -18,7 +18,7 @@ class content extends Model
 
     public function article()
     {
-        return $this->hasOne('App\article','id','detail');
+        return $this->hasOne('App\article', 'id', 'detail');
     }
 
     public function quiz()
@@ -42,6 +42,6 @@ class content extends Model
 
     public function video()
     {
-        return $this->hasOne('App\video','id','detail');
+        return $this->hasOne('App\video', 'id', 'detail');
     }
 }

@@ -60,6 +60,7 @@ class content_c extends Controller
             $newVideo = new video;
             $newVideo->name = $request->name;
             $newVideo->type = $request->videoType;
+            $newVideo->content_id = $content->id;
 
             if ($request->videoType == 'youtube') {
                 $newVideo->data = $request->url;
