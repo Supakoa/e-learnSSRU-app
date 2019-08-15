@@ -3,6 +3,9 @@
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
+@section('title')
+{{$course->name}} - MOOC SSRU
+@endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
 @endpush

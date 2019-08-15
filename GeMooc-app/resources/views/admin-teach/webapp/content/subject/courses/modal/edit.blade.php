@@ -82,8 +82,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center p-4">
-                                    <input type="file" hidden id="">
-                                    <button type="button" class="btn-upimg">เลือกไฟล์ภาพ</button>
+                                    <input type="file" id="cover_image" name="cover_image" hidden id="">
+                                    <button type="button"  onclick="$('#cover_image').trigger('click') " class="btn-upimg">เลือกไฟล์ภาพ</button>
                                 </div>
                             </div>
                         </div>

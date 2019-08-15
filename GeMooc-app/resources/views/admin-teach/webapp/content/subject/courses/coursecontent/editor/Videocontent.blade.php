@@ -1,5 +1,7 @@
 @extends('admin-teach.webapp.content.Index')
-
+@section('title')
+{{$video->name}} - MOOC SSRU
+@endsection
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
@@ -10,6 +12,12 @@
 
 @section('main-content')
 <div class="card p-4">
+        @php
+        $course = $video->content->lesson->course;
+    @endphp
+    <div>
+<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a href="{{url('/course/'.$course->id)}}">{{$video->content->lesson->name}}</a> / <a href="{{url('/video/'.$video->id)}}">{{$video->content->name}}</a>
+</div>
     <div class="row" style="border-bottom:2px solid #707070">
         <div class="col-md-4">
             <div class="text-left">
@@ -18,7 +26,7 @@
         </div>
         <div class="col-md-4">
             <div class="text-center">
-                <h4>Subject : </h4>
+                <h4>{{$video->name}}</h4>
             </div>
         </div>
     </div>

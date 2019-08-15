@@ -1,5 +1,7 @@
 @extends('admin-teach.webapp.content.Index')
-
+@section('title')
+วิชาทั้งหมด - MOOC SSRU
+@endsection
 @push('script')
 <script src="{{ asset('node_modules/CEFstyle/subject/new/new.js') }}"></script>
 @endpush

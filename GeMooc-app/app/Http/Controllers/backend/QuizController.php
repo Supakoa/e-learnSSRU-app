@@ -130,6 +130,11 @@ class QuizController extends Controller
     public function import($id,Request $request)
     {
         // dd($request->file('import'));
+
+        $this->validate($request,[
+            'import' => 'required|mimes:csv'
+
+        ]);
         Excel::import(new QuizImport($id),$request->file('import'), \Maatwebsite\Excel\Excel::XLSX);
 
         return redirect()->back()->with('success', 'All good!');
