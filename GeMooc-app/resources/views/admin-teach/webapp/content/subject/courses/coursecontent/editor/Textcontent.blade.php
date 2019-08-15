@@ -5,9 +5,10 @@
 @section('title')
 {{$article->name}} - MOOC SSRU
 @endsection
-@section('links')
 
-@endsection
+@push('links')
+
+@endpush
 @section('main-content')
 
 <div class="card p-4">
@@ -19,13 +20,7 @@
 </div>
 <br>
         <div class="row" style="border-bottom:2px solid #707070">
-
-                <div class="col-md-4">
-                    <div class="text-left">
-                            <a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4">
+                <div class="offset-md-4 col-md-4">
                     <div class="text-center">
                     <h4>{{$article->content->name}}</h4>
                     </div>

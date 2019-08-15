@@ -88,15 +88,15 @@
                     @method('GET')
 
                     <p>Username</p>
-                    <input class="form-control mb-1" type="text" name="username" id="username">
+                    <input class="form-control mb-1" type="text" name="username" id="username" >
                     <p>Password</p>
-                    <input type="text" class="form-control mb-1" name="password" id="password">
+                    <input type="password" class="form-control mb-1" name="password" id="password" >
                     <p>Confirm Password</p>
-                    <input type="text" class="form-control mb-1" name="confirmPassword" id="confirmPassword">
+                    <input type="password" class="form-control mb-1" name="confirmPassword" id="confirmPassword" >
                     <p>Email</p>
-                    <input type="text" class="form-control mb-1" name="email" id="email">
+                    <input type="text" class="form-control mb-1" name="email" id="email" >
                     <p>Confirm Email</p>
-                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail">
+                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail" >
                 </form>
             </div>
             <div class="modal-footer">

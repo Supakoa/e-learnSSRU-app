@@ -15,10 +15,19 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            // forien key
+            $table->unsignedBigInteger('content_id');
+
+            // main data
             $table->text('name');
             $table->text('type');
             $table->text('data');
             $table->text('poster');
+
+            // forien key
+            $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
