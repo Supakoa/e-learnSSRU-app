@@ -31,8 +31,8 @@ class admin extends Controller
     {
         $data = request()->validate([
             'username' => 'required',
-            'password' => 'required',
-            'email' => 'required',
+            'password' => 'required|required_with:confirmPassword|same:confirmPassword',
+            'email' => 'required|required_with:confirmEmail|same:confirmEmail',
         ]);
 
         $sekai = User::create([
@@ -93,8 +93,8 @@ class admin extends Controller
     public function update(Request $request, $id)
     {
         $data = request()->validate([
-            'username' => 'required',
-            'email' => 'required',
+            'password' => 'required|required_with:confirmPassword|same:confirmPassword',
+            'email' => 'required|required_with:confirmEmail|same:confirmEmail',
         ]);
         $user = User::find($id);
         $user->name = $data['username'];
