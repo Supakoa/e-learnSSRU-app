@@ -1,24 +1,27 @@
 @extends('admin-teach.webapp.content.Index')
-
+@section('title')
+{{$video->name}} - MOOC SSRU
+@endsection
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
 
-@section('links')
+@push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceVideo.css')}}">
-@endsection
+@endpush
 
 @section('main-content')
 <div class="card p-4">
+        @php
+        $course = $video->content->lesson->course;
+    @endphp
+    <div>
+<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a href="{{url('/course/'.$course->id)}}">{{$video->content->lesson->name}}</a> / <a href="{{url('/video/'.$video->id)}}">{{$video->content->name}}</a>
+</div>
     <div class="row" style="border-bottom:2px solid #707070">
-        <div class="col-md-4">
-            <div class="text-left">
-                <a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a>
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="offset-md-4 col-md-4">
             <div class="text-center">
-                <h4>Subject : </h4>
+                <h4>{{$video->name}}</h4>
             </div>
         </div>
     </div>

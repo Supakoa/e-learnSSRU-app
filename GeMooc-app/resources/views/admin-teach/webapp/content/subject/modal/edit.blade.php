@@ -41,8 +41,8 @@
                                 <img src="{{ url("/storage/".$sub->image) }}" alt="" width="80%" srcset="">
                         </div>
                         <label for="name">Cover Image (1000*1000) </label>
-                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
-                        <button class="btn-upimg m-2">เลือกไฟล์ภาพ</button>
+                        <input type="file" class="form-control" id="cover_image" name="cover_image" hidden placeholder="Image">
+                        <button class="btn-upimg m-2" onclick="$('#cover_image').trigger('click') " >เลือกไฟล์ภาพ</button>
                     </div>
                 </div>
 

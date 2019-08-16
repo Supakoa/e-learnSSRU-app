@@ -2,15 +2,14 @@
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
-@section('links')
+@push('links')
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css">
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-@endsection
+@endpush
 
 @section('main-content')
 
@@ -24,12 +23,7 @@
         </div>
         <br>
     <div class="row">
-        <div class="col-md-4">
-            <div class="text-left">
-                    <a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a>
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="offset-md-4 col-md-4">
             <div class="text-center">
                 <h4>บทความ : {{$article->content->name}}</h4>
             </div>

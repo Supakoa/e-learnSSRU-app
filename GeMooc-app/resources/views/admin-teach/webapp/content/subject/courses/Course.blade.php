@@ -2,6 +2,9 @@
 @section('background')
 {{url('storage/'.$subject->image)}}\
 @endsection
+@section('title')
+{{$subject->name}} - MOOC SSRU
+@endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
 @endpush
@@ -114,6 +117,7 @@ return "$strDay $strMonthThai $strYear";
             <div class="modal-body pl-5 pr-5">
                 <form action="{{url('/course')}}" method="post" enctype='multipart/form-data' id="course_form">
                     @csrf
+                <input type="hidden" name="subject_id" value="{{$subject->id}}" >
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -123,12 +127,20 @@ return "$strDay $strMonthThai $strYear";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="courseDetail">รายละเอียด</label>
+                                    <input id="courseDetail" name="detail" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="courseOpen">เปิดรับสมัคร</label>
-                                        <input id="courseOpen" class="form-control" name="total" type="text">
+                                        <input id="courseOpen" class="form-control" name="total" type="number">
                                     </div>
                                 </div>
                             </div>
@@ -136,33 +148,39 @@ return "$strDay $strMonthThai $strYear";
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="startDate">วันที่เปิดรับสมัคร</label>
-                                        <input id="startDate" class="form-control" name="open" type="text">
+                                        <input id="startDate" class="form-control" name="open" type="date">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="endDate">วันที่ปิดรับสมัคร</label>
-                                        <input class="form-control" id="endDate" name="close" type="text">
+                                        <input class="form-control" id="endDate" name="close" type="date">
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="lession">บทเรียน</label>
-                                        <textarea class="form-control" name="detail" id="lession" rows="4"></textarea>
+                                        <label for="cover_iamge">รูปภาพ</label>
+                                        <input type="file" class=" form-control input-modal" name="cover_iamge" id="cover_iamge">
+                                        <br>
+                                        <p class="text-note">
+                                                *หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจตุรัส
+                                                เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณพอดี
+                                            </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 p-5">
+                        {{-- <div class="col-md-6 p-5">
                             <div class="bg-addimg">
                                 <input type="file" name="cover_image" hidden id="">
-                                <button class="btn-addimg" type="button">
+                                <button class="btn-addimg"  type="button">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     {{-- อันเก่า --}}
                     {{-- <input type="hidden" name="sub_id" value="{{$subject->id}}">
@@ -183,24 +201,13 @@ return "$strDay $strMonthThai $strYear";
                     {{-- อันเก่า --}}
                 </form>
             </div>
+            <hr class=" w-75 mb-4" >
             <div class="modal-footer">
+
                 <div class="row p-4">
-                    <div class="col-md-6 text-information">
-                        <div class="row">
-                            <div class="offset-md-8 col-md-4">
-                                <div class="custom-control custom-switch p-3">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                    <label class="custom-control-label" for="customSwitch1">ออนไลน์</label>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-note">
-                            *หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจตุรัส
-                            เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณพอดี
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="submit" id="submit-course">บันทึก</button>
+
+                    <div class="col-md-2">
+                        <button type="submit" form="course_form" id="submit-course">บันทึก</button>
                     </div>
                 </div>
             </div>

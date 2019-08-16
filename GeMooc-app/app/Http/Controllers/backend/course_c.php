@@ -61,7 +61,7 @@ class course_c extends Controller
         ]) ;
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_course/sm','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(400,225);
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
             $image->save();
             $fileNameToStore =  $imagePath;
         } else {
@@ -74,7 +74,7 @@ class course_c extends Controller
         $course->detail = $request->input('detail');
         // $course->user_id = auth()->user()->id;
         $course->image = $fileNameToStore;
-        $course->subject_id = $request->input('sub_id');
+        $course->subject_id = $request->input('subject_id');
         $course->open = $request->input('open');
         $course->close = $request->input('close');
         $course->total = $request->input('total');
@@ -152,7 +152,7 @@ class course_c extends Controller
 
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_course','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1600,600);
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
             $image->save();
             $detail .= '|Banner : '.$course->xl_banner.' ====> '.$imagePath.'|';
             $fileNameToStore =  $imagePath;

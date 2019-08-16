@@ -1,5 +1,7 @@
 @extends('admin-teach.webapp.content.Index')
-
+@section('title')
+วิชาทั้งหมด - MOOC SSRU
+@endsection
 @push('script')
 <script src="{{ asset('node_modules/CEFstyle/subject/new/new.js') }}"></script>
 @endpush
@@ -25,7 +27,7 @@
         <div class="col-md-4 mb-3">
             <div class="card-subject">
                 <div class="card-subject-header">
-                    <img src="{{url('storage/'.$subject->image)}}" class="shadow" width="80%" height="100%">
+                    <img src="{{url('storage/'.$subject->image)}}" class="shadow" width="100%" height="100%">
                     <div class="status"></div>
                 </div>
                 <div class="card-subject-body pt-2">

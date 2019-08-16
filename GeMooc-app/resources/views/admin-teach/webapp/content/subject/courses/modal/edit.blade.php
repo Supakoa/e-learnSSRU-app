@@ -11,7 +11,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">แก้ไขคอร์ส</h5>
                 </div>
             </div>
-            <div class="modal-body pl-5 pr-5">
+            <div class="modal-body pl-5 pr-5 pb-0">
                 @php
                 $check = '';
                 if($course->status!=0){
@@ -82,8 +82,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center p-4">
-                                    <input type="file" hidden id="">
-                                    <button type="button" class="btn-upimg">เลือกไฟล์ภาพ</button>
+                                    <input type="file" id="cover_image" name="cover_image" hidden id="">
+                                    <button type="button"  onclick="$('#cover_image').trigger('click') " class="btn-upimg">เลือกไฟล์ภาพ</button>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                         <div class="row">
                             <div class="offset-md-8 col-md-4">
                                 <div class="custom-control custom-switch p-3">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                    <input type="checkbox" form="course_form" value="1" {{$check}} class="custom-control-input" name="status" id="customSwitch1">
                                     <label class="custom-control-label" for="customSwitch1">ออนไลน์</label>
                                 </div>
                             </div>

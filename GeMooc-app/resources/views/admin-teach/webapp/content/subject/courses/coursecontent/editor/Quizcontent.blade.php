@@ -2,10 +2,12 @@
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
-@section('links')
+@push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
+@endpush
+@section('title')
+{{$quiz->name}} - MOOC SSRU
 @endsection
-
 @section('main-content')
 
 <div class="card p-4 h-100 pb-4" style="background:#F8F8F8;min-height:120vh">
@@ -17,12 +19,7 @@
         </div>
         <br>
     <div class="row" style="border-bottom:2px solid #707070">
-        <div class="col-md-4">
-            <div class="text-left">
-                <a class="btn-back" href="#"><i class="fas fa-chevron-left"></i></a>
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="offset-md-4 col-md-4">
             <div class="text-center">
                 <h4>แบบทดสอบ : {{$quiz->name}}</h4>
             </div>
@@ -43,8 +40,8 @@
                 <i class="fas fa-folder-plus"></i>
             </button>
 
-        <a href="{{url('quiz/export/'.$quiz->id)}}"><button>Export</button></a>
-        <button class="btn-import-quiz" data-toggle="modal" data-target="#import_Modal">
+        <a href="{{url('quiz/export/'.$quiz->id)}}"><button class="btnExport">Export</button></a>
+        <button class="btn-import-quiz btnImport" data-toggle="modal" data-target="#import_Modal">
            Import
         </button>
         </div>
