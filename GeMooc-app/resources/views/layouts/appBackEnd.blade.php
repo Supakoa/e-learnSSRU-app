@@ -98,29 +98,7 @@
             </script>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="uploadingFile" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Now uploading</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"
-                            style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            <div id="success"></div>
-                    </div>
-                </div>
-                <div class="modal-footer" id="closeUploadFile">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 @yield('modal')
 
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
@@ -159,56 +137,18 @@
         function goBack() {
             window.history.back();
         }
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
-        $('#content_form').ajaxForm({
-                    beforeSend:function()
-                    {
-                        $('#success').empty();
-                    },
-                    uploadProgress:function(event, position, total, percentComplete)
-                    {
-                        $('.progress-bar').text(percentComplete + '%');
-                        $('.progress-bar').css('width', percentComplete + '%');
-                    },
-                    success:function(data)
-                    {
-                        console.log(data);
-
-                        if(data.errors)
-                        {
-                        console.log('fail');
-
-                        $('.progress-bar').text('0%');
-                        $('.progress-bar').css('width', '0%');
-                        $('#success').html('<span class="text-danger"><b>'+data.errors+'</b></span>');
-                        }
-                        if(data.success)
-                        {
-                        console.log('success');
-
-                        $('.progress-bar').text('Uploaded');
-                        $('.progress-bar').css('width', '100%');
-                        $('#success').html('<span class="text-success"><b>'+data.success+'</b></span><br /><br />');
-                        $('#success').append(data.image);
-                        location.reload();
-                        }
-                    }
-                });
         $('form').submit(function (e) {
             $('button[type=submit]').attr('disabled', '');
+            setTimeout(function () {
+                $('button[type=submit]').removeAttr('disabled');
+            }, 1000);
             if ($('#percent').val() != '') {
-                // alert('51230')
                 $('#Add_Modal_content').modal('hide');
                 $('#uploadingFile').modal('show');
             }else{
                 Swal.fire({
                     title: 'Wait a minute !',
-                    // timer: 2000,
                     onBeforeOpen: () => {
                         Swal.showLoading();
                     }
@@ -218,13 +158,9 @@
         });
 
         $('.send_ajax').click(function (e) {
-            // alert("123");
-
             var btn = $(this);
-            // btn.addClass('.ce-disable', true);
             btn.prop('disabled', true);
             setTimeout(function () {
-                // btn.removeClass('.ce-disable', true);
                 btn.prop('disabled', false);
             }, 1000);
 
