@@ -49,6 +49,8 @@
 
 @section('js')
 <script>
+    // const player = new Plyr('#player');
+
     let typeVideo = '{!! $video->type !!}';
     let dataVideo = '{!! $video->data !!}';
 

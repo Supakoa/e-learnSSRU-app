@@ -74,6 +74,9 @@
         </div>
     </div>
 
+    {{-- test percent --}}
+    <input type="hidden" name="percent" id="percent" value="">
+
     {{--
             <div class="wrap-container">
                 <div class="wrap-body">
@@ -85,8 +88,41 @@
 
             </div> --}}
 
+            <script>
+                $('#exampleModal').on('show.bs.modal', event => {
+                    var button = $(event.relatedTarget);
+                    var modal = $(this);
+                    // Use above variables to manipulate the DOM
 
-    @yield('modal')
+                });
+            </script>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="uploadingFile" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Now uploading</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"
+                            style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div id="success"></div>
+                    </div>
+                </div>
+                <div class="modal-footer" id="closeUploadFile">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@yield('modal')
+
     <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
     <script src="{{ asset('node_modules/popper.min.js')}}"></script>
     <script src="https://unpkg.com/scrollreveal@4"></script>
@@ -96,14 +132,47 @@
     <script src="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     <script src="{{ asset('node_modules/wow.js/dist/wow.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
-    {{--
-                script file to here
-            --}}
-    @stack('script')
-
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <!-- CEFstyle -->
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
     <script>
+        $(document).ready(function () {
+            // $('#uploadingFile').modal('show');
+        $('#uploadingFile').modal({backdrop: 'static', keyboard: false,show:false});
+
+            $('#closeUploadFile').hide();
+
+        });
+
+        $('form').ajaxForm({
+      beforeSend:function(){
+        $('#success').empty();
+      },
+      uploadProgress:function(event, position, total, percentComplete)
+      {
+        $('.progress-bar').text(percentComplete + '%');
+        $('.progress-bar').css('width', percentComplete + '%');
+      },
+      success:function(data)
+      {
+        if(data.errors)
+        {
+          $('.progress-bar').text('0%');
+          $('.progress-bar').css('width', '0%');
+          $('#success').html('<span class="text-danger"><b>'+data.errors+'</b></span>');
+        }
+        if(data.success)
+        {
+          $('.progress-bar').text('Uploaded');
+          $('.progress-bar').css('width', '100%');
+          $('#success').html('<span class="text-success"><b>'+data.success+'</b></span><br /><br />');
+          $('#success').append(data.image);
+        }
+      }
+    });
+
+
+
         wow = new WOW({
             boxClass: 'wow', // default
             animateClass: 'animated', // default
@@ -116,17 +185,28 @@
         function goBack() {
             window.history.back();
         }
-        $('form').submit(function (e) {
 
+        // loading modal [Sweet Alert]
+        $('form').submit(function (e) {
             $('button[type=submit]').attr('disabled', '');
-            Swal.fire({
-                title: 'Wait a minute !',
-                // timer: 2000,
-                onBeforeOpen: () => {
-                    Swal.showLoading()
-                }
-            });
+            if ($('#percent').val() != '') {
+                // alert('51230')
+                $('#Add_Modal_content').modal('hide');
+
+
+                $('#uploadingFile').modal('show');
+            }else{
+                Swal.fire({
+                    title: 'Wait a minute !',
+                    // timer: 2000,
+                    onBeforeOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+            }
+            $('#percent').val('');
         });
+
         $('.send_ajax').click(function (e) {
             // alert("123");
 
@@ -141,6 +221,12 @@
         });
 
     </script>
+
+    {{--
+        script file to here
+    --}}
+    @stack('script')
+
     <script>
         $(window).scroll(function () {
             if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
@@ -173,5 +259,4 @@
     </script>
     @yield('js')
 </body>
-
 </html>
