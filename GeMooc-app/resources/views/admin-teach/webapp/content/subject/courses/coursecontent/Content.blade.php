@@ -476,7 +476,6 @@
                     </form>`;
 
         $('#div_delete').html(form);
-
         Swal.fire({
             title: 'Are you sure?',
             text: "Contents will be deleted. (ต้องแก้คำมั้ง)",
@@ -511,13 +510,6 @@
                 $('#Edit_Course_Modal').modal("show");
             }
         });
-    }
-
-    function setPercent(){
-        if($('input[name=videoType]:checked').val() == 'file'){
-            $('#percent').val('0%');
-            console.log($('#videoFile'));
-        }
     }
 
 </script>
