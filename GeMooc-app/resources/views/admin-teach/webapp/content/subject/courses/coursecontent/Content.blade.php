@@ -343,6 +343,33 @@
 </div>
 
 <div id="div_modal"></div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="uploadingFile" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Now uploading</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"
+                            style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <br><br>
+
+                    </div>
+
+                    <div id="success"></div>
+                </div>
+                <div class="modal-footer" id="closeUploadFile">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
@@ -381,6 +408,12 @@
         $('#edit_lesson_text').html('Edit : ' + lesson.name);
     }
 
+    function setPercent(){
+        if($('input[name=videoType]:checked').val() == 'file'){
+            $('#percent').val('0%');
+            console.log($('#videoFile'));
+        }
+    }
     // onchange to open video contentName
     // $('#content_url').hide();
     $('#content_type').change(function (e) {
@@ -396,7 +429,9 @@
                 break;
                 case '2':
                 // $('.collapse-hide #collapseText').show();
-
+                $('#videoTypeYoutube').attr('disabled','true')
+                $('#videoTypeFile').attr('disabled','true')
+                $('#setTimequiz').attr('disabled','true')
                 break;
                 case '3':
                 $('#videoTypeYoutube').attr('disabled','true')
@@ -412,14 +447,8 @@
     });
     function typeVideo() {
         $('#content_type').val(1).change();
-         $('#typeVideo').show();
-            $('#content_url').show();
-        // if ($(this).val() == '1') {
-
-        // } else {
-        //     $('#typeVideo').hide();
-        //     $('#content_url').hide();
-        // }
+        $('#typeVideo').show();
+        $('#content_url').show();
     }
 
     $('input[name=videoType]').change(function (e) {
@@ -512,5 +541,57 @@
         });
     }
 
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#content_form').ajaxForm({
+                    beforeSend:function()
+                    {
+                        $('#success').empty();
+                    },
+                    uploadProgress:function(event, position, total, percentComplete)
+                    {
+                        $('.progress-bar').text(percentComplete + '%');
+                        $('.progress-bar').css('width', percentComplete + '%');
+                    },
+                    success:function(data)
+                    {
+                        if(data.success){
+                            Swal.fire(
+                        'สำเร็จ',
+                        ''+data.success,
+                        'success'
+                        ).then((result) => {
+                        location.reload();
+
+                        })
+
+                        }
+                        if(data.errors)
+                        {
+                        $('.progress-bar').text('0%');
+                        $('.progress-bar').css('width', '0%');
+                        $('#success').html('<span class="text-danger"><b>'+data.errors+'</b></span>');
+                        }
+
+
+
+                    },
+                    error:function(data)
+                    {
+                        Swal.fire(
+                        'เกิดข้อผิดพลาด',
+                        ' '+data,
+                        'error'
+                        ).then((result) => {
+                        location.reload();
+                        })
+
+                    },
+
+                });
 </script>
 @endsection

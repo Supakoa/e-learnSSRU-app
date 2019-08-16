@@ -8,7 +8,7 @@ use App\article as article;
 use App\quiz as quiz;
 use App\video as video;
 use Illuminate\Http\Request;
-
+use Validator;
 class content_c extends Controller
 {
     public function goto_content($id)
@@ -44,10 +44,22 @@ class content_c extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        // $this->validate($request,[
+        //     'name' => 'required',
+        //     'type' => 'required'
+        // ]);
+        $rules = array(
             'name' => 'required',
-            'type' => 'required'
-        ]);
+            'type' => 'required',
+            'videoFile'  => 'max:204800|mimes:mp4'
+           );
+
+           $error = Validator::make($request->all(), $rules);
+
+           if($error->fails())
+           {
+            return response()->json(['errors' => $error->errors()->all()]);
+           }
 
         // Create content
         $content = new content;
@@ -100,7 +112,11 @@ class content_c extends Controller
         $now->user_id = auth()->user()->id;
         $now->detail = "Create Content : ID ====> || ".$content->id." ||";
         $now->save();
-        return redirect('/course/'.$request->input('course_id'))->with('success', 'Content Created');
+        $output = array(
+            'success' => 'successfully'
+           );
+
+           return response()->json($output);
         // dd($content->content_id);
     }
 
