@@ -5,7 +5,9 @@
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
 @endpush
-
+@section('title')
+{{$quiz->name}} - MOOC SSRU
+@endsection
 @section('main-content')
 
 <div class="card p-4 h-100 pb-4" style="background:#F8F8F8;min-height:120vh">

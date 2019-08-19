@@ -124,14 +124,21 @@ class QuizController extends Controller
     public function export($id)
     {
         $quiz = quiz::find($id);
-        return (new quizExport($id))->download($quiz->name.'.xlsx');
+        return (new quizExport($id))->download($quiz->name.'.csv', \Maatwebsite\Excel\Excel::CSV, [
+            'Content-Type' => 'text/csv',
+      ]);
     }
 
     public function import($id,Request $request)
     {
         // dd($request->file('import'));
-        Excel::import(new QuizImport($id),$request->file('import'), \Maatwebsite\Excel\Excel::XLSX);
+        // dd($request->file('import'));
+        $this->validate($request,[
+            'import' => 'required|mimes:csv,txt'
 
+        ]);
+        // Excel::import(new QuizImport($id),$request->file('import'), \Maatwebsite\Excel\Excel::CSV);
+        (new QuizImport($id))->import($request->file('import'), null, \Maatwebsite\Excel\Excel::CSV);
         return redirect()->back()->with('success', 'All good!');
     }
 }

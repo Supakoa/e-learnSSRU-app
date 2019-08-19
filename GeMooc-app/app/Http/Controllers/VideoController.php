@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\video;
+use App\video as video;
 use Illuminate\Http\Request;
 
 class VideoController extends Controller
@@ -63,7 +63,7 @@ class VideoController extends Controller
      */
     public function edit(video $video)
     {
-        //
+
     }
 
     /**
@@ -75,7 +75,13 @@ class VideoController extends Controller
      */
     public function update(Request $request, video $video)
     {
-        //
+        $newData = $request->newUrl;
+        $updateAt = $video->id;
+
+        $thisVideo = video::find($updateAt);
+        $thisVideo->data = $newData;
+        $thisVideo->save();
+        return back();
     }
 
     /**

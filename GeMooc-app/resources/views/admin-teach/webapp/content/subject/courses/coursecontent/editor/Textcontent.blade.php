@@ -2,6 +2,10 @@
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
+@section('title')
+{{$article->name}} - MOOC SSRU
+@endsection
+
 @push('links')
 
 @endpush
