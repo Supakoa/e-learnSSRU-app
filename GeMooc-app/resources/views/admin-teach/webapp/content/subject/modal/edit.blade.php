@@ -12,6 +12,11 @@
             </div>
             <div class="modal-body">
                 {{-- new-design --}}
+
+                <form action="{{url('/subject/'.$sub->id)}}" method="POST" enctype='multipart/form-data' id="sub_form">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="sub_id" value="{{$sub->id}}">
                 <div class="row">
                     <div class="col-md-4 offset-md-8 text-right p-0">
                         <button class="btn-modal" onclick="delete_subject('{{$sub->id}}')"><i class="fa fa-trash"
@@ -45,7 +50,7 @@
                         <button class="btn-upimg m-2" onclick="$('#cover_image').trigger('click') " >เลือกไฟล์ภาพ</button>
                     </div>
                 </div>
-
+            </form>
                 {{-- new-design --}}
 
                 {{-- <div class="row">
@@ -120,8 +125,14 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
+                            @php
+                            $check = '';
+                            if($sub->status!=0){
+                            $check = 'checked';
+                            }
+                            @endphp
                         <div class="custom-control custom-switch pl-5 pb-2 pt-0">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <input type="checkbox" class="custom-control-input"  value="1" {{$check}} form="sub_form" name="status" id="customSwitch1">
                             <label class="custom-control-label" for="customSwitch1">ออนไลน์</label>
                         </div>
                     </div>
@@ -136,7 +147,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <button class="cebtn-save">บันทึก</button>
+                <button class="cebtn-save" type="submit" form="sub_form"  id="sub_btn">บันทึก</button>
             </div>
         </div>
         {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

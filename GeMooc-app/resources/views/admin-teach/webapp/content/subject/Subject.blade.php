@@ -28,7 +28,7 @@
             <div class="card-subject">
                 <div class="card-subject-header">
                     <img src="{{url('storage/'.$subject->image)}}" class="shadow" width="100%" height="100%">
-                    <div class="status"></div>
+                <div class="status-{{$subject->status ? 'on' : 'off'}}"></div>
                 </div>
                 <div class="card-subject-body pt-2">
                     <p>{{$subject->name}}</p>

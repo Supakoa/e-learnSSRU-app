@@ -44,7 +44,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="courseOpen">เปิดรับสมัคร</label>
-                                        <input id="courseOpen" name="total" value="{{$course->total}}" class="form-control" type="number">
+                                        <input id="courseOpen" name="total" value="{{$course->total}}" min="0" class="form-control" type="number">
                                     </div>
                                 </div>
                             </div>

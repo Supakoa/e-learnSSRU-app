@@ -140,7 +140,7 @@ return "$strDay $strMonthThai $strYear";
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="courseOpen">เปิดรับสมัคร</label>
-                                        <input id="courseOpen" class="form-control" name="total" type="number">
+                                        <input id="courseOpen" class="form-control" min="0" name="total" type="number">
                                     </div>
                                 </div>
                             </div>

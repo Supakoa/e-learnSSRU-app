@@ -144,27 +144,23 @@
                 </div>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="nameLession">ชื่อบทเรียน</label>
-                            <input class="form-control" id="nameLession" type="text">
+                <form action="{{url('/lesson')}}" method="post" enctype='multipart/form-data' id="lesson_form">
+                    @csrf
+                    <input type="hidden" name="course_id" value="{{$course->id}}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="nameLession">ชื่อบทเรียน</label>
+                                <input class="form-control" id="nameLession" name="name" type="text" placeholder="ชื่อบทเรียน">
+                            </div>
                         </div>
                     </div>
-                </div>
-                {{-- <form action="{{url('/lesson')}}" method="post" enctype='multipart/form-data' id="lesson_form">
-                @csrf
-                <input type="hidden" name="course_id" value="{{$course->id}}">
-                <div class="form-group">
-                    <label for="name">lesson Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="lesson Name">
-                </div>
-                </form> --}}
+                </form>
             </div>
             <div class="modal-footer text-left">
                 <div class="row">
                     <div class="col-md-12">
-                            <button class="cebtn-save">บันทึก</button>
+                        <button type="submit" form="lesson_form" class="cebtn-save">บันทึก</button>
                     </div>
                 </div>
             </div>
@@ -193,7 +189,8 @@
                         <div class="col-md-12">
                             <input type="hidden" name="lesson_id" id="lesson_id_edit" value="">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" id="lesson_name" placeholder="lesson Name">
+                                <input type="text" class="form-control" name="name" id="lesson_name"
+                                    placeholder="lesson Name">
                             </div>
                         </div>
                     </div>
@@ -228,7 +225,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="name">ชื่อบทเรียน</label>
-                                <input type="text" class="form-control"  id="nameLesson" name="name" placeholder="content Name" required>
+                                <input type="text" class="form-control" id="nameLesson" name="name"
+                                    placeholder="content Name" required>
                             </div>
                         </div>
                     </div>
@@ -237,19 +235,25 @@
                             <label for="select-type">เลือกประเภทบทเรียน</label>
                             <div class="row" id="select-type">
                                 <div class="col-md-4 text-center">
-                                    <button class="btnTypeContent" type="button" data-toggle="collapse" data-target="#collapseVideo" onclick="typeVideo()" aria-expanded="true" aria-controls="collapseVideo">
+                                    <button class="btnTypeContent" type="button" data-toggle="collapse"
+                                        data-target="#collapseVideo" onclick="typeVideo()" aria-expanded="true"
+                                        aria-controls="collapseVideo">
                                         <i class="fas fa-video"></i>
                                     </button>
                                     <p class="p-2">วิดีโอ</p>
                                 </div>
                                 <div class="col-md-4 text-center">
-                                    <button class="btnTypeContent" type="button" data-toggle="collapse" data-target="#collapseText" onclick="$('#content_type').val(2).change()" aria-expanded="true" aria-controls="collapseText">
+                                    <button class="btnTypeContent" type="button" data-toggle="collapse"
+                                        data-target="#collapseText" onclick="$('#content_type').val(2).change()"
+                                        aria-expanded="true" aria-controls="collapseText">
                                         <i class="fas fa-clipboard    "></i>
                                     </button>
                                     <p class="p-2">บทความ</p>
                                 </div>
                                 <div class="col-md-4 text-center">
-                                    <button class="btnTypeContent" type="button" data-toggle="collapse" data-target="#collapseQuiz" onclick="$('#content_type').val(3).change()" aria-expanded="true" aria-controls="collapseQuiz">
+                                    <button class="btnTypeContent" type="button" data-toggle="collapse"
+                                        data-target="#collapseQuiz" onclick="$('#content_type').val(3).change()"
+                                        aria-expanded="true" aria-controls="collapseQuiz">
                                         <i class="fas fa-question    "></i>
                                     </button>
                                     <p class="p-2">แบบฝึกหัด</p>
@@ -260,19 +264,24 @@
                                     <div class="collapse p-0" id="collapseVideo">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                    <div id="typeVideo">
-                                                            <div class="custom-control custom-radio custom-control-inline">
-                                                                <input class="custom-control-input" type="radio" name="videoType" id="videoTypeYoutube" value="youtube" required>
-                                                                <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
-                                                            </div>
-                                                            <div class="custom-control custom-radio custom-control-inline">
-                                                                <input class="custom-control-input" type="radio" name="videoType" id="videoTypeFile" value="file" required>
-                                                                <label for="videoTypeFile" class="custom-control-label">File</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group" id="content_url">
+                                                <div id="typeVideo">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input class="custom-control-input" type="radio"
+                                                            name="videoType" id="videoTypeYoutube" value="youtube"
+                                                            required>
+                                                        <label for="videoTypeYoutube"
+                                                            class="custom-control-label">Youtube</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input class="custom-control-input" type="radio"
+                                                            name="videoType" id="videoTypeFile" value="file" required>
+                                                        <label for="videoTypeFile"
+                                                            class="custom-control-label">File</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" id="content_url">
 
-                                                            </div>
+                                                </div>
                                                 {{-- <label for="youtubeLink">ลิงค์วิดีโอจากยูทูป</label>
                                                 <input type="text" id="youtubeLink" class="form-control"> --}}
                                             </div>
@@ -288,15 +297,17 @@
                                             <div class="row">
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <label for="detailQuiz" style="font-size:15px">รายละเอียด</label>
-                                                        <textarea class="form-control" name="" id="detailQuiz" rows="4"></textarea>
+                                                        <label for="detailQuiz"
+                                                            style="font-size:15px">รายละเอียด</label>
+                                                        <textarea class="form-control" name="" id="detailQuiz"
+                                                            rows="4"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="form-group">
-                                                        <label for="setTimequiz" style="font-size:15px">ตั้งเวลาในการตอบคำถาม</label>
-                                                        <input type="number" id="setTimequiz" name="time" required
-                                                                  >
+                                                        <label for="setTimequiz"
+                                                            style="font-size:15px">ตั้งเวลาในการตอบคำถาม</label>
+                                                        <input type="number" id="setTimequiz" name="time" required>
                                                         <small>นาที</small>
                                                     </div>
                                                 </div>
@@ -336,7 +347,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                <button onclick="setPercent()" type="submit"  class="btn btn-outline-primary" form="content_form">Save changes</button>
+                <button onclick="setPercent()" type="submit" class="btn btn-outline-primary" form="content_form">Save
+                    changes</button>
             </div>
         </div>
     </div>
@@ -344,32 +356,33 @@
 
 <div id="div_modal"></div>
 
- <!-- Modal -->
- <div class="modal fade" id="uploadingFile" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Now uploading</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"
-                            style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            <br><br>
+<!-- Modal -->
+<div class="modal fade" id="uploadingFile" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Now uploading</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"
+                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    <br><br>
 
-                    </div>
+                </div>
 
-                    <div id="success"></div>
-                </div>
-                <div class="modal-footer" id="closeUploadFile">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                <div id="success"></div>
+            </div>
+            <div class="modal-footer" id="closeUploadFile">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @section('js')
@@ -408,8 +421,8 @@
         $('#edit_lesson_text').html('Edit : ' + lesson.name);
     }
 
-    function setPercent(){
-        if($('input[name=videoType]:checked').val() == 'file'){
+    function setPercent() {
+        if ($('input[name=videoType]:checked').val() == 'file') {
             $('#percent').val('0%');
             console.log($('#videoFile'));
         }
@@ -422,20 +435,20 @@
         // $('.collapse-hide .collapse').hide();
         // alert($(this).val());
         switch ($(this).val()) {
-                case '1':
+            case '1':
                 $('#videoTypeYoutube').removeAttr('disabled');
                 $('#videoTypeFile').removeAttr('disabled');
-                $('#setTimequiz').attr('disabled','true')
+                $('#setTimequiz').attr('disabled', 'true')
                 break;
-                case '2':
+            case '2':
                 // $('.collapse-hide #collapseText').show();
-                $('#videoTypeYoutube').attr('disabled','true')
-                $('#videoTypeFile').attr('disabled','true')
-                $('#setTimequiz').attr('disabled','true')
+                $('#videoTypeYoutube').attr('disabled', 'true')
+                $('#videoTypeFile').attr('disabled', 'true')
+                $('#setTimequiz').attr('disabled', 'true')
                 break;
-                case '3':
-                $('#videoTypeYoutube').attr('disabled','true')
-                $('#videoTypeFile').attr('disabled','true')
+            case '3':
+                $('#videoTypeYoutube').attr('disabled', 'true')
+                $('#videoTypeFile').attr('disabled', 'true')
                 $('#setTimequiz').removeAttr('disabled');
 
 
@@ -445,6 +458,7 @@
                 break;
         }
     });
+
     function typeVideo() {
         $('#content_type').val(1).change();
         $('#typeVideo').show();
@@ -466,7 +480,9 @@
                 break;
 
             case 'file':
-                $('#content_url').html('<label for="url">File Video</label><input type="file" class="form-control input-modal" name="videoFile" id="videoFile" required>');
+                $('#content_url').html(
+                    '<label for="url">File Video</label><input type="file" class="form-control input-modal" name="videoFile" id="videoFile" required>'
+                    );
                 break;
         }
     });
@@ -542,56 +558,53 @@
     }
 
     $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#content_form').ajaxForm({
+        beforeSend: function () {
+            $('#success').empty();
+        },
+        uploadProgress: function (event, position, total, percentComplete) {
+            $('.progress-bar').text(percentComplete + '%');
+            $('.progress-bar').css('width', percentComplete + '%');
+        },
+        success: function (data) {
+            if (data.success) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'สำเร็จ',
+                    text: '' + data.success,
+                    timer: 1500
+                }).then((result) => {
+                    location.reload();
+
+                })
+
             }
-        });
-
-        $('#content_form').ajaxForm({
-                    beforeSend:function()
-                    {
-                        $('#success').empty();
-                    },
-                    uploadProgress:function(event, position, total, percentComplete)
-                    {
-                        $('.progress-bar').text(percentComplete + '%');
-                        $('.progress-bar').css('width', percentComplete + '%');
-                    },
-                    success:function(data)
-                    {
-                        if(data.success){
-                            Swal.fire(
-                        'สำเร็จ',
-                        ''+data.success,
-                        'success'
-                        ).then((result) => {
-                        location.reload();
-
-                        })
-
-                        }
-                        if(data.errors)
-                        {
-                        $('.progress-bar').text('0%');
-                        $('.progress-bar').css('width', '0%');
-                        $('#success').html('<span class="text-danger"><b>'+data.errors+'</b></span>');
-                        }
+            if (data.errors) {
+                $('.progress-bar').text('0%');
+                $('.progress-bar').css('width', '0%');
+                $('#success').html('<span class="text-danger"><b>' + data.errors + '</b></span>');
+            }
 
 
 
-                    },
-                    error:function(data)
-                    {
-                        Swal.fire(
-                        'เกิดข้อผิดพลาด',
-                        ' '+data,
-                        'error'
-                        ).then((result) => {
-                        location.reload();
-                        })
+        },
+        error: function (data) {
+            Swal.fire(
+                'เกิดข้อผิดพลาด',
+                ' ' + data,
+                'error'
+            ).then((result) => {
+                location.reload();
+            })
 
-                    },
+        },
 
-                });
+    });
+
 </script>
 @endsection
