@@ -1,7 +1,6 @@
-
-@section('links')
+@push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFlogIn.css')}}">
-@endsection
+@endpush
 {{-- ลงชื่อเข้าใช้ --}}
 <div class="ce-bgimg" style="background-image:url('../../images/cebody-bg.jpeg');">
     <div class="body-login">
@@ -58,59 +57,49 @@
     </div>
 </div>
 <div id="section2">
-        <div class="container-header">
-            คอร์สเรียนออนไลน์ฟรีที่สวนสุนันทา | www.mooc.ssru.ac.th
-            <div class="container-underline"></div>
-        </div>
-        <div class="container-content">
-            <p>
-                มาร่วมฝึกทักษะ ความคิด ความสามารถ และสติปัญญา
-            </p>
-            <p>
-                เพื่อพัฒนาศักยภาพของตนเอง
-            </p>
-        </div>
+    <div class="container-header">
+        คอร์สเรียนออนไลน์ฟรีที่สวนสุนันทา | www.mooc.ssru.ac.th
+        <div class="container-underline"></div>
     </div>
+    <div class="container-content">
+        <p>
+            มาร่วมฝึกทักษะ ความคิด ความสามารถ และสติปัญญา
+        </p>
+        <p>
+            เพื่อพัฒนาศักยภาพของตนเอง
+        </p>
+    </div>
+</div>
 {{-- วิชา --}}
 <div id="section3">
     <div class="bg-blur"></div>
-    <nav>
-        <div class="logo">
-            <img src="{{url('images/logo.png')}}" alt="">
-            <div class="log-underline-img"></div>
-            <h5>SSRU</h5>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="#">วิชา</a>
-                <div class="li-underline"></div>
-            </li>
-            <li>
-                <a href="#">คู่มือการใช้งาน</a>
-                <div class="li-underline"></div>
-            </li>
-            <li>
-                <a href="#">คำถาม</a>
-                <div class="li-underline"></div>
-            </li>
-        </ul>
-        <div class="user-id"></div>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
-    {{-- แก้ไขโปรไฟล์ --}}
-    @include('pagestudent.profile.Profile')
-    {{-- แก้ไขโปรไฟล์ --}}
-    <div class="section-header">
-        <p>หลักสูตรที่เปิดสอน</p>
-        <div class="section-underline"></div>
-    </div>
-    <div class="section-content">
-        <div class="container">
-            
+{{-- แก้ไขโปรไฟล์ --}}
+@include('pagestudent.profile.Profile')
+{{-- แก้ไขโปรไฟล์ --}}
+    <div class="container-fluid pt-3">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class=" w-100" height="800px" class="img-fluid" src="https://static3.bigstockphoto.com/7/0/2/large1500/207611518.jpg"
+                        alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class=" w-100" height="800px" class="img-fluid"
+                        src="https://audition.playpark.com/th-th/wp-content/uploads/2018/06/bg.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class=" w-100" height="800px" class="img-fluid"
+                        src="http://www.4usky.com/data/out/11/164070415-black-blue-wallpapers.jpg" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
 </div>

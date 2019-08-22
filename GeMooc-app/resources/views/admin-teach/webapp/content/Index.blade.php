@@ -58,7 +58,7 @@
                 @endif
 
                 @if ($both)
-                <a href="#" id="openProfile">
+            <a href="{{url('profile')}}">
                     <li>แก้ไขโปรไฟล์</li>
                 </a>
                 @endif
