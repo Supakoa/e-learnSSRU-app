@@ -307,7 +307,7 @@
                                                     <div class="form-group">
                                                         <label for="setTimequiz"
                                                             style="font-size:15px">ตั้งเวลาในการตอบคำถาม</label>
-                                                        <input type="number" id="setTimequiz" name="time" required>
+                                                        <input type="number"style="width :80%"  id="setTimequiz" name="time" required>
                                                         <small>นาที</small>
                                                     </div>
                                                 </div>
