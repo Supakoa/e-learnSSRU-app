@@ -85,17 +85,6 @@
     {{-- test percent --}}
     <input type="hidden" name="percent" id="percent" value="">
 
-    {{--
-            <div class="wrap-container">
-                <div class="wrap-body">
-                    <div class="ce-bgimg" style = 'background-image:'>
-                        <div class="bg-blur"></div>
-                        @yield('wrap-body')
-                    </div>
-                </div>
-
-            </div> --}}
-
             <script>
                 $('#exampleModal').on('show.bs.modal', event => {
                     var button = $(event.relatedTarget);
@@ -172,9 +161,6 @@
 
     </script>
 
-    {{--
-        script file to here
-    --}}
     @stack('script')
 
     <script>
@@ -190,21 +176,6 @@
                 scrollTop: 0 // Scroll to top of body
             }, 1800);
         });
-
-
-        // window.onscroll = function() {scrollFunction()};
-
-        // function scrollFunction() {
-        //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        //     document.getElementById("myBtn").style.display = "block";
-        //   } else {
-        //     document.getElementById("myBtn").style.display = "none";
-        //   }
-        // }
-        // function topFunction() {
-        //   document.body.scrollTop = 0;
-        //   document.documentElement.scrollTop = 0;
-        // }
 
     </script>
 

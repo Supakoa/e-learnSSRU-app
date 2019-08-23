@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
@@ -24,6 +24,8 @@
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">
     --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
+
+    @stack('links')
 
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}">
@@ -126,7 +128,6 @@
                 </div>
                 <div class="form-container">
                     <div class="head-popup pb-3">Send Problem <i class="far fa-envelope"></i></div>
-                    {{-- <hr style="border:1px solid #ddd"> --}}
 
                     {{-- hidden item --}}
                     <input type="hidden" name="from_page" id="from_page" value="{{ url()->current() }}">
@@ -171,7 +172,7 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-    
+
     <script>
         $('.nav-links').fadeIn().delay(1500);
         $(window).scroll(function () {

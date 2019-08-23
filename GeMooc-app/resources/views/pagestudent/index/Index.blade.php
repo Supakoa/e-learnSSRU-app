@@ -1,5 +1,10 @@
 @extends('layouts.appLearning')
 
+@push('links')
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEindex.css')}}">
+
+@endpush
+
 @section('index')
 <nav>
     <div class="logo">
@@ -45,12 +50,12 @@
         <div class="line3"></div>
     </div>
 </nav>
+<div class="bg-blur"></div>
 <div class="index-body"
     style="background-image: url('https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')">
-    <div class="bg-blur"></div>
     <div class="index-content">
         <div class="container">
-            <div class="your-course">
+            {{-- <div class="your-course">
                 <div class="your-course-header">
                     <p>กำลังเรียน...</p>
                 </div>
@@ -117,7 +122,6 @@
                         </div>
                         <div class="col-md-4">
                             <a id="btn_course" href="#"><button  >เริ่มคอร์ส</button></a>
-
                         </div>
                     </div>
                 </div>
@@ -162,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
