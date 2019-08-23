@@ -557,15 +557,13 @@
         });
     }
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
     $('#content_form').ajaxForm({
+
         beforeSend: function () {
             $('#success').empty();
+            console.log('เข้าาาาา ๅ ๅๅ ');
+
         },
         uploadProgress: function (event, position, total, percentComplete) {
             $('.progress-bar').text(percentComplete + '%');

@@ -118,20 +118,22 @@
             $('#closeUploadFile').hide();
 
         });
-        wow = new WOW({
-            boxClass: 'wow', // default
-            animateClass: 'animated', // default
-            offset: 0, // default
-            mobile: true, // default
-            live: true // default
-        })
-        wow.init();
+        // wow = new WOW({
+        //     boxClass: 'wow', // default
+        //     animateClass: 'animated', // default
+        //     offset: 0, // default
+        //     mobile: true, // default
+        //     live: true // default
+        // })
+        // wow.init();
 
-        function goBack() {
-            window.history.back();
-        }
+        // function goBack() {
+        //     window.history.back();
+        // }
 
         $('form').submit(function (e) {
+            console.log('เข้าาาาา');
+
             $('button[type=submit]').attr('disabled', '');
             setTimeout(function () {
                 $('button[type=submit]').removeAttr('disabled');

@@ -57,7 +57,7 @@
                 file video
             --}}
             <video height="720" width="1280" id="player" controls crossorigin playsinline>
-                <source src="{{ $video->data }}" type="video/mp4" />
+                <source src="{{ url('').$video->data }}" type="video/mp4" />
                 {{-- <source src="{{ $video->data }}" type="video/webm" /> --}}
                 <!-- Captions are optional -->
                 <track kind="captions" label="English captions" srclang="en" default />
