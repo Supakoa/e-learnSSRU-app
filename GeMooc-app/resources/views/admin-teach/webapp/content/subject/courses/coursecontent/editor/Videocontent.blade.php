@@ -58,10 +58,21 @@
             --}}
             <video height="720" width="1280" id="player" controls crossorigin playsinline>
                 <source src="{{ $video->data }}" type="video/mp4" />
-                <source src="{{ $video->data }}" type="video/webm" />
+                {{-- <source src="{{ $video->data }}" type="video/webm" /> --}}
                 <!-- Captions are optional -->
                 <track kind="captions" label="English captions" srclang="en" default />
             </video>
+            {{-- <video id='my-video' class='video-js' controls preload='auto' width='1280' height='720' data-setup='{}'>
+                <source src='{{ $video->data }}' type='video/mp4'>
+
+                <p class='vjs-no-js'>To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+                </p>
+            </video> --}}
+            {{-- <video id="video3" width="1280" height="720">
+                <source src="{{ $video->data }}" type="video/mp4">
+                <p>Web Browser นี้ยังไม่รองรับ HTML Video</p>
+            </video> --}}
             @endif
 
 
@@ -190,12 +201,16 @@
         </div>
     </div>
 </div>
-
 @endsection
+
+
 
 @section('js')
 <script>
     const player = new Plyr('#player');
+    const player2 = $('#my-video');
+
+    console.log(player2);
 
     let typeVideo = '{!! $video->type !!}';
     let dataVideo = '{!! $video->data !!}';
@@ -220,39 +235,38 @@
     if (typeVideo == 'file') {
         inputSrc = dataVideo;
 
-        fileVideo source setter
-        player.source = {
-            type: 'video',
-            title: video.name,
-            sources: [
-                {
-                    src: '/path/to/movie.mp4',
-                    type: 'video/mp4',
-                    size: 720,
-                },
-                {
-                    src: '/path/to/movie.webm',
-                    type: 'video/webm',
-                    size: 1080,
-                },
-            ],
-            poster: '/path/to/poster.jpg',
-            tracks: [
-                {
-                    kind: 'captions',
-                    label: 'English',
-                    srclang: 'en',
-                    src: '/path/to/captions.en.vtt',
-                    default: true,
-                },
-                {
-                    kind: 'captions',
-                    label: 'French',
-                    srclang: 'fr',
-                    src: '/path/to/captions.fr.vtt',
-                },
-            ],
-        };
+        // fileVideo source setter
+        // player.source = {
+        //     type: 'video',
+        //     title: video.name,
+        //     sources: [
+        //         {
+        //             src: '/path/to/movie.mp4',
+        //             type: 'video/mp4',
+        //             size: 720,
+        //         },
+        //         {
+        //             src: '/path/to/movie.webm',
+        //             type: 'video/webm',
+        //             size: 1080,
+        //         },
+        //     ],
+            // tracks: [
+            //     {
+            //         kind: 'captions',
+            //         label: 'English',
+            //         srclang: 'en',
+            //         src: '/path/to/captions.en.vtt',
+            //         default: true,
+            //     },
+            //     {
+            //         kind: 'captions',
+            //         label: 'French',
+            //         srclang: 'fr',
+            //         src: '/path/to/captions.fr.vtt',
+            //     },
+            // ],
+        // };
     }else{
         inputSrc = iframeMarkup;
 
