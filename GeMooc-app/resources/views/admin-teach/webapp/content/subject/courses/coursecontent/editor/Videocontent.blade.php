@@ -17,8 +17,9 @@
     @php
         $course = $video->content->lesson->course;
     @endphp
+
     <div>
-    <a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a href="{{url('/course/'.$course->id)}}">{{$video->content->lesson->name}}</a> / <a href="{{url('/video/'.$video->id)}}">{{$video->content->name}}</a>
+        <a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a href="{{url('/course/'.$course->id)}}">{{$video->content->lesson->name}}</a> / <a href="{{url('/video/'.$video->id)}}">{{$video->content->name}}</a>
     </div>
         <div class="row" style="border-bottom:2px solid #707070">
             <div class="offset-md-4 col-md-4">
@@ -38,30 +39,31 @@
                 </div>
             </div> --}}
 
+            @if ( $video->type == 'url' )
             {{--
                 youtube
             --}}
-            <div class="container-video">
-                <div class="row justify-content-center mb-5">
-                    <div class="col">
-                        <div class="plyr__video-embed" id="player">
-                            <iframe id="showVideo" height="720" width="1280" src="" allowfullscreen allowtransparency
-                                allow="autoplay"></iframe>
-                        </div>
-                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="aSQwI3rDETk"></div>
-                    </div>
-                </div>
+            <div class="plyr__video-embed" id="player">
+                <iframe
+                    id="showVideo" height="720" width="1280"
+                    src=""
+                    allowfullscreen
+                    allowtransparency
+                    allow="autoplay"
+                ></iframe>
             </div>
-
+            @else
             {{--
                 file video
             --}}
-            <video poster="/path/to/poster.jpg" id="player" playsinline controls>
+            <video height="720" width="1280" id="player" controls crossorigin playsinline>
                 <source src="{{ $video->data }}" type="video/mp4" />
-
+                <source src="{{ $video->data }}" type="video/webm" />
                 <!-- Captions are optional -->
-                <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+                <track kind="captions" label="English captions" srclang="en" default />
             </video>
+            @endif
+
 
         </div>
     </div>
@@ -193,16 +195,14 @@
 
 @section('js')
 <script>
-    // $('#Add_Modal_content').modal('show');
-
     const player = new Plyr('#player');
-    const players = Plyr.setup('.js-player');
 
     let typeVideo = '{!! $video->type !!}';
     let dataVideo = '{!! $video->data !!}';
+    let video = '{!! $video !!}';
 
     let videoId = getId(dataVideo);
-    let iframeMarkup = '//www.youtube.com/embed/' + videoId;
+    let iframeMarkup = 'www.youtube.com/embed/' + videoId;
 
     let inputSrc;
 
@@ -219,8 +219,53 @@
 
     if (typeVideo == 'file') {
         inputSrc = dataVideo;
+
+        fileVideo source setter
+        player.source = {
+            type: 'video',
+            title: video.name,
+            sources: [
+                {
+                    src: '/path/to/movie.mp4',
+                    type: 'video/mp4',
+                    size: 720,
+                },
+                {
+                    src: '/path/to/movie.webm',
+                    type: 'video/webm',
+                    size: 1080,
+                },
+            ],
+            poster: '/path/to/poster.jpg',
+            tracks: [
+                {
+                    kind: 'captions',
+                    label: 'English',
+                    srclang: 'en',
+                    src: '/path/to/captions.en.vtt',
+                    default: true,
+                },
+                {
+                    kind: 'captions',
+                    label: 'French',
+                    srclang: 'fr',
+                    src: '/path/to/captions.fr.vtt',
+                },
+            ],
+        };
     }else{
         inputSrc = iframeMarkup;
+
+        // youtube source setter
+        player.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: videoId,
+                    provider: 'youtube',
+                },
+            ],
+        };
     }
     $('#showVideo').attr('src', inputSrc);
 

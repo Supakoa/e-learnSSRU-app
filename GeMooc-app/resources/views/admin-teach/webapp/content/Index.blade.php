@@ -31,6 +31,7 @@
     <div class="main-body">
         <div class="nav-left">
             <div class="nav-profile">
+                {{-- image profile --}}
                 @if (auth()->user()->profile->image!=null)
                 <img src="{{url('/storage/'.auth()->user()->profile->image) }}" alt="...">
                 @else
