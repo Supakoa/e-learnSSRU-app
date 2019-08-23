@@ -19,18 +19,8 @@ class QuizExport implements FromCollection
     {
         $this->id = $id;
     }
-
-    // public function query()
-    // {
-    //     $quiz = quiz::query()->where('id', $this->id);
-    //     dd($quiz);
-    //     $question = $quiz->questions;
-    //     return $question;
-    // }
     public function collection()
     {
-    //     // $test  =
-    //     // dd('yeah', $test);
         $sum = collect();
         $quiz = quiz::find($this->id);
         foreach ($quiz->questions as $key => $question) {
@@ -42,6 +32,5 @@ class QuizExport implements FromCollection
             }
         }
         return $sum;
-        // return $quiz->questions;
     }
 }
