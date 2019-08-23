@@ -40,11 +40,7 @@
                     {{--
                     send form id to delete record.
                 --}}
-                    <form action="{{ url("/teach/". $user->id ) }}" id="formDelete{{ $user->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <input type="hidden" name="id" id="id" value="{{ $user->id }}">
-                    </form>
+
                     <th scope="row">
                         {{ ++$i }}
                     </th>
@@ -70,6 +66,11 @@
     </div>
 </div>
 
+<form action="{{ url("/teach/". $user->id ) }}" id="formDelete" method="post">
+    @csrf
+    @method('DELETE')
+    <input type="hidden" name="id" id="delete_id" value="">
+</form>
 @endsection
 
 @section('modal')
@@ -123,6 +124,7 @@
         function when onclick will delete with id.
     */
     const deleteStudent = (obj) => {
+        $('#delete_id').val('obj')
         Swal.fire({
             title: 'ยืนยันการลบ?',
             text: "ข้อมูลจะถูกลบออกจากฐานข้อมูล",
@@ -134,7 +136,7 @@
             cancelButtonText: 'ยกเลิก',
         }).then((result) => {
             if (result.value) {
-                $('#formDelete' + obj).submit();
+                $('#formDelete').submit();
             }
         });
     };
@@ -143,7 +145,7 @@
         open modal
     */
     const openEditModal = (id) => {
-        alert(id);
+        // alert(id);
         $.post("/teach/" + id + "/editModal", {
                 id: id
             },
