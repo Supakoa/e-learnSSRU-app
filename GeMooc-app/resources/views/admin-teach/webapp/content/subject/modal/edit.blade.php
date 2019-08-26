@@ -47,78 +47,10 @@
                         </div>
                         <label for="name">Cover Image (1000*1000) </label>
                         <input type="file" class="form-control" id="cover_image" name="cover_image" hidden placeholder="Image">
-                        <button class="btn-upimg m-2" onclick="$('#cover_image').trigger('click') " >เลือกไฟล์ภาพ</button>
+                        <button class="btn-upimg m-2"  onclick="$('#cover_image').trigger('click')" type="button" >เลือกไฟล์ภาพ</button>
                     </div>
                 </div>
             </form>
-                {{-- new-design --}}
-
-                {{-- <div class="row">
-                    <div class="offset-md-8 col-md-2 text-right" style="margin-right:-20px">
-                        <span>Online :</span>
-                    </div>
-                    <div class="col-md-1 ">
-                        @php
-                        $check = '';
-                        if($sub->status!=0){
-                        $check = 'checked';
-                        }
-                        @endphp
-                        <input class="tgl tgl-flat ce-checkbox" id="cb4" {{$check}} value="1" form="sub_form"
-                name='status' type="checkbox" />
-                <label class="tgl-btn" for="cb4"></label>
-
-            </div>
-
-        </div>
-        <form action="{{url('/subject/'.$sub->id)}}" method="POST" enctype='multipart/form-data' id="sub_form">
-            @csrf
-            @method('PATCH')
-            <input type="hidden" name="sub_id" value="{{$sub->id}}">
-
-                    <div class="form-group">
-                        <label for="name">Subject Name</label>
-                        <input type="text" class="form-control" name="name" value="{{$sub->name}}"
-                            placeholder="Subject Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="detail">Detail</label>
-                        <input type="text" class="form-control" name="detail" value="{{$sub->detail}}"
-                            placeholder="Subject Detail">
-                    </div>
-                    <div class="form-group text-center">
-                        <img src="{{ url("/storage/".$sub->image) }}" alt="" width="80%" srcset="">
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Cover Image (1000*1000) </label>
-                        <input type="file" class="form-control" name="cover_image" placeholder="Image">
-                    </div>
-
-                </form>
-            <div class="form-group">
-                <label for="name">Subject Name</label>
-                <input type="text" class="form-control" name="name" value="{{$sub->name}}" placeholder="Subject Name">
-            </div>
-            <div class="form-group">
-                <label for="detail">Detail</label>
-                <input type="text" class="form-control" name="detail" value="{{$sub->detail}}"
-                    placeholder="Subject Detail">
-            </div>
-            <div class="form-group text-center">
-                <img src="{{ url("/storage/".$sub->sm_banner) }}" alt="" width="100%" srcset="">
-            </div>
-            <div class="form-group">
-                <label for="name">Cover Image (Small : 400*255) </label>
-                <input type="file" class="form-control" name="cover_image_sm" placeholder="Image">
-            </div>
-            <div class="form-group text-center">
-                <img src="{{ url("/storage/".$sub->xl_banner) }}" alt="" width="100%" srcset="">
-            </div>
-            <div class="form-group">
-                <label for="name">Cover Image (Large : 1600*600) </label>
-                <input type="file" class="form-control" name="cover_image_xl" placeholder="Image">
-            </div>
-        </form> --}}
     </div>
     <div class="modal-footer">
         <div class="row">
@@ -147,11 +79,9 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <button class="cebtn-save" type="submit" form="sub_form"  id="sub_btn">บันทึก</button>
+                <button class="cebtn-save" type="submit" form="sub_form"  id="sub_btn">บันทึก555</button>
             </div>
         </div>
-        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="sub_form" id="sub_btn">Save changes</button> --}}
     </div>
 </div>
 </div>
