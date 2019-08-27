@@ -85,6 +85,10 @@ Route::group(['middleware' => 'auth'], function (){
     // record
     Route::resource('/record', 'RecordController');
 
+    Route::get('page/content/text',function() {
+        return view('pagestudent.subject.allSubject');
+    });
+
     // student_view
     Route::get('/std_view/home', 'Std_viewer@Std_home');
     Route::get('/std_view/subject', 'Std_viewer@all_subject');

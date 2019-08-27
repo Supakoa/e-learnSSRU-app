@@ -17,13 +17,13 @@ class Std_viewer extends Controller
         // old view
         // return view('std_viewer.std_home.index');
         // new view
-        return view('pagestudent.index.index');
+        return view('pagestudent.index.home');
     }
 
     public function all_subject(){
         $subjects = subject::where('status','1')->get();
 
-        return view('std_viewer.std_subject.Show_sub')->with('subjects',$subjects);
+        return view('pagestudent.subject.allSubject')->with('subjects',$subjects);
     }
 
     public function show_subject(subject $subject){
@@ -63,12 +63,12 @@ class Std_viewer extends Controller
             }
         }elseif( $content->type == 2 ){
             $article = $content->article;
-            return view('std_viewer.std_subject.std_course.content.CT_text')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
+            return view('pagestudent.subject.course.content.textContent')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
         }else{
             $quiz = $content->quiz;
             $time = $quiz->time*60;
             session(['time'=>$time]);
-            return view('std_viewer.std_subject.std_quiz.Quiz')->with('course',$course)->with('quiz',$quiz);
+            return view('pagestudent.subject.quiz.quiz')->with('course',$course)->with('quiz',$quiz);
 
         }
     }
@@ -127,26 +127,26 @@ class Std_viewer extends Controller
     {
         $course = $content->lesson->course;
         if($content->type==1){
-            return view('std_viewer.std_subject.std_course.content.CT_video')->with('lessons',$course->lessons)->with('now_content',$content);
+            return view('pagestudent.subject.course.content.videoContent')->with('lessons',$course->lessons)->with('now_content',$content);
         }elseif($content->type==2){
             $article = $content->article;
-            return view('std_viewer.std_subject.std_course.content.CT_text')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
+            return view('pagestudent.subject.course.content.textContent')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
         }else{
             $quiz = $content->quiz;
-            return view('std_viewer.std_subject.std_quiz.Quiz_dashboard')->with('course',$course)->with('quiz',$quiz);
+            return view('pagestudent.subject.quiz.quizDashboard')->with('course',$course)->with('quiz',$quiz);
 
         }
     }
 
 
     public function Std_quiz(){
-        return view('std_viewer.std_subject.std_quiz.Quiz');
+        return view('pagestudent.subject.quiz.quiz');
     }
     public function Std_quizDashboard(){
-        return view('std_viewer.std_subject.std_quiz.Quiz_dashboard');
+        return view('pagestudent.subject.quiz.quizDashboard');
     }
     public function Std_quizPreview(){
-        return view('std_viewer.std_subject.std_quiz.Preview');
+        return view('pagestudent.subject.quiz.quizPreview');
     }
     public function Std_payment(){
         return view('std_viewer.std_payment.Payment');
