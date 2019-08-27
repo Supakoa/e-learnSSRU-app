@@ -38,9 +38,12 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $jsonPack = json_decode($request->muuwan);
+        // dd($jsonPack);
         $myTempWantToCheckFirst = record::where('content_id', $jsonPack->content_id)->where('user_id', $jsonPack->user_id)->get();
         if($myTempWantToCheckFirst->first() == null){
+            // create new
             $newRecord = new record();
             $newRecord->content_id = $jsonPack->content_id;
             $newRecord->user_id = $jsonPack->user_id;
@@ -48,6 +51,7 @@ class RecordController extends Controller
             $newRecord->percent = $jsonPack->percent;
             $newRecord->save();
         }else{
+            // update
             $updateRecord = record::where('content_id', $jsonPack->content_id)->where('user_id', $jsonPack->user_id)->first();
             $updateRecord->content_id = $jsonPack->content_id;
             $updateRecord->user_id = $jsonPack->user_id;
@@ -72,7 +76,7 @@ class RecordController extends Controller
         // dd( gettype($jsonPack->content_id) );
         // dd( auth()->user()->progresses()->wherepivot('content_id', $jsonPack->content_id)->get()->first() );
         // dd('end good boy..');
-        // return response(json_encode($jsonPack));
+        return response(json_encode($jsonPack));
     }
 
     /**

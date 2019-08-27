@@ -53,14 +53,15 @@ class Std_viewer extends Controller
      public function show_content(content $content)
     {
         $course = $content->lesson->course;
-        if($content->type==1){
-            $ake = record::where('content_id', $content->id)->where('user_id', auth()->user()->id)->first();
-            if($ake == null){
-                return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content);
+        if( $content->type == 1 ){
+            $record = record::where('content_id', $content->id)->where('user_id', auth()->user()->id)->first();
+            $video = $content->video;
+            if($record == null){
+                return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content)->with('video', $video);
             }else{
-                return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content)->with('record', $ake);
+                return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content)->with('record', $record)->with('video', $video);
             }
-        }elseif($content->type==2){
+        }elseif( $content->type == 2 ){
             $article = $content->article;
             return view('std_viewer.std_subject.std_course.content.CT_text')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
         }else{

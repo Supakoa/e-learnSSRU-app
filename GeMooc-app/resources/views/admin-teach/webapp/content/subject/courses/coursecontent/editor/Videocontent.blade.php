@@ -62,17 +62,7 @@
                 <!-- Captions are optional -->
                 <track kind="captions" label="English captions" srclang="en" default />
             </video>
-            {{-- <video id='my-video' class='video-js' controls preload='auto' width='1280' height='720' data-setup='{}'>
-                <source src='{{ $video->data }}' type='video/mp4'>
 
-                <p class='vjs-no-js'>To view this video please enable JavaScript, and consider upgrading to a web browser that
-                    <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-                </p>
-            </video> --}}
-            {{-- <video id="video3" width="1280" height="720">
-                <source src="{{ $video->data }}" type="video/mp4">
-                <p>Web Browser นี้ยังไม่รองรับ HTML Video</p>
-            </video> --}}
             @endif
 
 
@@ -210,14 +200,12 @@
     const player = new Plyr('#player');
     const player2 = $('#my-video');
 
-    console.log(player2);
-
     let typeVideo = '{!! $video->type !!}';
     let dataVideo = '{!! $video->data !!}';
     let video = '{!! $video !!}';
 
     let videoId = getId(dataVideo);
-    let iframeMarkup = 'www.youtube.com/embed/' + videoId;
+    let iframeMarkup = 'https://www.youtube.com/embed/' + videoId;
 
     let inputSrc;
 

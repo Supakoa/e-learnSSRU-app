@@ -50,6 +50,10 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
     @include('inc.google_analytics');
+
+    {{-- css --}}
+    @stack('links')
+
 </head>
 
 <body>

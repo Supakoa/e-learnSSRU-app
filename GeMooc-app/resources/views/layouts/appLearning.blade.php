@@ -43,11 +43,16 @@
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
 
+    {{-- plyr --}}
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+    <script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
+
 </head>
 
 <body>
     <div class="cebody">
         @yield('index')
+        @yield('content')
         <button id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
         {{-- @endguest --}}
