@@ -12,15 +12,15 @@
     </div>
     <ul class="nav-links">
         <li>
-            <a href="#">วิชา</a>
+            <a href="{{url('/std_view/subject')}}">วิชา</a>
             <div class="li-underline"></div>
         </li>
         <li>
-            <a href="#">คู่มือการใช้งาน</a>
+        <a href="{{url('/std_view/tool')}}">คู่มือการใช้งาน</a>
             <div class="li-underline"></div>
         </li>
         <li>
-            <a href="#">คำถาม</a>
+            <a href="{{url('/std_view/question')}}">คำถาม</a>
             <div class="li-underline"></div>
         </li>
         <li class="dropdown" style="display:flex;padding-top: 0;">
@@ -49,9 +49,8 @@
         <div class="line3"></div>
     </div>
 </nav>
-<div class="bg-blur"></div>
-<div class="index-body"
-    style="background-image: url('https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')">
+{{-- <div class="bg-blur"></div> --}}
+<div class="index-body">
     <div class="index-content">
         <ul class="list-group list-group-horizontal">
         <li class="list-group-item"><a href="{{ url('/page/content/text')}}">Google</a></li>
@@ -177,50 +176,8 @@
 
 @section('js')
 <script>
-    $('.your-course-slide').slick({
-        dots: true,
-        infinite: false,
-        respondTo: 'window',
-        centerPadding:'60px',
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
 
-    $('.course_progress').click(function (e) {
-        e.preventDefault();
-        id = $(this).attr('course_id')
-        // alert(id)
-        progress = $(this).attr('progress')
-        // alert(progress)
 
-        $('#progress_bar').css('width', progress+'%')
-        $('#btn_course').attr('href','eiei/'+id)
-
-    });
+    
 </script>
 @endsection

@@ -14,13 +14,9 @@
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/slick/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('node_modules/slick/slick/slick-theme.css')}}">
     {{-- <link rel="stylesheet" href="{{asset('node_modules/3d-slider/style.css')}}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEQuiz.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
+    
 
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">--}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
@@ -46,8 +42,8 @@
 </head>
 
 <body>
+<div class="bg-blur" style="background-image: url('https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')"></div>
     <div class="cebody">
-<div class="bg-blur"></div>
         @yield('index')
         <button id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
@@ -72,7 +68,6 @@
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
-    {{-- <script src="{{ asset('node_modules/slick/slick/jq-migrate.min.js')}}"></script> --}}
     {{-- <script src="{{asset('node_modules/3d-slider/app.js')}}"></script> --}}
     <script>
         wow = new WOW({
