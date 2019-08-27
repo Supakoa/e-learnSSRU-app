@@ -44,6 +44,10 @@
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
 
+    {{-- plyr --}}
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+    <script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
+
 </head>
 
 <body>
@@ -51,6 +55,7 @@
 
 {{-- <div class="bg-blur"></div> --}}
         @yield('index')
+        {{-- @yield('content') --}}
           {{-- @guest --}}
           {{-- @yield('login') --}}
           {{-- @else --}}
