@@ -30,6 +30,7 @@
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/CEF2style.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/CEFlogin.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFlogin.css')}}">
     <!-- fontawesom -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -47,6 +48,9 @@
 
 <body>
     <div class="cebody">
+          {{-- @guest --}}
+          @yield('login')
+          {{-- @else --}}
         @yield('index')
         <button id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
