@@ -26,6 +26,7 @@
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/CEF2style.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/CEFlogin.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFlogin.css')}}">
     <!-- fontawesom -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -39,12 +40,22 @@
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="{{ asset('node_modules/slick/slick/slick.js')}}"></script>
 
+    {{-- plyr --}}
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+    <script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
+
 </head>
 
 <body>
 <div class="bg-blur" style="background-image: url('https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')"></div>
     <div class="cebody">
+
+{{-- <div class="bg-blur"></div> --}}
         @yield('index')
+        {{-- @yield('content') --}}
+          {{-- @guest --}}
+          {{-- @yield('login') --}}
+          {{-- @else --}}
         <button id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
         {{-- @include('pagestudent.message-box.Message_box') --}}

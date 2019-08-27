@@ -210,13 +210,6 @@
 
     </script>
 
-    {{--
-        pp script naja
-    --}}
-    <script>
-
-    </script>
-
     @yield('js')
     @yield('js2')
 </body>

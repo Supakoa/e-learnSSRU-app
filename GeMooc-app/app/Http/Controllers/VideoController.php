@@ -63,7 +63,7 @@ class VideoController extends Controller
      */
     public function edit(video $video)
     {
-
+        
     }
 
     /**
