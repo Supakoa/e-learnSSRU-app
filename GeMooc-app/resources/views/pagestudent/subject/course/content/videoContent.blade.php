@@ -7,7 +7,7 @@
 @section('mainContent')
 <div class="containerContent">
     <div class="sectionNavs">
-        @include('pagestudent.navs.navsLeft')
+        @include('pagestudent.navs.navsLeft',[$now_content,$lessons])
     </div>
     <div class="sectionContent">
         <div class="head-text">

@@ -21,7 +21,7 @@
     </div>
     <ul class="nav-links">
         <li>
-            <a href="#">วิชา</a>
+        <a href="{{url('std_view/subject')}}">วิชา</a>
             <div class="li-underline"></div>
         </li>
         <li>
@@ -62,7 +62,7 @@
    >
     <div class="index-content">
         <ul class="list-group list-group-horizontal">
-        <li class="list-group-item"><a href="{{ url('/page/content/text')}}">Google</a></li>
+        {{-- <li class="list-group-item"><a href="{{ url('/page/content/text')}}">Google</a></li> --}}
         </ul>
             @yield('mainContent')
        {{-- <div class="container">
