@@ -55,7 +55,7 @@
 
 {{-- <div class="bg-blur"></div> --}}
         @yield('index')
-        @yield('content')
+        {{-- @yield('content') --}}
           {{-- @guest --}}
           {{-- @yield('login') --}}
           {{-- @else --}}
