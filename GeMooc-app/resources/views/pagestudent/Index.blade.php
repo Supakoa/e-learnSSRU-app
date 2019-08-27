@@ -5,6 +5,15 @@
 @endpush
 
 @section('index')
+<style>
+    .bg-blur {
+        background-image: url("@yield('background','https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')");
+
+    }
+
+</style>
+<div class="bg-blur"></div>
+
 <nav>
     <div class="logo">
         <img src="{{url('images/logo.png')}}" alt="">
@@ -49,9 +58,8 @@
         <div class="line3"></div>
     </div>
 </nav>
-<div class="bg-blur"></div>
 <div class="index-body"
-    style="background-image: url('https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')">
+   >
     <div class="index-content">
         <ul class="list-group list-group-horizontal">
         <li class="list-group-item"><a href="{{ url('/page/content/text')}}">Google</a></li>

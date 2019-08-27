@@ -49,10 +49,10 @@
 <body>
     <div class="cebody">
 
-<div class="bg-blur"></div>
+{{-- <div class="bg-blur"></div> --}}
         @yield('index')
           {{-- @guest --}}
-          @yield('login')
+          {{-- @yield('login') --}}
           {{-- @else --}}
         <button id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
