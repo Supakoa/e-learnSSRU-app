@@ -47,16 +47,14 @@
 
 <body>
     <div class="cebody">
+<div class="bg-blur"></div>
         @yield('index')
         <button id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
-        {{-- @endguest --}}
         {{-- @include('pagestudent.message-box.Message_box') --}}
         <div class="footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>
-
-
     </div>
 
 
@@ -144,7 +142,7 @@
         // }
 
     </script>
-
+    @stack('js')
     @yield('js')
 </body>
 

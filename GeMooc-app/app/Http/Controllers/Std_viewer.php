@@ -17,13 +17,13 @@ class Std_viewer extends Controller
         // old view
         // return view('std_viewer.std_home.index');
         // new view
-        return view('pagestudent.index.index');
+        return view('pagestudent.index.home');
     }
 
     public function all_subject(){
         $subjects = subject::where('status','1')->get();
 
-        return view('std_viewer.std_subject.Show_sub')->with('subjects',$subjects);
+        return view('pagestudent.subject.allSubject')->with('subjects',$subjects);
     }
 
     public function show_subject(subject $subject){
