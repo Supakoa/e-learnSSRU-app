@@ -1,7 +1,7 @@
 @extends('pagestudent.Index')
 
 @section('title')
-{{$quiz->name}} | MOOC SSRU
+{{-- {{$quiz->name}} | MOOC SSRU --}}
 @endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/ceQuiz.css')}}">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="w-100">
-                    <div class="progress m-auto" style="height:15px">
+                    <div class="progress m-0 p-0" style="height:15px">
                         <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="100"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
