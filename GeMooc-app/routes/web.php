@@ -91,6 +91,10 @@ Route::group(['middleware' => 'auth'], function (){
 
     // student_view
     Route::get('/std_view/home', 'Std_viewer@Std_home');
+    Route::get('/std_view/manual', 'Std_viewer@manual');
+    Route::get('/std_view/faq', 'Std_viewer@FAQ');
+
+
     Route::get('/std_view/subject', 'Std_viewer@all_subject');
     Route::get('/std_view/subject/{subject}', 'Std_viewer@show_subject');
     Route::get('/std_view/course/{course}', 'Std_viewer@Std_course');
