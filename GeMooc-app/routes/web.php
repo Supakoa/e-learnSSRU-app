@@ -85,8 +85,8 @@ Route::group(['middleware' => 'auth'], function (){
     // record
     Route::resource('/record', 'RecordController');
 
-    Route::get('page/content/text',function() {
-        return view('pagestudent.subject.allSubject');
+    Route::get('page/content/quiz',function() {
+        return view('pagestudent.subject.course.quiz.quizDashboard');
     });
 
     // student_view

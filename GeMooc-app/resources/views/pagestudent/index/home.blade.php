@@ -13,10 +13,9 @@
     $(document).ready(function () {
         $('.yourCourse').slick({
             dots: true,
-            infinite: false,
-            speed: 300,
+            infinite: true,
+            centerPadding: '60px',
             slidesToShow: 4,
-            slidesToScroll: 4,
             responsive: [{
                     breakpoint: 1024,
                     settings: {
@@ -51,7 +50,7 @@
             infinite: false,
             speed: 300,
             slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToScroll: 1,
             responsive: [{
                     breakpoint: 1024,
                     settings: {
@@ -83,17 +82,17 @@
     });
 
 
-    $('.course_progress').click(function (e) {
-        e.preventDefault();
-        id = $(this).attr('course_id')
-        // alert(id)
-        progress = $(this).attr('progress')
-        // alert(progress)
+    // $('.course_progress').click(function (e) {
+    //     e.preventDefault();
+    //     id = $(this).attr('course_id')
+    //     // alert(id)
+    //     progress = $(this).attr('progress')
+    //     // alert(progress)
 
-        $('#progress_bar').css('width', progress + '%')
-        $('#btn_course').attr('href', 'eiei/' + id)
+    //     $('#progress_bar').css('width', progress + '%')
+    //     $('#btn_course').attr('href', 'eiei/' + id)
 
-    });
+    // });
 
 </script>
 @endpush
@@ -105,24 +104,57 @@
         <div class="row">
             <div class="col-md-12 p-5">
                 <div class="yourCourse p-3">
+                        @php
+                        $user = auth()->user();
+                        $courses = auth()->user()->courses;
+                        $percent = auth()->user()->progresses;
+                    @endphp
                     @foreach (auth()->user()->courses as $course)
-                        <div class="m-5">
-                            <img class="my_course" src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%" >
+                    @php
+                    $sum_course = 0;
+                    $sum_lesson = 0;
+                    $n_lessons = $course->lessons->count();
+                    if($n_lessons){
+                        foreach($course->lessons as $lesson){
+                            $sum_progress = 0;
+                            $n_contents = $lesson->contents->count();
+                            if($n_contents){
+                                foreach ($lesson->contents as $key=>$content) {
+                                    $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
+                                    if($pro = $progress->first()){
+                                        if($pro = $pro->pivot->percent){
+                                            $sum_progress += $pro;
+                                        }else{
+                                            $sum_progress += 0;
+                                        }
+                                    }else{
+                                        $sum_progress += 0;
+                                    }
+                                }
+                                $sum_lesson += $sum_progress/$n_contents ;
+                            }else{
+                                $sum_lesson +=100;
+                            }
+                        }
+                        $sum_course = $sum_lesson/$n_lessons;
+                    }else{
+                        $sum_course =0;
+                    }
+
+                @endphp
+                        <div class="my_course" course_link = "{{url('std_view/course/'.$course->id)}}" course_progress = "{{$sum_course}}" course_name = "{{$course->name}}">
+                            <img  src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%" >
                         </div>
                     @endforeach
-
-                    {{-- <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div> --}}
                 </div>
             </div>
         </div>
-        <div class="row">
+        <h2 id="course_name" style="color:white"></h2>
+        <div class="row progress-now">
+
             <div class="col-md-10">
                 <div class="progress">
-                    <div class="progress-bar" id="progress_bar" role="progressbar" style="width: 25%;"
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" style="width: 25%;"
                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 {{-- <div class="progress">
@@ -131,7 +163,7 @@
                 </div> --}}
             </div>
             <div class="col-md-2">
-                <button>เริ่มคอร์ส</button>
+            <a class="btn btn-success" id="btn_to_course" href="#">เริ่มคอร์ส</a>
             </div>
         </div>
     </div>
@@ -165,3 +197,21 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+    <script>
+        $('.progress-now').hide();
+        $(".my_course").click(function (e) {
+            // alert($(this).attr('course_link'))
+        $('.progress-now').show();
+
+            e.preventDefault();
+            $('#btn_to_course').attr('href',$(this).attr('course_link'));
+            $('#course_name').html($(this).attr('course_name'));
+            // $("#progress-bar").css('width', $(this).attr('course_progress')+'%');
+            // alert($(this).attr('course_progress')+'%')
+            $("#progress_bar").css('width', $(this).attr('course_progress')+'%');
+            $("#progress_bar").html($(this).attr('course_progress')+'%')
+        });
+    </script>
+@endpush
