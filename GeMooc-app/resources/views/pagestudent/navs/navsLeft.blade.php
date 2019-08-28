@@ -35,6 +35,17 @@
     </ul>
 </div>
 
+<div class="card mt-5 p-3" id="formsRegiscourse">
+    <div class="text-center m-auto">
+        <h4>
+            ต้องการเรียนวิชานี้ !!
+        </h4>
+        <a href="#" class="btn ">
+            ลงทะเบียน
+        </a>
+    </div>
+</div>
+
 @push('js')
 <script>
     @if(isset($now_content))
