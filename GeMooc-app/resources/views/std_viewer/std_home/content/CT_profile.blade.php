@@ -7,8 +7,7 @@
                 <input onchange="$('#updateFile').submit();" style="display:none" type="file" accept="image/*"
                     name="upload" id="upload" value="Upload photo" />
             </form>
-            <div onclick="$('#upload').trigger('click'); return false;" class="ce-cog-btn"><i class="fas fa-upload"></i>
-            </div>
+            <div onclick="$('#upload').trigger('click'); return false;" class="ce-cog-btn"><i class="fas fa-upload"></i></div>
             <img src="{{url('/storage/.auth()->user()->profile->image') }}" class="rounded mx-auto d-block" height="200"
                 width="100%" class="rounded" alt="">
         </div>
