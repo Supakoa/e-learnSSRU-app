@@ -154,7 +154,7 @@
 
             <div class="col-md-10">
                 <div class="progress">
-                    <div class="progress-bar" id="progress_bar" role="progressbar" style="width: 25%;"
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" style="width: 25%;"
                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 {{-- <div class="progress">
@@ -211,6 +211,7 @@
             // $("#progress-bar").css('width', $(this).attr('course_progress')+'%');
             // alert($(this).attr('course_progress')+'%')
             $("#progress_bar").css('width', $(this).attr('course_progress')+'%');
+            $("#progress_bar").html($(this).attr('course_progress')+'%')
         });
     </script>
 @endpush
