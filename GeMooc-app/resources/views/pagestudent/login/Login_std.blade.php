@@ -87,78 +87,13 @@
     </div>
 </div>
 
-
-
-{{-- วิชา --}}
-{{-- <div id="section3">
-    <div class="bg-blur"></div>
-    <nav>
-        <div class="logo">
-            <img src="{{url('images/logo.png')}}" alt="">
-            <div class="log-underline-img"></div>
-            <h5>SSRU</h5>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="#">วิชา</a>
-                <div class="li-underline"></div>
-            </li>
-            <li>
-                <a href="#">คู่มือการใช้งาน</a>
-                <div class="li-underline"></div>
-            </li>
-            <li>
-                <a href="#">คำถาม</a>
-                <div class="li-underline"></div>
-            </li>
-        </ul>
-        <div class="user-id"></div>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
-
-    <div class="section-header">
-        <p>หลักสูตรที่เปิดสอน</p>
-        <div class="section-underline"></div>
-    </div>
-    <div class="section-content">
-        <div class="container">
-            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div> --}}
-{{-- วิชา --}}
-
 @endsection
 
 @section('js')
 <script>
-    $('.btn-forget').click(function (e) {
-        e.preventDefault();
-        $('.forms-forget-modal').css('margin-left', '0');
+    // $('.btn-forget').click(function (e) {
+    //     e.preventDefault();
+    //     $('.forms-forget-modal').css('margin-left', '0');
         // $('nav').css('display', 'none');
     });
     // $(document).ready(function () {

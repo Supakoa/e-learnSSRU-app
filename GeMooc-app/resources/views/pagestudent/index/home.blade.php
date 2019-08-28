@@ -9,7 +9,6 @@
 
 @push('js')
 <script src="{{ asset('node_modules/slick/slick/jq-migrate.min.js')}}"></script>
-
 <script>
     $(document).ready(function () {
         $('.yourCourse').slick({
@@ -97,7 +96,6 @@
     });
 
 </script>
-
 @endpush
 
 @section('mainContent')
@@ -107,12 +105,24 @@
         <div class="row">
             <div class="col-md-12 p-5">
                 <div class="yourCourse p-3">
-                    <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
                 </div>
             </div>
         </div>
@@ -137,14 +147,26 @@
     <div class="section2">
         <div class="row">
             <div class="col-md-12 p-5">
-                    <div class="courseFinish p-3">
-                            <div>your content</div>
-                            <div>your content</div>
-                            <div>your content</div>
-                            <div>your content</div>
-                            <div>your content</div>
-                            <div>your content</div>
-                        </div>
+                <div class="courseFinish p-3">
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                    <div>
+                        <img src="" alt="...">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
