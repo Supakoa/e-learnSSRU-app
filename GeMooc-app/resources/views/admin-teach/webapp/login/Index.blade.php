@@ -14,7 +14,7 @@
 {{-- @include('') --}}
 @endsection
 
-@section('js')
+@push('js')
 <script>
     $('.btn-forget').click(function (e) {
         e.preventDefault();
@@ -33,4 +33,4 @@
     });
 
 </script>
-@endsection
+@endpush
