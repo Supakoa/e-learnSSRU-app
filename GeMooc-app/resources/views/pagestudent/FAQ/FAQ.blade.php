@@ -1,5 +1,7 @@
 @extends('pagestudent.Index')
-
+@section('title')
+คำถามที่พมบ่อย | MOOC SSRU
+@endsection
 @section('mainContent')
     <div class="container">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

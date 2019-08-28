@@ -7,7 +7,9 @@
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
 @endpush
 
-
+@section('title')
+ผลคะแนน {{$quiz->name}} | MOOC SSRU
+@endsection
 @section('mainContent')
 <div class="containerContent">
     <div class="sectionNavs">
@@ -22,9 +24,9 @@
                 <div class="d-flex p-4">
                     <div class="lavelChart">
                         <div class="head-card">
-                            <p>เกณฑ์คะแนน</p>
+                            <p class="text-left">เกณฑ์คะแนน</p>
                         </div>
-                        <div class="charts ">
+                        <div class="charts container m-auto">
                                 @php
                                 $quiz_time = $quiz->time;
                                 $quiz_time_min  =  (int)($quiz_time);
@@ -51,27 +53,27 @@
                                     $percen_show_100 = $num_100/$scores*100;
                                     //dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
                                     @endphp
-                            <span>0-25</span>
-                            <div class="charts__chart chart--red" data-percent="{{ round($percen_show_25,2)}}%" style="width: {{$percen_show_25}}%"></div>
-                            <span>26-50</span>
-                            <div class="charts__chart chart--yellow" data-percent="{{ round($percen_show_50,2)}}%" style="width: {{$percen_show_50}}%"></div>
-                            <span>51-75</span>
-                            <div class="charts__chart chart--blue" data-percent="{{ round($percen_show_75,2)}}%" style="width: {{$percen_show_75}}%"></div>
-                            <span>76-100</span>
-                            <div class="charts__chart chart--green" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%"></div>
+                            <span class="p-3">0-25</span>
+                            <div class="charts__chart chart--red rounded" data-percent="{{ round($percen_show_25,2)}}%" style="width: {{$percen_show_25}}%"></div>
+                            <span class="p-3">26-50</span>
+                            <div class="charts__chart chart--yellow rounded" data-percent="{{ round($percen_show_50,2)}}%" style="width: {{$percen_show_50}}%"></div>
+                            <span class="p-3">51-75</span>
+                            <div class="charts__chart chart--blue rounded" data-percent="{{ round($percen_show_75,2)}}%" style="width: {{$percen_show_75}}%"></div>
+                            <span class="p-3">76-100</span>
+                            <div class="charts__chart chart--green rounded" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%"></div>
                         </div><!-- /.charts -->
                     </div>
                     <div class="progressCircle">
                         <div class="head-card">
-                            <p>คะแนนและเวลาที่ทำได้</p>
+                            <p class="text-left">คะแนนและเวลาที่ทำได้</p>
                         </div>
                         <div class="row">
                             <div class="col-md-6 text-center">
-                                <div class="progress-circle" data-progress="{{$percen_question}}"></div>
+                                <div class="progress-circle shadow" data-progress="{{$percen_question}}"></div>
                                     <p>ทำได้ทั้งหมด {{$score_now->pivot->score.' ข้อ จาก '.$question_number}} ข้อ</p>
                                 </div>
                                 <div class="col-md-6 text-center">
-                                <div class="progress-circle" data-progress="{{$percen_time}}"></div>
+                                <div class="progress-circle shadow" data-progress="{{$percen_time}}"></div>
                                     @php
                                         $use_time = $score_now->pivot->time;
                                     @endphp
@@ -84,18 +86,21 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 p-3">
                             <div class="text-left">
                                 <h4>
                                     เกณฑ์คะแนนของคุณ
                                 </h4>
                             </div>
-                            <div class="progress">
-                                <div class="progress-bar" id="progress_bar" role="progressbar" style="width: 25%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress shadow" style="height:25px;border-radius:15px;">
+                                <div class="progress-bar text-center" id="progress_bar" role="progressbar" style="width: 50%;"
+                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">50%</div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <br>
+                <div class="container">
                     <div class="row">
                         <div class="col-md-10">
                             <div class="text-left">
@@ -104,9 +109,9 @@
                                 </h4>
                             </div>
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-borderless table-hover">
                                     <thead>
-                                        <tr class="text-center">
+                                        <tr class="text-center bg-info rounded-pill">
                                             <th scope="row">
                                                 ลำดับ
                                             </th>
@@ -125,7 +130,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr class="border-bottom">
                                             <th scope="row">
                                                 1.
                                             </th>
@@ -147,14 +152,17 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12 text-rigth">
+                        <div class="col-md-2 offset-md-10 ">
                             <a class="btn" id="saveQuiz">
                                 บันทึก
                             </a>
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
         </div>
     </div>

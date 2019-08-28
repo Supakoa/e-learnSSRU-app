@@ -2,7 +2,9 @@
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceProfile.css')}}">
 @endpush
-
+@section('title')
+แก้ไขโปรไฟล์ | MOOC SSRU
+@endsection
 @section('main-content')
 <div class="container-profile">
     @php
