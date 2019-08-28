@@ -3,7 +3,7 @@
 {{url('storage/'.$subject->image)}}\
 @endsection
 @push('links')
-<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/carousel/carouselSubject.css')}}">
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/subject_info.css')}}">
 @endpush
 
 @section('mainContent')
@@ -67,7 +67,7 @@
 </div>
 <div class="sectionInfo">
     <div class="container-fluid p-5">
-        <h4>เกี่ยวกับรายวิชา</h4>
+        <h4>รายละเอียดเกี่ยวกับรายวิชา</h4>
         <span>{{$subject->detail}}</span>
         {{-- <ul class="list-unstyled">
             <li>บทที่ 1 การลบล้างความคิดเดิม</li>
@@ -81,27 +81,37 @@
             <li>2. บรา~~~</li>
         </ul>
         <hr>
-        <h4>เกณฑ์การวัดและประเมินผลในรายวิชา</h4>
+        {{-- <h4>เกณฑ์การวัดและประเมินผลในรายวิชา</h4>
         <dl class="row">
             <dd class="col-md-8">
                 info~~
             </dd>
         </dl>
-        <hr>
+        <hr> --}}
+
         <h4>ผู้สอน</h4>
         <div class="row">
-            <div class="col-md-6">
-                <div class="d-flex p-4 text-center">
-                    <img class="m-auto bg-success rounded-circle" width="200" height="200" src="" alt="">
-                    <h5 class="m-auto">อาจารย์ ชลลดา ชูวณิชชานนท์</h5>
-                </div>
-            </div>
-            <div class="col-md-6">
+                @foreach ($courses as $course)
+                @php
+                   $users =  $course->users_main;
+                @endphp
+                @foreach ($users as $user)
+                    <div class="col-md-6">
+                        <div class="d-flex p-4 text-center">
+                            <img class="m-auto bg-success rounded-circle" width="200" height="200" src="{{$user->profile->image}}" alt="">
+                            <h5 class="m-auto">{{$user->name}}</h5>
+                        </div>
+                    </div>
+                @endforeach
+
+            @endforeach
+
+            {{-- <div class="col-md-6">
                 <div class="d-flex p-4 text-center">
                     <img class="m-auto bg-success rounded-circle"  width="200" height="200" src="" alt="">
                     <h5 class="m-auto">อาจารย์ ชลลดา ชูวณิชชานนท์</h5>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
