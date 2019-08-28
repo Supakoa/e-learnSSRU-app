@@ -41,6 +41,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
