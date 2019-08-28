@@ -74,7 +74,7 @@
 <div id="section3">
     <div class="bg-blur"></div>
 {{-- แก้ไขโปรไฟล์ --}}
-@include('pagestudent.profile.Profile')
+{{-- @include('pagestudent.profile.Profile') --}}
 {{-- แก้ไขโปรไฟล์ --}}
     <div class="container-fluid pt-3">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

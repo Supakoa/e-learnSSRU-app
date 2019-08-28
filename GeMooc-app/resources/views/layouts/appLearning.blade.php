@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
     {{-- <link rel="stylesheet" href="{{asset('node_modules/3d-slider/style.css')}}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
-    
+
 
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">--}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
