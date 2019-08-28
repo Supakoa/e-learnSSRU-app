@@ -37,9 +37,11 @@
 
 @push('js')
 <script>
+    @if(isset($now_content))
     $(document).ready(function () {
         $('#main_lesson_{{$now_content->lesson->id}}').trigger("click");
         $('#content_{{$now_content->id}}').addClass('now_content');
     });
+    @endif
 </script>
 @endpush
