@@ -67,6 +67,7 @@
         <ul class="list-group list-group-horizontal">
         {{-- <li class="list-group-item"><a href="{{ url('/page/content/text')}}">Google</a></li> --}}
         </ul>
+            @include('inc.alert')
             @yield('mainContent')
     </div>
 </div>
