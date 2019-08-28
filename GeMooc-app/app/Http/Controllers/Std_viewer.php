@@ -123,7 +123,7 @@ class Std_viewer extends Controller
             $quiz = $content->quiz;
             $time = $quiz->time*60;
             session(['time'=>$time]);
-            return view('pagestudent.subject.quiz.quiz')->with('course',$course)->with('quiz',$quiz);
+            return view('std_viewer.std_subject.std_quiz.quiz')->with('course',$course)->with('quiz',$quiz)->with('lessons',$course->lessons);
 
         }
     }
@@ -188,7 +188,7 @@ class Std_viewer extends Controller
             return view('pagestudent.subject.course.content.textContent')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
         }else{
             $quiz = $content->quiz;
-            return view('pagestudent.subject.quiz.quizDashboard')->with('course',$course)->with('quiz',$quiz);
+            return view('pagestudent.subject.course.quiz.quizDashboard')->with('course',$course)->with('quiz',$quiz)->with('lessons',$course->lessons);
 
         }
     }
@@ -198,10 +198,10 @@ class Std_viewer extends Controller
         return view('pagestudent.subject.quiz.quiz');
     }
     public function Std_quizDashboard(){
-        return view('pagestudent.subject.quiz.quizDashboard');
+        return view('pagestudent.subject.course.quiz.quizDashboard');
     }
     public function Std_quizPreview(){
-        return view('pagestudent.subject.quiz.quizPreview');
+        return view('pagestudent.subject.course.quiz.quizPreview');
     }
     public function Std_payment(){
         return view('std_viewer.std_payment.Payment');
