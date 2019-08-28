@@ -73,10 +73,12 @@ class Std_viewer extends Controller
 
             $videoType = $video->type;
             $videoData = $video->data;
+            $videoName = $video->name;
 
             $videoO = array(
                 'type' => $videoType,
                 'data' => $videoData,
+                'name' => $videoName,
             );
 
             $userId = auth()->user()->id;
@@ -93,7 +95,8 @@ class Std_viewer extends Controller
                 'percent' => $recordPercent,
             );
 
-            $view = 'std_viewer.std_subject.std_course.content.CT_video';
+            // path view video
+            $view = 'pagestudent.subject.course.content.videoContent';
 
             return view($view)
                     ->with('content' ,json_encode($contentO))
@@ -101,6 +104,9 @@ class Std_viewer extends Controller
                     ->with('userId', json_encode($userId))
                     ->with('issetRecord', json_encode($issetRecord))
                     ->with('record', json_encode($recordO));
+                    // ->with('now_content', json_encode($content))
+                    // ->with('lesson', json_encode($course->lessons))
+                    // ->with('course', json_encode($course));
 
             // if($record == null){
             //     return view($view)
@@ -123,7 +129,7 @@ class Std_viewer extends Controller
             $quiz = $content->quiz;
             $time = $quiz->time*60;
             session(['time'=>$time]);
-            return view('pagestudent.subject.quiz.quiz')->with('course',$course)->with('quiz',$quiz);
+            return view('std_viewer.std_subject.std_quiz.quiz')->with('course',$course)->with('quiz',$quiz)->with('lessons',$course->lessons);
 
         }
     }
@@ -188,7 +194,7 @@ class Std_viewer extends Controller
             return view('pagestudent.subject.course.content.textContent')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
         }else{
             $quiz = $content->quiz;
-            return view('pagestudent.subject.quiz.quizDashboard')->with('course',$course)->with('quiz',$quiz);
+            return view('pagestudent.subject.course.quiz.quizDashboard')->with('course',$course)->with('quiz',$quiz)->with('lessons',$course->lessons);
 
         }
     }
@@ -198,10 +204,10 @@ class Std_viewer extends Controller
         return view('pagestudent.subject.quiz.quiz');
     }
     public function Std_quizDashboard(){
-        return view('pagestudent.subject.quiz.quizDashboard');
+        return view('pagestudent.subject.course.quiz.quizDashboard');
     }
     public function Std_quizPreview(){
-        return view('pagestudent.subject.quiz.quizPreview');
+        return view('pagestudent.subject.course.quiz.quizPreview');
     }
     public function Std_payment(){
         return view('std_viewer.std_payment.Payment');

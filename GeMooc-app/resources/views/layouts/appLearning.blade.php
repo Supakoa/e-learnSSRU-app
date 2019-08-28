@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>@yield('title')</title>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -81,6 +86,7 @@
     <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
     {{-- <script src="{{asset('node_modules/3d-slider/app.js')}}"></script> --}}
     <script>
+
         wow = new WOW({
             boxClass: 'wow', // default
             animateClass: 'animated', // default
@@ -149,6 +155,7 @@
 
     </script>
     @stack('js')
+    @stack('script')
     @yield('js')
 </body>
 

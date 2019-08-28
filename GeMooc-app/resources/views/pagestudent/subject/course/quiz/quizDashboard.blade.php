@@ -11,7 +11,7 @@
 @section('mainContent')
 <div class="containerContent">
     <div class="sectionNavs">
-     what the fuck   {{-- @include('pagestudent.navs.navsLeft',[$lessons]) --}}
+        @include('pagestudent.navs.navsLeft',[$lessons])
     </div>
     <div class="sectionContent">
         <div class="card" style="background:#ECECEC">
@@ -25,6 +25,15 @@
                             <p>เกณฑ์คะแนน</p>
                         </div>
                         <div class="charts ">
+                                @php
+                                $quiz_time = $quiz->time;
+                                $quiz_time_min  =  (int)($quiz_time);
+                                $quiz_time_sec  =  (int)($quiz_time*60);
+                                $score_now = Auth()->user()->scores()->orderBy('scores.created_at','desc')->first();
+                                $question_number = $quiz->questions->count();
+                                $percen_question = (int)(($score_now->pivot->score / $question_number)*100);
+                                $percen_time = (int)(($score_now->pivot->time / $quiz_time_sec)*100);
+                                @endphp
                                     @php
                                     $scores = $quiz->scores->count();
                                     $percen_25 = (int)($question_number*0.25);
