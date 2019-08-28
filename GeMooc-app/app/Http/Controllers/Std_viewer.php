@@ -33,8 +33,9 @@ class Std_viewer extends Controller
 
 
     public function Std_course(course $course){
+        
         $lessons = $course->lessons;
-        return view('std_viewer.std_subject.std_course.Course')->with('course',$course)->with('lessons',$lessons);
+        return view('pagestudent.subject.course.content.indexContent')->with('course',$course)->with('lessons',$lessons);
     }
     public function course_enroll(course $course){
         $user = auth()->user();

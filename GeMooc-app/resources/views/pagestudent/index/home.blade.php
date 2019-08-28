@@ -107,12 +107,17 @@
         <div class="row">
             <div class="col-md-12 p-5">
                 <div class="yourCourse p-3">
+                    @foreach (auth()->user()->courses as $course)
+                        <div class="m-5">
+                            <img class="my_course" src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%" >
+                        </div>
+                    @endforeach
+
+                    {{-- <div>your content</div>
                     <div>your content</div>
                     <div>your content</div>
                     <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div>
-                    <div>your content</div>
+                    <div>your content</div> --}}
                 </div>
             </div>
         </div>
