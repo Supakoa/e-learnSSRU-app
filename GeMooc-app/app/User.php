@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
-use App\Notifications\PasswordReset;
+use App\Notifications\ResetPassword;
 class User extends Authenticatable
 {
     // use LaratrustUserTrait;
