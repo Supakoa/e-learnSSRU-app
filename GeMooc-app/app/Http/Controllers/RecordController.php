@@ -38,7 +38,7 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        // dd($request);
         $jsonPack = json_decode($request->muuwan);
         // dd($jsonPack);
         $myTempWantToCheckFirst = record::where('content_id', $jsonPack->content_id)->where('user_id', $jsonPack->user_id)->get();

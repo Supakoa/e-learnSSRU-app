@@ -212,6 +212,10 @@
 
     @yield('js')
     @yield('js2')
+
+    {{-- script on CEFstyle on node_module --}}
+    @stack('script')
+
 </body>
 
 </html>
