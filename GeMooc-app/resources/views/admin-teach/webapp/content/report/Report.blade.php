@@ -1,5 +1,7 @@
 @extends('admin-teach.webapp.content.Index')
-
+@section('title')
+รายงานปัญหา | MOOC SSRU
+@endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
 @endpush

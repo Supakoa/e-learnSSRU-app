@@ -1,5 +1,7 @@
 @extends('pagestudent.Index')
-
+@section('title')
+{{$now_content->name}} | MOOC SSRU
+@endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/contentLayout.css')}}">
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/video/navProgress/nav.css')}}">

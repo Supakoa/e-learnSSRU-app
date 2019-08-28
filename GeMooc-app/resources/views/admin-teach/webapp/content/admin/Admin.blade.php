@@ -3,7 +3,9 @@
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
 @endpush
-
+@section('title')
+รายชื่อผู้ดูแลระบบ | MOOC SSRU
+@endsection
 @section('main-content')
 <div class="col-md-4 offset-md-4">
     <div class="text-center">

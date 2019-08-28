@@ -1,6 +1,8 @@
 
 @extends('pagestudent.Index')
-
+@section('title')
+คู่มือ | MOOC SSRU
+@endsection
 @section('mainContent')
     <div class="container">
             <div class="bd-example">
