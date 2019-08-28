@@ -42,10 +42,12 @@ class ResetPassword extends ResetPasswordNotification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        // ->subject('Promjena lozinke - ' . config('app.name'))
-        // ->line('Ovaj e-mail Vam je poslat jer ste zahtijevali promjenu lozinke za vaš nalog.')
-        ->action('Reset Password', url('password/reset', $this->token));
-        // ->line('Ukoliko nijeste zahtijevali promjenu lozinke, ignorišite ovaj e-mail.');
+        ->subject('Promjena lozinke - ' . config('app.name'))
+        ->line('You are receiving this email because we received a password reset request for your account.')
+        ->action('Reset Password', url('password/reset', $this->token))
+        ->line('This password reset link will expire in 60 minutes.')
+        ->line('If you did not request a password reset, no further action is required.');
+
     }
 
     /**
