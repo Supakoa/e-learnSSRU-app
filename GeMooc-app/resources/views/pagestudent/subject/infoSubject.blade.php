@@ -1,5 +1,7 @@
 @extends('pagestudent.Index')
-
+@section('background')
+{{url('storage/'.$subject->image)}}\
+@endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/carousel/carouselSubject.css')}}">
 @endpush

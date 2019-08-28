@@ -1,6 +1,9 @@
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/navsLeft.css')}}">
 @endpush
+@section('background')
+{{url('storage/'.$course->image)}}\
+@endsection
 <div class="navsLeft">
     <ul>
         <li>
@@ -34,17 +37,21 @@
         @endforeach
     </ul>
 </div>
+@if (auth()->user()->course($course)->count())
+        @else
+        <div class="card mt-5 p-3" id="formsRegiscourse">
+                <div class="text-center m-auto">
+                    <h4>
+                        ต้องการเรียนวิชานี้ !!
+                    </h4>
+                    <a href="{{url()->current().'/enroll'}}" class="btn ">
+                        ลงทะเบียน
+                    </a>
+                </div>
+            </div>
 
-<div class="card mt-5 p-3" id="formsRegiscourse">
-    <div class="text-center m-auto">
-        <h4>
-            ต้องการเรียนวิชานี้ !!
-        </h4>
-        <a href="#" class="btn ">
-            ลงทะเบียน
-        </a>
-    </div>
-</div>
+        @endif
+
 
 @push('js')
 <script>

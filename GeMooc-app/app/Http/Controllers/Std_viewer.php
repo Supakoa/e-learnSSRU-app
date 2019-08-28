@@ -33,7 +33,7 @@ class Std_viewer extends Controller
 
 
     public function Std_course(course $course){
-        
+
         $lessons = $course->lessons;
         return view('pagestudent.subject.course.content.indexContent')->with('course',$course)->with('lessons',$lessons);
     }
@@ -47,7 +47,8 @@ class Std_viewer extends Controller
         }else{
             //เพิ่มหน้าลงทะเบียนด้วย
             $user->courses()->attach($course);
-            return "Enroll";
+            return redirect()->back()->with('success','Enroll !!');
+
         }
     }
 

@@ -24,7 +24,7 @@
     <p class="statusSub">เปิดรับสมัคร</p>
     <a class="btn" id="btn_to_course" href="">
 
-                เริ่มคอร์ส
+                รายละเอียด
 
     </a>
 
