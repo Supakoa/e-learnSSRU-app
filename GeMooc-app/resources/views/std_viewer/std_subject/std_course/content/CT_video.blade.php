@@ -52,8 +52,7 @@
                         </button>
                     </div> --}}
 
-                    <ul class="navProgress" id="navProgress">
-                    </ul>
+                    <ul class="navProgress" id="navProgress"></ul>
 
                 </div>
             </div>

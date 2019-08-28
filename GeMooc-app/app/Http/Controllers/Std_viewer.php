@@ -73,10 +73,12 @@ class Std_viewer extends Controller
 
             $videoType = $video->type;
             $videoData = $video->data;
+            $videoName = $video->name;
 
             $videoO = array(
                 'type' => $videoType,
                 'data' => $videoData,
+                'name' => $videoName,
             );
 
             $userId = auth()->user()->id;
@@ -93,7 +95,8 @@ class Std_viewer extends Controller
                 'percent' => $recordPercent,
             );
 
-            $view = 'std_viewer.std_subject.std_course.content.CT_video';
+            // path view video
+            $view = 'pagestudent.subject.course.content.videoContent';
 
             return view($view)
                     ->with('content' ,json_encode($contentO))
@@ -101,6 +104,9 @@ class Std_viewer extends Controller
                     ->with('userId', json_encode($userId))
                     ->with('issetRecord', json_encode($issetRecord))
                     ->with('record', json_encode($recordO));
+                    // ->with('now_content', json_encode($content))
+                    // ->with('lesson', json_encode($course->lessons))
+                    // ->with('course', json_encode($course));
 
             // if($record == null){
             //     return view($view)
