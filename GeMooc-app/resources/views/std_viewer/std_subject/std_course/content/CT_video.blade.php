@@ -24,9 +24,6 @@
                     <h1 class="ce-name">Video : {{$content->name}}</h1>
 
                     <label>{{ $content->detail }}</label><br>
-                    <div class="conatiner" id="text">record here..</div>
-
-                    {{-- old video [delete] --}}
 
                     @if ( $video->type == 'youtube' )
                         {{--
