@@ -13,15 +13,12 @@
         what the fuck {{-- @include('pagestudent.navs.navsLeft',[$lessons]) --}}
     </div>
     <div class="sectionContent">
-        <ul class="pagination pagination-md justify-content-center">
-            <li class="page-item active m-2 " aria-current="page">
-                <span class="page-link">
-                    1
-                    <span class="sr-only">(current)</span>
-                </span>
-            </li>
-            <li class="page-item m-2"><a class="page-link" href="#">2</a></li>
-            <li class="page-item m-2"><a class="page-link" href="#">3</a></li>
+        <ul  class="pageQuiz">
+            <li ><a class=" pageChoice" href="#"><i class="fas fa-chevron-left"></i></a></li>
+            <li ><a class=" pageChoice" href="#">1</a></li>
+            <li ><a class=" pageChoice" href="#">2</a></li>
+            <li ><a class=" pageChoice" href="#">3</a></li>
+            <li ><a class=" pageChoice" href="#"><i class="fas fa-chevron-right"></i></a></li>
         </ul>
         <div class="d-flex">
             <div class="p-0 m-auto">
