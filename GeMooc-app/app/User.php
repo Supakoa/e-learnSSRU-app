@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
-
+use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 class User extends Authenticatable
 {
     // use LaratrustUserTrait;
@@ -41,10 +41,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new ResetPassword($token));
-    }
+
 
     /**
      * The attributes that should be cast to native types.
@@ -57,6 +54,11 @@ class User extends Authenticatable
     public function adjusts()
     {
         return $this->hasMany('App\adjust', 'user_id');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 
     public function Profile()
