@@ -129,7 +129,7 @@ class Std_viewer extends Controller
             $quiz = $content->quiz;
             $time = $quiz->time*60;
             session(['time'=>$time]);
-            return view('std_viewer.std_subject.std_quiz.quiz')->with('course',$course)->with('quiz',$quiz)->with('lessons',$course->lessons);
+            return view('pagestudent.subject.course.quiz.quiz')->with('course',$course)->with('quiz',$quiz)->with('lessons',$course->lessons);
 
         }
     }
@@ -211,5 +211,11 @@ class Std_viewer extends Controller
     }
     public function Std_payment(){
         return view('std_viewer.std_payment.Payment');
+    }
+    public function manual(){
+        return view('pagestudent.toolLearn.toolLearn');
+    }
+    public function FAQ(){
+        return view('pagestudent.FAQ.FAQ');
     }
 }

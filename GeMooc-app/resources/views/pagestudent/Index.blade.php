@@ -25,11 +25,11 @@
             <div class="li-underline"></div>
         </li>
         <li>
-        <a href="{{url('/std_view/tool')}}">คู่มือการใช้งาน</a>
+        <a href="{{url('/std_view/manual')}}">คู่มือการใช้งาน</a>
             <div class="li-underline"></div>
         </li>
         <li>
-            <a href="{{url('/std_view/question')}}">คำถาม</a>
+            <a href="{{url('/std_view/faq')}}">คำถาม</a>
             <div class="li-underline"></div>
         </li>
         <li class="dropdown" style="display:flex;padding-top: 0;">
