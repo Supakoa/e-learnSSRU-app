@@ -7,7 +7,9 @@
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
 @endpush
 
-
+@section('title')
+ผลคะแนน {{$quiz->name}} | MOOC SSRU
+@endsection
 @section('mainContent')
 <div class="containerContent">
     <div class="sectionNavs">

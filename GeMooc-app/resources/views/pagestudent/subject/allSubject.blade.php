@@ -1,5 +1,7 @@
 @extends('pagestudent.Index')
-
+@section('title')
+วิชาทั้งหมด | MOOC SSRU
+@endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/carousel/carouselSubject.css')}}">
 @endpush

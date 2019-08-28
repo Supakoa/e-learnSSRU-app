@@ -1,5 +1,7 @@
 @extends('pagestudent.Index')
-
+@section('title')
+คอร์สของฉัน | MOOC SSRU
+@endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/homeIndex.css')}}">
 <link rel="stylesheet" href="{{ asset('node_modules/slick/slick/slick.css')}}">
