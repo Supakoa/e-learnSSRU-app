@@ -15,51 +15,63 @@
 </div>
 <div class="sectionTable">
     <div class="container p-5">
-        <div class="table-responsive ">
-            <table class="bg-light table table-borderless table-striped">
-                <thead>
-                    <tr>
-                        <th colspan="3" style="font-size:26px">ข้อมูล</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" class="border-right pl-4">เปิดรับสมัคร</th>
-                        <td>15 มิถุนายน พ.ศ.2562</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="border-right pl-4">คอร์สที่มี</th>
-                        <td>2 คอร์ส</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="border-right pl-4">บทเรียน</th>
-                        <td>2 บท</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="border-right pl-4">กลุ่มเป่าหมาย</th>
-                        <td>นักเรียน/นักศึกษา บุคคลทั่วไป</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="border-right pl-4">เกณฑ์การผ่าน</th>
-                        <td>ต้องมีคะแนนไม่ต่ำกว่าร้อยละ 80</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="text-center">
-                <button>ไปที่คอร์ส</button>
-            </div>
+        <div class="table-responsive">
+            @if ($subject->courses->where('status','1')->count())
+                @foreach ($subject->courses->where('status','1') as $course)
+                <div class="row">
+                    <div class="col-4">
+                    <img src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="auto">
+                    </div>
+                    <div class="col-8">
+                            <table class="bg-light table table-borderless table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="3" style="font-size:26px">ข้อมูล</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" class="border-right pl-4">ชื่อคอร์ส</th>
+                                            <td>{{$course->name}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row" class="border-right pl-4">บทเรียน</th>
+                                            <td>{{$course->lessons->count()}}</td>
+                                        </tr>
+                                        {{-- <tr>
+                                            <th scope="row" class="border-right pl-4">กลุ่มเป่าหมาย</th>
+                                            <td>นักเรียน/นักศึกษา บุคคลทั่วไป</td>
+                                        </tr> --}}
+                                        <tr>
+                                            <th scope="row" class="border-right pl-4">เกณฑ์การผ่าน</th>
+                                            <td>ต้องมีคะแนนไม่ต่ำกว่าร้อยละ 80</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                    </div>
+                </div>
+
+                    <div class="text-center">
+                    <a href="{{url('std_view/course/'.$course->id)}}" class="btn btn-success">ไปที่คอร์ส</a>
+                    </div>
+                @endforeach
+            @else
+             ไม่มีคอสที่เปิดสอน
+            @endif
+
         </div>
     </div>
 </div>
 <div class="sectionInfo">
     <div class="container-fluid p-5">
         <h4>เกี่ยวกับรายวิชา</h4>
-        <span>รายวิชา การพัฒนาตน จะมีเนื้อหาเกี่ยวกับความรู้พื้นฐานด้านการพัฒนาตน</span>
-        <ul class="list-unstyled">
+        <span>{{$subject->detail}}</span>
+        {{-- <ul class="list-unstyled">
             <li>บทที่ 1 การลบล้างความคิดเดิม</li>
             <li>บทที่ 2 ออกแบบชีวิต</li>
             <li>บทที่ 3 ทัศนคติ</li>
-        </ul>
+        </ul> --}}
         <hr>
         <h4>วัตถุประสงค์</h4>
         <ul class="list-unstyled">
