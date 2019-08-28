@@ -22,10 +22,10 @@
 <div class="text-center w-100 startCourse">
     <p class="nameSub" id="subject_name">ชื่อวิชา</p>
     <p class="statusSub">เปิดรับสมัคร</p>
-    <a id="btn_to_course" href="">
-        <button>
+    <a class="btn" id="btn_to_course" href="">
+
                 เริ่มคอร์ส
-        </button>
+
     </a>
 
 </div>

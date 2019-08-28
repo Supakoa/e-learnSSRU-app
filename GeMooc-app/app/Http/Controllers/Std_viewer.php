@@ -28,7 +28,7 @@ class Std_viewer extends Controller
 
     public function show_subject(subject $subject){
         $courses = $subject->courses;
-        return view('std_viewer.std_subject.std_course.Show_course')->with('subject',$subject)->with('courses',$courses);
+        return view('pagestudent.subject.infoSubject')->with('subject',$subject)->with('courses',$courses);
     }
 
 
