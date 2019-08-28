@@ -33,8 +33,9 @@ class Std_viewer extends Controller
 
 
     public function Std_course(course $course){
+        
         $lessons = $course->lessons;
-        return view('std_viewer.std_subject.std_course.Course')->with('course',$course)->with('lessons',$lessons);
+        return view('pagestudent.subject.course.content.indexContent')->with('course',$course)->with('lessons',$lessons);
     }
     public function course_enroll(course $course){
         $user = auth()->user();
@@ -53,14 +54,67 @@ class Std_viewer extends Controller
      public function show_content(content $content)
     {
         $course = $content->lesson->course;
+
         if( $content->type == 1 ){
             $record = record::where('content_id', $content->id)->where('user_id', auth()->user()->id)->first();
             $video = $content->video;
-            if($record == null){
-                return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content)->with('video', $video);
-            }else{
-                return view('std_viewer.std_subject.std_course.content.CT_video')->with('course',$course)->with('lessons', $course->lessons)->with('now_content', $content)->with('record', $record)->with('video', $video);
-            }
+
+            // split val to send important val
+            $contentId = $content->id;
+            $contentName = $content->name;
+            $contentDetail = $content->detail;
+
+            $contentO = array(
+                'id' => $contentId,
+                'name' => $contentName,
+                'detail' => $contentDetail,
+            );
+
+            $videoType = $video->type;
+            $videoData = $video->data;
+
+            $videoO = array(
+                'type' => $videoType,
+                'data' => $videoData,
+            );
+
+            $userId = auth()->user()->id;
+
+            $issetRecord = ($record != null);
+
+            $recordContentId = $record->content_id;
+            $recordRecord = $record->record;
+            $recordPercent = $record->percent;
+
+            $recordO = array(
+                'contentId' => $recordContentId,
+                'record' => $recordRecord,
+                'percent' => $recordPercent,
+            );
+
+            $view = 'std_viewer.std_subject.std_course.content.CT_video';
+
+            return view($view)
+                    ->with('content' ,json_encode($contentO))
+                    ->with('video' ,json_encode($videoO))
+                    ->with('userId', json_encode($userId))
+                    ->with('issetRecord', json_encode($issetRecord))
+                    ->with('record', json_encode($recordO));
+
+            // if($record == null){
+            //     return view($view)
+            //             ->with('course', $course)
+            //             ->with('lessons', $course->lessons)
+            //             ->with('now_content', $content)
+            //             ->with('video', $video);
+            // }else{
+            //     return view($view)
+            //             ->with('course', $course)
+            //             ->with('lessons', $course->lessons)
+            //             ->with('now_content', $content)
+            //             ->with('record', $record)
+            //             ->with('video', $video);
+            // }
         }elseif( $content->type == 2 ){
             $article = $content->article;
             return view('pagestudent.subject.course.content.textContent')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
