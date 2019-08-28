@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/ceQuiz.css')}}">
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/contentLayout.css')}}">
 <link rel="stylesheet" href="{{ asset('node_modules/chartcss/dist/chart.css')}}">
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEProgress.css')}}">
 @endpush
 
 
