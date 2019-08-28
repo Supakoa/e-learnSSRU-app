@@ -1,4 +1,3 @@
-
 @extends('layouts.appLearning')
 
 @section('login')
@@ -56,13 +55,13 @@
                     <div class="row" id="gen">
                         <div class="col-xs-6">
                             <label class="ck-container">เพศชาย
-                                <input type="radio" name="gender" value="M">
+                                <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
                         <div class="col-xs-6">
                             <label class="ck-container">เพศหญิง
-                                <input type="radio" name="gender" value="F">
+                                <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
