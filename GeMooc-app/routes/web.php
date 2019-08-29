@@ -110,7 +110,7 @@ Route::group(['middleware' => 'auth'], function (){
         $time = session('time');
         if($time>=0){
             $time--;
-            session(['time'=>$time]);
+            session(['time' => $time]);
             echo $time;
         }else{
             echo 0;

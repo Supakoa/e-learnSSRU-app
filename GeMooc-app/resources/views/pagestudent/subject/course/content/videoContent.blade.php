@@ -1,7 +1,5 @@
 @extends('pagestudent.Index')
-@section('title')
-{{$now_content->name}} | MOOC SSRU
-@endsection
+
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/contentLayout.css')}}">
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/video/navProgress/nav.css')}}">
@@ -21,7 +19,7 @@
         // $course = json_decode($course);
     @endphp
     <div class="sectionNavs">
-        {{-- @include('pagestudent.navs.navsLeft',[$now_content,$lessons]) --}}
+        @include('pagestudent.navs.navsLeft',[$now_content,$lessons])
     </div>
     <div class="sectionContent">
         <div class="head-text">
@@ -64,6 +62,10 @@
 
     </div>
 </div>
+@endsection
+
+@section('title')
+{{$now_content->name}} | MOOC SSRU
 @endsection
 
 @push('script')
