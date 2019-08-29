@@ -103,10 +103,10 @@ class Std_viewer extends Controller
                     ->with('video' ,json_encode($videoO))
                     ->with('userId', json_encode($userId))
                     ->with('issetRecord', json_encode($issetRecord))
-                    ->with('record', json_encode($recordO));
-                    // ->with('now_content', json_encode($content))
-                    // ->with('lesson', json_encode($course->lessons))
-                    // ->with('course', json_encode($course));
+                    ->with('record', json_encode($recordO))
+                    ->with('now_content', $content)
+                    ->with('lessons', $course->lessons)
+                    ->with('course', $course);
 
             // if($record == null){
             //     return view($view)
