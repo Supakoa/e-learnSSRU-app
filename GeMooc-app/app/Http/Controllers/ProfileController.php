@@ -16,7 +16,15 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('admin-teach.webapp.content.profile.Profile');
+        $profileDescription = auth()->user()->profile->description;
+        $profileImage = auth()->user()->profile->image;
+
+        $profileO = array(
+            'description' => $profileDescription,
+            'image' => $profileImage,
+        );
+        return view('admin-teach.webapp.content.profile.Profile')
+                ->with('profile', json_encode($profileO));
     }
 
     /**
@@ -110,7 +118,7 @@ class ProfileController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect()->back()->with('success', ['ok love you.']);
+        return redirect()->back()->with('success', 'upload image profile successful');
     }
 
     /**

@@ -2,6 +2,11 @@
 @section('title')
 คำถามที่พมบ่อย | MOOC SSRU
 @endsection
+
+@push('links')
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/FAQ.css')}}">
+@endpush
+
 @section('mainContent')
     <div class="container">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

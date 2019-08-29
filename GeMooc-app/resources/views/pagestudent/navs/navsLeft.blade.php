@@ -44,7 +44,7 @@
                     <h4>
                         ต้องการเรียนวิชานี้ !!
                     </h4>
-                    <a href="{{url()->current().'/enroll'}}" class="btn ">
+                    <a href="{{url('std_view/course/'.$course->id.'/enroll')}}" class="btn ">
                         ลงทะเบียน
                     </a>
                 </div>

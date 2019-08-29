@@ -110,7 +110,7 @@ Route::group(['middleware' => 'auth'], function (){
         $time = session('time');
         if($time>=0){
             $time--;
-            session(['time'=>$time]);
+            session(['time' => $time]);
             echo $time;
         }else{
             echo 0;
@@ -220,15 +220,3 @@ Route::group(['middleware' => 'auth'], function (){
 });
 // middle ware to any route
 
-
-
-
-
-    // Route::get('/std_viewer/test/text', function(){
-    //     return view('std_viewer.std_subject.std_course.content.CT_text');
-    // });
-    // Route::get('/std_viewer/test/video', function(){
-    //     return view('std_viewer.std_subject.std_course.content.CT_video');
-    // });
-    // Route::get('/std_view/payment', 'Std_viewer@Std_payment');
-    // Route::get('/up_image','test_sumernote@up_image');
