@@ -85,9 +85,24 @@ class Std_viewer extends Controller
 
             $issetRecord = ($record != null);
 
-            $recordContentId = $record->content_id;
-            $recordRecord = $record->record;
-            $recordPercent = $record->percent;
+            if(!$issetRecord){
+
+                // create new
+                $newRecord = new record();
+                $newRecord->content_id = $contentId;
+                $newRecord->user_id = auth()->user()->id;
+                $newRecord->record = json_encode(array());
+                $newRecord->percent = '0';
+                $newRecord->save();
+
+                $recordContentId = $newRecord->content_id;
+                $recordRecord = $newRecord->record;
+                $recordPercent = $newRecord->percent;
+            }else{
+                $recordContentId = $record->content_id;
+                $recordRecord = $record->record;
+                $recordPercent = $record->percent;
+            }
 
             $recordO = array(
                 'contentId' => $recordContentId,
