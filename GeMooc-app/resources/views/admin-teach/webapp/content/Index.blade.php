@@ -89,9 +89,19 @@
                 @endif
 
                 @if ($adminOnly)
-            <a href="{{url('admin')}}">
+                    <a href="{{url('admin')}}">
                     <li>ผู้ดูแลระบบ</li>
                 </a>
+                @endif
+
+                @if ($adminOnly)
+                    <a href="{{url('qaOption')}}">
+                    <li>ตั้งค่าคำถามที่พบบ่อย</li></a>
+                @endif
+
+                @if ($adminOnly)
+                    <a href="{{url('guidebookOption')}}">
+                    <li>ตั้งค่าคู่มือการใช้งาน</li></a>
                 @endif
 
             </ul>

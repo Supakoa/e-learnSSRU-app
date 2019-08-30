@@ -85,6 +85,7 @@ class subject_c extends Controller
         $subject->image = $fileNameToStore;
         if ($request->videoType == 'youtube') {
             $subject->video = $request->url;
+            $subject->type_video = 'youtube';
         } else {
             $file = $request->file('videoFile');
             $filename = $file->getClientOriginalName();
@@ -92,6 +93,7 @@ class subject_c extends Controller
             $file->move($path, $filename);
 
             $subject->video = '/storage/videos/'.$filename;
+            $subject->type_video = 'file';
         }
         $subject->save();
 
@@ -179,6 +181,7 @@ class subject_c extends Controller
 
         if ($request->videoType == 'youtube') {
             $subject->video = $request->url;
+            $subject->type_video = 'youtube';
         } else {
             $file = $request->file('videoFile');
             $filename = $file->getClientOriginalName();
@@ -186,6 +189,7 @@ class subject_c extends Controller
             $file->move($path, $filename);
 
             $subject->video = '/storage/videos/'.$filename;
+            $subject->type_video = 'file';
         }
 
         // Create subject
