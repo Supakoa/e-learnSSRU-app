@@ -87,6 +87,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="typeVideo">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input class="custom-control-input" type="radio" name="videoType"
+                                    id="videoTypeYoutube" value="youtube" required>
+                                <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input class="custom-control-input" type="radio" name="videoType"
+                                    id="videoTypeFile" value="file" required>
+                                <label for="videoTypeFile" class="custom-control-label">File</label>
+                            </div>
+                        </div>
+                        <div class="form-group" id="content_url">
+
+                        </div>
                     </div>
                 </form>
             </div>

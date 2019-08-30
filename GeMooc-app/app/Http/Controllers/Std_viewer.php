@@ -122,21 +122,7 @@ class Std_viewer extends Controller
                     ->with('now_content', $content)
                     ->with('lessons', $course->lessons)
                     ->with('course', $course);
-
-            // if($record == null){
-            //     return view($view)
-            //             ->with('course', $course)
-            //             ->with('lessons', $course->lessons)
-            //             ->with('now_content', $content)
-            //             ->with('video', $video);
-            // }else{
-            //     return view($view)
-            //             ->with('course', $course)
-            //             ->with('lessons', $course->lessons)
-            //             ->with('now_content', $content)
-            //             ->with('record', $record)
-            //             ->with('video', $video);
-            // }
+                    
         }elseif( $content->type == 2 ){
             $article = $content->article;
             return view('pagestudent.subject.course.content.textContent')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
