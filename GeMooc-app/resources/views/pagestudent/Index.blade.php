@@ -21,6 +21,10 @@
     </div>
     <ul class="nav-links">
         <li>
+        <a href="{{url('std_view/home')}}">คอร์สของฉัน</a>
+            <div class="li-underline"></div>
+        </li>
+        <li>
         <a href="{{url('std_view/subject')}}">วิชา</a>
             <div class="li-underline"></div>
         </li>

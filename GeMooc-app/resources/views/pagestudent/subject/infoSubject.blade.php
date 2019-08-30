@@ -94,20 +94,29 @@
 
         <h4>ผู้สอน</h4>
         <div class="row">
-                @foreach ($courses as $course)
-                @php
-                   $users =  $course->users_main;
-                @endphp
-                @foreach ($users as $user)
-                    <div class="col-md-6">
-                        <div class="d-flex p-4 text-center">
-                            <img class="m-auto bg-success rounded-circle" width="200" height="200" src="{{$user->profile->image}}" alt="">
-                            <h5 class="m-auto">{{$user->name}}</h5>
-                        </div>
-                    </div>
-                @endforeach
+            @php
+                $users = collect();
+                $union = collect();
+                foreach($courses as $course){
+                    foreach($course->users_main as $user){
+                        $temp = collect();
+                        $temp->push($user->profile->only(['image']));
+                        $temp->push($user->only(['name']));
+                        $users->prepend($temp->flatten());
 
-            @endforeach
+                    }
+                }
+                $users = $users->unique();
+
+            @endphp
+                @foreach ($users as $key => $user)
+                <div class="col-md-6">
+                    <div class="d-flex p-4 text-center">
+                        <img class="m-auto bg-success rounded-circle" width="200" height="200" src="{{url('storage/'.$user->first())}}" alt="">
+                        <h5 class="m-auto">{{$user->last()}}</h5>
+                    </div>
+                </div>
+                @endforeach
 
             {{-- <div class="col-md-6">
                 <div class="d-flex p-4 text-center">
