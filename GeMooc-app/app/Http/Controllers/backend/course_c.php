@@ -84,6 +84,7 @@ class course_c extends Controller
 
         if ($request->videoType == 'youtube') {
             $course->video = $request->url;
+            $course->type_video = 'youtube';
         } else {
             $file = $request->file('videoFile');
             $filename = $file->getClientOriginalName();
@@ -91,6 +92,7 @@ class course_c extends Controller
             $file->move($path, $filename);
 
             $course->video = '/storage/videos/'.$filename;
+            $course->type_video = 'file';
         }
 
         $course->save();
@@ -190,6 +192,7 @@ class course_c extends Controller
 
         if ($request->videoType == 'youtube') {
             $course->video = $request->url;
+            $course->type_video = 'youtube';
         } else {
             $file = $request->file('videoFile');
             $filename = $file->getClientOriginalName();
@@ -197,6 +200,7 @@ class course_c extends Controller
             $file->move($path, $filename);
 
             $course->video = '/storage/videos/'.$filename;
+            $course->type_video = 'file';
         }
 
         // $course->user_id = auth()->user()->id;

@@ -37,6 +37,18 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12">
+                            <label for="phoneNumber">เบอร์โทรศัพท์</label>
+                            <i class="far fa-envelope"></i>
+                            <input type="phoneNumber" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" id="phoneNumber" value="{{ old('phoneNumber') }}" required autocomplete="phoneNumber">
+                            @error('phoneNumber')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <label for="pass">รหัสผ่าน</label>
                             <i class="fab fa-expeditedssl"></i>

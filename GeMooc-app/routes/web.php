@@ -133,7 +133,9 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/quiz/show', function () {
             return view('quiz.Show');
         });
-
+        
+        Route::resource('/qaOption', 'qaController');
+        Route::resource('/guidebookOption', 'guidebookController');
 
         Route::post('ajaximage', function () {
             $file = Request::file('file');

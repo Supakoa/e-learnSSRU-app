@@ -11,5 +11,6 @@ $factory->define(subject::class, function (Faker $faker ) {
         'status' => 1,
         'image' => 'cover_image_subject/no_image.jpg',
         'video' => '',
+        'type_video' => '',
     ];
 });
