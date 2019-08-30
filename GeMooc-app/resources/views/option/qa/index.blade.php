@@ -12,7 +12,7 @@
 @section('main-content')
 <div class="offset-md-4 col-md-4">
     <div class="text-center">
-        <h2 style="border-bottom:2px solid gray;padding:10px;">ตั้งค่าคำถามที่พบบ่อย</h2>
+        <h2 style="border-bottom:2px solid gray;padding:10px;color:white;">ตั้งค่าคำถามที่พบบ่อย</h2>
     </div>
 </div>
 
