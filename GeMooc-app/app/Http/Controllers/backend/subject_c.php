@@ -64,7 +64,9 @@ class subject_c extends Controller
         $this->validate($request,[
             'name' => 'required',
             'detail' => 'required',
-            'cover_image' => 'image|nullable|max:10000'
+            'cover_image' => 'image|nullable|max:10000',
+            'videoType' => 'required',
+            'videoFile' => 'max:204800|mimes:mp4|required',
         ]) ;
             // dd($request->File('cover_image'));
         if($request->hasFile('cover_image')){
@@ -82,7 +84,18 @@ class subject_c extends Controller
         $subject->detail = $request->input('detail');
         // $subject->user_id = auth()->user()->id;
         $subject->image = $fileNameToStore;
+        if ($request->videoType == 'youtube') {
+            $subject->video = $request->url;
+        } else {
+            $file = $request->file('videoFile');
+            $filename = $file->getClientOriginalName();
+            $path = public_path()."\storage"."\\"."videos";
+            $file->move($path, $filename);
+
+            $subject->video = '/storage/videos/'.$filename;
+        }
         $subject->save();
+
         $now = new adjust;
         $now->user_id = auth()->user()->id;
         $now->detail = "Create Subject : ID ====> || ".$subject->id." ||";
@@ -150,12 +163,13 @@ class subject_c extends Controller
         $detail = '';
         // dd($request);
         $subject = sub::find($request->input('sub_id'));
+
         if($request->has('status')){
             $subject->status = $request->input('status');
         }else{
             $subject->status = 0;
-
         }
+
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_subject','public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
@@ -165,6 +179,16 @@ class subject_c extends Controller
 
         }
 
+        if ($request->videoType == 'youtube') {
+            $subject->video = $request->url;
+        } else {
+            $file = $request->file('videoFile');
+            $filename = $file->getClientOriginalName();
+            $path = public_path()."\storage"."\\"."videos";
+            $file->move($path, $filename);
+
+            $subject->video = '/storage/videos/'.$filename;
+        }
 
         // Create subject
         if( $subject->name != $request->input('name')){

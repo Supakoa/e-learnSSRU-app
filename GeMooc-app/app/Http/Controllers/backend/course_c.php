@@ -59,6 +59,7 @@ class course_c extends Controller
             'total' => 'required',
             'cover_image' => 'image|nullable|max:10000',
         ]) ;
+
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_course/sm','public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
@@ -78,6 +79,18 @@ class course_c extends Controller
         $course->open = $request->input('open');
         $course->close = $request->input('close');
         $course->total = $request->input('total');
+
+        if ($request->videoType == 'youtube') {
+            $course->video = $request->url;
+        } else {
+            $file = $request->file('videoFile');
+            $filename = $file->getClientOriginalName();
+            $path = public_path()."\storage"."\\"."videos";
+            $file->move($path, $filename);
+
+            $course->video = '/storage/videos/'.$filename;
+        }
+
         $course->save();
 
         $now = new adjust;
@@ -172,6 +185,17 @@ class course_c extends Controller
         $course->open = $request->input('open');
         $course->close = $request->input('close');
         $course->total = $request->input('total');
+
+        if ($request->videoType == 'youtube') {
+            $course->video = $request->url;
+        } else {
+            $file = $request->file('videoFile');
+            $filename = $file->getClientOriginalName();
+            $path = public_path()."\storage"."\\"."videos";
+            $file->move($path, $filename);
+
+            $course->video = '/storage/videos/'.$filename;
+        }
 
         // $course->user_id = auth()->user()->id;
         // $course->sm_banner = $fileNameToStore;

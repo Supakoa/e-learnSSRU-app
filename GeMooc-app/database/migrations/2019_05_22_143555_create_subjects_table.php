@@ -19,6 +19,7 @@ class CreateSubjectsTable extends Migration
             $table->text('detail')->nullable();
             $table->integer('status')->default(0);
             $table->text('image')->nullable();
+            $table->text('video');
             $table->timestamps();
         });
     }

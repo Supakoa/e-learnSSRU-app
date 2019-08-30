@@ -28,7 +28,7 @@
             <div class="card-subject">
                 <div class="card-subject-header">
                     <img src="{{url('storage/'.$subject->image)}}" class="shadow" width="100%" height="100%">
-                <div class="status-{{$subject->status ? 'on' : 'off'}}"></div>
+                    <div class="status-{{$subject->status ? 'on' : 'off'}}"></div>
                 </div>
                 <div class="card-subject-body pt-2">
                     <p>{{$subject->name}}</p>
@@ -87,7 +87,27 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div id="typeVideo">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input class="custom-control-input" type="radio" name="videoType"
+                                            id="videoTypeYoutube" value="youtube" required>
+                                        <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input class="custom-control-input" type="radio" name="videoType"
+                                            id="videoTypeFile" value="file" required>
+                                        <label for="videoTypeFile" class="custom-control-label">File</label>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="content_url">
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {{-- <div class="row">
                     <div class="col-md-12">
                         <div class="bg-addimg">
@@ -125,7 +145,7 @@
         // $('#newSubject').modal('show');
     });
 
-    function add_subject(){
+    function add_subject() {
         $('#newSubject').modal('show');
     }
 
@@ -143,6 +163,28 @@
             }
         });
     }
+
+    $('input[name=videoType]').change(function (e) {
+        e.preventDefault();
+
+        $('#content_url').show();
+
+        let videoType = $('input[name=videoType]:checked').val();
+
+        switch (videoType) {
+            case 'youtube':
+                $('#content_url').html(
+                    '<label for="url">URL Video</label><input type="text" class="form-control input-modal" name="url" placeholder="content Name" required>'
+                );
+                break;
+
+            case 'file':
+                $('#content_url').html(
+                    '<label for="url">File Video</label><input type="file" class="form-control input-modal" name="videoFile" id="videoFile" required>'
+                    );
+                break;
+        }
+    });
 
 </script>
 @endsection
