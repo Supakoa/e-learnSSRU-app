@@ -11,16 +11,33 @@
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/subject_info.css')}}">
 @endpush
-
+{{-- {{dd($subject->video)}} --}}
 @section('mainContent')
+@if ($subject->video!=null)
+@php
+
+    function convertYoutube($string) {
+    return preg_replace(
+        "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+        "https://www.youtube.com/embed/$2",
+        $string
+    );
+}
+$subject_video =$subject->video;
+if($subject->type_video!='file'){
+    $subject_video = convertYoutube($subject->video);
+}
+@endphp
 <div class="sectionVideo">
-    <div class="container p-5">
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
-                allowfullscreen></iframe>
+        <div class="container p-5">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="{{$subject_video}}"
+                    allowfullscreen></iframe>
+            </div>
         </div>
     </div>
-</div>
+@endif
+
 
 <div class="sectionTable">
     <div class="container p-5">

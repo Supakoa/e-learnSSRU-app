@@ -25,7 +25,7 @@
         <div class="head-text">
             <p>{{ $video->name }}</p>
         </div>
-
+        <br><br>
         @if ( $video->type == 'youtube' )
             {{--
                 youtube
