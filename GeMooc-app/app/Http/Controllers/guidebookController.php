@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// use database
+use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
+
 class guidebookController extends Controller
 {
     /**
@@ -13,8 +17,9 @@ class guidebookController extends Controller
      */
     public function index()
     {
+        $guidebook = DB::table('guidebooks')->get();
         $view = 'option.guidebook.index';
-        return view($view);
+        return view($view)->with('guidebook', json_encode($guidebook));
     }
 
     /**
@@ -35,7 +40,14 @@ class guidebookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $imagePath = request('newGuidebook')->store('guidebookImage','public');
+        $image = Image::make(public_path("storage/{$imagePath}"));
+        $image->save();
+        DB::table('guidebooks')->insert([
+            'image' => 'storage/'.$imagePath,
+        ]);
+
+        return redirect()->back();
     }
 
     /**
