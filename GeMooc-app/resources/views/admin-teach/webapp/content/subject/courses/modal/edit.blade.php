@@ -34,7 +34,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="courseName">รายละเอียด</label>
-                                    <input id="courseName" name="detail" class="form-control" value="{{$course->name}}" type="text">
+                                    <input id="courseName" name="detail" class="form-control" value="{{$course->detail}}" type="text">
                                 </div>
                             </div>
                         </div>
@@ -87,20 +87,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="typeVideo">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input" type="radio" name="videoType"
-                                    id="videoTypeYoutube" value="youtube" required>
-                                <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
+                        <div class="col-md-12">
+                            <div id="typeVideo">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input class="custom-control-input" type="radio" name="videoType"
+                                        id="videoTypeYoutube" value="youtube" required>
+                                    <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input class="custom-control-input" type="radio" name="videoType"
+                                        id="videoTypeFile" value="file" required>
+                                    <label for="videoTypeFile" class="custom-control-label">File</label>
+                                </div>
                             </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input" type="radio" name="videoType"
-                                    id="videoTypeFile" value="file" required>
-                                <label for="videoTypeFile" class="custom-control-label">File</label>
-                            </div>
-                        </div>
-                        <div class="form-group" id="content_url">
+                            <div class="form-group" id="content_url">
 
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -236,5 +238,27 @@
             }
         });
     }
+
+    $('input[name=videoType]').change(function (e) {
+        e.preventDefault();
+
+        $('#content_url').show();
+
+        let videoType = $('input[name=videoType]:checked').val();
+
+        switch (videoType) {
+            case 'youtube':
+                $('#content_url').html(
+                    '<label for="url">URL Video</label><input type="text" class="form-control input-modal" name="url" placeholder="content Name" required>'
+                );
+                break;
+
+            case 'file':
+                $('#content_url').html(
+                    '<label for="url">File Video</label><input type="file" class="form-control input-modal" name="videoFile" id="videoFile" required>'
+                    );
+                break;
+        }
+    });
 
 </script>

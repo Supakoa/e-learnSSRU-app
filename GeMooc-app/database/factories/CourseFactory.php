@@ -11,5 +11,6 @@ $factory->define(course::class, function (Faker $faker) {
         'name' => $faker->province,
         'detail' => $faker->city,
         'image' => 'cover_image_course/no_image.jpg',
+        'video' => '',
     ];
 });

@@ -162,8 +162,8 @@ return "$strDay $strMonthThai $strYear";
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="cover_iamge">รูปภาพ</label>
-                                        <input type="file" class=" form-control input-modal" name="cover_iamge" id="cover_iamge">
+                                        <label for="cover_image">รูปภาพ</label>
+                                        <input type="file" class=" form-control input-modal" name="cover_image" id="cover_image">
                                         <div id="typeVideo">
                                             <div class="custom-control custom-radio custom-control-inline">
                                                 <input class="custom-control-input" type="radio" name="videoType"

@@ -65,8 +65,7 @@ class subject_c extends Controller
             'name' => 'required',
             'detail' => 'required',
             'cover_image' => 'image|nullable|max:10000',
-            'videoType' => 'required',
-            'videoFile' => 'max:204800|mimes:mp4|required',
+            'videoFile' => 'max:204800|mimes:mp4|',
         ]) ;
             // dd($request->File('cover_image'));
         if($request->hasFile('cover_image')){
@@ -157,7 +156,6 @@ class subject_c extends Controller
             'name' => 'required',
             'detail' => 'required',
             'cover_image' => 'image|nullable|max:10000'
-
         ]) ;
 
         $detail = '';
@@ -172,7 +170,7 @@ class subject_c extends Controller
 
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_subject','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
             $image->save();
             $detail .= '|cover_image : '.$subject->image.' ====> '.$imagePath.'|';
             $subject->image = $imagePath;

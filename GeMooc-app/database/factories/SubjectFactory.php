@@ -10,6 +10,6 @@ $factory->define(subject::class, function (Faker $faker ) {
         'detail' => $faker->city,
         'status' => 1,
         'image' => 'cover_image_subject/no_image.jpg',
-
+        'video' => '',
     ];
 });

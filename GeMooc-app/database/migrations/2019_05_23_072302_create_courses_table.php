@@ -22,7 +22,7 @@ class CreateCoursesTable extends Migration
             $table->integer('total')->default(0);
             $table->date('open')->nullable();
             $table->date('close')->nullable();
-            $table->text('video');
+            $table->text('video')->nullable();
             // forien key
             $table->unsignedbigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');

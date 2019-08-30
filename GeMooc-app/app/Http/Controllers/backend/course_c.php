@@ -58,7 +58,9 @@ class course_c extends Controller
             'close' => 'required',
             'total' => 'required',
             'cover_image' => 'image|nullable|max:10000',
-        ]) ;
+        ]);
+
+        // dd($request->hasFile('cover_image'));
 
         if($request->hasFile('cover_image')){
             $imagePath = request('cover_image')->store('cover_image_course/sm','public');
