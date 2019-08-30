@@ -96,12 +96,12 @@
 
                 @if ($adminOnly)
                     <a href="{{url('qaOption')}}">
-                    <li>ตั้งค่าคำถามที่พบบ่อย</li></a>
+                    <li>จัดการคำถามที่พบบ่อย</li></a>
                 @endif
 
                 @if ($adminOnly)
                     <a href="{{url('guidebookOption')}}">
-                    <li>ตั้งค่าคู่มือการใช้งาน</li></a>
+                    <li>จัดการคู่มือการใช้งาน</li></a>
                 @endif
 
             </ul>
