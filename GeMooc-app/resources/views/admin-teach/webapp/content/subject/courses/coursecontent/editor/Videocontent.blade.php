@@ -193,8 +193,6 @@
 </div>
 @endsection
 
-
-
 @section('js')
 <script>
     const player = new Plyr('#player');
