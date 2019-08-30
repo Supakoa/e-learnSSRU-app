@@ -19,7 +19,7 @@
             <div class="card-body">
                 <div class="container">
                     <dd>
-                        {{$article->rawdata}}
+                        {!!$article->rawdata!!}
                     </dd>
                 </div>
                 <form action="{{url('std_view/course/content/'.$article->content->id.'/submit_article')}}" method="post" id="form_article">

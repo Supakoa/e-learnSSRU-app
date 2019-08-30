@@ -39,7 +39,7 @@ class Std_viewer extends Controller
     }
     public function course_enroll(course $course){
         $user = auth()->user();
-        // dd($user->course($course)->count());
+        // dd($user->type_user);
         if($user->type_user != 'student'){
             return redirect()->back();
         }elseif($user->course($course)->count()){
@@ -55,7 +55,9 @@ class Std_viewer extends Controller
      public function show_content(content $content)
     {
         $course = $content->lesson->course;
-
+        if(auth()->user()->course($course)->get()->isEmpty()){
+            return redirect()->back()->with('error','Please Enroll Course');
+        }
         if( $content->type == 1 ){
             $record = record::where('content_id', $content->id)->where('user_id', auth()->user()->id)->first();
             $video = $content->video;
@@ -122,7 +124,7 @@ class Std_viewer extends Controller
                     ->with('now_content', $content)
                     ->with('lessons', $course->lessons)
                     ->with('course', $course);
-                    
+
         }elseif( $content->type == 2 ){
             $article = $content->article;
             return view('pagestudent.subject.course.content.textContent')->with('course',$course)->with('article',$article)->with('lessons',$course->lessons)->with('now_content',$content);
