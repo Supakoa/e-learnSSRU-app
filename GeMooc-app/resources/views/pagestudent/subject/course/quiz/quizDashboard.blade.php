@@ -84,21 +84,26 @@
                         </div>
                     </div>
                 </div>
+                @php
+                                            $your_scores = auth()->user()->scores()->wherePivot('quiz_id',$quiz->id)->orderBy('scores.created_at','desc')->get();
+                                            $height_score =  auth()->user()->scores()->wherePivot('quiz_id',$quiz->id)->orderBy('scores.score','desc')->first()->pivot->score;
+                                            $percen_height_score = $height_score/$question_number*100;
+                                        @endphp
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 p-3">
                             <div class="text-left">
                                 <h4>
-                                    เกณฑ์คะแนนของคุณ
+                                    เกณฑ์คะแนนของคุณ  {{$height_score."/".$question_number}} คะแนน
                                 </h4>
                             </div>
                             <div class="progress shadow" style="height:25px;border-radius:15px;">
-                                <div class="progress-bar text-center" id="progress_bar" role="progressbar" style="width: 50%;"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">50%</div>
+                                <div class="progress-bar text-center" id="progress_bar" role="progressbar" style="width: {{$percen_height_score}}%;"
+                                          aria-valuenow="$percen_height_score" aria-valuemin="0" aria-valuemax="100">{{$percen_height_score}}%</div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    
                 <br>
                 <div class="container">
                     <div class="row">
@@ -116,10 +121,7 @@
                                                 ลำดับ
                                             </th>
                                             <th>
-                                                วัน/เดือน/ปี
-                                            </th>
-                                            <th>
-                                                เวลา
+                                                วันที่สอบ
                                             </th>
                                             <th>
                                                 คะแนน
@@ -130,23 +132,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="border-bottom">
-                                            <th scope="row">
-                                                1.
-                                            </th>
-                                            <td>
-                                                15 มิ.ย. 62
-                                            </td>
-                                            <td>
-                                                15:45:62
-                                            </td>
-                                            <td>
-                                                7
-                                            </td>
-                                            <td>
-                                                7:41
-                                            </td>
-                                        </tr>
+
+                                        @foreach ($your_scores as $key=>$score)
+                                            <tr class="border-bottom text-center">
+                                                <th scope="row">{{$key+1}}</th>
+                                                <td>{{$score->pivot->created_at}}</td>
+                                                <td>{{$score->pivot->score}}</td>
+                                                @php
+                                                    $time =  $score->pivot->time;
+                                                    $min = (int)($time/60);
+                                                    $sec = (int)($time%60);
+                                                    if($min<10){
+                                                        $min = '0'.$min;
+                                                    }
+                                                    if($sec<10){
+                                                        $sec = '0'.$sec;
+                                                    }
+                                                @endphp
+                                                <td>{{$min }} นาที {{$sec}} วินาที</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
