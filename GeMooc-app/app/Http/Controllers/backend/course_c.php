@@ -82,17 +82,19 @@ class course_c extends Controller
         $course->close = $request->input('close');
         $course->total = $request->input('total');
 
-        if ($request->videoType == 'youtube') {
-            $course->video = $request->url;
-            $course->type_video = 'youtube';
-        } else {
-            $file = $request->file('videoFile');
-            $filename = $file->getClientOriginalName();
-            $path = public_path()."\storage"."\\"."videos";
-            $file->move($path, $filename);
+        if($request->hasFile('videoFile')){
+            if ($request->videoType == 'youtube') {
+                $course->video = $request->url;
+                $course->type_video = 'youtube';
+            } else {
+                $file = $request->file('videoFile');
+                $filename = $file->getClientOriginalName();
+                $path = public_path()."\storage"."\\"."videos";
+                $file->move($path, $filename);
 
-            $course->video = '/storage/videos/'.$filename;
-            $course->type_video = 'file';
+                $course->video = '/storage/videos/'.$filename;
+                $course->type_video = 'file';
+            }
         }
 
         $course->save();
@@ -189,20 +191,20 @@ class course_c extends Controller
         $course->open = $request->input('open');
         $course->close = $request->input('close');
         $course->total = $request->input('total');
+        if($request->hasFile('videoFile')){
+            if ($request->videoType == 'youtube') {
+                $course->video = $request->url;
+                $course->type_video = 'youtube';
+            } else {
+                $file = $request->file('videoFile');
+                $filename = $file->getClientOriginalName();
+                $path = public_path()."\storage"."\\"."videos";
+                $file->move($path, $filename);
 
-        if ($request->videoType == 'youtube') {
-            $course->video = $request->url;
-            $course->type_video = 'youtube';
-        } else {
-            $file = $request->file('videoFile');
-            $filename = $file->getClientOriginalName();
-            $path = public_path()."\storage"."\\"."videos";
-            $file->move($path, $filename);
-
-            $course->video = '/storage/videos/'.$filename;
-            $course->type_video = 'file';
+                $course->video = '/storage/videos/'.$filename;
+                $course->type_video = 'file';
+            }
         }
-
         // $course->user_id = auth()->user()->id;
         // $course->sm_banner = $fileNameToStore;
         // $course->course_id = $request->input('sub_id');
