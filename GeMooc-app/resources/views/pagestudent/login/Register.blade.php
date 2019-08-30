@@ -67,13 +67,13 @@
                     <div class="row" id="gen">
                         <div class="col-xs-6">
                             <label class="ck-container">เพศชาย
-                                <input type="checkbox">
+                                <input  name='gender' value="male" type="radio">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
                         <div class="col-xs-6">
                             <label class="ck-container">เพศหญิง
-                                <input type="checkbox">
+                                <input name='gender' value="female" type="radio">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
