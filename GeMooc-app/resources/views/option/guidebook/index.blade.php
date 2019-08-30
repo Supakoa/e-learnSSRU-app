@@ -20,12 +20,19 @@ $guidebooks = json_decode($guidebook);
 @endphp
 <div class="card bg-card">
     <div class="container" display="inline">
+        <div class="row">
+
+
         {{-- main --}}
         @if ($guidebooks)
         @for ($i = 0; $i< sizeof($guidebooks); $i++)
-        <img src="{{ $guidebooks[$i]->image }}" id="imageShow" width='300' height="300" />
+        <div class="col-3">
+                <img src="{{ $guidebooks[$i]->image }}" class="mt-5" id="imageShow" width='100%' height="auto" />
+        </div>
+
         @endfor
         @endif
+        </div>
         <hr>
         <form action="/guidebookOption" enctype="multipart/form-data" method="post">
             @csrf

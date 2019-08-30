@@ -216,9 +216,11 @@ class Std_viewer extends Controller
         return view('std_viewer.std_payment.Payment');
     }
     public function manual(){
-        return view('pagestudent.toolLearn.toolLearn');
+        $manual = DB::table('guidebooks')->get();
+        return view('pagestudent.toolLearn.toolLearn')->with('manuals',$manual);;
     }
     public function FAQ(){
-        return view('pagestudent.FAQ.FAQ');
+        $faq = DB::table('qas')->get();
+        return view('pagestudent.FAQ.FAQ')->with('faqs',$faq);
     }
 }

@@ -22,13 +22,15 @@ $qas = json_decode($qa);
 <div class="card bg-card">
     <div class="container" display="inline">
         {{-- main --}}
+        <div class="row">
         @if ($qas)
         @for ($i = 0; $i < sizeof($qas); $i++)
-
-            <img src="{{ $qas[$i]->image }}" id="imageShow" width='300' height="300" />
-
+        <div class="col-3">
+            <img src="{{ $qas[$i]->image }}" id="imageShow" class="mt-5" width='100%' height="auto" />
+        </div>
         @endfor
         @endif
+        </div>
         <hr>
         <form action="/qaOption" enctype="multipart/form-data" method="post">
             @csrf
