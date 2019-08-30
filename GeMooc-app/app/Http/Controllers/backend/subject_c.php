@@ -178,19 +178,21 @@ class subject_c extends Controller
             $subject->image = $imagePath;
 
         }
+        if($request->hasFile('videoFile')){
+            if ($request->videoType == 'youtube') {
+                $subject->video = $request->url;
+                $subject->type_video = 'youtube';
+            } else {
+                $file = $request->file('videoFile');
+                $filename = $file->getClientOriginalName();
+                $path = public_path()."\storage"."\\"."videos";
+                $file->move($path, $filename);
 
-        if ($request->videoType == 'youtube') {
-            $subject->video = $request->url;
-            $subject->type_video = 'youtube';
-        } else {
-            $file = $request->file('videoFile');
-            $filename = $file->getClientOriginalName();
-            $path = public_path()."\storage"."\\"."videos";
-            $file->move($path, $filename);
-
-            $subject->video = '/storage/videos/'.$filename;
-            $subject->type_video = 'file';
+                $subject->video = '/storage/videos/'.$filename;
+                $subject->type_video = 'file';
+            }
         }
+
 
         // Create subject
         if( $subject->name != $request->input('name')){
