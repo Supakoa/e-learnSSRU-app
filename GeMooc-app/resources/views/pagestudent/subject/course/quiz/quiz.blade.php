@@ -83,9 +83,9 @@ $question_number = $quiz->questions->count();
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input answer_radio" type="radio"
                                                 value="{{$answer->id}}" name="question_{{$question->id}}"
-                                                id="ques_{{$question->id}}">
+                                                id="answer_{{$answer->id}}">
                                             <label class="form-check-label"
-                                                for="ques_{{$question->id}}">{{$answer->name}}</label>
+                                                for="answer_{{$answer->id}}">{{$answer->name}}</label>
                                         </div>
                                     </dd>
                                     @endforeach
