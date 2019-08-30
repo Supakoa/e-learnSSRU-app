@@ -25,30 +25,30 @@
         <div class="head-text">
             <p>{{ $video->name }}</p>
         </div>
-        <br><br>
-        @if ( $video->type == 'youtube' )
+        <div class="container mt-5">
+            @if ( $video->type == 'youtube' )
             {{--
                 youtube
             --}}
             <div class="plyr__video-embed" id="player1">
-                <iframe id="showVideo" src="" allowfullscreen allowtransparency
+                <iframe id="showVideo"  src="" allowfullscreen allowtransparency
                     allow="autoplay"></iframe>
             </div>
-        @else
-            {{--
-                file video
-            --}}
-            <video height="720" width="1280" id="player2" controls crossorigin playsinline>
-                <source src="{{ url('').$video->data }}" type="video/mp4" />
-                {{-- <source src="{{ $video->data }}" type="video/webm" /> --}}
-                <!-- Captions are optional -->
-                <track kind="captions" label="English captions" srclang="en" default />
-            </video>
-        @endif
+            @else
+                {{--
+                    file video
+                --}}
+                <video class="p-5" height="720" width="1280" id="player2" controls crossorigin playsinline>
+                    <source src="{{ url('').$video->data }}" type="video/mp4" />
+                    {{-- <source src="{{ $video->data }}" type="video/webm" /> --}}
+                    <!-- Captions are optional -->
+                    <track kind="captions" label="English captions" srclang="en" default />
+                </video>
+            @endif
 
-        {{-- record bar --}}
-        <ul class="navProgress" id="navProgress"></ul>
-
+            {{-- record bar --}}
+            <ul class="navProgress" id="navProgress"></ul>
+        </div>
         {{--
             [test cast] send form refresh
         --}}
@@ -59,7 +59,6 @@
             <button onclick="takeRecord()" type="button" class="btn btn-outline-primary">takeRecord</button>
             <button type="submit" class="btn btn-outline-primary">send</button>
         </form> --}}
-
     </div>
 </div>
 @endsection
