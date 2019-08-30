@@ -119,7 +119,7 @@ Route::group(['middleware' => 'auth'], function (){
 
 
     Route::group(['middleware' => ['mdgStudent']], function () {
-        Route::get('/profile', 'ProfileController@index');
+        Route::resource('/profile', 'ProfileController');
 
         // Route::post('/profile/updateImage', 'ProfileController@updatePhoto');
         // Route::post('/profile/upddateProfile', 'ProfileController@update');
@@ -133,7 +133,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/quiz/show', function () {
             return view('quiz.Show');
         });
-        
+
         Route::resource('/qaOption', 'qaController');
         Route::resource('/guidebookOption', 'guidebookController');
 

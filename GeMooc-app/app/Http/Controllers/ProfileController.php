@@ -81,21 +81,23 @@ class ProfileController extends Controller
     {
         $d1 = request()->validate([
             'name' => 'required',
-            'email' => 'required',
+            // 'email' => 'required',
+            'phone_number' => 'required',
         ]);
 
-        $d2 = request()->validate([
-            'description' => 'required',
-        ]);
+        // $d2 = request()->validate([
+        //     'description' => 'required',
+        // ]);
 
         $a = auth()->user()->update([
             'name' => $d1['name'],
-            'email' => $d1['email'],
+            // 'email' => $d1['email'],
+            'phone_number' => $d1['phone_number'],
         ]);
 
-        $b = auth()->user()->profile->update([
-            'description' => $d2['description'],
-        ]);
+        // $b = auth()->user()->profile->update([
+        //     'description' => $d2['description'],
+        // ]);
 
         return redirect()->back()->with('success', ['ok love you.']);
     }

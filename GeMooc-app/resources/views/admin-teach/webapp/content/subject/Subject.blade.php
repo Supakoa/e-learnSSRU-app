@@ -93,12 +93,12 @@
                                 <div id="typeVideo">
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input class="custom-control-input" type="radio" name="videoType"
-                                            id="videoTypeYoutube" value="youtube" required>
+                                            id="videoTypeYoutube" value="youtube" >
                                         <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input class="custom-control-input" type="radio" name="videoType"
-                                            id="videoTypeFile" value="file" required>
+                                            id="videoTypeFile" value="file" >
                                         <label for="videoTypeFile" class="custom-control-label">File</label>
                                     </div>
                                 </div>
