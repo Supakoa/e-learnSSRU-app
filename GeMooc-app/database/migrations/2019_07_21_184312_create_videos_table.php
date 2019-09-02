@@ -23,7 +23,7 @@ class CreateVideosTable extends Migration
             $table->text('name');
             $table->text('type');
             $table->text('data');
-            $table->text('poster');
+            $table->text('poster')->nullable();
 
             // forien key
             $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');

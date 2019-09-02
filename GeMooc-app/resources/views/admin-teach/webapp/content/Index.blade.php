@@ -95,8 +95,8 @@
                 @endif
 
                 @if ($adminOnly)
-                    <a href="{{url('qaOption')}}">
-                    <li>จัดการคำถามที่พบบ่อย</li></a>
+                    <a href="{{url('/image_slide')}}">
+                    <li>จัดการรูปภาพในสไลด์</li></a>
                 @endif
 
                 @if ($adminOnly)
