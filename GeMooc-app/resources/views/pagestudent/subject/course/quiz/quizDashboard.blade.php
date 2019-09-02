@@ -162,15 +162,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-2 offset-md-10 ">
-                            <a class="btn" id="saveQuiz">
-                                บันทึก
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <br>
             </div>
         </div>
