@@ -25,7 +25,7 @@ return "$strDay $strMonthThai $strYear";
 }
 @endphp
 @section('main-content')
-<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$subject->id)}}">{{$subject->name}}</a>
+<a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark" href="{{url('/subject/'.$subject->id)}}">{{$subject->name}}</a>
 
 <div class="main-content-header">
     <div class="row">

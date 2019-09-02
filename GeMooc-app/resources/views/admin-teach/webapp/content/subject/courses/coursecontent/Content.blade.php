@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
 @endpush
 @section('main-content')
-<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}}
-</a>/ <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a>
+<a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark" href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}}
+</a>/ <a class="badge badge-dark" href="{{url('/course/'.$course->id)}}">{{$course->name}}</a>
 
 <div class="main-content-header">
     <div class="row">
