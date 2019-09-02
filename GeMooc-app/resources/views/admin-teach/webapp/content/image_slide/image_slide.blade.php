@@ -60,7 +60,7 @@
     @endif
 </div>
 <hr>
-<form action="/image_slide" enctype="multipart/form-data" method="post">
+<form action="{{url("/image_slide")}}" enctype="multipart/form-data" method="post">
     @csrf
     @method('POST')
     <select name="type" id="image_type" required>
