@@ -25,7 +25,7 @@
                 {{ $lesson->name}} <i class="fas fa-chevron-down"></i>
                 <div class="progress" style="height: 15px">
                     <div class="progress-bar" id="lesson_bar_{{$lesson->id}}" role="progressbar"
-                        style="width: 25%;height: 10px;font-size: 5px" aria-valuenow="25" aria-valuemin="0"
+                        style="width: 25%;height:15px;font-size: 5px" aria-valuenow="25" aria-valuemin="0"
                         aria-valuemax="100">100%</div>
                 </div>
             </a>
