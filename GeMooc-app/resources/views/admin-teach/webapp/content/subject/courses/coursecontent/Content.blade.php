@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <p id="your_course">{{$course->name}}</p>
+            <p class="t-shadow" id="your_course">{{$course->name}}</p>
             <div class="underline-title"></div>
         </div>
     </div>

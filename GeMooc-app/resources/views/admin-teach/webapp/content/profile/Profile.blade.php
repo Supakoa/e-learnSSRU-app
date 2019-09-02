@@ -17,7 +17,7 @@
     <div class="forms-profile-header">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3>แก้ไขโปรไฟล์</h3>
+                <h3 class="t-shadow">แก้ไขโปรไฟล์</h3>
             </div>
         </div>
     </div>

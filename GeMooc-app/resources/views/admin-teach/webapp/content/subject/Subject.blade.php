@@ -13,7 +13,7 @@
 
 @section('main-content')
 <div class="main-content-header">
-    <p>วิชา</p>
+    <p class="t-shadow">วิชา</p>
     <div class="underline-title"></div>
 </div>
 <div class="container">

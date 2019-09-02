@@ -9,7 +9,7 @@
 @section('main-content')
 <div class="col-md-4 offset-md-4">
     <div class="text-center">
-        <h2 style="border-bottom:2px solid gray;padding:10px;">ผู้ดูแลระบบ</h2>
+        <h2 class="t-shadow" style="border-bottom:2px solid gray;padding:10px;">ผู้ดูแลระบบ</h2>
     </div>
 </div>
 <div class="card bg-card">

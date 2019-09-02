@@ -40,7 +40,7 @@ if($subject->type_video!='file'){
 
 
 <div class="sectionTable">
-    <div class="container p-5">
+    <div class="container-fluid p-5">
         <div class="table-responsive">
             @if ($subject->courses->where('status','1')->count())
             @foreach ($subject->courses->where('status','1') as $course)
@@ -64,10 +64,6 @@ if($subject->type_video!='file'){
                                 <th scope="row" class="border-right pl-4">บทเรียน</th>
                                 <td>{{$course->lessons->count()}}</td>
                             </tr>
-                            {{-- <tr>
-                                            <th scope="row" class="border-right pl-4">กลุ่มเป่าหมาย</th>
-                                            <td>นักเรียน/นักศึกษา บุคคลทั่วไป</td>
-                                        </tr> --}}
                             <tr>
                                 <th scope="row" class="border-right pl-4">เกณฑ์การผ่าน</th>
                                 <td>ต้องมีคะแนนไม่ต่ำกว่าร้อยละ 80</td>
@@ -82,7 +78,9 @@ if($subject->type_video!='file'){
             </div>
             @endforeach
             @else
+            <div class="alert alert-warning" role="alert">
                 ไม่มีคอสที่เปิดสอน
+            </div>
             @endif
 
         </div>
@@ -92,26 +90,7 @@ if($subject->type_video!='file'){
     <div class="container-fluid p-5">
         <h4>รายละเอียดเกี่ยวกับรายวิชา</h4>
         <span>{{$subject->detail}}</span>
-        {{-- <ul class="list-unstyled">
-            <li>บทที่ 1 การลบล้างความคิดเดิม</li>
-            <li>บทที่ 2 ออกแบบชีวิต</li>
-            <li>บทที่ 3 ทัศนคติ</li>
-        </ul> --}}
         <hr>
-        <h4>วัตถุประสงค์</h4>
-        <ul class="list-unstyled">
-            <li>1. เพื่อให้ผู้เรียนได้รู้พื้นฐานการพัฒนาตน</li>
-            <li>2. ...</li>
-        </ul>
-        <hr>
-        {{-- <h4>เกณฑ์การวัดและประเมินผลในรายวิชา</h4>
-        <dl class="row">
-            <dd class="col-md-8">
-                info~~
-            </dd>
-        </dl>
-        <hr> --}}
-
         <h4>ผู้สอน</h4>
         <div class="row">
             @php
