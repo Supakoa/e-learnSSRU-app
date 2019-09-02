@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="forms-body-footer">
-                            <a href="{{ route('password.request') }}" class="btn-forget">ลืมรหัสผ่าน</a>
+                        <a href="{{url('/forget')}}" class="btn-forget">ลืมรหัสผ่าน</a>
                             <a href="{{ url('/register')}}" class="btn-regis">ลงทะเบียน</a>
                         </div>
                     </div>
@@ -73,12 +73,9 @@
 {{-- วิชา --}}
 <div id="section3">
     <div class="bg-blur"></div>
-{{-- แก้ไขโปรไฟล์ --}}
-{{-- @include('pagestudent.profile.Profile') --}}
-{{-- แก้ไขโปรไฟล์ --}}
     <div class="container-fluid pt-3">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
+        <div id="carouselExampleControls m-auto" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner m-auto">
                 <div class="carousel-item active">
                     <img class=" w-100" height="800px" class="img-fluid" src="https://static3.bigstockphoto.com/7/0/2/large1500/207611518.jpg"
                         alt="First slide">
@@ -104,3 +101,4 @@
     </div>
 </div>
 {{-- วิชา --}}
+

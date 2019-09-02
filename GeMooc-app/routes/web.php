@@ -50,6 +50,9 @@ Route::get('/email', function () {
 Route::get('/register', function(){
     return view('pagestudent.login.Register');
 });
+Route::get('/forget', function(){
+    return view('pagestudent.login.Forget');
+});
 // Route::get('test', 'test@export');
 // Route::post('import', 'test@import');
 

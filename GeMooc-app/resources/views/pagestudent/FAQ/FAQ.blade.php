@@ -8,12 +8,12 @@
 @endpush
 
 @section('mainContent')
-    <div class="container">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="container-fluid">
+            <div id="carouselExampleControls m-auto" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                             @foreach ($faqs as$key=>$faq)
                             <div class="carousel-item {{$key==0 ? 'active' : ''}}">
-                                    <img src="{{url(''.$faq->image)}}" class="d-block w-100" alt="...">
+                                    <img src="{{url(''.$faq->image)}}" class="d-block w-100 rounded" alt="...">
                           <div class="carousel-caption d-none d-md-block">
                             {{-- <h5>First slide label</h5>
                             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}

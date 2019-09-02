@@ -14,6 +14,7 @@
 <script>
     $(document).ready(function () {
         $('.yourCourse').slick({
+            lazyLoad: 'ondemand',
             dots: true,
             infinite: true,
             centerPadding: '60px',
@@ -49,6 +50,7 @@
 
         $('.courseFinish').slick({
             dots: true,
+            lazyLoad: 'ondemand',
             infinite: false,
             speed: 300,
             slidesToShow: 4,
@@ -82,19 +84,6 @@
             ]
         });
     });
-
-
-    // $('.course_progress').click(function (e) {
-    //     e.preventDefault();
-    //     id = $(this).attr('course_id')
-    //     // alert(id)
-    //     progress = $(this).attr('progress')
-    //     // alert(progress)
-
-    //     $('#progress_bar').css('width', progress + '%')
-    //     $('#btn_course').attr('href', 'eiei/' + id)
-
-    // });
 
 </script>
 @endpush
@@ -145,7 +134,8 @@
 
                 @endphp
                         <div class="my_course" course_link = "{{url('std_view/course/'.$course->id)}}" course_progress = "{{$sum_course}}" course_name = "{{$course->name}}">
-                            <img  src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%" >
+                            <p class="text-center">{{$course->name}}</p>
+                            <img class="m-auto"  src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%" >
                         </div>
                     @endforeach
                 </div>
@@ -153,16 +143,11 @@
         </div>
         <h2 id="course_name" style="color:white"></h2>
         <div class="row progress-now">
-
             <div class="col-md-10">
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" style="width: 25%;"
                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                {{-- <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%"
-                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div> --}}
             </div>
             <div class="col-md-2">
             <a class="btn btn-success" id="btn_to_course" href="#">เริ่มคอร์ส</a>

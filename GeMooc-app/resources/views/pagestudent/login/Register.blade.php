@@ -1,7 +1,7 @@
 @extends('layouts.appLearning')
 
-@section('index')
-<div class="ce-bgimg" style="background-image:url('../../images/bg-register.jpg');">
+@section('login')
+<div class="ce-bgimg " style="background-image:url('../../images/bg-register.jpg');">
     <div class="body-register">
             @include('inc.alert')
 
