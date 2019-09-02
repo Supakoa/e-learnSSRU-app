@@ -52,8 +52,8 @@ class teachController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'type_user' => 'teach',
-            'gender' => $data['gender'],
-            'phone_number' => $data['phoneNumber'],
+            'gender' => request('gender'),
+            'phone_number' => request('phone_number'),
             'password' => Hash::make($data['password']),
         ]);
 
