@@ -48,12 +48,14 @@
         {{-- main --}}
         @if (isset($news))
         @for ($i = 0; $i< sizeof($news); $i++) <div class="col-3">
+            <a href="{{$news[$i]->url}}" target="_blank">
             <div class="image_slide">
                 <img src="{{ $news[$i]->image }}" class="mt-5" id="imageShow" width='100%' height="auto" />
                 <button type="button" class="x_button" onclick="delete_news({{$news[$i]->id}})">
                     X
                 </button>
             </div>
+            </a>
     </div>
 
     @endfor

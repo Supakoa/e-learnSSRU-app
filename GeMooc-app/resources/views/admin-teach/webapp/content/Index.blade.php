@@ -66,7 +66,7 @@
 
                 @if ($adminOnly)
                 <a href="{{url('report')}}">
-                    <li>รายงาน</li>
+                    <li>รายงานปัญหา</li>
                 </a>
                 @endif
 
