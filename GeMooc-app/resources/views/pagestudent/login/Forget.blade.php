@@ -1,6 +1,6 @@
-@extends('layouts.appLearning')
+@extends('admin-teach.webapp.login.Index')
 
-@section('index')
+@section('wrap-body')
 <div class="forms-forget-modal"
     style="background-image:url('https://www.sociopoolindia.com/wp-content/uploads/2014/04/work-bg.jpg')">
     <div class="forms-forget-header">
