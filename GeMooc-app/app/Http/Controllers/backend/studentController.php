@@ -53,7 +53,7 @@ class studentController extends Controller
             'email' => $data['email'],
             'type_user' => 'student',
             'gender' => request('gender'),
-            'phone_number' => request('phone_number'),
+            'phone_number' => request('tel'),
             'password' => Hash::make($data['password']),
         ]);
 

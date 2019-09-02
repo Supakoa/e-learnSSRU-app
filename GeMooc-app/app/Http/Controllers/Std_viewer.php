@@ -220,7 +220,7 @@ class Std_viewer extends Controller
         return view('pagestudent.toolLearn.toolLearn')->with('manuals',$manual);;
     }
     public function FAQ(){
-        $faq = DB::table('qas')->get();
+        $faq =  DB::table('image_slides')->where('type', 'faq')->get();
         return view('pagestudent.FAQ.FAQ')->with('faqs',$faq);
     }
 }

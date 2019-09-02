@@ -17,7 +17,7 @@ class qaController extends Controller
      */
     public function index()
     {
-        $qa = DB::table('qas')->get();
+        $qa = DB::table('faqs')->get();
         $view = 'option.qa.index';
         return view($view)->with('qa', json_encode($qa));
     }
@@ -42,7 +42,7 @@ class qaController extends Controller
         $imagePath = request('newQa')->store('qaImage','public');
         $image = Image::make(public_path("storage/{$imagePath}"));
         $image->save();
-        DB::table('qas')->insert([
+        DB::table('faqs')->insert([
             'image' => 'storage/'.$imagePath,
         ]);
 
