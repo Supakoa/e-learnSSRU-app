@@ -87,7 +87,7 @@ $news = DB::table('image_slides')->where('type', 'news')->get();
                     @foreach ($news as$key=>$news)
 
                     <div class="carousel-item {{$key==0 ? 'active' : ''}}">
-                            <a href="{{$news->url}}">
+                            <a href="{{$news->url}}" target="_blank">
                             <img src="{{url(''.$news->image)}}" class="d-block w-100" alt="...">
                         </a>
                   <div class="carousel-caption d-none d-md-block">
