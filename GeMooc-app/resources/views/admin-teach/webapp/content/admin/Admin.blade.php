@@ -152,7 +152,7 @@
     */
     const openEditModal = (id) => {
         alert(id);
-        $.post("/admin/" + id + "/editModal", {
+        $.post("{{url()}}/admin/" + id + "/editModal", {
                 id: id
             },
             function (response, textStatus, jqXHR) {
