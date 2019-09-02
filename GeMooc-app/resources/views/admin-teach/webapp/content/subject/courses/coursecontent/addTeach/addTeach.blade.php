@@ -1,7 +1,10 @@
 @extends('admin-teach.webapp.content.Index')
 
 @section('title')
-{{$course->name}}:สมาชิก | MOOC SSRU
+{{$course->name}}:จัดการสมาชิก | MOOC SSRU
+@endsection
+@section('background')
+{{url('storage/'.$course->image)}}\
 @endsection
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceQuiz.css')}}">
@@ -11,6 +14,8 @@ $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'te
 $adminOnly = auth()->user()->type_user == 'admin';
 @endphp
 @section('main-content')
+<a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark" href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}}
+</a>/ <a class="badge badge-dark" href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a class="badge badge-dark" href="{{url('/course/'.$course->id.'/users')}}">จัดการสมาชิก</a>
 <div class="card">
     <div class="card-body">
         <div class="row"
@@ -18,7 +23,7 @@ $adminOnly = auth()->user()->type_user == 'admin';
                 width:99%;
                 margin:auto;">
             <div class="col-md-12">
-                <h3>เพิ่มผู้สอนในคอร์ส</h3>
+                <h3>จัดการสมาชิก</h3>
             </div>
         </div>
         <div class="row">
