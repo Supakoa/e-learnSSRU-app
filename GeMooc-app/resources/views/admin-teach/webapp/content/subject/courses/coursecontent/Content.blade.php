@@ -299,7 +299,7 @@
                                                     <div class="form-group">
                                                         <label for="detailQuiz"
                                                             style="font-size:15px">รายละเอียด</label>
-                                                        <textarea class="form-control" name="" id="detailQuiz"
+                                                        <textarea class="form-control" name="detail" id="detailQuiz"
                                                             rows="4"></textarea>
                                                     </div>
                                                 </div>
