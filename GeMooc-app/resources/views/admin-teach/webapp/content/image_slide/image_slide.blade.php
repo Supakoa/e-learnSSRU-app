@@ -11,7 +11,7 @@
 @section('main-content')
 <div class="offset-md-4 col-md-4">
     <div class="text-center">
-        <h2 style="border-bottom:2px solid gray;padding:10px;color:white">จัดการรูปภาพในสไลด์</h2>
+        <h2 class="t-shadow" style="border-bottom:2px solid gray;padding:10px;color:white">จัดการรูปภาพในสไลด์</h2>
     </div>
 </div>
 

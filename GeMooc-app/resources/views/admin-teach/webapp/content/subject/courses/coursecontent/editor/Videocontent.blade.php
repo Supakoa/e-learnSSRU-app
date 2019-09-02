@@ -19,7 +19,7 @@
     @endphp
 
     <div>
-        <a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a href="{{url('/course/'.$course->id)}}">{{$video->content->lesson->name}}</a> / <a href="{{url('/video/'.$video->id)}}">{{$video->content->name}}</a>
+        <a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark" href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a class="badge badge-dark" href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a class="badge badge-dark" href="{{url('/course/'.$course->id)}}">{{$video->content->lesson->name}}</a> / <a class="badge badge-dark" href="{{url('/video/'.$video->id)}}">{{$video->content->name}}</a>
     </div>
         <div class="row" style="border-bottom:2px solid #707070">
             <div class="offset-md-4 col-md-4">
@@ -77,7 +77,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Eidt Video</h5>
+                    <h5 class="modal-title">แกไขวีดีโอ</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -92,7 +92,6 @@
                             <form action="/video/{{ $video->id }}" id="editFormVideo" method="post">
                                 @csrf
                                 @method('PATCH')
-
                                 <label for="">Youtube url</label>
                                 <input type="text" class="form-control" name="newUrl" id="newUrl" aria-describedby="placeHolder" value="{{ $video->data }}">
                             </form>
@@ -101,11 +100,21 @@
                                 if $video->type == 'file'
                             --}}
                             <form action="/video/{{ $video->id }}" method="post">
-                                <div class="form-group">
+                                <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">อัพโหลด</span>
+                                        </div>
+                                        <div class="custom-file">
+                                          <input type="file"  class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
+                                          <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์วีดิโอ</label>
+                                        </div>
+                                      </div>
+
+                                {{-- <div class="form-group">
                                   <label for=""></label>
-                                  <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
+                                  <input type="file">
                                   <small id="fileHelpId" class="form-text text-muted">Help text</small>
-                                </div>
+                                </div> --}}
                             </form>
                         @endif
 
@@ -113,8 +122,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button form="editFormVideo" type="submit" class="btn btn-primary">Save</button>
+                    <button form="editFormVideo" type="submit" class="btn btn-primary">บันทึก</button>
                 </div>
             </div>
         </div>
@@ -185,8 +193,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                <button onclick="setPercent()" type="submit"  class="btn btn-outline-primary" form="content_form">Save changes</button>
+                <button onclick="setPercent()" type="submit"  class="btn btn-outline-primary" form="content_form">บันทึก</button>
             </div>
         </div>
     </div>

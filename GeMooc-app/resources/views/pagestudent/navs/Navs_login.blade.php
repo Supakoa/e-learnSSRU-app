@@ -8,7 +8,7 @@
         </div>
         <div class="log-underline"></div>
         <div class="log-subheader">
-        Suan Sunandha Rajabhat
+        Suan Sunandha Rajabhat University
         </div>
     </div>
 </nav>

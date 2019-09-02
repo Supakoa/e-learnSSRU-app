@@ -10,14 +10,18 @@
 @endsection
 @section('main-content')
 
-<div class="card p-4 h-100 pb-4" style="background:#F8F8F8;min-height:120vh">
-        @php
-        $course = $quiz->content->lesson->course;
-        @endphp
-        <div>
-        <a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a href="{{url('/course/'.$course->id)}}">{{$quiz->content->lesson->name}}</a> / <a href="{{url('/quiz/'.$quiz->id)}}">{{$quiz->content->name}}</a>
-        </div>
-        <br>
+<div class="card p-4 pb-4" style="background:#F8F8F8;min-height:120vh;max-height:100%">
+    @php
+    $course = $quiz->content->lesson->course;
+    @endphp
+    <div>
+        <a class="badge badge-dark" href="{{url('/subject')}}" class="">วิชา</a> / <a class="badge badge-dark"
+            href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a class="badge badge-dark"
+            href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> / <a class="badge badge-dark"
+            href="{{url('/course/'.$course->id)}}">{{$quiz->content->lesson->name}}</a> / <a class="badge badge-dark"
+            href="{{url('/quiz/'.$quiz->id)}}">{{$quiz->content->name}}</a>
+    </div>
+    <br>
     <div class="row" style="border-bottom:2px solid #707070">
         <div class="offset-md-4 col-md-4">
             <div class="text-center">
@@ -40,16 +44,16 @@
                 <i class="fas fa-folder-plus"></i>
             </button>
 
-        <a href="{{url('quiz/export/'.$quiz->id)}}"><button class="btnExport">Export</button></a>
-        <button class="btn-import-quiz btnImport" data-toggle="modal" data-target="#import_Modal">
-           Import
-        </button>
+            <a href="{{url('quiz/export/'.$quiz->id)}}"><button class="btnExport">Export</button></a>
+            <button class="btn-import-quiz btnImport" data-toggle="modal" data-target="#import_Modal">
+                Import
+            </button>
         </div>
     </div>
     <div class="text-center">
         <h3>คำถาม</h3>
     </div>
-    <div class="quiz-content">
+    <div class="quiz-content ">
         @foreach ($quiz->questions as $key=>$question)
         <div class="quiz-card">
             <div class="row">
@@ -66,23 +70,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 pl-1 pb-1 pt-0 text-center">
-                    <img class="rounded mx-auto d-block w-75 img-fluid" src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}"
-                        width="auto" height="auto">
+                <div class="col-md-4 p-2">
+                    <img class="m-auto d-block img-fluid qImage"
+                        src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}">
                 </div>
                 <div class="col-md-8" id="question">
-                    <dd>
-                        {{$question->name}}
-                    </dd>
+                    <dl class="row p-2">
+                        <dd class="col-md-12 text-justify">
+                            {{$question->name}}
+                        </dd>
+                    </dl>
                     <div class="row">
                         @foreach ($question->answers as $key => $answer )
-                        <div class="col-md-6">
-                            <input type="radio" name="{{$answer->question->id}}" @if ($answer->correct)
+                        <div class="col-md-12">
+                            {{-- <input type="radio" name="{{$answer->question->id}}" @if ($answer->correct)
                             checked style="background-color:green;"
-                            @endif id="{{$answer->id}}" value="{{$answer->id}}" disabled>
-                            <label for="{{$answer->id}}" @if ($answer->correct)
-                                style= "background-color:green;"
-                                @endif>{{$answer->name}}</label>
+                            @endif id="{{$answer->id}}" value="{{$answer->id}}" disabled> --}}
+                            <p class="text-justify p-2" for="{{$answer->id}}" @if ($answer->correct)
+                                style="color:#009900;"
+                                @endif>{{$key+1}}).{{$answer->name}}</p>
                         </div>
                         @endforeach
                     </div>
@@ -101,7 +107,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Question</h5>
+                <h5 class="modal-title" id="exampleModalLabel">สร้างคำถาม</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -116,82 +122,87 @@
                                 <div class="create-quiz">
                                     <div class="row mb-3">
                                         <div class="col-md-12 row">
-                                            <label for="name-quiz" class="col-sm-2 col-form-label">Question :</label>
+                                            <label for="name-quiz" class="col-sm-2 col-form-label">โจทย์ :</label>
                                             <div class="col-md-8">
-                                                <textarea name="name" id="name-quiz" class="form-control">
-                                                    </textarea>
+                                                <textarea name="name" id="name-quiz" rows="5"
+                                                    class="form-control"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mb-5">
                                         <div class="offset-md-3 col-md-6">
-                                            <input type="file" class="form-control btn" style="padding:3px"
-                                                name="cover_image" placeholder="Image">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="cover_image"
+                                                        placeholder="Image">
+                                                    <label class="custom-file-label"
+                                                        for="inputGroupFile04">เลือกรูป</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-10">
                                             <ul>
                                                 <li>
-                                                    <div class="row m-2">
-                                                        <label for="answer[]" class="col-sm-2 col-form-label">1.</label>
-                                                        <div class="col-sm-8">
-                                                            <input name="answer[]" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group-prepend mr-1">
-                                                                <div class="input-group-text">
-                                                                    <input type="radio" name="correct" value="1"
-                                                                        aria-label="Radio button for following text input"
-                                                                        required>
+                                                    <div class="row p-2">
+                                                        <div class="col-md-12">
+                                                            <label for="answer[]"
+                                                                class="col-sm-2 col-form-label">1.</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" name="answer[]">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text rounded">
+                                                                        <input type="radio" name="correct" value="1">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="row m-2">
-                                                        <label for="answer[]" class="col-sm-2 col-form-label">2.</label>
-                                                        <div class="col-md-8">
-                                                            <input name="answer[]" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group-prepend mr-1">
-                                                                <div class="input-group-text">
-                                                                    <input type="radio" name="correct" value="2"
-                                                                        aria-label="Radio button for following text input">
+                                                    <div class="row p-2">
+                                                        <div class="col-md-12">
+                                                            <label for="answer[]"
+                                                                class="col-sm-2 col-form-label">2.</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" name="answer[]">
+                                                                <div class="input-group-prepend rounded">
+                                                                    <div class="input-group-text">
+                                                                        <input type="radio" name="correct" value="2">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="row m-2">
-                                                        <label for="answer[]" class="col-sm-2 col-form-label">3.</label>
-                                                        <div class="col-md-8">
-                                                            <input name="answer[]" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group-prepend mr-1">
-                                                                <div class="input-group-text">
-                                                                    <input type="radio" name="correct" value="3"
-                                                                        aria-label="Radio button for following text input">
+                                                    <div class="row p-2">
+                                                        <div class="col-md-12">
+                                                            <label for="answer[]"
+                                                                class="col-sm-2 col-form-label">3.</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" name="answer[]">
+                                                                <div class="input-group-prepend rounded">
+                                                                    <div class="input-group-text">
+                                                                        <input type="radio" name="correct" value="3">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="row m-2">
-                                                        <label for="answer[]" class="col-sm-2 col-form-label">4.</label>
-                                                        <div class="col-md-8">
-                                                            <input name="answer[]" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group-prepend mr-1">
-                                                                <div class="input-group-text">
-                                                                    <input type="radio" name="correct" value="4"
-                                                                        aria-label="Radio button for following text input">
+                                                    <div class="row p-2">
+                                                        <div class="col-md-12">
+                                                            <label for="answer[]"
+                                                                class="col-sm-2 col-form-label">4.</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" name="answer[]">
+                                                                <div class="input-group-prepend rounded">
+                                                                    <div class="input-group-text">
+                                                                        <input type="radio" name="correct" value="4">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -206,9 +217,8 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="question_form">Save changes</button>
+            <div class="modal-footer border-top-0">
+                <button type="submit" class="btn btn-primary" form="question_form">บันทึก</button>
             </div>
         </div>
     </div>
@@ -218,7 +228,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleName">Edit your quiz</h5>
+                <h5 class="modal-title" id="exampleName">แก้ไข แบบฝึกหัด</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -243,14 +253,14 @@
                                     <div class="custom-file">
                                         <input type="file" name='cover_image' class="custom-file-input"
                                             id="inputGroupFile04">
-                                        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                        <label class="custom-file-label" for="inputGroupFile04">เลือกรูป</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <div class="offset-md-2 col-md-5">
-                                <label for="setName">Quiz name:</label>
+                                <label for="setName">ชื่อแบบฝึกหัด:</label>
                                 <input type="text" name="name" class="form-control" value="{{$quiz->name}}"
                                     id="setName">
                             </div>
@@ -269,9 +279,8 @@
                     </form>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" form="edit_quiz" class="btn btn-primary">Save changes</button>
+            <div class="modal-footer border-top-0">
+                <button type="submit" form="edit_quiz" class="btn btn-primary">บันทึก</button>
             </div>
         </div>
     </div>
@@ -281,22 +290,31 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleName">Import quiz</h5>
+                <h5 class="modal-title" id="exampleName">นำข้อมูลเข้า</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="ce-container">
-                    <form action="{{url('quiz/import/'.$quiz->id)}}" method="post" enctype="multipart/form-data" id='import_quiz'>
+                <div class="ce-container text-center">
+                    <form action="{{url('quiz/import/'.$quiz->id)}}" method="post" enctype="multipart/form-data"
+                        id='import_quiz'>
                         @csrf
-                        <input type="file" name="import" id="">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">โหลด</span>
+                            </div>
+                            <div class="custom-file">
+                                <input class="custom-file-input" type="file" name="import">
+                                <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์</label>
+                            </div>
+                        </div>
+                        {{-- <input type="file" name="import" id=""> --}}
                     </form>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" form="import_quiz" class="btn btn-primary">Save changes</button>
+            <div class="modal-footer border-top-0">
+                <button type="submit" form="import_quiz" class="btn btn-primary">บันทึก</button>
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@
 
         <ul class="nav-links justify-content-end">
             <li>
-                <a href="#" onclick="$('#logout-form').submit()">
+                <a class="t-shadow text-light" href="#" onclick="$('#logout-form').submit()">
                     ออกจากระบบ <i class="fas fa-sign-out-alt"></i>
                 </a>
             </li>
