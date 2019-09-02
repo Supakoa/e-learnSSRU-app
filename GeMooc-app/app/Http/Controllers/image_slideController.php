@@ -101,6 +101,7 @@ class image_slideController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('image_slides')->where('id',$id)->delete();
+        return redirect()->back()->with('success', 'ลบรูปภาพสำเร็จ');
     }
 }
