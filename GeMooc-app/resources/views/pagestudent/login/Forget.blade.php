@@ -1,3 +1,6 @@
+@extends('layouts.appLearning')
+
+@section('index')
 <div class="forms-forget-modal"
     style="background-image:url('https://www.sociopoolindia.com/wp-content/uploads/2014/04/work-bg.jpg')">
     <div class="forms-forget-header">
@@ -22,3 +25,5 @@
         </form>
     </div>
 </div>
+@endsection
+

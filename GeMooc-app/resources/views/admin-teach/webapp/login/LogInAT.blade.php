@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="forms-body-footer">
-                            <a href="{{ route('password.request') }}" class="btn-forget">ลืมรหัสผ่าน</a>
+                        <a href="{{url('/forget')}}" class="btn-forget">ลืมรหัสผ่าน</a>
                             <a href="{{ url('/register')}}" class="btn-regis">ลงทะเบียน</a>
                         </div>
                     </div>
@@ -111,3 +111,4 @@ $news = DB::table('image_slides')->where('type', 'news')->get();
     </div>
 </div>
 {{-- วิชา --}}
+

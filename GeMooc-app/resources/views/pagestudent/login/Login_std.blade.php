@@ -2,9 +2,6 @@
 
 @section('login')
 @include('pagestudent.navs.Navs_login')
-{{-- ลืมรหัสผ่าน --}}
-@include('pagestudent.login.Forget')
-{{-- ลืมรหัสผ่าน --}}
 {{-- ลงชื่อเข้าใช้ --}}
 <div class="ce-bgimg" style="background-image:url('../../images/cebody-bg.jpeg');">
     <div class="body-login">

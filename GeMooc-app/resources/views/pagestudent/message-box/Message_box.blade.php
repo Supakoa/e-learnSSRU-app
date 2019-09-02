@@ -1,5 +1,5 @@
 <button class="btn-messageBox" id="myButton" onclick="$('#myForm').show();$('#myButton').hide();$('#myBtn').hide();"><i
-        class="far fa-comments"></i> รายงานปัญหาที่พบบ่อย</button>
+        class="far fa-comments" style="color:white"></i> รายงานปัญหาที่พบบ่อย</button>
 <div class="messageBox-body" id="myForm">
 
     <div class="messageBox-header">
@@ -12,10 +12,16 @@
         <form action="/report" method="post">
             @csrf
             @method('POST')
+@if (isset(auth()->user()->id))
+{{-- hidden item --}}
+<input type="hidden" name="from_page" id="from_page" value="{{ url()->current() }}">
+<input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+@else
+{{-- hidden item --}}
+<input type="hidden" name="from_page" id="from_page" value="{{ url()->current() }}">
+<input type="hidden" name="user_id" id="user_id" value="guest">
+@endif
 
-            {{-- hidden item --}}
-            <input type="hidden" name="from_page" id="from_page" value="{{ url()->current() }}">
-            <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
 
             <section id="sec1">
                 <label for="content-header">หัวข้อปัญหา</label>

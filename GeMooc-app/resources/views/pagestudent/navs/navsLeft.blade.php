@@ -7,9 +7,9 @@
 <div class="navsLeft">
     <ul>
         <li>
-            <h3 class="course_header">
+            <p class="course_header text-justify">
                 {{$lessons->first()->course->name}}
-            </h3>
+            </p>
         </li>
         @foreach ($lessons as $lesson)
         @php
