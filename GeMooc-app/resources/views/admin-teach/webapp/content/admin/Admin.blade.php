@@ -81,23 +81,29 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>create new user</h1>
+                <h1>เพิ่มแอดมินใหม่</h1>
             </div>
             <div class="modal-body">
-                <form action="/admin/create" id="createAdmin" enctype="multipart/form-data" method="POST">
+                <form action="/admin" id="createAdmin" enctype="multipart/form-data" method="POST">
                     @csrf
-                    @method('GET')
-
-                    <p>Username</p>
-                    <input class="form-control mb-1" type="text" name="username" id="username" required>
-                    <p>Password</p>
-                    <input type="password" class="form-control mb-1" name="password" id="password" required>
-                    <p>Confirm Password</p>
-                    <input type="password" class="form-control mb-1" name="confirmPassword" id="confirmPassword" required>
-                    <p>Email</p>
-                    <input type="text" class="form-control mb-1" name="email" id="email" required>
-                    <p>Confirm Email</p>
-                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail" required>
+                    @method('POST')
+                    <p>ชื่อ - นามสกุล</p>
+                    <input class="form-control mb-1" type="text" name="name" id="name" >
+                    <p>อีเมล</p>
+                    <input type="text" class="form-control mb-1" name="email" id="email" >
+                    <p>ยืนยันอีเมล</p>
+                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail" >
+                    <p>รหัสผ่าน</p>
+                    <input type="password" class="form-control mb-1" name="password" id="password" >
+                    <p>ยืนยันรหัสผ่าน</p>
+                    <input type="password" class="form-control mb-1" name="confirmPassword" id="confirmPassword" >
+                    <p>เพศ</p>
+                    <input  name='gender'  class="" value="male" id="male" type="radio">
+                    <label for="male">ชาย</label>
+                    <input  name='gender'  class="" value="female" id="female" type="radio">
+                    <label for="female">หญิง</label>
+                    <p>เบอร์โทรศัพท์</p>
+                    <input type="text" class="form-control mb-1" name="tel" id="tel" >
                 </form>
             </div>
             <div class="modal-footer">
@@ -146,7 +152,7 @@
     */
     const openEditModal = (id) => {
         alert(id);
-        $.post("/admin/" + id + "/editModal", {
+        $.post("{{url('')}}/admin/" + id + "/editModal", {
                 id: id
             },
             function (response, textStatus, jqXHR) {

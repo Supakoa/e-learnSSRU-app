@@ -64,11 +64,13 @@
     </div>
 </div>
 @endsection
-<form action="{{url('/student/'.$user->id) }}" id="formDelete" method="post">
+@if (isset($user))
+<form action="" id="formDelete" method="post">
     @csrf
     @method('DELETE')
-    <input type="hidden" name="id" id='delete_id' value="">
 </form>
+@endif
+
 {{--
     modal create new teach
 --}}
@@ -77,23 +79,29 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>create new user</h1>
+                <h1>เพิ่มผู้เรียนใหม่</h1>
             </div>
             <div class="modal-body">
-                <form action="/student/create" id="createStudent" enctype="multipart/form-data" method="POST">
+                <form action="/student" id="createStudent" enctype="multipart/form-data" method="POST">
                     @csrf
-                    @method('GET')
-
-                    <p>Username</p>
-                    <input class="form-control mb-1" type="text" name="username" id="username">
-                    <p>Password</p>
-                    <input type="password" class="form-control mb-1" name="password" id="password">
-                    <p>Confirm Password</p>
-                    <input type="password" class="form-control mb-1" name="confirmPassword" id="confirmPassword">
-                    <p>Email</p>
-                    <input type="text" class="form-control mb-1" name="email" id="email">
-                    <p>Confirm Email</p>
-                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail">
+                    @method('POST')
+                    <p>ชื่อ - นามสกุล</p>
+                    <input class="form-control mb-1" type="text" name="name" id="name" >
+                    <p>อีเมล</p>
+                    <input type="text" class="form-control mb-1" name="email" id="email" >
+                    <p>ยืนยันอีเมล</p>
+                    <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail" >
+                    <p>รหัสผ่าน</p>
+                    <input type="password" class="form-control mb-1" name="password" id="password" >
+                    <p>ยืนยันรหัสผ่าน</p>
+                    <input type="password" class="form-control mb-1" name="confirmPassword" id="confirmPassword" >
+                    <p>เพศ</p>
+                    <input  name='gender'  class="" value="male" id="male" type="radio">
+                    <label for="male">ชาย</label>
+                    <input  name='gender'  class="" value="female" id="female" type="radio">
+                    <label for="female">หญิง</label>
+                    <p>เบอร์โทรศัพท์</p>
+                    <input type="text" class="form-control mb-1" name="tel" id="tel" >
                 </form>
             </div>
             <div class="modal-footer">
@@ -121,7 +129,7 @@
         function when onclick will delete with id.
     */
     const deleteStudent = (obj) => {
-        $('#delete_id').val('obj')
+        $('#formDelete').attr("action", '{{ url("/student") }}/'+obj);
         Swal.fire({
             title: 'ยืนยันการลบ?',
             text: "ข้อมูลจะถูกลบออกจากฐานข้อมูล",
@@ -143,7 +151,7 @@
     */
     const openEditModal = (id) => {
         // alert(id);
-        $.post("/student/" + id + "/editModal", {
+        $.post("{{url('')}}/student/" + id + "/editModal", {
                 id: id
             },
             function (response, textStatus, jqXHR) {

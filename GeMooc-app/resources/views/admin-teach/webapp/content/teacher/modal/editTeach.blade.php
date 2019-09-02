@@ -11,8 +11,8 @@
                     @method('PATCH')
 
                     <p>Username</p>
-                    <input value="{{ $user->name }}" class="form-control mb-1" type="text" name="username"
-                        id="username">
+                    <input value="{{ $user->name }}" class="form-control mb-1" type="text" name="name"
+                        id="name">
 
                     <p>Email</p>
                     <input value="{{ $user->email }}" type="text" class="form-control mb-1" name="email" id="email">
