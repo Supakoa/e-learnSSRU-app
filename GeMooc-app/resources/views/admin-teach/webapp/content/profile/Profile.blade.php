@@ -10,9 +10,9 @@
     @php
     $profile = json_decode($profile);
 
-    if (Hash::check('password', auth()->user()->password)){
-    echo 'match';
-    }
+    // if (Hash::check('password', auth()->user()->password)){
+    // echo 'match';
+    // }
     @endphp
     <div class="forms-profile-header">
         <div class="row">

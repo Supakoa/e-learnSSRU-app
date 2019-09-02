@@ -29,7 +29,7 @@
             <div class="li-underline"></div>
         </li>
         <li>
-        <a href="{{url('/std_view/manual')}}">คู่มือการใช้งาน</a>
+        <a href="#">คู่มือการใช้งาน</a>
             <div class="li-underline"></div>
         </li>
         <li>

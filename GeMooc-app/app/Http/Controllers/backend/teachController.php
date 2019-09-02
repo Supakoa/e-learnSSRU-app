@@ -47,16 +47,14 @@ class teachController extends Controller
             'password' => 'required|required_with:confirmPassword|same:confirmPassword',
             'email' => 'required|required_with:confirmEmail|same:confirmEmail',
         ]);
-
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'type_user' => 'teach',
             'gender' => request('gender'),
-            'phone_number' => request('phone_number'),
+            'phone_number' => request('tel'),
             'password' => Hash::make($data['password']),
         ]);
-
         profile::create([
             'user_id' => $user->id,
         ]);

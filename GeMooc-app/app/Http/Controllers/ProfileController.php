@@ -99,7 +99,7 @@ class ProfileController extends Controller
         //     'description' => $d2['description'],
         // ]);
 
-        return redirect()->back()->with('success', ['ok love you.']);
+        return redirect()->back()->with('success', 'แก้ไขข้อมูลสำเร็จ.');
     }
 
     public function updatePhoto(Request $request)
