@@ -82,7 +82,7 @@
                 <h1>เพิ่มผู้เรียนใหม่</h1>
             </div>
             <div class="modal-body">
-                <form action="/student" id="createStudent" enctype="multipart/form-data" method="POST">
+                <form action="{{url('')}}/student" id="createStudent" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('POST')
                     <p>ชื่อ - นามสกุล</p>

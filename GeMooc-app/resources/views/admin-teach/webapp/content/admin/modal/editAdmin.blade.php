@@ -6,7 +6,7 @@
                 <h1>edit Admin user</h1>
             </div>
             <div class="modal-body">
-                <form action="/admin/{{ $user->id }}" id="formEditAdmin" enctype="multipart/form-data" method="POST">
+                <form action="{{ url("/admin")."/".$user->id }}" id="formEditAdmin" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('PATCH')
 

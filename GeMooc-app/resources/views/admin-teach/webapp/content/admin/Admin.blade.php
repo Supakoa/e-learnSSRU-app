@@ -84,7 +84,7 @@
                 <h1>เพิ่มแอดมินใหม่</h1>
             </div>
             <div class="modal-body">
-                <form action="/admin" id="createAdmin" enctype="multipart/form-data" method="POST">
+                <form action="{{url('')}}/admin" id="createAdmin" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('POST')
                     <p>ชื่อ - นามสกุล</p>
