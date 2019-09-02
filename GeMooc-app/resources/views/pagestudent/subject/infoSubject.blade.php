@@ -89,7 +89,11 @@ if($subject->type_video!='file'){
 <div class="sectionInfo">
     <div class="container-fluid p-5">
         <h4>รายละเอียดเกี่ยวกับรายวิชา</h4>
-        <span>{{$subject->detail}}</span>
+        <dl class="row">
+            <dd class="col-md-12">
+                <p class=" text-justify">{{$subject->detail}}</p>
+            </dd>
+        </dl>
         <hr>
         <h4>ผู้สอน</h4>
         <div class="row">
@@ -117,13 +121,6 @@ if($subject->type_video!='file'){
                 </div>
             </div>
             @endforeach
-
-            {{-- <div class="col-md-6">
-                <div class="d-flex p-4 text-center">
-                    <img class="m-auto bg-success rounded-circle"  width="200" height="200" src="" alt="">
-                    <h5 class="m-auto">อาจารย์ ชลลดา ชูวณิชชานนท์</h5>
-                </div>
-            </div> --}}
         </div>
     </div>
 </div>

@@ -23,7 +23,7 @@
     </div>
     <div class="sectionContent">
         <div class="head-text">
-            <p>{{ $video->name }}</p>
+            <p class="text-justify text-center">{{ $video->name }}</p>
         </div>
         <div class="container mt-5">
             @if ( $video->type == 'youtube' )
