@@ -14,14 +14,18 @@
 @section('main-content')
 
 <div class="card p-4">
-        @php
-        $course = $article->content->lesson->course;
-        @endphp
-        <div>
-        <a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> /
-        <a href="{{url('/course/'.$course->id)}}">{{$article->content->lesson->name}}</a> / <a href="{{url('/article/'.$article->id)}}">{{$article->content->name}}</a> / <a href="{{url('/article/'.$article->id.'/edit')}}">แก้ไข</a>
-        </div>
-        <br>
+    @php
+    $course = $article->content->lesson->course;
+    @endphp
+    <div>
+        <a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark"
+            href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}} </a> / <a
+            class="badge badge-dark" href="{{url('/course/'.$course->id)}}">{{$course->name}}</a> /
+        <a class="badge badge-dark" href="{{url('/course/'.$course->id)}}">{{$article->content->lesson->name}}</a> / <a
+            class="badge badge-dark" href="{{url('/article/'.$article->id)}}">{{$article->content->name}}</a> / <a
+            class="badge badge-dark" href="{{url('/article/'.$article->id.'/edit')}}">แก้ไข</a>
+    </div>
+    <br>
     <div class="row">
         <div class="offset-md-4 col-md-4">
             <div class="text-center">
@@ -31,10 +35,8 @@
     </div>
     <hr>
     <div class=" text-right mb-4">
-            <button id="save" class="btn-add" onclick="preview()" type="button"><i
-                class="fas fa-eye"></i></button>
-        <button id="edit" class="btn-edit" onclick="edit()" type="button"><i
-                class="fas fa-cog"></i></button>
+        <button id="save" class="btn-add" onclick="preview()" type="button"><i class="fas fa-eye"></i></button>
+        <button id="edit" class="btn-edit" onclick="edit()" type="button"><i class="fas fa-cog"></i></button>
     </div>
 
     <div id="summernote">
@@ -56,14 +58,11 @@
         <input type="hidden" name="rawdata" id="rawdata">
         <div class=" text-right">
             <br>
-            <button class="btn-add" style="width:100%;" id="btn_save" type="submit"><i class="far fa-save"></i> บันทึก</button>
+            <button class="btn-add" style="width:100%;" id="btn_save" type="submit"><i class="far fa-save"></i>
+                บันทึก</button>
         </div>
-
     </form>
 </div>
-
-</div>
-
 @endsection
 @section('js')
 <script>
