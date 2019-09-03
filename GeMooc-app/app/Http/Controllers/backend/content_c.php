@@ -97,7 +97,7 @@ class content_c extends Controller
             $quiz = new quiz;
             $quiz->name = $request->input('name');
             $quiz->time= $request->input('time');
-            $quiz->detail = 'กรุณาใส่รายละเอียด.';
+            $quiz->detail = $request->input('detail');
             // $quiz->status = 0;
             $quiz->content_id = $content->id;
             $quiz->save();
