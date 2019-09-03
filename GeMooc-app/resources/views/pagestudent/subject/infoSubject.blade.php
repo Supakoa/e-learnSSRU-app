@@ -41,14 +41,13 @@ if($subject->type_video!='file'){
 
 <div class="sectionTable">
     <div class="container-fluid p-5">
-        <div class="table-responsive">
             @if ($subject->courses->where('status','1')->count())
             @foreach ($subject->courses->where('status','1') as $course)
             <div class="row">
-                <div class="col-4">
-                    <img src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="auto">
+                <div class="col-md-4">
+                    <img class=" rounded" src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="auto">
                 </div>
-                <div class="col-8">
+                <div class="col-md-8 table-responsive">
                     <table class="bg-light table table-borderless table-striped">
                         <thead>
                             <tr>
@@ -83,7 +82,6 @@ if($subject->type_video!='file'){
             </div>
             @endif
 
-        </div>
     </div>
 </div>
 <div class="sectionInfo">

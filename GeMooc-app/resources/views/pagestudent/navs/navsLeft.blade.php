@@ -6,7 +6,7 @@
 @endsection
 <div class="navsLeft">
     <ul>
-        <li>
+        <li class="p-0">
             <p class="course_header text-justify">
                 {{$lessons->first()->course->name}}
             </p>

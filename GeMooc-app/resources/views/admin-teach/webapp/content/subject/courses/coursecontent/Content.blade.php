@@ -109,9 +109,9 @@
                             @endswitch
                         </label>
                     </div>
-                    <div class="collapse-2">
-                        <button
-                            onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</button>
+                    <div class="collapse-2 ">
+                        <a href="" class="btn btn-block p-2"
+                            onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</a>
                     </div>
                     <div class="collapse-3">
                         <button onclick="delete_content('{{$content->id}}')">

@@ -15,24 +15,21 @@
     </div>
 </div>
 
-<div class="card bg-card">
+<div class="card bg-card p-5">
     <div class="container" display="inline">
         <div class="text-center">
-            <h2>คำถามที่พบบ่อย</h2>
+            <h4>คำถามที่พบบ่อย</h4>
         </div>
         <div class="row">
-
-
             {{-- main --}}
             @if (isset($faq))
             @for ($i = 0; $i< sizeof($faq); $i++) <div class="col-3">
                 <div class="image_slide">
                     <img src="{{ $faq[$i]->image }}" class="mt-5" id="imageShow" width='100%' height="auto" />
                     <button type="button" class="x_button" onclick="delete_faq({{$faq[$i]->id}})">
-                        X
+                       <i class="fa fa-window-close" aria-hidden="true"></i>
                     </button>
                 </div>
-
         </div>
 
         @endfor
@@ -40,24 +37,21 @@
     </div>
     <hr>
     <div class="text-center">
-        <h2>ข่าวประชาสัมพันธ์</h2>
+        <h4>ข่าวประชาสัมพันธ์</h4>
     </div>
     <div class="row">
-
-
         {{-- main --}}
         @if (isset($news))
         @for ($i = 0; $i< sizeof($news); $i++) <div class="col-3">
             <a href="{{$news[$i]->url}}" target="_blank">
-            <div class="image_slide">
-                <img src="{{ $news[$i]->image }}" class="mt-5" id="imageShow" width='100%' height="auto" />
-                <button type="button" class="x_button" onclick="delete_news({{$news[$i]->id}})">
-                    X
-                </button>
-            </div>
+                <div class="image_slide">
+                    <img src="{{ $news[$i]->image }}" class="mt-5" id="imageShow" width='100%' height="auto" />
+                    <button type="button" class="x_button" onclick="delete_news({{$news[$i]->id}})">
+                       <i class="fa fa-window-close" aria-hidden="true"></i>
+                    </button>
+                </div>
             </a>
     </div>
-
     @endfor
     @endif
 </div>
@@ -73,7 +67,7 @@
 
     <input type="file" name="image" id="" accept="image/x-png,image/gif,image/jpeg" />
 
-            <input type="text" name="url" id = "image_url" placeholder="กรอก URL ของข่าว">
+    <input type="text" name="url" id="image_url" placeholder="กรอก URL ของข่าว">
 
     <button type="submit" class="btn btn-primary" btn-lg btn-block>save</button>
 </form>
@@ -89,6 +83,7 @@
     $(document).ready(function () {
         $("#image_url").hide();
     });
+
     function delete_faq(id) {
         form = `<form action="{{url('image_slide/` + id + `')}}" method="post" id='form_del_faq'>
                         @csrf
@@ -117,6 +112,7 @@
             }
         });
     }
+
     function delete_news(id) {
         form = `<form action="{{url('image_slide/` + id + `')}}" method="post" id='form_del_news'>
                         @csrf
@@ -150,9 +146,10 @@
         e.preventDefault();
         $("#image_url").hide();
         $("#image_url").val("");
-        if($(this).val()=="news"){
+        if ($(this).val() == "news") {
             $("#image_url").show();
         }
     });
+
 </script>
 @endpush
