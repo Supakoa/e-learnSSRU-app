@@ -70,6 +70,9 @@ Route::prefix('login')->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function (){
+    // recordBar
+    Route::post('/callRecordBar', 'RecordController@makeRecord');
+
     Route::get('/std_view/course/quiz/previewquiz', 'Std_viewer@Std_quizPreview');
 
     // video

@@ -17,7 +17,22 @@ class RecordController extends Controller
      */
     public function index()
     {
-        //
+        dd('a');
+        return view('pagestudent.subject.course.content.video.recordBar');
+    }
+
+    public function makeRecord(Request $request){
+        // dd($request);
+        $newLi = '';
+        for ($i=0; $i < $request->bufferLength; $i++) {
+            $second = intval($i % 60);
+            $minute = intval($i / 60);
+            ($second < 10) ? $second = '0' + $second : $second;
+            ($minute < 10) ? $minute = '0' + $minute : $minute;
+            $newLi .= '<div onclick="recordClick('.$i.')" class="recordSlot" at_record="'.$i.'" style="width:'.($request->videoWidth / $request->bufferLength).'px;" status="undefind" data-toggle="tooltip" data-placement="bottom" title="'.$minute.' : '.$second.'" ></div>';
+        }
+        // dd($newLi);
+        return json_encode($newLi);
     }
 
     /**

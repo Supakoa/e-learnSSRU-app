@@ -47,10 +47,11 @@
         @endif
 
         {{-- record bar --}}
-        <ul class="navProgress" id="navProgress"></ul>
+        {{-- <ul class="navProgress" id="navProgress"></ul> --}}
+        <div class="navProgress"></div>
 
         {{--
-            [test cast] send form refresh
+            [test case] send form refresh
         --}}
         {{-- <form action="/record" method="post">
             @csrf
@@ -58,6 +59,17 @@
             <input id="recordItem" name="muuwan" type="hidden" value="sutima">
             <button onclick="takeRecord()" type="button" class="btn btn-outline-primary">takeRecord</button>
             <button type="submit" class="btn btn-outline-primary">send</button>
+        </form> --}}
+
+        {{--
+            [test case] send to record bar
+        --}}
+        {{-- <form action="{{ url('/callRecordBar') }}" method="post">
+            @csrf
+            @method('POST')
+
+            <input type="hidden" name="tag" id="tag" value="">
+            <button type="submit">callRecordBar</button>
         </form> --}}
 
     </div>
@@ -70,12 +82,16 @@
 
 @push('script')
 <script>
+    $('#tag').val($('#tag'));
+
     // starting variable [Global]
     let issetRecord = {!! json_encode($issetRecord) !!};
     let content = {!! json_encode($content) !!}
     let userId = {!! json_encode($userId) !!}
     let video = {!! json_encode($video) !!};
     let record = {!! json_encode($record) !!};
+    let urlRecord = '{{ url('/record') }}';
+    let callRecord = '{{ url('/callRecordBar') }}';
 </script>
 <script src="{{ asset('node_modules/CEFstyle/video/view/index.js')}}"></script>
 @endpush
