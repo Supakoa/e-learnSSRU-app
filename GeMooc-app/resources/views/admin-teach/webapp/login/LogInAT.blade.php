@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="forms-body-footer">
-                            <a href="{{ route('password.request') }}" class="btn-forget">ลืมรหัสผ่าน</a>
+                        <a href="{{url('/forget')}}" class="btn-forget">ลืมรหัสผ่าน</a>
                             <a href="{{ url('/register')}}" class="btn-regis">ลงทะเบียน</a>
                         </div>
                     </div>
@@ -76,21 +76,28 @@
 {{-- แก้ไขโปรไฟล์ --}}
 {{-- @include('pagestudent.profile.Profile') --}}
 {{-- แก้ไขโปรไฟล์ --}}
+
+@php
+$news = DB::table('image_slides')->where('type', 'news')->get();
+    // dd($news);
+@endphp
     <div class="container-fluid pt-3">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class=" w-100" height="800px" class="img-fluid" src="https://static3.bigstockphoto.com/7/0/2/large1500/207611518.jpg"
-                        alt="First slide">
+                    @foreach ($news as$key=>$news)
+
+                    <div class="carousel-item {{$key==0 ? 'active' : ''}}">
+                            <a href="{{$news->url}}" target="_blank">
+                            <img src="{{url(''.$news->image)}}" class="d-block w-100" alt="...">
+                        </a>
+                  <div class="carousel-caption d-none d-md-block">
+                    {{-- <h5>First slide label</h5>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
+                  </div>
                 </div>
-                <div class="carousel-item">
-                    <img class=" w-100" height="800px" class="img-fluid"
-                        src="https://audition.playpark.com/th-th/wp-content/uploads/2018/06/bg.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class=" w-100" height="800px" class="img-fluid"
-                        src="http://www.4usky.com/data/out/11/164070415-black-blue-wallpapers.jpg" alt="Third slide">
-                </div>
+
+                @endforeach
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -104,3 +111,4 @@
     </div>
 </div>
 {{-- วิชา --}}
+

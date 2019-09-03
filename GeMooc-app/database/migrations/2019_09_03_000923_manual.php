@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Guidebook extends Migration
+class Manual extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class Guidebook extends Migration
      */
     public function up()
     {
-        Schema::create('guidebooks', function (Blueprint $table) {
+        Schema::create('manuals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('image');
-
-            $table->timestamps();
+            $table->text('file');
+            $table->text('type');
         });
     }
 
@@ -28,6 +27,6 @@ class Guidebook extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('manuals');
     }
 }

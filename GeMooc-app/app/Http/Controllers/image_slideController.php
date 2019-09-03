@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-// use database
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
-class qaController extends Controller
+class image_slideController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,9 @@ class qaController extends Controller
      */
     public function index()
     {
-        $qa = DB::table('faqs')->get();
-        $view = 'option.qa.index';
-        return view($view)->with('qa', json_encode($qa));
+        $faq =  DB::table('image_slides')->where('type', 'faq')->get();
+        $news = DB::table('image_slides')->where('type', 'news')->get();
+        return view('admin-teach.webapp.content.image_slide.image_slide')->with('faq',$faq)->with('news',$news);
     }
 
     /**
@@ -29,6 +27,7 @@ class qaController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -39,14 +38,25 @@ class qaController extends Controller
      */
     public function store(Request $request)
     {
-        $imagePath = request('newQa')->store('qaImage','public');
+        $this->validate($request,[
+            'type' => 'required',
+            'image' => 'image|nullable|max:10000',
+        ]) ;
+
+        $imagePath = request('image')->store('image_slides','public');
         $image = Image::make(public_path("storage/{$imagePath}"));
         $image->save();
-        DB::table('faqs')->insert([
+        $url = null;
+        if($request->has('url')){
+            $url = request('url');
+        }
+        DB::table('image_slides')->insert([
             'image' => 'storage/'.$imagePath,
+            'type' =>request('type'),
+            'url'=>$url
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'อัพโหลดรูปภาพสำเร็จ.');
     }
 
     /**
@@ -91,6 +101,7 @@ class qaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('image_slides')->where('id',$id)->delete();
+        return redirect()->back()->with('success', 'ลบรูปภาพสำเร็จ');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Qa extends Migration
+class ImageSlide extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class Qa extends Migration
      */
     public function up()
     {
-        Schema::create('qas', function (Blueprint $table) {
+        Schema::create('image_slides', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('image');
-
-            $table->timestamps();
+            $table->text('type');
+            $table->text('url')->nullable();
         });
     }
 
@@ -28,6 +28,6 @@ class Qa extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('image_slides');
     }
 }

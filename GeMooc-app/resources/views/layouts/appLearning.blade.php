@@ -17,10 +17,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/wow.js/css/libs/animate.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/appLogin.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/switch.css')}}">
-    {{-- <link rel="stylesheet" href="{{asset('node_modules/3d-slider/style.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEChart.css')}}"> --}}
 
 
     {{-- <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css')}}">--}}
@@ -30,7 +27,7 @@
 
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/CEF2style.css')}}">
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/CEFlogin.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssStudent/CEFlogin.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFlogin.css')}}">
     <!-- fontawesom -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -54,16 +51,10 @@
 <body>
 <div class="bg-blur" style="background-image: url('https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')"></div>
     <div class="cebody">
-
-{{-- <div class="bg-blur"></div> --}}
         @yield('index')
-        {{-- @yield('content') --}}
-          {{-- @guest --}}
-          {{-- @yield('login') --}}
-          {{-- @else --}}
         <button id="myBtn" title="Go to top"><i
             class="fas fa-arrow-circle-up    "></i></button>
-        {{-- @include('pagestudent.message-box.Message_box') --}}
+        @include('pagestudent.message-box.Message_box')
         <div class="footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
         </div>

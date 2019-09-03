@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
 @endpush
 @section('main-content')
-<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}}
-</a>/ <a href="{{url('/course/'.$course->id)}}">{{$course->name}}</a>
+<a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark" href="{{url('/subject/'.$course->subject->id)}}">{{$course->subject->name}}
+</a>/ <a class="badge badge-dark" href="{{url('/course/'.$course->id)}}">{{$course->name}}</a>
 
 <div class="main-content-header">
     <div class="row">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <p id="your_course">{{$course->name}}</p>
+            <p class="t-shadow" id="your_course">{{$course->name}}</p>
             <div class="underline-title"></div>
         </div>
     </div>
@@ -299,7 +299,7 @@
                                                     <div class="form-group">
                                                         <label for="detailQuiz"
                                                             style="font-size:15px">รายละเอียด</label>
-                                                        <textarea class="form-control" name="" id="detailQuiz"
+                                                        <textarea class="form-control" name="detail" id="detailQuiz"
                                                             rows="4"></textarea>
                                                     </div>
                                                 </div>

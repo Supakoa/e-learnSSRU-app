@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-// use database
-use Illuminate\Support\Facades\DB;
-use Intervention\Image\Facades\Image;
-
-class qaController extends Controller
+class manual extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +13,7 @@ class qaController extends Controller
      */
     public function index()
     {
-        $qa = DB::table('faqs')->get();
-        $view = 'option.qa.index';
-        return view($view)->with('qa', json_encode($qa));
+        //
     }
 
     /**
@@ -29,6 +23,7 @@ class qaController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -39,14 +34,7 @@ class qaController extends Controller
      */
     public function store(Request $request)
     {
-        $imagePath = request('newQa')->store('qaImage','public');
-        $image = Image::make(public_path("storage/{$imagePath}"));
-        $image->save();
-        DB::table('faqs')->insert([
-            'image' => 'storage/'.$imagePath,
-        ]);
-
-        return redirect()->back();
+        //
     }
 
     /**

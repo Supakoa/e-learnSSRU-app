@@ -17,7 +17,7 @@
 
         <ul class="nav-links justify-content-end">
             <li>
-                <a href="#" onclick="$('#logout-form').submit()">
+                <a class="t-shadow text-light" href="#" onclick="$('#logout-form').submit()">
                     ออกจากระบบ <i class="fas fa-sign-out-alt"></i>
                 </a>
             </li>
@@ -66,7 +66,7 @@
 
                 @if ($adminOnly)
                 <a href="{{url('report')}}">
-                    <li>รายงาน</li>
+                    <li>รายงานปัญหา</li>
                 </a>
                 @endif
 
@@ -95,12 +95,12 @@
                 @endif
 
                 @if ($adminOnly)
-                    <a href="{{url('qaOption')}}">
-                    <li>จัดการคำถามที่พบบ่อย</li></a>
+                    <a href="{{url('/image_slide')}}">
+                    <li>จัดการรูปภาพในสไลด์</li></a>
                 @endif
 
                 @if ($adminOnly)
-                    <a href="{{url('guidebookOption')}}">
+                    <a href="#">
                     <li>จัดการคู่มือการใช้งาน</li></a>
                 @endif
 

@@ -7,7 +7,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Subject -> {{$sub->name}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขวิชา -> {{$sub->name}}</h5>
                 </div>
             </div>
             <div class="modal-body">
@@ -55,12 +55,12 @@
                         <div id="typeVideo">
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input class="custom-control-input" type="radio" name="videoType"
-                                    id="videoTypeYoutube" value="youtube" required>
+                                    id="videoTypeYoutube" value="youtube" >
                                 <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input class="custom-control-input" type="radio" name="videoType"
-                                    id="videoTypeFile" value="file" required>
+                                    id="videoTypeFile" value="file" >
                                 <label for="videoTypeFile" class="custom-control-label">File</label>
                             </div>
                         </div>

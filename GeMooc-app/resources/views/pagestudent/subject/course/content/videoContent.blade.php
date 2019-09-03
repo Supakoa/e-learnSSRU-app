@@ -23,15 +23,15 @@
     </div>
     <div class="sectionContent">
         <div class="head-text">
-            <p>{{ $video->name }}</p>
+            <p class="text-justify text-center">{{ $video->name }}</p>
         </div>
-
-        @if ( $video->type == 'youtube' )
+        <div class="container mt-5">
+            @if ( $video->type == 'youtube' )
             {{--
                 youtube
             --}}
             <div class="plyr__video-embed" id="player1">
-                <iframe id="showVideo" src="" allowfullscreen allowtransparency
+                <iframe id="showVideo"  src="" allowfullscreen allowtransparency
                     allow="autoplay"></iframe>
             </div>
         @else
@@ -50,6 +50,9 @@
         {{-- <ul class="navProgress" id="navProgress"></ul> --}}
         <div class="navProgress"></div>
 
+            {{-- record bar --}}
+            <ul class="navProgress" id="navProgress"></ul>
+        </div>
         {{--
             [test case] send form refresh
         --}}

@@ -30,13 +30,13 @@ class admin extends Controller
     public function create()
     {
         $data = request()->validate([
-            'username' => 'required',
+            'name' => 'required',
             'password' => 'required|required_with:confirmPassword|same:confirmPassword',
             'email' => 'required|required_with:confirmEmail|same:confirmEmail',
         ]);
 
         $sekai = User::create([
-            'name' => $data['username'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'type_user' => 'admin',
             'password' => Hash::make($data['password']),
@@ -57,7 +57,26 @@ class admin extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'name' => 'required',
+            'password' => 'required|required_with:confirmPassword|same:confirmPassword',
+            'email' => 'required|required_with:confirmEmail|same:confirmEmail',
+        ]);
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'type_user' => 'admin',
+            'gender' => request('gender'),
+            'phone_number' => request('tel'),
+            'password' => Hash::make($data['password']),
+        ]);
+
+        profile::create([
+            'user_id' => $user->id,
+        ]);
+
+        return redirect()->back()->with('success', 'เพิ่มข้อมูลผู้ใช้สำเร็จ.');
     }
 
     /**
@@ -93,14 +112,15 @@ class admin extends Controller
     public function update(Request $request, $id)
     {
         $data = request()->validate([
-            'password' => 'required|required_with:confirmPassword|same:confirmPassword',
+            'name' => 'required',
+            // 'password' => 'required|required_with:confirmPassword|same:confirmPassword',
             'email' => 'required|required_with:confirmEmail|same:confirmEmail',
         ]);
         $user = User::find($id);
-        $user->name = $data['username'];
+        $user->name = $data['name'];
         $user->email = $data['email'];
         $user->save();
-        return redirect('/admin');
+        return redirect()->back()->with('success', 'แก้ไขข้อมูลผู้ใช้สำเร็จ.');
     }
 
     /**
@@ -112,6 +132,7 @@ class admin extends Controller
     public function destroy($id)
     {
         $result = DB::table('users')->where('id', '=', $id)->delete();
-        return redirect('/admin');
+
+        return redirect()->back()->with('success', 'ลบข้อมูลผู้ใช้สำเร็จ.');
     }
 }

@@ -25,7 +25,7 @@ return "$strDay $strMonthThai $strYear";
 }
 @endphp
 @section('main-content')
-<a href="{{url('/subject')}}">วิชา</a> / <a href="{{url('/subject/'.$subject->id)}}">{{$subject->name}}</a>
+<a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark" href="{{url('/subject/'.$subject->id)}}">{{$subject->name}}</a>
 
 <div class="main-content-header">
     <div class="row">
@@ -35,7 +35,7 @@ return "$strDay $strMonthThai $strYear";
             </div>
         </div>
         <div class="col-md-4">
-            <p id="your_course">{{$subject->name}}</p>
+            <p class="t-shadow" id="your_course">{{$subject->name}}</p>
             <div class="underline-title"></div>
         </div>
     </div>
@@ -167,12 +167,12 @@ return "$strDay $strMonthThai $strYear";
                                         <div id="typeVideo">
                                             <div class="custom-control custom-radio custom-control-inline">
                                                 <input class="custom-control-input" type="radio" name="videoType"
-                                                    id="videoTypeYoutube" value="youtube" required>
+                                                    id="videoTypeYoutube" value="youtube" >
                                                 <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
                                             </div>
                                             <div class="custom-control custom-radio custom-control-inline">
                                                 <input class="custom-control-input" type="radio" name="videoType"
-                                                    id="videoTypeFile" value="file" required>
+                                                    id="videoTypeFile" value="file" >
                                                 <label for="videoTypeFile" class="custom-control-label">File</label>
                                             </div>
                                         </div>
