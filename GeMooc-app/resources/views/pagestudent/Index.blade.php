@@ -8,9 +8,7 @@
 <style>
     .bg-blur {
         background-image: url("@yield('background','https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')");
-
     }
-
 </style>
 <div class="bg-blur"></div>
 

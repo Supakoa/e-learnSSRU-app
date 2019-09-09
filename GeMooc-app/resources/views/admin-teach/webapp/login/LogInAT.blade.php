@@ -1,5 +1,6 @@
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFlogIn.css')}}">
+<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/mobile/mobileLogin.css')}}">
 @endpush
 {{-- ลงชื่อเข้าใช้ --}}
 <div class="ce-bgimg" style="background-image:url('../../images/cebody-bg.jpeg');">
@@ -81,7 +82,7 @@
 $news = DB::table('image_slides')->where('type', 'news')->get();
     // dd($news);
 @endphp
-    <div class="container-fluid pt-3">
+    <div class="container-fluid p-2">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                     @foreach ($news as$key=>$news)
