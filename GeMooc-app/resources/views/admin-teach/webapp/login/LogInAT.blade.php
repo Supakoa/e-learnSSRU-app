@@ -52,11 +52,11 @@
             </div>
         </div>
     </div>
-    <div class="switch-language">
+    {{-- <div class="switch-language">
         <p>TH/EN</p>
         <input type="checkbox" id="switch" />
         <label for="switch"></label>
-    </div>
+    </div> --}}
 </div>
 <div id="section2">
     <div class="container-header">
