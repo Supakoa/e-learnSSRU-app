@@ -14,21 +14,11 @@
 
 @push('js')
 <script>
-    // $('.btn-forget').click(function (e) {
-    //     e.preventDefault();
-    //     $('.forms-forget-modal').css('margin-left', '0');
-    //     // $('nav').css('display', 'none');
-    // });
+
     $(document).ready(function () {
         $('.your-class').slick({
             centerMode: true
         });
     });
-    // $('.forms-forget-close').click(function (e) {
-    //     e.preventDefault();
-    //     $('.forms-forget-modal').css('margin-left', '-100%');
-    //     // $('nav').css('display', 'flex');
-    // });
-
 </script>
 @endpush
