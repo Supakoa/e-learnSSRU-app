@@ -3,7 +3,7 @@
 @endpush
 {{-- ลงชื่อเข้าใช้ --}}
 <div class="ce-bgimg" style="background-image:url('../../images/cebody-bg.jpeg');">
-    <div class="body-login mt-5">
+    <div class="body-login">
         <div class="forms-login mt-5">
             <div class="forms-login-content mt-5">
 

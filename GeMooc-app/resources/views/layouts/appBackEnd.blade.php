@@ -75,7 +75,7 @@
 
     <div class="bg-blur"></div>
 
-    <div style=" position: absolute;top: 0%;left: 0%;width: 100%;">
+    <div id="bodyLearning" style=" position: absolute;top: 0%;left: 0%;width: 100%;">
         @yield('wrap-body')
         <div class="wrap-footer">
             <p>Copyright © 2019, by CEFstyle ,All rights reserved.</p>
