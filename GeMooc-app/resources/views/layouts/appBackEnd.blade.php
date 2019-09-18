@@ -85,14 +85,14 @@
     {{-- test percent --}}
     <input type="hidden" name="percent" id="percent" value="">
 
-            <script>
+            {{-- <script>
                 $('#exampleModal').on('show.bs.modal', event => {
                     var button = $(event.relatedTarget);
                     var modal = $(this);
                     // Use above variables to manipulate the DOM
 
                 });
-            </script>
+            </script> --}}
 
 
 

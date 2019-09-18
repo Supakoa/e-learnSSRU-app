@@ -3,9 +3,10 @@
 @endpush
 {{-- ลงชื่อเข้าใช้ --}}
 <div class="ce-bgimg" style="background-image:url('../../images/cebody-bg.jpeg');">
-    <div class="body-login">
-        <div class="forms-login">
-            <div class="forms-login-content">
+    <div class="body-login mt-5">
+        <div class="forms-login mt-5">
+            <div class="forms-login-content mt-5">
+
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="forms-title">
@@ -13,7 +14,7 @@
                         <img src="{{url('images/logo.png')}}" height="100%" width="100%" alt="">
                     </div>
                     <div class="forms-body">
-                        <hr class="hr-text" data-content="OR">
+                        {{-- <hr class="hr-text" data-content="OR"> --}}
                         <div name="input">
                             <input id="email" class="form-control @error('email') is-invalid @enderror" name="email"
                                 placeholder="อีเมลล์" value="{{ old('email') }}" type="email" autocomplete="email"
@@ -28,8 +29,8 @@
                                 <input id="password" name="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" placeholder="รหัสผ่าน"
                                     required autocomplete="current-password">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                <div  class="input-group-append">
+                                    <span id="showpassword" class="input-group-text"><i class="fas fa-eye"></i></span>
                                 </div>
                                 @error('password')
                                 <span class="invalid-feedback" style="border-radius:15px" role="alert">
@@ -50,11 +51,11 @@
             </div>
         </div>
     </div>
-    <div class="switch-language">
+    {{-- <div class="switch-language">
         <p>TH/EN</p>
         <input type="checkbox" id="switch" />
         <label for="switch"></label>
-    </div>
+    </div> --}}
 </div>
 <div id="section2">
     <div class="container-header">
@@ -112,3 +113,17 @@ $news = DB::table('image_slides')->where('type', 'news')->get();
 </div>
 {{-- วิชา --}}
 
+@push('script')
+    <script>
+        $("#showpassword").click(function (e) {
+            e.preventDefault();
+            console.log("in");
+
+            if($("#password").attr("type")=="password"){
+                $("#password").attr("type","text");
+            }else{
+                $("#password").attr("type","password");
+            }
+        });
+    </script>
+@endpush
