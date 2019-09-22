@@ -10,7 +10,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="forms-title ">
-                        <img class="m-auto" src="{{url('images/newLogotwo.png')}}"  alt="">
+                        <img class="m-auto" src="{{url('images/newLogo.png')}}"  alt="">
                     </div>
                     <div class="forms-body">
                         {{-- <hr class="hr-text" data-content="OR"> --}}
