@@ -6,7 +6,7 @@
 @endpush
 
 @section('wrap-body')
-@include('pagestudent.navs.Navs_login')
+{{-- @include('pagestudent.navs.Navs_login') --}}
 
 @include('admin-teach.webapp.login.LoginAT')
 {{-- @include('') --}}
