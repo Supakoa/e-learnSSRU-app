@@ -14,7 +14,7 @@
 <div class="nav-name">
     <p>หลักสูตรที่เปิดสอน</p>
 </div>
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5 justify-content-center">
     <div class="carousel">
         @foreach ($subjects->where('status', 1) as $subject)
     <img src="{{url('storage/'.$subject->image)}}" alt="{{$subject->id}}" name = "{{$subject->name}}" link = "{{url('std_view/subject/'.$subject->id)}}" />
