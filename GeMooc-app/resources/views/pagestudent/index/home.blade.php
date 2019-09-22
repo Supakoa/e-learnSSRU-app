@@ -143,7 +143,7 @@
         </div>
         <h2 id="course_name" style="color:white"></h2>
         <div class="row progress-now">
-            <div class="col-md-10">
+            <div class="col-md-10 m-1">
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" style="width: 25%;"
                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

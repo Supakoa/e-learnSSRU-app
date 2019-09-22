@@ -14,33 +14,34 @@
 <div class="nav-name">
     <p>หลักสูตรที่เปิดสอน</p>
 </div>
-<div class="container-fluid mt-5 justify-content-center">
-    <div class="carousel">
+<div class="container-fluid justify-content-center">
+    <div id="win" class="carouselCEF">
         @foreach ($subjects->where('status', 1) as $subject)
         <img src="{{url('storage/'.$subject->image)}}" alt="{{$subject->id}}" name="{{$subject->name}}"
             link="{{url('std_view/subject/'.$subject->id)}}" />
         @endforeach
     </div>
+
 </div>
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+{{-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         @foreach ($subjects->where('status', 1) as $subject)
         <div class="carousel-item active">
             <img class="d-block w-100" src="{{url('storage/'.$subject->image)}}" alt="{{$subject->id}}"
-                name="{{$subject->name}}" link="{{url('std_view/subject/'.$subject->id)}}" />
-        </div>
-        @endforeach
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+name="{{$subject->name}}" link="{{url('std_view/subject/'.$subject->id)}}" />
 </div>
+@endforeach
+</div>
+<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+</a>
+</div> --}}
 
 <div class="text-center w-100 startCourse">
     <p class="nameSub" id="subject_name">ชื่อวิชา</p>
@@ -56,15 +57,16 @@
 
 @push('js')
 <script>
-    $(document).ready(function () {
+    // $(document).ready(function () {
 
-        if($(window).width >= 1024){
-        $('.carousel').show();
-        $('#carouselExampleControls').hide();
-        }else{
-            $('#carouselExampleControls').show();
-            $('.carousel').hide();
-        }
-    });
+    //     if($(window).width >= 1024){
+    //     $('#win').show();
+    //     $('#carouselExampleControls').hide();
+    //     }else{
+    //         $('#carouselExampleControls').show();
+    //         $('#win').hide();
+    //     }
+    // });
+
 </script>
 @endpush
