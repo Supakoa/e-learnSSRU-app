@@ -60,7 +60,7 @@
                             <div class="dropdown-menu w-75" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">แก้ไขโปรไฟล์</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="$('#logout-form').submit()">ออกจากระบบ</a>
+                                <a class="dropdown-item" href="#" onclick="$('#logout-form').submit()">ออกจากระบบ</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
