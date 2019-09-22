@@ -74,7 +74,7 @@
     <script src="{{asset('node_modules/jQueryWaterwheelCarouselPlugin/js/jquery.waterwheelCarousel.min.js')}}"></script>
     <!-- CEFstyle -->
     {{-- <script src="{{ asset('CEFstyle/CEFstyle.js') }}"></script> --}}
-    <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
+    {{-- <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script> --}}
     {{-- <script src="{{asset('node_modules/3d-slider/app.js')}}"></script> --}}
     <script>
 

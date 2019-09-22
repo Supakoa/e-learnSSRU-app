@@ -95,10 +95,10 @@
         <div class="row">
             <div class="col-md-12 p-5">
                 <div class="yourCourse p-3">
-                        @php
-                        $user = auth()->user();
-                        $courses = auth()->user()->courses;
-                        $percent = auth()->user()->progresses;
+                    @php
+                    $user = auth()->user();
+                    $courses = auth()->user()->courses;
+                    $percent = auth()->user()->progresses;
                     @endphp
                     @foreach (auth()->user()->courses as $course)
                     @php
@@ -106,51 +106,55 @@
                     $sum_lesson = 0;
                     $n_lessons = $course->lessons->count();
                     if($n_lessons){
-                        foreach($course->lessons as $lesson){
-                            $sum_progress = 0;
-                            $n_contents = $lesson->contents->count();
-                            if($n_contents){
-                                foreach ($lesson->contents as $key=>$content) {
-                                    $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
-                                    if($pro = $progress->first()){
-                                        if($pro = $pro->pivot->percent){
-                                            $sum_progress += $pro;
-                                        }else{
-                                            $sum_progress += 0;
-                                        }
-                                    }else{
-                                        $sum_progress += 0;
-                                    }
-                                }
-                                $sum_lesson += $sum_progress/$n_contents ;
-                            }else{
-                                $sum_lesson +=100;
-                            }
-                        }
-                        $sum_course = $sum_lesson/$n_lessons;
+                    foreach($course->lessons as $lesson){
+                    $sum_progress = 0;
+                    $n_contents = $lesson->contents->count();
+                    if($n_contents){
+                    foreach ($lesson->contents as $key=>$content) {
+                    $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
+                    if($pro = $progress->first()){
+                    if($pro = $pro->pivot->percent){
+                    $sum_progress += $pro;
                     }else{
-                        $sum_course =0;
+                    $sum_progress += 0;
+                    }
+                    }else{
+                    $sum_progress += 0;
+                    }
+                    }
+                    $sum_lesson += $sum_progress/$n_contents ;
+                    }else{
+                    $sum_lesson +=100;
+                    }
+                    }
+                    $sum_course = $sum_lesson/$n_lessons;
+                    }else{
+                    $sum_course =0;
                     }
 
-                @endphp
-                        <div class="my_course" course_link = "{{url('std_view/course/'.$course->id)}}" course_progress = "{{$sum_course}}" course_name = "{{$course->name}}">
-                            <p class="text-center">{{$course->name}}</p>
-                            <img class="m-auto"  src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%" >
-                        </div>
+                    @endphp
+                    <div id="{{$course->id}}" course_link="{{url('std_view/course/'.$course->id)}}"
+                        course_progress="{{$sum_course}}" course_name="{{$course->name}}">
+                        <p class="text-center">{{$course->name}}</p>
+                        <img class="m-auto" src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%">
+                    </div>
                     @endforeach
                 </div>
             </div>
         </div>
-        <h2 id="course_name" style="color:white"></h2>
-        <div class="row progress-now">
-            <div class="col-md-10">
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" style="width: 25%;"
-                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        <div id="yourProgress">
+            <h2 id="course_name" style="color:white"></h2>
+            <div class="row progress-now">
+                <div class="col-md-10">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar"
+                            role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-2">
-            <a class="btn btn-success" id="btn_to_course" href="#">เริ่มคอร์ส</a>
+                <div class="col-md-2">
+                    <a class="btn btn-success" id="btn_to_course" href="#">เริ่มคอร์ส</a>
+                </div>
             </div>
         </div>
     </div>
@@ -172,19 +176,20 @@
 @endsection
 
 @push('js')
-    <script>
-        $('.progress-now').hide();
-        $(".my_course").click(function (e) {
-            // alert($(this).attr('course_link'))
-        $('.progress-now').show();
+<script>
+    $courseId = $course->id;
+    $('#yourProgress').hide();
+    $('#'.$courseId).click(function (e) {
+        // alert($(this).attr('course_link'))
+        $('#yourProgress').show();
+        e.preventDefault();
+        $('#btn_to_course').attr('href', $(this).attr('course_link'));
+        $('#course_name').html($(this).attr('course_name'));
+        // $("#progress-bar").css('width', $(this).attr('course_progress')+'%');
+        // alert($(this).attr('course_progress')+'%')
+        $("#progress_bar").css('width', $(this).attr('course_progress') + '%');
+        $("#progress_bar").html($(this).attr('course_progress') + '%')
+    });
 
-            e.preventDefault();
-            $('#btn_to_course').attr('href',$(this).attr('course_link'));
-            $('#course_name').html($(this).attr('course_name'));
-            // $("#progress-bar").css('width', $(this).attr('course_progress')+'%');
-            // alert($(this).attr('course_progress')+'%')
-            $("#progress_bar").css('width', $(this).attr('course_progress')+'%');
-            $("#progress_bar").html($(this).attr('course_progress')+'%')
-        });
-    </script>
+</script>
 @endpush
