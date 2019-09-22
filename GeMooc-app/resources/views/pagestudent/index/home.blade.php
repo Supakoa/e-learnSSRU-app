@@ -133,7 +133,7 @@
                     }
 
                 @endphp
-                        <div class="my_course" course_link = "{{url('std_view/course/'.$course->id)}}" course_progress = "{{$sum_course}}" course_name = "{{$course->name}}">
+                        <div class="my_course" onclick="my_course($(this))" course_link = "{{url('std_view/course/'.$course->id)}}" course_progress = "{{$sum_course}}" course_name = "{{$course->name}}">
                             <p class="text-center">{{$course->name}}</p>
                             <img class="m-auto"  src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%" >
                         </div>
@@ -174,17 +174,14 @@
 @push('js')
     <script>
         $('.progress-now').hide();
-        $(".my_course").click(function (e) {
-            // alert($(this).attr('course_link'))
-        $('.progress-now').show();
-
-            e.preventDefault();
-            $('#btn_to_course').attr('href',$(this).attr('course_link'));
-            $('#course_name').html($(this).attr('course_name'));
-            // $("#progress-bar").css('width', $(this).attr('course_progress')+'%');
-            // alert($(this).attr('course_progress')+'%')
-            $("#progress_bar").css('width', $(this).attr('course_progress')+'%');
-            $("#progress_bar").html($(this).attr('course_progress')+'%')
-        });
+        function my_course(my_course) {
+            $('.progress-now').show();
+            $('#btn_to_course').attr('href',my_course.attr('course_link'));
+            $('#course_name').html(my_course.attr('course_name'));
+            // $("#progress-bar").css('width', my_course.attr('course_progress')+'%');
+            // alert(my_course.attr('course_progress')+'%')
+            $("#progress_bar").css('width', my_course.attr('course_progress')+'%');
+            $("#progress_bar").html(my_course.attr('course_progress')+'%')
+        }
     </script>
 @endpush
