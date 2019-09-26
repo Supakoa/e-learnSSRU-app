@@ -22,7 +22,7 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-left" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{{url('std_view/home')}}">คอร์สของฉัน <span
@@ -37,10 +37,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/std_view/faq')}}">คำถาม</a>
             </li>
-
-
         </ul>
-        <div class="form-inline  my-2 my-lg-0">
+    </div>
+    <div class="form-inline  my-2 my-lg-0">
+        <div class="container">
             <ul class="m-auto pl-0">
                 <li class="dropdown" style="display:flex;">
                     @if (auth()->user()->profile->image!=null)
@@ -57,10 +57,10 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="text-justify">{{ auth()->user()->name }}</span>
                     </a>
-                    <div class="dropdown-menu w-75" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">แก้ไขโปรไฟล์</a>
+                    <div class="dropdown-menu container-fluid w-100" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item pl-2" href="#">แก้ไขโปรไฟล์</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" onclick="$('#logout-form').submit()">ออกจากระบบ</a>
+                        <a class="dropdown-item pl-2" href="#" onclick="$('#logout-form').submit()">ออกจากระบบ</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                             @csrf
                         </form>
