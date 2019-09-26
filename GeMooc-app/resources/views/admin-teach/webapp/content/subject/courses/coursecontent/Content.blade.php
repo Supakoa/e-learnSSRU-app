@@ -110,7 +110,7 @@
                         </label>
                     </div>
                     <div class="collapse-2 ">
-                        <a href="" class="btn btn-block p-2"
+                        <a href="#" class="btn btn-block p-2"
                             onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</a>
                     </div>
                     <div class="collapse-3">
