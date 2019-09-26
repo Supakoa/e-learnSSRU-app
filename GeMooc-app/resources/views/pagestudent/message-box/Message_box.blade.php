@@ -10,7 +10,7 @@
             </div>
     </div>
     <div class="messageBox-content">
-        <form action="/report" method="post">
+        <form action="{{url('/report')}}" method="post">
             @csrf
             @method('POST')
 @if (isset(auth()->user()->id))
