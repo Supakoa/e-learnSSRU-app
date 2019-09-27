@@ -38,6 +38,11 @@
         <button id="save" class="btn-add" onclick="preview()" type="button"><i class="fas fa-eye"></i></button>
         <button id="edit" class="btn-edit" onclick="edit()" type="button"><i class="fas fa-cog"></i></button>
     </div>
+    <div class="form-group">
+      <label for="name">ชื่อบทความ</label>
+      <input form="form_article" type="text" class="form-control" name="name" value="{{$article->content->name}}" id="name" aria-describedby="helpId" placeholder="ชื่อบทความ">
+      <small id="helpId" class="form-text text-muted">กรุณากรอกชื่อบทความ</small>
+    </div>
 
     <div id="summernote">
         @if ($article->rawdata == "กรุณาเพิ่มเนื้อหา")

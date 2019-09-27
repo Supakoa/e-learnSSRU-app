@@ -82,11 +82,16 @@ class ArticleController extends Controller
     {
         $this->validate($request,[
             'rawdata' => 'required',
+            'name' => 'required',
+
         ]) ;
 
 
         // Create Post
         $article->rawdata = $request->input('rawdata');
+        $content = $article->content;
+        $content->name =$request->name;
+        $content->save();
         // $post->detail = $request->input('detail');
         // $post->user_id = auth()->user()->id;
         // $post->sm_banner = $fileNameToStore;

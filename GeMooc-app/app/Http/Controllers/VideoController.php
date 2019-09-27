@@ -63,7 +63,7 @@ class VideoController extends Controller
      */
     public function edit(video $video)
     {
-        
+
     }
 
     /**
@@ -75,13 +75,16 @@ class VideoController extends Controller
      */
     public function update(Request $request, video $video)
     {
-        $newData = $request->newUrl;
-        $updateAt = $video->id;
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+        $video->name = $request->name;
+        $video->save();
+        $content = $video->content;
+        $content->name = $request->name;
+        $content->save();
 
-        $thisVideo = video::find($updateAt);
-        $thisVideo->data = $newData;
-        $thisVideo->save();
-        return back();
+        return back()->with('success', 'Video Updated');
     }
 
     /**
