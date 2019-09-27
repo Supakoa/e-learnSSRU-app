@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\content as content;
+use App\lesson as lesson;
+
 use App\adjust as adjust;
 use App\article as article;
 use App\quiz as quiz;
@@ -66,6 +68,8 @@ class content_c extends Controller
         $content->name = $request->input('name');
         $content->type = $request->input('type');
         $content->lesson_id = $request->input('lesson_id');
+        $allcontent = lesson::find($request->input('lesson_id'));
+        $content->order=$allcontent->contents->count();
         $content->save();
 
         if($content->type=='1'){
@@ -180,5 +184,19 @@ class content_c extends Controller
         $content = content::find($id);
         $content->delete();
         return redirect()->back()->with('success', 'Content Deleted');
+    }
+    public function order_update(Request $request)
+    {
+        $i = 0 ;
+        foreach($request->order as $order){
+            $content =  content::find($order);
+            $content->order = "".$i++;
+            $content->save();
+        }
+        if($i==count($request->order)){
+            return "Success";
+        }else{
+            return $request;
+        }
     }
 }

@@ -29,6 +29,8 @@ Route::get('course/{content}/editor', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
 });
 
+Route::post('content/order_update','backend\content_c@order_update');
+
 // owl admin route
 // Route::get('admin', function(){
 //     return view('admin-teach.webapp.content.admin.Admin');
@@ -38,7 +40,9 @@ Route::get('course/{content}/editor', function(){
  *  all test route
  * */
 Route::get('test/{id}', 'test@export');
-Route::get('/test', 'test_sumernote@index');
+Route::get('/test', function(){
+    return view('test2');
+});
 Route::get('/email', function () {
     return new newMail();
 });

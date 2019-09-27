@@ -89,38 +89,54 @@
         </div>
         <div id="collapse{{$lesson->id}}" class="container bg-gray collapse border p-5"
             aria-labelledby="heading{{$lesson->id}}" data-parent="#accordionExample">
-            @foreach ($lesson->contents as $content)
-            <div class="course-content-collapse shadow">
-                <div class="course-collapse-body">
-                    <div class="collapse-1">
-                        <label>
-                            @switch($content->type)
-                            @case(1)
-                            <i class="fas fa-video"></i>
-                            @break
-                            @case(2)
-                            <i class="fas fa-clipboard-list"></i>
-                            @break
-                            @case(3)
-                            <i class="fa fa-question" aria-hidden="true"></i>
-                            @break
-                            @default
+            <script>
+                    $(document).ready(function () {
+                        var el = document.getElementById('sortable{{$lesson->id}}');
+                        var sortable = Sortable.create(el,{
+                            onUpdate: function(evt) {
+                            var order = sortable.toArray();
+                            // console.log(order);
+                            change_order("{{$lesson->id}}",order)
+                            }
+                        });
+                    });
 
-                            @endswitch
-                        </label>
-                    </div>
-                    <div class="collapse-2 ">
-                        <a href="#" class="btn btn-block p-2"
-                            onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</a>
-                    </div>
-                    <div class="collapse-3">
-                        <button onclick="delete_content('{{$content->id}}')">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
+                </script>
+            <div class="container" id="sortable{{$lesson->id}}">
+
+                @foreach ($lesson->contents as $content)
+                <div class="course-content-collapse shadow" data-id = "{{ $content->id}}">
+                    <div class="course-collapse-body">
+                        <div class="collapse-1">
+                            <label>
+                                @switch($content->type)
+                                @case(1)
+                                <i class="fas fa-video"></i>
+                                @break
+                                @case(2)
+                                <i class="fas fa-clipboard-list"></i>
+                                @break
+                                @case(3)
+                                <i class="fa fa-question" aria-hidden="true"></i>
+                                @break
+                                @default
+
+                                @endswitch
+                            </label>
+                        </div>
+                        <div class="collapse-2 ">
+                            <a href="#" class="btn btn-block p-2"
+                                onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</a>
+                        </div>
+                        <div class="collapse-3">
+                            <button onclick="delete_content('{{$content->id}}')">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
             <button class="add-content" data-toggle="modal" data-target="#Add_Modal_content"
                 onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
@@ -403,7 +419,6 @@
             // $(this).collapse('show');
 
         });
-
     });
 
     function add_content(lesson) {
@@ -420,7 +435,26 @@
 
         $('#edit_lesson_text').html('Edit : ' + lesson.name);
     }
+    function change_order(lesson_id,order){
+        console.log(lesson_id +" : " + order);
+        $.ajax({
+            type: "post",
+            url: "{{url('content/order_update')}}",
+            data: {
+                id: lesson_id,
+                order :order
+            },
+            dataType: "html",
+            success: function (response) {
+                Swal.fire(
+                    'Updated!',
+                    response,
+                    'success'
+                )
+            }
+        });
 
+    }
     function setPercent() {
         if ($('input[name=videoType]:checked').val() == 'file') {
             $('#percent').val('0%');
@@ -505,11 +539,7 @@
             if (result.value) {
 
                 $('#form_del_lesson').submit();
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
+
             }
         });
     }
@@ -562,7 +592,6 @@
 
         beforeSend: function () {
             $('#success').empty();
-            console.log('เข้าาาาา ๅ ๅๅ ');
 
         },
         uploadProgress: function (event, position, total, percentComplete) {
