@@ -230,4 +230,3 @@ Route::group(['middleware' => 'auth'], function (){
 
 });
 // middle ware to any route
-

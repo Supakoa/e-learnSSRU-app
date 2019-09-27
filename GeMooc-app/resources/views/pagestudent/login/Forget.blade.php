@@ -4,7 +4,7 @@
 <div class="forms-forget-modal"
     style="background-image:url('https://www.sociopoolindia.com/wp-content/uploads/2014/04/work-bg.jpg')">
     <div class="forms-forget-header">
-        <img src="{{url('images/logo.png')}}" alt="">
+        <img src="{{url('images/newLogotwo.png')}}" alt="">
         <div class="forms-forget-close">
         <a href="{{url('login')}}"><i class="fas fa-times " ></i></a>
         </div>

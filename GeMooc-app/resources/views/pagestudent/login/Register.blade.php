@@ -4,7 +4,6 @@
 <div class="ce-bgimg" style="background-image:url('../../images/bg-register.jpg');">
     <div class="body-register">
             @include('inc.alert')
-
         <div class="forms-register">
             <form action="{{ route('register') }}" method="post">
                 @csrf
