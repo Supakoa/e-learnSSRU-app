@@ -19,7 +19,7 @@
                     <input type="hidden" name="sub_id" value="{{$sub->id}}">
                 <div class="row">
                     <div class="col-md-4 offset-md-8 text-right p-0">
-                        <button class="btn-modal" onclick="delete_subject('{{$sub->id}}')"><i class="fa fa-trash"
+                        <button type="button" class="btn-modal" onclick="delete_subject('{{$sub->id}}')"><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
                     </div>
                 </div>
