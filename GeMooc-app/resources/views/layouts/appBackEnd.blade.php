@@ -62,6 +62,7 @@
             @stack('scriptNewSubject') --}}
 
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 </head>
 
 <body>

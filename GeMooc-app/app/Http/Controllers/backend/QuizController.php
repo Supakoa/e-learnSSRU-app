@@ -8,6 +8,8 @@ use App\Imports\QuizImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 use App\quiz;
+use App\content;
+
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -86,6 +88,9 @@ class QuizController extends Controller
 
         ]);
         $quiz->name = $request->name;
+        $content = $quiz->content;
+        $content->name =$request->name;
+        $content->save();
         $quiz->time = $request->time;
         $quiz->detail = $request->detail;
         if($request->hasFile('cover_image')){

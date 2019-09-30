@@ -77,48 +77,22 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">แกไขวีดีโอ</h5>
+                    <h5 class="modal-title">แก้ไขวีดีโอ</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-
-                        @if ($video->type == 'url')
-                            {{--
-                                if $video->type == 'url'
-                            --}}
                             <form action="/video/{{ $video->id }}" id="editFormVideo" method="post">
                                 @csrf
                                 @method('PATCH')
-                                <label for="">Youtube url</label>
-                                <input type="text" class="form-control" name="newUrl" id="newUrl" aria-describedby="placeHolder" value="{{ $video->data }}">
+                                <div class="form-group">
+                                    <label for="name">ชื่อวิดีโอ</label>
+                                    <input type="text" class="form-control" name="name" value="{{$video->content->name}}" id="name" aria-describedby="helpId" placeholder="ชื่อวิดีโอ">
+                                    <small id="helpId" class="form-text text-muted">กรุณากรอกชื่อวิดีโอ</small>
+                                </div>
                             </form>
-                        @else
-                            {{--
-                                if $video->type == 'file'
-                            --}}
-                            <form action="/video/{{ $video->id }}" method="post">
-                                <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                          <span class="input-group-text">อัพโหลด</span>
-                                        </div>
-                                        <div class="custom-file">
-                                          <input type="file"  class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
-                                          <label class="custom-file-label" for="inputGroupFile01">เลือกไฟล์วีดิโอ</label>
-                                        </div>
-                                      </div>
-
-                                {{-- <div class="form-group">
-                                  <label for=""></label>
-                                  <input type="file">
-                                  <small id="fileHelpId" class="form-text text-muted">Help text</small>
-                                </div> --}}
-                            </form>
-                        @endif
-
-                      <small id="placeHolder" class="form-text text-muted">Place new url youtube here.</small>
                     </div>
                 </div>
                 <div class="modal-footer">
