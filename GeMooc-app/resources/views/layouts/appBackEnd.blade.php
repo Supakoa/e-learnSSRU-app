@@ -68,7 +68,7 @@
 <body>
     <style>
         .bg-blur {
-            background-image: url("@yield('background','https://data.1freewallpapers.com/download/pine-forest-path.jpg')");
+            background-image: url("@yield('background',url('images/BG.jpg'))");
 
         }
 
