@@ -38,7 +38,7 @@
     {{--
         messenger box
     --}}
-    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css') }}">
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
