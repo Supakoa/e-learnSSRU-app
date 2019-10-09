@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light" id="studentNav">
     <a class="navbar-brand p-0 m-0" href="#">
-        <img src="{{url('images/newLogotwo.png')}}" width="150px" height="120px" class="m-0 p-0" alt="">
+        <img src="{{url('images/newLogoleftBorder.png')}}" width="150px" height="120px" class="m-0 p-0" alt="">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
