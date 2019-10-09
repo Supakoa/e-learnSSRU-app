@@ -12,7 +12,9 @@
     <a class="navbar-brand p-0 m-0" href="#">
         <img src="{{url('images/newLogoleftBorder.png')}}" width="150px" height="120px" class="m-0 p-0" alt="">
     </a>
-
+    <script>
+    $('.recordSlot').removeAttr('stasus').attr('stasus', 'unsave');
+    </script>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

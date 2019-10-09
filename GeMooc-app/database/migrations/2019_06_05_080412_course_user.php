@@ -20,6 +20,8 @@ class CourseUser extends Migration
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('role')->unsigned()->nullable();
+            $table->integer('status')->unsigned()->nullable();
+            $table->double('percent',8,2)->nullable();
             $table->timestamps();
         });
     }

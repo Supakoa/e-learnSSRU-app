@@ -96,54 +96,24 @@
 
                 @php
                 $user = auth()->user();
-                $courses = auth()->user()->courses;
+                $coursesFinish= auth()->user()->courses()->wherePivot("status",1)->get();
+                $coursesUnFinish = auth()->user()->courses()->wherePivot("status",0)->get();
                 $percent = auth()->user()->progresses;
                 @endphp
-                @if ($courses->count() == 0)
+                @if ($coursesUnFinish->count() == 0)
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    คุณยังไม่มีคอร์สเรียนในคณะนี้. <strong><a href="{{url('std_view/subject')}}">คลิกที่นี่ !</a></strong>
+                    คุณยังไม่มีคอร์สเรียนในคณะนี้. <strong><a href="{{url('std_view/subject')}}">คลิกที่นี่
+                            !</a></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 @else
                 <div class="yourCourse p-3">
-                    @foreach (auth()->user()->courses as $course)
-                    @php
-                    $sum_course = 0;
-                    $sum_lesson = 0;
-                    $n_lessons = $course->lessons->count();
-                    if($n_lessons){
-                    foreach($course->lessons as $lesson){
-                    $sum_progress = 0;
-                    $n_contents = $lesson->contents->count();
-                    if($n_contents){
-                    foreach ($lesson->contents as $key=>$content) {
-                    $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
-                    if($pro = $progress->first()){
-                    if($pro = $pro->pivot->percent){
-                    $sum_progress += $pro;
-                    }else{
-                    $sum_progress += 0;
-                    }
-                    }else{
-                    $sum_progress += 0;
-                    }
-                    }
-                    $sum_lesson += $sum_progress/$n_contents ;
-                    }else{
-                    $sum_lesson +=100;
-                    }
-                    }
-                    $sum_course = $sum_lesson/$n_lessons;
-                    }else{
-                    $sum_course =0;
-                    }
-
-                    @endphp
-                    <div class="my_course" onclick="my_course($(this))"
-                        course_link="{{url('std_view/course/'.$course->id)}}" course_progress="{{$sum_course}}"
-                        course_name="{{$course->name}}">
+                    @foreach ($coursesUnFinish as $course)
+                    <div class="my_course" onclick="my_course_unfinish($(this))"
+                        course_link="{{url('std_view/course/'.$course->id)}}"
+                        course_progress="{{$course->pivot->percent}}" course_name="{{$course->name}}">
                         <p class="text-center">{{$course->name}}</p>
                         <img class="m-auto" src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%">
                     </div>
@@ -153,12 +123,12 @@
 
             </div>
         </div>
-        <h2 id="course_name" style="color:white"></h2>
-        <div class="row progress-now">
-            <div class="col-md-10 m-1">
+        <h2 id="course_name-unfinish" style="color:white"></h2>
+        <div class="row progress-now-unfinish">
+            <div class="col-md-9 m-1">
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar"
-                        role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar-unfinish"
+                        role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                     </div>
                 </div>
             </div>
@@ -172,18 +142,39 @@
     <div class="section2">
         <div class="row">
             <div class="col-md-12 p-5">
-                        @if ($courses->count() == 0)
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                คุณยังไม่มีคอร์สที่เรียนสำเร็จในคณะนี้.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        @else
-                        <div class="courseFinish p-3">
+                @if ($coursesFinish->count() == 0)
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    คุณยังไม่มีคอร์สที่เรียนสำเร็จในคณะนี้.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @else
+                <div class="courseFinish p-3">
+                    @foreach ($coursesFinish as $course)
+                    <div class="my_course" onclick="my_course_finish($(this))"
+                        course_link="{{url('std_view/course/'.$course->id)}}"
+                        course_progress="{{$course->pivot->percent}}" course_name="{{$course->name}}">
+                        <p class="text-center">{{$course->name}}</p>
+                        <img class="m-auto" src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="100%">
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+            </div>
 
-                        </div>
-                        @endif
+        </div>
+        <h2 id="course_name-finish" style="color:white"></h2>
+        <div class="row progress-now-finish">
+            <div class="col-md-9 m-1">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar-finish"
+                        role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-success" id="btn_to_course" href="#">เริ่มคอร์ส</a>
             </div>
         </div>
     </div>
@@ -192,16 +183,28 @@
 
 @push('js')
 <script>
-    $('.progress-now').hide();
+    $('.progress-now-unfinish').hide();
 
-    function my_course(my_course) {
-        $('.progress-now').show();
+    function my_course_unfinish(my_course) {
+        $('.progress-now-unfinish').show();
         $('#btn_to_course').attr('href', my_course.attr('course_link'));
-        $('#course_name').html(my_course.attr('course_name'));
+        $('#course_name-unfinish').html(my_course.attr('course_name'));
         // $("#progress-bar").css('width', my_course.attr('course_progress')+'%');
         // alert(my_course.attr('course_progress')+'%')
-        $("#progress_bar").css('width', my_course.attr('course_progress') + '%');
-        $("#progress_bar").html(my_course.attr('course_progress') + '%')
+        $("#progress_bar-unfinish").css('width', my_course.attr('course_progress') + '%');
+        $("#progress_bar-unfinish").html(my_course.attr('course_progress') + '%')
+    }
+
+    $('.progress-now-finish').hide();
+
+    function my_course_finish(my_course) {
+        $('.progress-now-finish').show();
+        $('#btn_to_course').attr('href', my_course.attr('course_link'));
+        $('#course_name-finish').html(my_course.attr('course_name'));
+        // $("#progress-bar").css('width', my_course.attr('course_progress')+'%');
+        // alert(my_course.attr('course_progress')+'%')
+        $("#progress_bar-finish").css('width', my_course.attr('course_progress') + '%');
+        $("#progress_bar-finish").html(my_course.attr('course_progress') + '%')
     }
 
 </script>
