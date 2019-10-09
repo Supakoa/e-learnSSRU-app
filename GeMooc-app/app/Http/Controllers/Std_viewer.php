@@ -142,7 +142,13 @@ class Std_viewer extends Controller
                 $recordPercent = $newRecord->percent;
             }else{
                 $recordContentId = $record->content_id;
-                $recordRecord = $record->record;
+                $convertRecord = json_decode($record->record);
+                for ($i=0; $i < count($convertRecord); $i++) {
+                    if(is_null($convertRecord[$i])){
+                        $convertRecord[$i] = 0;
+                    }
+                }
+                $recordRecord = json_encode($convertRecord);
                 $recordPercent = $record->percent;
             }
 
