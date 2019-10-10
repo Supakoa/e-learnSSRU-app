@@ -49,7 +49,14 @@
 </head>
 
 <body>
-<div class="bg-blur" style="background-image: url('https://cdn.pixabay.com/photo/2015/03/26/09/40/forest-690075_960_720.jpg')"></div>
+        <style>
+                .bg-blur {
+                    background-image: url("@yield('background',url('images/BG.jpg'))");
+
+                }
+
+            </style>
+<div class="bg-blur" style="background-image: url('')"></div>
     <div class="cebody">
         @yield('index')
         <button id="myBtn" title="Go to top"><i

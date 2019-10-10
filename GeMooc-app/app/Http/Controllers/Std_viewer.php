@@ -17,6 +17,46 @@ class Std_viewer extends Controller
         // old view
         // return view('std_viewer.std_home.index');
         // new view
+        $user = auth()->user();
+        foreach(auth()->user()->courses as $course){
+            $sum_course = 0;
+            $sum_lesson = 0;
+            $n_lessons = $course->lessons->count();
+            if($n_lessons){
+                foreach($course->lessons as $lesson){
+                    $sum_progress = 0;
+                    $n_contents = $lesson->contents->count();
+                    if($n_contents){
+                        foreach ($lesson->contents as $key=>$content) {
+                            $progress = $content->progress_user($user->id)->orderBy('progresses.created_at','desc');
+                            if($pro = $progress->first()){
+                                if($pro = $pro->pivot->percent){
+                                    $sum_progress += $pro;
+                                }else{
+                                    $sum_progress += 0;
+                                }
+                            }else{
+                                $sum_progress += 0;
+                            }
+                        }
+                        $sum_lesson += $sum_progress/$n_contents ;
+                    }else{
+                        $sum_lesson +=100;
+                    }
+                }
+                $sum_course = $sum_lesson/$n_lessons;
+            }else{
+                $sum_course =0;
+            }
+            $user->courses()->detach($course);
+            if($sum_course>=80){
+                $user->courses()->save($course,['percent'=>$sum_course,'status'=>1]);
+            }else{
+                $user->courses()->save($course,['percent'=>$sum_course]);
+            }
+
+        }
+
         return view('pagestudent.index.home');
     }
 
@@ -102,7 +142,13 @@ class Std_viewer extends Controller
                 $recordPercent = $newRecord->percent;
             }else{
                 $recordContentId = $record->content_id;
-                $recordRecord = $record->record;
+                $convertRecord = json_decode($record->record);
+                for ($i=0; $i < count($convertRecord); $i++) {
+                    if(is_null($convertRecord[$i])){
+                        $convertRecord[$i] = 0;
+                    }
+                }
+                $recordRecord = json_encode($convertRecord);
                 $recordPercent = $record->percent;
             }
 
