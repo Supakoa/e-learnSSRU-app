@@ -68,7 +68,7 @@
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/std_view/subject') }}" class="nav-link"><i class="fas fa-book-open    "></i></a>
+                    <a href="{{ url('/std_view/subject') }}" class="nav-link"><i class="fas fa-book-open"></i></a>
                 </li>
                 <li>
                     <a href="{{ url('/std_view/home') }}" class="nav-link"><i class="fas fa-home"></i></a>

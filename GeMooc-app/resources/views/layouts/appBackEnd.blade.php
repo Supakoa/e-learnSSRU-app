@@ -144,7 +144,7 @@
                 $('#uploadingFile').modal('show');
             }else{
                 Swal.fire({
-                    title: 'Wait a minute !',
+                    title: 'กำลังโหลด (now loading)',
                     onBeforeOpen: () => {
                         Swal.showLoading();
                     }

@@ -64,6 +64,7 @@
     </div>
 </div>
 @endsection
+
 @if (isset($user))
 <form action="" id="formDelete" method="post">
     @csrf
@@ -85,22 +86,22 @@
                 <form action="{{url('')}}/student" id="createStudent" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('POST')
-                    <p>ชื่อ - นามสกุล</p>
+                    <p><i class="fas fa-user"></i> ชื่อ - นามสกุล</p>
                     <input class="form-control mb-1" type="text" name="name" id="name" >
-                    <p>อีเมล</p>
+                    <p><i class="fas fa-at"></i> อีเมล</p>
                     <input type="text" class="form-control mb-1" name="email" id="email" >
-                    <p>ยืนยันอีเมล</p>
+                    <p><i class="fas fa-at"></i> ยืนยันอีเมล</p>
                     <input type="text" class="form-control mb-1" name="confirmEmail" id="confirmEmail" >
-                    <p>รหัสผ่าน</p>
+                    <p><i class="fas fa-unlock-alt"></i> รหัสผ่าน</p>
                     <input type="password" class="form-control mb-1" name="password" id="password" >
-                    <p>ยืนยันรหัสผ่าน</p>
+                    <p><i class="fas fa-unlock-alt"></i> ยืนยันรหัสผ่าน</p>
                     <input type="password" class="form-control mb-1" name="confirmPassword" id="confirmPassword" >
-                    <p>เพศ</p>
+                    <p><i class="fas fa-venus-mars"></i> เพศ</p>
                     <input  name='gender'  class="" value="male" id="male" type="radio">
-                    <label for="male">ชาย</label>
+                    <label for="male"><i class="fas fa-male"></i> ชาย</label>
                     <input  name='gender'  class="" value="female" id="female" type="radio">
-                    <label for="female">หญิง</label>
-                    <p>เบอร์โทรศัพท์</p>
+                    <label for="female"><i class="fas fa-female"></i> หญิง</label>
+                    <p><i class="fas fa-phone"></i> เบอร์โทรศัพท์</p>
                     <input type="text" class="form-control mb-1" name="tel" id="tel" >
                 </form>
             </div>

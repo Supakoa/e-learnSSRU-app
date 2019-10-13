@@ -117,20 +117,21 @@
     function delete_subject(id) {
 
         Swal.fire({
-            title: 'Are you sure?',
-            text: "All Course in Subject will be deleted as well. (ต้องแก้คำมั้ง)",
+            title: 'ยืนยันการลบ?',
+            text: "ข้อมูลจะถูกลบออกจากฐานข้อมูล",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'ลบ',
+            cancelButtonText: 'ยกเลิก',
         }).then((result) => {
             if (result.value) {
 
                 $('#form_del_Subject').submit();
                 Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
+                    'ลบข้อมูลสำเร็จ!',
+                    'ข้อมูลถูกลบแแกจากฐานข้อมูลสำเร็จ.',
                     'success'
                 )
             }
@@ -139,13 +140,13 @@
     $('.ce-checkbox').click(function (e) {
         if ($(this).prop('checked') == true) {
             Swal.fire({
-                title: 'Are you sure?',
+                title: 'เกิดข้อผิดพลาด',
                 text: "เนื้อหาขอท่านต้องพร้อมเผยแพร่",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes'
+                confirmButtonText: 'ตกลง'
             }).then((result) => {
                 if (result.value) {
                     $(this).prop('checked', true)
@@ -161,13 +162,13 @@
             });
         } else {
             Swal.fire({
-                title: 'Are you sure?',
+                title: 'ผิดพลาด',
                 text: "ผู้เรียนจะไม่สามารถเข้าถึงวิชานี้ได้",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes'
+                confirmButtonText: 'ตกลง'
             }).then((result) => {
                 if (result.value) {
                     $(this).prop('checked', false)

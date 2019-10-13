@@ -54,54 +54,54 @@
             <ul class="nav-links-left">
                 @if ($both)
                 <a href="{{url('subject')}}">
-                    <li>วิชา</li>
+                    <li><i class="fas fa-book-medical"></i> วิชา</li>
                 </a>
                 @endif
 
                 @if ($both)
             <a href="{{url('profile')}}">
-                    <li>แก้ไขโปรไฟล์</li>
+                    <li><i class="fas fa-user"></i> แก้ไขโปรไฟล์</li>
                 </a>
                 @endif
 
                 @if ($adminOnly)
                 <a href="{{url('report')}}">
-                    <li>รายงานปัญหา</li>
+                    <li><i class="fas fa-bug"></i> รายงานปัญหา</li>
                 </a>
                 @endif
 
                 @if ($adminOnly)
                 <a href="{{url('teach')}}">
-                    <li>ผู้สอน</li>
+                    <li><i class="fas fa-address-book"></i> ผู้สอน</li>
                 </a>
                 @endif
 
                 @if ($adminOnly)
                 <a href="{{url('student')}}">
-                    <li>ผู้เรียน</li>
+                    <li><i class="fas fa-address-book"></i> ผู้เรียน</li>
                 </a>
                 @endif
 
                 @if ($teach)
                 <a href="{{url('guideBook')}}">
-                    <li>คู่มือการใช้งาน</li>
+                    <li><i class="fas fa-book-open"></i> คู่มือการใช้งาน</li>
                 </a>
                 @endif
 
                 @if ($adminOnly)
                     <a href="{{url('admin')}}">
-                    <li>ผู้ดูแลระบบ</li>
+                    <li><i class="fas fa-address-book"></i> ผู้ดูแลระบบ</li>
                 </a>
                 @endif
 
                 @if ($adminOnly)
                     <a href="{{url('/image_slide')}}">
-                    <li>จัดการรูปภาพในสไลด์</li></a>
+                    <li><i class="fas fa-images"></i> จัดการรูปภาพในสไลด์</li></a>
                 @endif
 
                 @if ($adminOnly)
                     <a href="#">
-                    <li>จัดการคู่มือการใช้งาน</li></a>
+                    <li><i class="fas fa-book"></i> จัดการคู่มือการใช้งาน</li></a>
                 @endif
 
             </ul>

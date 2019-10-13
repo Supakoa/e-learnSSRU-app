@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>edit teach user</h1>
+                <h1>แก้ไขข้อมูลผู้สอน</h1>
             </div>
             <div class="modal-body">
                 <form action="{{ url("/teach")."/". $user->id }}" id="formEditTeach" enctype="multipart/form-data" method="POST">

@@ -528,13 +528,14 @@
                     </form>`;
         $('#div_delete').html(form);
         Swal.fire({
-            title: 'Are you sure?',
-            text: "All Contents in Lesson will be deleted as well. (ต้องแก้คำมั้ง)",
+            title: 'ยืนยันการลบ?',
+            text: "ข้อมูลจะถูกลบออกจากฐานข้อมูล",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'ลบ',
+            cancelButtonText: 'ยกเลิก',
         }).then((result) => {
             if (result.value) {
 
