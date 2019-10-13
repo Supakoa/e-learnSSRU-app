@@ -38,13 +38,13 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="forms-footer w-100 p-4">
+                            <button class="btn-block" type="submit">เข้าสู่ระบบ</button>
+                        </div>
                         <div class="forms-body-footer">
                         <a href="{{url('/forget')}}" class="btn-forget">ลืมรหัสผ่าน</a>
                             <a href="{{ url('/register')}}" class="btn-regis">ลงทะเบียน</a>
                         </div>
-                    </div>
-                    <div class="forms-footer">
-                        <button type="submit">เข้าสู่ระบบ</button>
                     </div>
                 </form>
             </div>
