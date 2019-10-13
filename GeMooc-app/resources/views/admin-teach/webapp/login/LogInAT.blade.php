@@ -41,7 +41,7 @@
                         <div class="forms-footer w-100 p-4">
                             <button class="btn-block" type="submit">เข้าสู่ระบบ</button>
                         </div>
-                        <div class="forms-body-footer">
+                        <div class="forms-body-footer pl-4 pr-4">
                         <a href="{{url('/forget')}}" class="btn-forget">ลืมรหัสผ่าน</a>
                             <a href="{{ url('/register')}}" class="btn-regis">ลงทะเบียน</a>
                         </div>
