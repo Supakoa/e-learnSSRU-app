@@ -20,7 +20,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse w-100" id="navbarNav">
-        <ul class="navbar-nav justify-content-left w-100">
+        <ul class="navbar-nav justify-content-lg-center w-100">
             <li class="nav-item">
                 <a class="nav-link" href="{{url('std_view/home')}}">คอร์สของฉัน <span
                         class="sr-only">(current)</span></a>
@@ -35,9 +35,9 @@
                 <a class="nav-link" href="{{url('/std_view/faq')}}">คำถามที่พบบ่อย</a>
             </li>
         </ul>
-        <div class="form-inline w-100">
-            <div class="container">
-                <ul class="navbar-nav w-100 justify-content-right">
+        <div class="form-inline w-50">
+            <div class="container offset-xl-3">
+                <ul class="navbar-nav">
                     <li class="dropdown" style="display:flex;">
                         @if (auth()->user()->profile->image!=null)
                         <a href="{{url('std_view/home')}}">
