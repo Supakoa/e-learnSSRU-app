@@ -52,7 +52,7 @@ class Std_viewer extends Controller
             if($sum_course>=80){
                 $user->courses()->save($course,['percent'=>$sum_course,'status'=>1]);
             }else{
-                $user->courses()->save($course,['percent'=>$sum_course]);
+                $user->courses()->save($course,['percent'=>$sum_course,'status'=>0]);
             }
 
         }
