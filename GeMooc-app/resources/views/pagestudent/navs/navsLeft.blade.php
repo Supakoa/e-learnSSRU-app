@@ -4,6 +4,23 @@
 @section('background')
 {{url('storage/'.$course->image)}}\
 @endsection
+@if ($course->open<=date('Y-m-d')&&$course->close>=date('Y-m-d'))
+    @if (auth()->user()->course($course)->count())
+    @else
+    <div class="card mt-5 mb-5 p-3" id="formsRegiscourse">
+        <div class="text-center m-auto">
+            <h4>
+                ต้องการเรียนวิชานี้ !!
+            </h4>
+            <a href="{{url('std_view/course/'.$course->id.'/enroll')}}" class="btn ">
+                ลงทะเบียน
+            </a>
+        </div>
+    </div>
+
+    @endif
+@endif
+
 <div class="navsLeft">
     <ul>
         <li class="p-0">
@@ -88,20 +105,7 @@
         @endforeach
     </ul>
 </div>
-@if (auth()->user()->course($course)->count())
-@else
-<div class="card mt-5 p-3" id="formsRegiscourse">
-    <div class="text-center m-auto">
-        <h4>
-            ต้องการเรียนวิชานี้ !!
-        </h4>
-        <a href="{{url('std_view/course/'.$course->id.'/enroll')}}" class="btn ">
-            ลงทะเบียน
-        </a>
-    </div>
-</div>
 
-@endif
 
 
 @push('js')

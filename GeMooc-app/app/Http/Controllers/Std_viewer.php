@@ -84,11 +84,13 @@ class Std_viewer extends Controller
             return redirect()->back();
         }elseif($user->course($course)->count()){
             return redirect()->back()->with('error','You Can\'t Do That !!');
-        }else{
+        }elseif($course->open<=date('Y-m-d')&&$course->close>=date('Y-m-d')){
             //เพิ่มหน้าลงทะเบียนด้วย
             $user->courses()->attach($course);
             return redirect()->back()->with('success','Enroll !!');
 
+        }else{
+            return redirect()->back()->with('error','Timeout');
         }
     }
 
@@ -96,7 +98,11 @@ class Std_viewer extends Controller
     {
         $course = $content->lesson->course;
         if(auth()->user()->course($course)->get()->isEmpty()){
-            return redirect()->back()->with('error','Please Enroll Course');
+            if($course->open<=date('Y-m-d')&&$course->close>=date('Y-m-d')){
+                return redirect()->back()->with('error','Please Enroll Course');
+            }else{
+                return redirect()->back()->with('error','Timeout');
+            }
         }
         if( $content->type == 1 ){
             $record = record::where('content_id', $content->id)->where('user_id', auth()->user()->id)->first();
