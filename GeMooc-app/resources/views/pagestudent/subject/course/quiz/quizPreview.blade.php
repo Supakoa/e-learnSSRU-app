@@ -8,11 +8,11 @@
 @endpush
 
 @section('mainContent')
-<div class="containerContent">
-    <div class="sectionNavs">
+<div class="containerContent row">
+    <div class="sectionNavs col-xl-3">
         What the Fuck {{-- @include('pagestudent.navs.navsLeft',[$lessons]) --}}
     </div>
-    <div class="containerQuiz">
+    <div class="containerQuiz col-xl-9">
         <div class="cardPreview p-3">
             <h4 class="text-center border-bottom w-50 m-auto border-dark p-1" >
                 Subject name.

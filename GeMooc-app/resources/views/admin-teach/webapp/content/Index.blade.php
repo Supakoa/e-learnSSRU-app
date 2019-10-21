@@ -51,7 +51,7 @@
             $teach = auth()->user()->type_user == 'teach';
             @endphp
 
-            <ul class="nav-links-left">
+            <ul class="nav-links-left pl-0">
                 @if ($both)
                 <a href="{{url('subject')}}">
                     <li><i class="fas fa-book-medical"></i> วิชา</li>

@@ -11,11 +11,11 @@
 ผลคะแนน {{$quiz->name}} | MOOC SSRU
 @endsection
 @section('mainContent')
-<div class="containerContent">
-    <div class="sectionNavs">
+<div class="containerContent row">
+    <div class="sectionNavs col-xl-3">
         @include('pagestudent.navs.navsLeft',[$lessons])
     </div>
-    <div class="sectionContent">
+    <div class="sectionContent col-xl-9">
         <div class="card" style="background:#ECECEC">
             <div class="head-card">
                 <p>ภาพรวมของแบบฝึกหัด</p>
