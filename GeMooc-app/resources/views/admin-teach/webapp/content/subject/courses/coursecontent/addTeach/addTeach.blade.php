@@ -31,7 +31,7 @@ $adminOnly = auth()->user()->type_user == 'admin';
                 <p class="pl-2 pt-3">ตารางผู้สอน</p>
             </div>
             <div class="col-md-2 offset-md-4 pl-3 pt-3">
-                <button class="" data-toggle="modal" data-target="#Add_user"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
+                <button class="btn-add m-2" data-toggle="modal" data-target="#Add_user"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
             </div>
         </div>
         <div class="row">

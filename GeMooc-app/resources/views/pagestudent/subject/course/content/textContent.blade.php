@@ -7,11 +7,11 @@
 @endpush
 
 @section('mainContent')
-<div class="containerContent">
-    <div class="sectionNavs">
+<div class="containerContent row">
+    <div class="sectionNavs col-xl-3">
         @include('pagestudent.navs.navsLeft',[$now_content,$lessons])
     </div>
-    <div class="sectionContent">
+    <div class="sectionContent col-xl-9">
         <div class="card">
             <div class="head-card">
                 <p>{{$now_content->name}}</p>
@@ -24,7 +24,7 @@
                 </div>
                 <form action="{{url('std_view/course/content/'.$article->content->id.'/submit_article')}}" method="post" id="form_article">
                     @csrf
-                    <div class="offset-10 col-2">
+                    <div class="text-right p-3">
                         <button class="btn btn-success" type="submit">อ่านแล้ว</button>
                     </div>
                 </form>

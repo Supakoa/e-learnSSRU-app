@@ -6,7 +6,7 @@
 @endpush
 
 @section('mainContent')
-<div class="containerContent">
+<div class="containerContent row">
     @php
         // decode json
         $content = json_decode($content);
@@ -18,10 +18,10 @@
         // $lessons = json_decode($lesson);
         // $course = json_decode($course);
     @endphp
-    <div class="sectionNavs">
+    <div class="sectionNavs col-xl-3">
         @include('pagestudent.navs.navsLeft',[$now_content,$lessons])
     </div>
-    <div class="sectionContent">
+    <div class="sectionContent col-xl-9">
         <div class="head-text">
             <p class="text-justify text-center">{{ $video->name }}</p>
         </div>

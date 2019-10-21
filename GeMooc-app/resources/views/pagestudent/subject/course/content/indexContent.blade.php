@@ -7,11 +7,11 @@
 @endpush
 
 @section('mainContent')
-<div class="containerContent">
-    <div class="sectionNavs">
+<div class="containerContent row">
+    <div class="sectionNavs col-xl-3">
         @include('pagestudent.navs.navsLeft',[$lessons])
     </div>
-    <div class="sectionContent">
+    <div class="sectionContent col-xl-9">
         <div class="card">
             <div class="head-card">
                 <p>{{$course->name}}</p>
