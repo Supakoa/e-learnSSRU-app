@@ -23,15 +23,16 @@ $question_number = $quiz->questions->count();
 
             </script>
 
-            <div class="quizChoice p-2">
-                @foreach ($quiz->questions as $key => $question)
-                <div>
-                    <li><a class="question_number" href="#question_{{$question->id}}"
+
+            <nav aria-label="Page navigation example " class="quizChoicez" style="background:inherit">
+                <ul class="pagination">
+                    @foreach ($quiz->questions as $key => $question)
+                    <li class="page-item"><a class="page-link question_number" href="#question_{{$question->id}}"
                             id="question_{{$question->id}}_number" role="button" aria-expanded="true"
                             aria-controls="question_{{$question->id}}">{{$key+1}}</a></li>
-                </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </ul>
+            </nav>
         </ul>
         <div class="d-flex">
             <div class="p-0 m-auto">
