@@ -12,7 +12,7 @@ install XAMPP on windown / MAMP on macOS
 
 upload file images name "no_image" in storage/app/public/cover_image_subject
 
-after install
+# after install
 -----------------------------------------------
 
 - cd GeMooc-app/
