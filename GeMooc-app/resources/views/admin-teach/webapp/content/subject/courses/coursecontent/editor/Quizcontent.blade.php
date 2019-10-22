@@ -35,7 +35,7 @@
                 <i class="fas fa-tachometer-alt"></i>
             </button>
         </div>
-        <div class="col-md-4 offset-4 text-right">
+        <div class="col-md-6 offset-md-2 text-right">
             <button class="btn-edit-quiz " data-toggle="modal" data-target="#edit_Modal">
                 <i class="fas fa-pencil-alt"></i>
             </button>
@@ -45,7 +45,7 @@
             </button>
 
             <a href="{{url('quiz/export/'.$quiz->id)}}"><button class="btnExport">Export</button></a>
-            <button class="btn-import-quiz btnImport" data-toggle="modal" data-target="#import_Modal">
+            <button class="btn-import-quiz btnImport " data-toggle="modal" data-target="#import_Modal">
                 Import
             </button>
         </div>
@@ -82,10 +82,7 @@
                     </dl>
                     <div class="row">
                         @foreach ($question->answers as $key => $answer )
-                        <div class="col-md-12">
-                            {{-- <input type="radio" name="{{$answer->question->id}}" @if ($answer->correct)
-                            checked style="background-color:green;"
-                            @endif id="{{$answer->id}}" value="{{$answer->id}}" disabled> --}}
+                        <div class="col-md-6">
                             <p class="text-justify p-2" for="{{$answer->id}}" @if ($answer->correct)
                                 style="color:#009900;"
                                 @endif>{{$key+1}}).{{$answer->name}}</p>

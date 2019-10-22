@@ -23,11 +23,8 @@ $question_number = $quiz->questions->count();
 
             </script>
 
-            {{-- <li><a class="question_next" href="#"><i class="fas fa-chevron-left"></i></a></li> --}}
-
             <div class="quizChoice p-2">
                 @foreach ($quiz->questions as $key => $question)
-
                 <div>
                     <li><a class="question_number" href="#question_{{$question->id}}"
                             id="question_{{$question->id}}_number" role="button" aria-expanded="true"
@@ -35,8 +32,6 @@ $question_number = $quiz->questions->count();
                 </div>
                 @endforeach
             </div>
-            {{-- <li><a class=" question_prev" href="#"><i class="fas fa-chevron-right"></i></a></li> --}}
-
         </ul>
         <div class="d-flex">
             <div class="p-0 m-auto">
@@ -89,7 +84,7 @@ $question_number = $quiz->questions->count();
                                 </dl>
                                 <dl class="row p-3">
                                     @foreach ($question->answers as $answer)
-                                    <dd class="col-md-12">
+                                    <dd class="col-md-12 text-truncate">
                                         <div class="form-check form-check-inline pl-3">
                                             <input class="form-check-input answer_radio" type="radio"
                                                 value="{{$answer->id}}" name="question_{{$question->id}}"

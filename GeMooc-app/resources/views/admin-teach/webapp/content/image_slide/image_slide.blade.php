@@ -27,7 +27,7 @@
                 <div class="image_slide">
                     <img src="{{ $faq[$i]->image }}" class="mt-5" id="imageShow" width='100%' height="auto" />
                     <button type="button" class="x_button" onclick="delete_faq({{$faq[$i]->id}})">
-                       <i class="fa fa-window-close" aria-hidden="true"></i>
+                        <i class="fa fa-window-close" aria-hidden="true"></i>
                     </button>
                 </div>
         </div>
@@ -39,20 +39,18 @@
     <div class="text-center">
         <h4>ข่าวประชาสัมพันธ์</h4>
     </div>
-    <div class="row">
+    <div class="container-fluid row h-100">
         {{-- main --}}
         @if (isset($news))
-        @for ($i = 0; $i< sizeof($news); $i++) <div class="col-3">
-
-                <div class="image_slide">
-                        <a href="{{$news[$i]->url}}" target="_blank">
-                    <img src="{{ $news[$i]->image }}" class="mt-5" id="imageShow" width='100%' height="auto" />
+        @for ($i = 0; $i< sizeof($news); $i++) <div class="col-md-4">
+            <div class="image_slide">
+                <a href="{{$news[$i]->url}}" class="p-0" target="_blank">
+                    <img src="{{ $news[$i]->image }}" class="rounded" id="imageShow" width='100%' height="auto" />
                 </a>
-                    <button type="button" class="x_button" onclick="delete_news({{$news[$i]->id}})">
-                       <i class="fa fa-window-close" aria-hidden="true"></i>
-                    </button>
-                </div>
-
+                <button type="button" class="x_button" onclick="delete_news({{$news[$i]->id}})">
+                    <i class="fa fa-window-close" aria-hidden="true"></i>
+                </button>
+            </div>
     </div>
     @endfor
     @endif
@@ -80,7 +78,6 @@
 <div id="div_delete"></div>
 @endsection
 @push('script')
-{{-- <script src="{{ asset('node_modules/CEFstyle/guidebook/view/index.js')}}"></script> --}}
 <script>
     $(document).ready(function () {
         $("#image_url").hide();
