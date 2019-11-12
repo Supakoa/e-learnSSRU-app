@@ -28,9 +28,7 @@
     <p class="nameSub" id="subject_name">ชื่อวิชา</p>
     <p class="statusSub">เปิดรับสมัคร</p>
     <a class="btn" id="btn_to_course" href="">
-
         รายละเอียด
-
     </a>
 
 </div>
