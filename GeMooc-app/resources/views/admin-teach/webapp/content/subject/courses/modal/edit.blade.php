@@ -65,13 +65,13 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="lession">บทเรียน</label>
-                                        <textarea class="form-control" name="" id="lession" rows="4" disabled>
-                                                @foreach ($course->lessons as $lesson)
-                                                    {{$lesson->name}}
-                                                @endforeach
-                                        </textarea>
+                                    <label for="lession">บทเรียน</label>
+                                    <div class="form-group h-50 overflow-auto">
+                                        <ul class="list-group list-group-flush" id="lession" >
+                                            @foreach ($course->lessons as $lesson)
+                                                <li class="list-group-item">- {{$lesson->name}}</li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
