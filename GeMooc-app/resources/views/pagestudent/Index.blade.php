@@ -9,7 +9,7 @@
 <div class="bg-blur"></div>
 
 <nav class="navbar navbar-expand-lg navbar-light" id="studentNav">
-    <a class="navbar-brand p-0 m-0" href="#">
+    <a class="navbar-brand p-0 ml-5" href="#">
         <img src="{{url('images/newLogoleftBorder.png')}}" width="150px" height="120px" class="m-0 p-0" alt="">
     </a>
     <script>
@@ -20,7 +20,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse w-100" id="navbarNav">
-        <ul class="navbar-nav justify-content-lg-center w-100">
+        <ul class="navbar-nav justify-content-lg-start ml-3 w-100">
             <li class="nav-item">
                 <a class="nav-link" href="{{url('std_view/home')}}">คอร์สของฉัน <span
                         class="sr-only">(current)</span></a>
@@ -35,7 +35,7 @@
                 <a class="nav-link" href="{{url('/std_view/faq')}}">คำถามที่พบบ่อย</a>
             </li>
         </ul>
-        <div class="form-inline w-50">
+        <div class="form-inline w-50 mr-3">
             <div class="container offset-xl-3">
                 <ul class="navbar-nav">
                     <li class="dropdown" style="display:flex;">
@@ -54,9 +54,9 @@
                             <span class="text-justify">{{ auth()->user()->name }}</span>
                         </a>
                         <div class="dropdown-menu container-fluid w-100" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item pl-5" href="#">แก้ไขโปรไฟล์</a>
+                            <a class="dropdown-item pl-5 ml-3" href="{{url('std/profile')}}"><i class="fas fa-user-alt"></i> แก้ไขโปรไฟล์</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item pl-5" href="#" onclick="$('#logout-form').submit()">ออกจากระบบ</a>
+                            <a class="dropdown-item pl-5 ml-3" href="#" onclick="$('#logout-form').submit()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
                             </form>

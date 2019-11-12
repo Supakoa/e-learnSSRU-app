@@ -63,7 +63,7 @@ Route::get('/forget', function(){
 Route::get('std/login/workshop', function(){
     return view('pagestudent.index.Index');
 });
-Route::get('std/login/workshop', function(){
+Route::get('std/profile', function(){
     return view('pagestudent.profile.Profile');
 });
 

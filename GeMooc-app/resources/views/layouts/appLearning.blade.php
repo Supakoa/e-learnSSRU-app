@@ -50,6 +50,7 @@
 </head>
 
 <body>
+    @stack('css')
         <style>
                 .bg-blur {
                     background-image: url("@yield('background',url('images/BG.jpg'))");

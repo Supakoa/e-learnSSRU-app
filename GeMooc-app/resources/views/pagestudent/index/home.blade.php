@@ -101,7 +101,7 @@
                 $percent = auth()->user()->progresses;
                 @endphp
                 @if ($coursesUnFinish->count() == 0)
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger text-light fade show" style="letter-spacing:2px;" role="alert">
                     คุณยังไม่มีคอร์สเรียนในคณะนี้. <strong><a href="{{url('std_view/subject')}}">คลิกที่นี่
                             !</a></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -143,7 +143,7 @@
         <div class="row">
             <div class="col-md-12 p-5">
                 @if ($coursesFinish->count() == 0)
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert alert-warning text-light alert-dismissible fade show" style="letter-spacing:2px;"  role="alert">
                     คุณยังไม่มีคอร์สที่เรียนสำเร็จในคณะนี้.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
