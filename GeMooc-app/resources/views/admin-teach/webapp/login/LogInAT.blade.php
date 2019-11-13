@@ -57,18 +57,11 @@
     </div> --}}
 </div>
 <div id="section2">
-    <div class="container-header">
-        คอร์สเรียนออนไลน์ฟรีที่สวนสุนันทา | www.mooc.ssru.ac.th
-        <div class="container-underline"></div>
-    </div>
-    <div class="container-content">
-        <p>
-            มาร่วมฝึกทักษะ ความคิด ความสามารถ และสติปัญญา
-        </p>
-        <p>
-            เพื่อพัฒนาศักยภาพของตนเอง
-        </p>
-    </div>
+        <blockquote class="blockquote container p-5">
+                <p class="mb-0 text-center">คอร์สเรียนออนไลน์ฟรีที่สวนสุนันทา | www.mooc.ssru.ac.th</p>
+                <hr>
+                <footer class="blockquote-footer pl-4">มาร่วมฝึกทักษะ ความคิด ความสามารถ และสติปัญญา <cite title="Source Title">เพื่อพัฒนาศักยภาพของตนเอง</cite></footer>
+        </blockquote>
 </div>
 {{-- วิชา --}}
 <div id="section3">
@@ -86,9 +79,9 @@ $news = DB::table('image_slides')->where('type', 'news')->get();
             <div class="carousel-inner">
                     @foreach ($news as$key=>$news)
 
-                    <div class="carousel-item {{$key==0 ? 'active' : ''}}">
+                    <div class="carousel-item {{$key==0 ? 'active' : ''}} w-100 h-100 rounded">
                             <a href="{{$news->url}}" target="_blank">
-                            <img src="{{url(''.$news->image)}}" class="d-block w-100" alt="...">
+                            <img src="{{url(''.$news->image)}}" class="d-block rounded" width="100%" height="700px"  alt="...">
                         </a>
                   <div class="carousel-caption d-none d-md-block">
                     {{-- <h5>First slide label</h5>

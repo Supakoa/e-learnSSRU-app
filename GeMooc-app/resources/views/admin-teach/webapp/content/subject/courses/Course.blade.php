@@ -63,12 +63,12 @@ return "$strDay $strMonthThai $strYear";
             <div class="card-subject">
                 <div class="card-subject-header">
                     @if ($course->status)
-                    <div class="status-bar" style="background: #6BB844;"></div>
+                    <div class="status-bar rounded" style="background: #6BB844;"></div>
                     @else
-                    <div class="status-bar" style="background: red;"></div>
+                    <div class="status-bar rounded" style="background: red;"></div>
                     @endif
 
-                    <img src="{{url('storage/'.$course->image)}}" class="shadow" width="100%" height="100%">
+                    <img src="{{url('storage/'.$course->image)}}" class="shadow rounded" width="100%" height="100%">
                 </div>
                 <div class="card-subject-body">
                     <div class="card-content-header">
@@ -77,10 +77,10 @@ return "$strDay $strMonthThai $strYear";
                     <div class="card-content-body">
                         <ul class="list-unstyled">
                             <li>
-                                บทเรียน {{$course->lessons->count()}} บท
+                                บทเรียน : {{$course->lessons->count()}} บท
                             </li>
                             <li>
-                                เปิดรับสมัคร {{$course->students->count()}}/{{$course->total}} คน
+                                เปิดรับสมัคร : {{$course->students->count()}}/{{$course->total}} คน
                             </li>
                             <li>
                                 เปิดรับ {{formatDateThat($course->open)}} - {{formatDateThat($course->close)}}
@@ -160,7 +160,14 @@ return "$strDay $strMonthThai $strYear";
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                            <input type="file" class="form-control-file input-modal" name="cover_image" id="cover_image" aria-describedby="inputGroupFileAddon01">
+                                            <label class="custom-file-label" for="cover_image">เพิ่มรูปคอร์ส</label>
+                                        </div>
+                                    </div>
+                                        <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="cover_image">รูปภาพ</label>
                                         <input type="file" class=" form-control input-modal" name="cover_image" id="cover_image">
@@ -184,36 +191,11 @@ return "$strDay $strMonthThai $strYear";
                                                 *หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจตุรัส
                                                 เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณพอดี
                                             </p>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-md-6 p-5">
-                            <div class="bg-addimg">
-                                <input type="file" name="cover_image" hidden id="">
-                                <button class="btn-addimg"  type="button">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div> --}}
                     </div>
-                    {{-- อันเก่า --}}
-                    {{-- <input type="hidden" name="sub_id" value="{{$subject->id}}">
-                    <div class="form-group">
-                        <label for="name">Course Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Course Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="detail">Detail</label>
-                        <input type="text" class="form-control" name="detail" placeholder="Course Detail">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Cover Image</label>
-                        <input type="file" class="form-control btn" style="padding:3px" name="cover_image"
-                            placeholder="Image">
-                    </div> --}}
-                    {{-- อันเก่า --}}
                 </form>
             </div>
             <hr class=" w-75 mb-4" >
@@ -287,7 +269,7 @@ return "$strDay $strMonthThai $strYear";
 
             case 'file':
                 $('#content_url').html(
-                    '<label for="url">File Video</label><input type="file" class="form-control input-modal" name="videoFile" id="videoFile" required>'
+                    '<label for="url">File Video</label><input type="file" class="form-control-file input-modal" name="videoFile" id="videoFile" required>'
                     );
                 break;
         }

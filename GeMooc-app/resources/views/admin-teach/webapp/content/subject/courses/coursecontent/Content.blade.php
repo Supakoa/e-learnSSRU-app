@@ -334,31 +334,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="name">Content type</label>
-                        <select name="type" id="content_type" class="form-control" required>
-                            <option value="" disabled selected>Type</option>
-                            <option value="1">Video</option>
-                            <option value="2">Text</option>
-                            <option value="3">Quiz</option>
-                        </select>
-
-                        <div id="typeVideo">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input" type="radio" name="videoType" id="videoTypeYoutube" value="youtube" >
-                                <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input" type="radio" name="videoType" id="videoTypeFile" value="file" >
-                                <label for="videoTypeFile" class="custom-control-label">File</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group" id="content_url">
-
-                    </div> --}}
-
                 </form>
             </div>
             <div class="modal-footer">

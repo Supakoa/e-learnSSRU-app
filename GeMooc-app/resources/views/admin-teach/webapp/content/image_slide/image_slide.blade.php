@@ -16,14 +16,14 @@
 </div>
 
 <div class="card bg-card p-5">
-    <div class="container" display="inline">
+    <div class="container-fluid" display="inline">
         <div class="text-center">
             <h4>คำถามที่พบบ่อย</h4>
         </div>
         <div class="row">
             {{-- main --}}
-            @if (isset($faq))
-            @for ($i = 0; $i< sizeof($faq); $i++) <div class="col-3">
+            @if (sizeof($faq) != 0)
+            @for ($i = 0; $i< sizeof($faq); $i++) <div class="col-md-4">
                 <div class="image_slide">
                     <img src="{{ $faq[$i]->image }}" class="mt-5" id="imageShow" width='100%' height="auto" />
                     <button type="button" class="x_button" onclick="delete_faq({{$faq[$i]->id}})">
@@ -31,19 +31,27 @@
                     </button>
                 </div>
         </div>
-
         @endfor
+
+        @else
+        <div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+                <strong>ยังไม่มีภาพคำถามที่พบบ่อย</strong> เลือกประเภทของภาพด้านล่างแล้วอัพโหลด
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
         @endif
     </div>
+    
     <hr>
     <div class="text-center">
         <h4>ข่าวประชาสัมพันธ์</h4>
     </div>
-    <div class="container-fluid row h-100">
+    <div class="container-fluid row overflow-auto h-100">
         {{-- main --}}
-        @if (isset($news))
+        @if (sizeof($news) != 0)
         @for ($i = 0; $i< sizeof($news); $i++) <div class="col-md-4">
-            <div class="image_slide">
+            <div class="image_slide m-3">
                 <a href="{{$news[$i]->url}}" class="p-0" target="_blank">
                     <img src="{{ $news[$i]->image }}" class="rounded" id="imageShow" width='100%' height="auto" />
                 </a>
@@ -53,23 +61,61 @@
             </div>
     </div>
     @endfor
+    @else
+    <div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+            <strong>ยังไม่มีภาพข่าวประชาสัมพันธ์</strong> เลือกประเภทของภาพด้านล่างแล้วอัพโหลดพร้อมลิ้งค์ที่อยู่
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
     @endif
 </div>
+
 <hr>
 <form action="{{url("/image_slide")}}" enctype="multipart/form-data" method="post">
     @csrf
     @method('POST')
-    <select name="type" id="image_type" required>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="image_type">ประเภท</label>
+        </div>
+        <select class="custom-select" id="image_type">
+            <option value="" disabled selected>เลือกประเภทของภาพ</option>
+            <option value="news">ข่าวประชาสัมพันธ์</option>
+            <option value="faq">คำถามที่พบบ่อย</option>
+        </select>
+    </div>
+
+    {{-- <select name="type" id="image_type" required>
         <option value="" disabled selected>เลือกประเภทของภาพ</option>
         <option value="news">ข่าวประชาสัมพันธ์</option>
         <option value="faq">คำถามที่พบบ่อย</option>
-    </select>
+    </select> --}}
 
-    <input type="file" name="image" id="" accept="image/x-png,image/gif,image/jpeg" />
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupImage">Upload</span>
+        </div>
+        <div class="custom-file">
+            <input type="file" name="image" class="custom-file-input" id="inputGroupImage"
+                aria-describedby="inputGroupImage" accept="image/x-png,image/gif,image/jpeg">
+            <label class="custom-file-label" for="inputGroupImage">Choose file</label>
+        </div>
+    </div>
+    {{-- <input type="file" name="image" id="" accept="image/x-png,image/gif,image/jpeg" /> --}}
 
-    <input type="text" name="url" id="image_url" placeholder="กรอก URL ของข่าว">
+    <div class="input-group" id="image_url">
+        <div class="input-group-append">
+            <span class="input-group-text">กรอก URL ของข่าว</span>
+        </div>
+        <input type="text" class="form-control" name="url" id="image_url" aria-label="">
+    </div>
+    <br>
 
-    <button type="submit" class="btn btn-primary" btn-lg btn-block>save</button>
+    {{-- <input type="text" name="url" id="image_url" placeholder="กรอก URL ของข่าว"> --}}
+
+    <button type="submit" class="btn btn-primary float-right btn-md">บันทึก</button>
 </form>
 </div>
 </div>
