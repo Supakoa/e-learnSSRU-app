@@ -16,15 +16,13 @@ $question_number = $quiz->questions->count();
 @section('mainContent')
 <div class="containerContent">
     <div class="sectionQuiz">
-        <ul class=" text-center container">
+        <ul class=" text-center container mb-0">
             <input type="hidden" name="quiz_time" id="quiz_time" value="{{$quiz->time*60}}">
             <script>
                 questions = [];
 
             </script>
-
-
-            <nav aria-label="Page navigation example " class="quizChoicez" style="background:inherit">
+            <nav aria-label="Page navigation example " class="quizChoicez " style="background:inherit">
                 <ul class="pagination">
                     @foreach ($quiz->questions as $key => $question)
                     <li class="page-item"><a class="page-link question_number" href="#question_{{$question->id}}"

@@ -48,7 +48,7 @@
             </a>
 
             <div class="collapse" id="lesson_{{$lesson->id}}">
-                <ul>
+                <ul class="border rounded">
                     @foreach ($lesson->contents as $content)
                     @php
 
@@ -63,7 +63,7 @@
                             $sum_progress += 0;
                         }
                     @endphp
-                    <li id="content_{{$content->id}}">
+                    <li id="content_{{$content->id}}" class="border-0">
                         @if ($content->type == 1)
                         <a href="{{url('std_view/course/content/'.$content->id)}}" class="btn-block">{{$content->name}}
                             <i class="fas fa-video"></i></a>

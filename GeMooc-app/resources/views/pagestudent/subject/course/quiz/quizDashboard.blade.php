@@ -24,10 +24,10 @@
                 <div class="row">
                     <div class="col-md-6">
                             <div class="lavelChart">
-                                    <div class="head-card">
+                                    <div class="head-card mb-2">
                                         <p class="text-left">เกณฑ์คะแนน</p>
                                     </div>
-                                    <div class="charts container m-auto">
+                                    <div class="charts container m-auto h-100">
                                             @php
                                             $quiz_time = $quiz->time;
                                             $quiz_time_min  =  (int)($quiz_time);
@@ -55,13 +55,25 @@
                                                 //dd($scores->wherePivot('score','>',0)->wherePivot('score','<',20));
                                                 @endphp
                                         <span class="p-3">0-25</span>
-                                        <div class="charts__chart chart--red rounded" data-percent="{{ round($percen_show_25,2)}}%" style="width: {{$percen_show_25}}%"></div>
-                                        <span class="p-3">26-50</span>
-                                        <div class="charts__chart chart--yellow rounded" data-percent="{{ round($percen_show_50,2)}}%" style="width: {{$percen_show_50}}%"></div>
-                                        <span class="p-3">51-75</span>
-                                        <div class="charts__chart chart--blue rounded" data-percent="{{ round($percen_show_75,2)}}%" style="width: {{$percen_show_75}}%"></div>
-                                        <span class="p-3">76-100</span>
-                                        <div class="charts__chart chart--green rounded" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%"></div>
+                                            <div class="progress mb-4" style="height: 20px;background:inherit;">
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: {{$percen_show_25}}%" aria-valuenow="{{ round($percen_show_25,2)}}" aria-valuemin="0" aria-valuemax="100">{{ round($percen_show_25,2)}}%</div>
+                                            </div>
+
+                                        <span class="p-3 ">26-50</span>
+                                        <div class="progress mb-4" style="height: 20px;background:inherit;">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: {{$percen_show_50}}%" aria-valuenow="{{ round($percen_show_50,2)}}" aria-valuemin="0" aria-valuemax="100">{{ round($percen_show_50,2)}}%</div>
+                                            </div>
+                                        {{-- <div class="charts__chart chart--yellow rounded" data-percent="{{ round($percen_show_50,2)}}%" style="width: {{$percen_show_50}}%"></div> --}}
+                                        <span class="p-3 ">51-75</span>
+                                        <div class="progress mb-4" style="height: 20px;background:inherit;">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: {{$percen_show_75}}%" aria-valuenow="{{ round($percen_show_75,2)}}" aria-valuemin="0" aria-valuemax="100">{{ round($percen_show_75,2)}}%</div>
+                                            </div>
+                                        {{-- <div class="charts__chart chart--blue rounded" data-percent="{{ round($percen_show_75,2)}}%" style="width: {{$percen_show_75}}%"></div> --}}
+                                        <span class="p-3 ">76-100</span>
+                                        <div class="progress" style="height: 20px;background:inherit;">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: {{$percen_show_100}}%" aria-valuenow="{{ round($percen_show_100,2)}}" aria-valuemin="0" aria-valuemax="100">{{ round($percen_show_100,2)}}%</div>
+                                            </div>
+                                        {{-- <div class="charts__chart chart--green rounded" data-percent="{{ round($percen_show_100,2)}}%" style="width: {{$percen_show_100}}%"></div> --}}
                                     </div><!-- /.charts -->
                                 </div>
                     </div>

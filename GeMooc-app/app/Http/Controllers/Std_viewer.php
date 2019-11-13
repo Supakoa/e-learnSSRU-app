@@ -87,7 +87,7 @@ class Std_viewer extends Controller
         }elseif($course->open<=date('Y-m-d')&&$course->close>=date('Y-m-d')){
             //เพิ่มหน้าลงทะเบียนด้วย
             $user->courses()->attach($course);
-            return redirect()->back()->with('success','Enroll !!');
+            return redirect()->back()->with('success','ลงทะเบียนเรียบร้อย');
 
         }else{
             return redirect()->back()->with('error','Timeout');

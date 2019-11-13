@@ -47,7 +47,7 @@ if($subject->type_video!='file'){
                 <div class="col-md-4">
                     <img class=" rounded" src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="auto">
                 </div>
-                <div class="col-md-8 table-responsive">
+                <div class="col-md-8 table-responsive p-2">
                     <table class="bg-light table table-borderless table-striped">
                         <thead>
                             <tr>

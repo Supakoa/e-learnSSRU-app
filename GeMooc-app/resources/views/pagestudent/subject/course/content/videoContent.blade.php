@@ -14,9 +14,6 @@
         $userId = json_decode($userId);
         $issetRecord = json_decode($issetRecord);
         $record = json_decode($record);
-        // $now_content = json_decode($now_content);
-        // $lessons = json_decode($lesson);
-        // $course = json_decode($course);
     @endphp
     <div class="sectionNavs col-xl-3">
         @include('pagestudent.navs.navsLeft',[$now_content,$lessons])
@@ -53,28 +50,6 @@
             {{-- record bar --}}
             <ul class="navProgress" id="navProgress"></ul>
         </div>
-        {{--
-            [test case] send form refresh
-        --}}
-        {{-- <form action="/record" method="post">
-            @csrf
-            @method('post')
-            <input id="recordItem" name="muuwan" type="hidden" value="sutima">
-            <button onclick="takeRecord()" type="button" class="btn btn-outline-primary">takeRecord</button>
-            <button type="submit" class="btn btn-outline-primary">send</button>
-        </form> --}}
-
-        {{--
-            [test case] send to record bar
-        --}}
-        {{-- <form action="{{ url('/callRecordBar') }}" method="post">
-            @csrf
-            @method('POST')
-
-            <input type="hidden" name="tag" id="tag" value="">
-            <button type="submit">callRecordBar</button>
-        </form> --}}
-
     </div>
 </div>
 @endsection
