@@ -79,27 +79,47 @@ class ProfileController extends Controller
      */
     public function update(Request $request, profile $profile)
     {
-        $d1 = request()->validate([
+        $validate = request()->validate([
             'name' => 'required',
-            // 'email' => 'required',
+            'email' => 'required',
+            'con_email' => 'required',
             'phone_number' => 'required',
         ]);
 
         // $d2 = request()->validate([
         //     'description' => 'required',
         // ]);
+        if($validate['email']==$validate['con_email']){
+            if($validate['email']!=auth()->user()->email){
+                if(auth()->user()->isUniqueEmail($validate['email'])){
+                    $user = auth()->user()->update([
+                        'name' => $validate['name'],
+                        'email' => $validate['email'],
+                        'phone_number' => $validate['phone_number'],
+                    ]);
+                }else{
+                    return redirect()->back()->with('error', 'อีเมลนี้ไม่สามารถใช้ได้.');
 
-        $a = auth()->user()->update([
-            'name' => $d1['name'],
-            // 'email' => $d1['email'],
-            'phone_number' => $d1['phone_number'],
-        ]);
+                }
 
-        // $b = auth()->user()->profile->update([
-        //     'description' => $d2['description'],
-        // ]);
+            }else{
+                $user = auth()->user()->update([
+                    'name' => $validate['name'],
+                    'phone_number' => $validate['phone_number'],
+                ]);
+            }
 
-        return redirect()->back()->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+
+            // $b = auth()->user()->profile->update([
+            //     'description' => $d2['description'],
+            // ]);
+
+            return redirect()->back()->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+        }else{
+            return redirect()->back()->with('error', 'อีเมลไม่ตรงกัน.');
+        }
+
+
     }
 
     public function updatePhoto(Request $request)

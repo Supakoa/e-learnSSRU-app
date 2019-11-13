@@ -60,13 +60,11 @@ Route::get('/forget', function(){
 // Route::get('test', 'test@export');
 // Route::post('import', 'test@import');
 
-Route::get('std/login/workshop', function(){
-    return view('pagestudent.index.Index');
-});
-Route::get('std/profile', function(){
+
+Route::get('std_view/profile', function(){
     return view('pagestudent.profile.Profile');
 });
-
+Route::post('std_view/profile/upddateProfile','ProfileController@update');
 
 // use File;
 Auth::routes();

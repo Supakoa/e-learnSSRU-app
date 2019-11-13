@@ -1,5 +1,7 @@
 @extends('pagestudent.Index')
-
+@section('title')
+แก้ไขข้อมูลส่วนตัว | MOOC SSRU
+@endsection
 @push('css')
     <style>
     #userProfileLeftImg{
@@ -41,42 +43,41 @@
                 aria-hidden="true"></i></a>
     </div>
     <div class="container-fluid w-100 bg-light rounded p-3" id="userProfileRight">
+    <form action="{{url('std_view/profile/upddateProfile')}}" method="post">
+        @csrf
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="fName">ชื่อ</label>
-                    <input type="text" class="form-control" id="fName" placeholder="First Name">
+                <input type="text" class="form-control" id="Name" value="{{auth()->user()->name}}" name="name"placeholder="First Name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="lName">นามสกุล</label>
-                    <input type="text" class="form-control" id="lName" placeholder="Last Name">
+                    <label for="phone_number">เบอร์โทรศัพท์</label>
+                <input type="text" class="form-control" name="phone_number" value="{{auth()->user()->phone_number}}" id="phone_number" placeholder="Your Phone number">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="eMail">อีเมล</label>
-                    <input type="email" class="form-control" id="eMail" placeholder="Your E-mail">
+                    <input type="email" class="form-control" name="email" id="eMail" value="{{auth()->user()->email}}" placeholder="Your E-mail">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="pass">รหัสผ่าน</label>
-                    <input type="text" class="form-control" id="pass" placeholder="Your Password">
+                    <label for="con_eMail">ยืนยันอีเมล</label>
+                    <input type="email" class="form-control" name="con_email" id="con_eMail" value="{{auth()->user()->email}}" placeholder="Confirm Your E-mail">
                 </div>
             </div>
-            <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="phone">เบอร์โทรศัพท์</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Your Phone number">
-                    </div>
-                </div>
+
+
             <div class="col-md-12">
-                <button class="btn-primary btn float-right">
+                <button type="submit" class="btn-primary btn float-right">
                     บันทึก
                 </button>
             </div>
+        </form>
         </div>
     </div>
 </div>

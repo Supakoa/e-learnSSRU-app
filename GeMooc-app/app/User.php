@@ -103,4 +103,8 @@ class User extends Authenticatable
     public function records(){
         return $this->belongsToMany('App\content', 'records')->withPivot('record','percent')->withTimestamps();
     }
+    public function isUniqueEmail($email)
+    {
+        return 0 == $this->where('email',$email)->get()->count();
+    }
 }
