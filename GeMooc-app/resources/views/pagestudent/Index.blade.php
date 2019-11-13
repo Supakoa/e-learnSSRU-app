@@ -54,7 +54,7 @@
                             <span class="text-justify">{{ auth()->user()->name }}</span>
                         </a>
                         <div class="dropdown-menu container-fluid w-100" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item pl-5 ml-3" href="{{url('std/profile')}}"><i class="fas fa-user-alt"></i> แก้ไขโปรไฟล์</a>
+                            <a class="dropdown-item pl-5 ml-3" href="{{url('std_view/profile')}}"><i class="fas fa-user-alt"></i> แก้ไขโปรไฟล์</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item pl-5 ml-3" href="#" onclick="$('#logout-form').submit()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
