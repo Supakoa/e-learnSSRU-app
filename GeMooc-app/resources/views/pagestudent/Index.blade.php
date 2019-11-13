@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light" id="studentNav">
     <a class="navbar-brand p-0 ml-5" href="#">
-        <img src="{{url('images/newLogoleftBorder.png')}}" width="150px" height="120px" class="m-0 p-0" alt="">
+        <img src="{{url('images/01.png')}}" width="130px" height="110px" class="m-0 p-0" alt="">
     </a>
     <script>
     $('.recordSlot').removeAttr('stasus').attr('stasus', 'unsave');
