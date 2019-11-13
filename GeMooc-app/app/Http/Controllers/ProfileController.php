@@ -98,7 +98,7 @@ class ProfileController extends Controller
                         'phone_number' => $validate['phone_number'],
                     ]);
                 }else{
-                    return redirect()->back()->with('error', 'อีเมลนี้ไม่สามารถใช้ได้.');
+                    return redirect()->back()->with('error', 'อีเมลนี้ไม่สามารถใช้งานได้.');
 
                 }
 
@@ -125,21 +125,21 @@ class ProfileController extends Controller
     public function updatePhoto(Request $request)
     {
         $data = request()->validate([
-            'upload' => '',
-        ]);
-
-        if (request('upload'))
-        {
-            $imagePath = request('upload')->store('profile','public');
+            'upload' => 'image|dimensions:max_width=4200,max_height=4200',
+            ]);
+            if (request('upload'))
+            {
+                $imagePath = request('upload')->store('profile','public');
 
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
-            $image->save();
-        }
+                // dd($image);
+                $image->save();
+            }
 
         auth()->user()->profile->update([
             'image' => $imagePath,
         ]);
-
+            // dd(redirect()->back()->with('success', 'upload image profile successful'));
         return redirect()->back()->with('success', 'upload image profile successful');
     }
 
