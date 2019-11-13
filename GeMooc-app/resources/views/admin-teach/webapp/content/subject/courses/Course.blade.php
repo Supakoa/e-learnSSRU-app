@@ -25,7 +25,8 @@ return "$strDay $strMonthThai $strYear";
 }
 @endphp
 @section('main-content')
-<a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark" href="{{url('/subject/'.$subject->id)}}">{{$subject->name}}</a>
+<a class="badge badge-dark" href="{{url('/subject')}}">วิชา</a> / <a class="badge badge-dark"
+    href="{{url('/subject/'.$subject->id)}}">{{$subject->name}}</a>
 
 <div class="main-content-header">
     <div class="row">
@@ -52,8 +53,8 @@ return "$strDay $strMonthThai $strYear";
                     class="fas fa-folder-plus"></i></button>
             @endif
             @if ($adminOnly)
-            <button class="btn-edit send_ajax"
-            onclick="edit_subject({{$subject->id}})"><i class="fas fa-cog "></i></button>
+            <button class="btn-edit send_ajax" onclick="edit_subject({{$subject->id}})"><i
+                    class="fas fa-cog "></i></button>
             @endif
         </div>
     </div>
@@ -117,7 +118,7 @@ return "$strDay $strMonthThai $strYear";
             <div class="modal-body pl-5 pr-5">
                 <form action="{{url('/course')}}" method="post" enctype='multipart/form-data' id="course_form">
                     @csrf
-                <input type="hidden" name="subject_id" value="{{$subject->id}}" >
+                    <input type="hidden" name="subject_id" value="{{$subject->id}}">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -127,13 +128,13 @@ return "$strDay $strMonthThai $strYear";
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="courseDetail">รายละเอียด</label>
-                                    <input id="courseDetail" name="detail" class="form-control" type="text">
-                                </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="courseDetail">รายละเอียด</label>
+                                <input id="courseDetail" name="detail" class="form-control" type="text">
                             </div>
                         </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
@@ -161,25 +162,22 @@ return "$strDay $strMonthThai $strYear";
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                            <input type="file" class="form-control-file input-modal" name="cover_image" id="cover_image" aria-describedby="inputGroupFileAddon01">
-                                            <label class="custom-file-label" for="cover_image">เพิ่มรูปคอร์ส</label>
-                                        </div>
-                                    </div>
-                                        <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="cover_image">รูปภาพ</label>
-                                        <input type="file" class=" form-control input-modal" name="cover_image" id="cover_image">
-                                        <div id="typeVideo">
+                                        <input type="file" class="form-control-file input-modal" name="cover_image"
+                                            id="cover_image">
+
+                                        <label for="typeVideo" class="mt-3">เพิ่มวิดีโอ</label>
+                                        <div id="typeVideo" class="p-0">
                                             <div class="custom-control custom-radio custom-control-inline">
                                                 <input class="custom-control-input" type="radio" name="videoType"
-                                                    id="videoTypeYoutube" value="youtube" >
-                                                <label for="videoTypeYoutube" class="custom-control-label">Youtube</label>
+                                                    id="videoTypeYoutube" value="youtube">
+                                                <label for="videoTypeYoutube"
+                                                    class="custom-control-label">Youtube</label>
                                             </div>
                                             <div class="custom-control custom-radio custom-control-inline">
                                                 <input class="custom-control-input" type="radio" name="videoType"
-                                                    id="videoTypeFile" value="file" >
+                                                    id="videoTypeFile" value="file">
                                                 <label for="videoTypeFile" class="custom-control-label">File</label>
                                             </div>
                                         </div>
@@ -188,17 +186,16 @@ return "$strDay $strMonthThai $strYear";
                                         </div>
                                         <br>
                                         <p class="text-note">
-                                                *หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจตุรัส
-                                                เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณพอดี
-                                            </p>
-                                    </div> 
+                                            *หมายเหตุ โปรดกำหนดขนาดภาพประกอบคอร์ส เป็นสี่เหลี่ยมจตุรัส
+                                            เพื่อให้องค์ประกอบภาพที่คุณต้องการอยู่ในภาพของคุณพอดี
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
-            <hr class=" w-75 mb-4" >
+            <hr class=" w-75 mb-4">
             <div class="modal-footer">
 
                 <div class="row p-4">
@@ -270,7 +267,7 @@ return "$strDay $strMonthThai $strYear";
             case 'file':
                 $('#content_url').html(
                     '<label for="url">File Video</label><input type="file" class="form-control-file input-modal" name="videoFile" id="videoFile" required>'
-                    );
+                );
                 break;
         }
     });

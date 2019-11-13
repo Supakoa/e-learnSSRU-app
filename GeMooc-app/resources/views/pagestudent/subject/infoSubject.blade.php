@@ -112,7 +112,7 @@ if($subject->type_video!='file'){
             @endphp
             @foreach ($users as $key => $user)
             <div class="col-md-6">
-                <div class="d-flex p-4 text-center">
+                <div class="p-4 text-center">
                     <img class="m-auto bg-success rounded-circle" width="200" height="200"
                         src="{{url('storage/'.$user->first())}}" alt="">
                     <h5 class="m-auto">{{$user->last()}}</h5>
