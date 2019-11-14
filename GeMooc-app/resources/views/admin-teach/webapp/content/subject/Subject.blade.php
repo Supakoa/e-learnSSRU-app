@@ -19,7 +19,14 @@
 <div class="container">
     <div class="row m-3">
         <div class="offset-md-8 col-md-4 text-right">
-            <button onclick="add_subject()" id="add_subject">เพิ่มวิชา</button>
+                @php
+                $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
+                $adminOnly = auth()->user()->type_user == 'admin';
+                @endphp
+                @if (  $adminOnly)
+                <button onclick="add_subject()" id="add_subject">เพิ่มวิชา</button>
+                @endif
+
         </div>
     </div>
     <div class="row">
@@ -35,7 +42,7 @@
                     <div class="section-subject-btn">
                         <button class="btn-subject"
                             onclick="window.location.href='{{url('subject/'.$subject->id)}}'">ไปที่วิชา</button>
-                        <i onclick="edit_subject({{$subject->id}})" class="fas fa-cog btn-cogs"></i>
+                            @if (  $adminOnly)<i onclick="edit_subject({{$subject->id}})" class="fas fa-cog btn-cogs"></i>@endif
                     </div>
                 </div>
             </div>
@@ -45,7 +52,7 @@
     </div>
 </div>
 @endsection
-
+@if (  $adminOnly)
 @section('modal')
 <div id="sub_modal"></div>
 <div class="modal fade" id="newSubject">
@@ -188,3 +195,4 @@
 
 </script>
 @endsection
+@endif

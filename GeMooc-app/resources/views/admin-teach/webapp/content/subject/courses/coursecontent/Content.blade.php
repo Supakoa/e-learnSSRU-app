@@ -36,8 +36,14 @@
         <div class="col-md-4 offset-md-4 text-right">
             <button class="btn-add" data-toggle="modal" data-target="#Add_Modal"><i
                     class="fas fa-folder-plus"></i></button>
+                    @php
+                    $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
+                    $adminOnly = auth()->user()->type_user == 'admin';
+                    @endphp
+                    @if (  $adminOnly)
             <button class="btn-edit send_ajax" onclick="edit_course('{{$course->id}}')">
                 <i class="fas fa-cog    "></i></button>
+                @endif
         </div>
     </div>
     <div class="accordion" id="accordionExample">

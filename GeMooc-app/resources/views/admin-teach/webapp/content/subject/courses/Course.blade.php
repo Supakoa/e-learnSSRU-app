@@ -91,7 +91,7 @@ return "$strDay $strMonthThai $strYear";
                     <div class="section-subject-btn">
                         <button class="btn-subject"
                             onclick="window.location.href='{{url('course/'.$course->id)}}'">ไปที่คอร์ส</button>
-                        <i class="fas fa-cog send_ajax btn-cogs" onclick="edit_course({{$course->id}})"></i>
+                            @if ($adminOnly)  <i class="fas fa-cog send_ajax btn-cogs" onclick="edit_course({{$course->id}})"></i> @endif
                     </div>
                 </div>
             </div>
@@ -101,6 +101,7 @@ return "$strDay $strMonthThai $strYear";
 </div>
 
 @endsection
+@if ($adminOnly)
 @section('modal')
 <div id="div_modal"></div>
 <div class="modal fade " id="Add_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -274,3 +275,5 @@ return "$strDay $strMonthThai $strYear";
 
 </script>
 @endsection
+
+@endif
