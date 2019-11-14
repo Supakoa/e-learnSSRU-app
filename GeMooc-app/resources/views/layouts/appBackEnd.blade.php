@@ -86,16 +86,6 @@
     {{-- test percent --}}
     <input type="hidden" name="percent" id="percent" value="">
 
-            {{-- <script>
-                $('#exampleModal').on('show.bs.modal', event => {
-                    var button = $(event.relatedTarget);
-                    var modal = $(this);
-                    // Use above variables to manipulate the DOM
-
-                });
-            </script> --}}
-
-
 
 @yield('modal')
 
@@ -119,18 +109,6 @@
             $('#closeUploadFile').hide();
 
         });
-        // wow = new WOW({
-        //     boxClass: 'wow', // default
-        //     animateClass: 'animated', // default
-        //     offset: 0, // default
-        //     mobile: true, // default
-        //     live: true // default
-        // })
-        // wow.init();
-
-        // function goBack() {
-        //     window.history.back();
-        // }
 
         $('form').submit(function (e) {
             console.log('เข้าาาาา');

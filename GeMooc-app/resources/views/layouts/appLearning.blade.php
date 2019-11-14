@@ -122,38 +122,6 @@
             }, 1800);
         });
 
-        // $(window).scroll(function () {
-        //     if ($(window).scrollTop() + $(window).height() >= $(document).height() - 35) {
-        //         $('#myButton').animate({
-        //             'height': '4rem'
-        //         }, 200);
-        //         $('#myButton').css({
-        //             'background-color': '#ff99ff',
-        //             "border": "2px solid #fff"
-        //         });
-        //     } else {
-        //         $('#myButton').css({
-        //             'background': 'rgb(0,0,0,.6)',
-        //             'border': 'none'
-        //         }, 600);
-        //         $('#myButton').stop().animate({
-        //             'height': '2rem',
-        //         }, 80);
-        //     }
-        // });
-
-        // function scrollFunction() {
-        //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        //     document.getElementById("myBtn").style.display = "block";
-        //   } else {
-        //     document.getElementById("myBtn").style.display = "none";
-        //   }
-        // }
-        // function topFunction() {
-        //   document.body.scrollTop = 0;
-        //   document.documentElement.scrollTop = 0;
-        // }
-
     </script>
     @stack('js')
     @stack('script')
