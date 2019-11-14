@@ -42,7 +42,7 @@
               </div>
         @endif
     </div>
-    
+
     <hr>
     <div class="text-center">
         <h4>ข่าวประชาสัมพันธ์</h4>
@@ -80,7 +80,7 @@
         <div class="input-group-prepend">
             <label class="input-group-text" for="image_type">ประเภท</label>
         </div>
-        <select class="custom-select" id="image_type">
+        <select class="custom-select" id="image_type" name="type">
             <option value="" disabled selected>เลือกประเภทของภาพ</option>
             <option value="news">ข่าวประชาสัมพันธ์</option>
             <option value="faq">คำถามที่พบบ่อย</option>
@@ -98,9 +98,9 @@
             <span class="input-group-text" id="inputGroupImage">Upload</span>
         </div>
         <div class="custom-file">
-            <input type="file" name="image" class="custom-file-input" id="inputGroupImage"
+            <input type="file" onchange="$('#text_file').text($(this).val())" name="image" class="custom-file-input" id="inputGroupImage"
                 aria-describedby="inputGroupImage" accept="image/x-png,image/gif,image/jpeg">
-            <label class="custom-file-label" for="inputGroupImage">Choose file</label>
+            <label class="custom-file-label" id="text_file" for="inputGroupImage">Choose file</label>
         </div>
     </div>
     {{-- <input type="file" name="image" id="" accept="image/x-png,image/gif,image/jpeg" /> --}}
