@@ -100,7 +100,7 @@
                 @endif
 
                 @if ($adminOnly)
-                    <a href="#">
+                    <a href="{{url('/guide_book')}}">
                     <li><i class="fas fa-book"></i> จัดการคู่มือการใช้งาน</li></a>
                 @endif
 

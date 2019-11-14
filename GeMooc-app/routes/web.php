@@ -5,7 +5,7 @@
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can reGuide ster web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
@@ -27,6 +27,10 @@ Route::get('at/index', function(){
 
 Route::get('course/{content}/editor', function(){
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
+});
+
+Route::get('/guide_book', function(){
+    return view('admin-teach.webapp.content.gb.guideBook');
 });
 
 Route::post('content/order_update','backend\content_c@order_update');
