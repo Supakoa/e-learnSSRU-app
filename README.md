@@ -19,10 +19,8 @@ upload file images name "no_image" in storage/app/public/cover_image_subject
 
 - composer install 
 
-- composer gobal require laravel/installer
+- php artisan storge:link
 
 - php artisan mi:f
-
-- php artisan storage:link
 
 - php artisan serve 

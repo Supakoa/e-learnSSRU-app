@@ -130,7 +130,7 @@
                                 </h4>
                             </div>
                             <div class="table-responsive">
-                                <table class="table table-borderless table-hover">
+                                <table class="table table-borderless table-hover display" id="s_scoll">
                                     <thead>
                                         <tr class="text-center bg-info rounded-pill">
                                             <th scope="row">
@@ -180,3 +180,14 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script>
+    $(document).ready( function () {
+        $('#s_scoll').DataTable();
+    } );
+</script>
+@endpush
+
+
+
