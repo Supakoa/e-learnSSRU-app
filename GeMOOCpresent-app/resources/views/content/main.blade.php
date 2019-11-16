@@ -1,9 +1,9 @@
 @extends('index')
 
 @section('main')
-<div class="w-100 bg-info position-relative h-100" style="min-height:100vh;padding-top:96px">
-    <div class="bg-danger w-25 position-absolute m-auto" style="height:10vh">
-
+<div class="w-100 position-relative h-100 justify-content-center" style="min-height:100vh;padding-top:96px;background-image:url('/images/bg-main.jpg');background-repeat: no-repeat;background-size: cover;">
+    <div class="bg-danger w-25 h-100 ml-auto mr-5" style="height:10vh;">
+sfsfw
     </div>
 </div>
 
