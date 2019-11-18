@@ -28,7 +28,9 @@
     <title>Present Page</title>
 </head>
 <body>
-    @yield('index')
+    <div class="overflow-auto">
+            @yield('index')
+    </div>
 
 
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

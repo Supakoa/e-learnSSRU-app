@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('content.main');
+});
+
+Route::get('/question', function () {
+    return view('content.question');
+});
+
+Route::get('/manual', function () {
+    return view('content.man');
+});
+
+Route::get('/subject', function () {
+    return view('content.subject.index');
 });
