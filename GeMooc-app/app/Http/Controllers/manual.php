@@ -34,7 +34,7 @@ class manual extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -68,7 +68,10 @@ class manual extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'type' => 'required',
+            'file' =>  'required',
+        ]) ;
     }
 
     /**
