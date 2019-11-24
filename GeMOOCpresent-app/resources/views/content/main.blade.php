@@ -7,14 +7,8 @@
 
 @section('main')
 <div id="maintop" class="w-100 position-relative h-100 justify-content-center" style="">
-
-    <div class="screenDisplay">
-        screen in my Phone.
-    </div>
-
-
     <div id="subMaintop2" class="bg-danger w-25 h-100 ml-auto mr-5" style="height:10vh;">
-        <h3>Image</h3>
+        <h3>Logo</h3>
         <hr>
         <p>เรียนรู้ได้ทุกที่ ทุกเวลา กับคอร์สการเรียนออนไลน์ <br> ฟรีไม่เสียค่าใช้จ่าย กับวิชาที่คุณเลือกเอง <br> ได้ที่
             www.mooc.ssru.ac.th</p>
