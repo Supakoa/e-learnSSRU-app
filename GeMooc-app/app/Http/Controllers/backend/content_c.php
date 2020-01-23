@@ -53,7 +53,7 @@ class content_c extends Controller
         $rules = array(
             'name' => 'required',
             'type' => 'required',
-            'videoFile'  => 'max:204800|mimes:mp4'
+            'videoFile'  => 'max:3072000|mimes:mp4'
            );
 
            $error = Validator::make($request->all(), $rules);

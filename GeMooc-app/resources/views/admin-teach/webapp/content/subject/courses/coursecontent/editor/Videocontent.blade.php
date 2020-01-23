@@ -84,7 +84,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                            <form action="/video/{{ $video->id }}" id="editFormVideo" method="post">
+                            <form action="{{url('/video/'.$video->id)}}" id="editFormVideo" method="post">
                                 @csrf
                                 @method('PATCH')
                                 <div class="form-group">
