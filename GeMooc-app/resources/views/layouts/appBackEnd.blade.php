@@ -51,16 +51,7 @@
         {{-- video.js --}}
         <script src="//vjs.zencdn.net/7.3.0/video.min.js"></script>
         <link href="//vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
-    {{-- x video player --}}
-
-    {{-- edit profile
-        @stack('styleEditProfile')
-        @stack('scriptEditProfile') --}}
-
-    {{-- new-subject
-            @stack('styleNewSubject')
-            @stack('scriptNewSubject') --}}
-
+    
     <script src="{{ asset('node_modules/jquery/dist/jquery.js')}}"></script>
     <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 </head>

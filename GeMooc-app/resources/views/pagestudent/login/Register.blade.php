@@ -13,20 +13,20 @@
                 </div>
                 <div class="register-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <label for="fname">ชื่อ</label>
                             <i class="fas fa-user"></i>
                             <input type="text" class="form-control" name="fname" id="fname" required
                                 autocomplete="fname" value="{{ old('fname') }}">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <label for="lname">นามสกุล</label>
                             <input type="text" class="form-control" name="lname" id="lname" required
                                 autocomplete="lname" value="{{ old('lname') }}">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-lg-12 col-lx-12">
                             <label for="Email">อีเมลล์</label>
                             <i class="far fa-envelope"></i>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-lg-12 col-lx-12">
                             <label for="phoneNumber">เบอร์โทรศัพท์</label>
                             <i class="far fa-envelope"></i>
                             <input type="phoneNumber" class="form-control @error('phoneNumber') is-invalid @enderror"
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <label for="pass">รหัสผ่าน</label>
                             <i class="fab fa-expeditedssl"></i>
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
@@ -64,20 +64,20 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <label for="re-pass">ยืนยันรหัสผ่าน</label>
                             <input type="password" class="form-control" name="password_confirmation" required
                                 autocomplete="new-password" id="re-pass">
                         </div>
                     </div>
                     <div class="row" id="gen">
-                        <div class="col-xs-6">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <label class="ck-container">เพศชาย
                                 <input name='gender' value="male" type="radio">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <label class="ck-container">เพศหญิง
                                 <input name='gender' value="female" type="radio">
                                 <span class="checkmark"></span>

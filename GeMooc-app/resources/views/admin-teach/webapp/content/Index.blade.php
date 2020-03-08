@@ -112,9 +112,6 @@
             <div class="main-content-body">
                 @include('inc.alert')
                 @yield('main-content')
-
-                {{-- new income --}}
-                {{-- @include('admin-teach.webapp.content.profile.Profile') --}}
             </div>
         </div>
     </div>
