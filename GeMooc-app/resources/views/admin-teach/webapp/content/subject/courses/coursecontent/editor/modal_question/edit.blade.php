@@ -19,8 +19,8 @@
                                 <div class="edit-quiz">
                                     <div class="row mb-3">
                                         <div class="col-md-12 row">
-                                            <label for="name-quiz" class="col-sm-2 col-form-label">โจทย์ :</label>
-                                            <div class="col-md-8">
+                                            <label for="name-quiz" class="col-sm-1 col-md-2 col-form-label">โจทย์ :</label>
+                                            <div class="col-sm-1 col-md-10">
                                                 <textarea name="name" id="name-quiz" rows="5"
                                                     class="form-control">{{$question->name}}</textarea>
                                             </div>
@@ -31,8 +31,8 @@
                                         <img src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}"
                                             alt="" height="300px" width="auto" srcset="">
                                     </div>
-                                    <div class="row mb-5">
-                                        <div class="offset-md-3 col-md-6">
+                                    <div class="row mb-5 justify-content-center">
+                                        <div class="col-md-10">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" style="padding:3px"
                                                     name="cover_image" placeholder="Image">
@@ -47,17 +47,16 @@
                                                 $i=1;
                                                 @endphp
                                                 @foreach ($question->answers as $answer)
-                                                <li>
-                                                    <div class="row p-2">
-                                                        <div class="col-sm-12">
+                                                <li class="m-1">
+                                                    <div class="row">
                                                             @php
                                                             $check = '';
                                                             if($answer->correct!=0){
                                                             $check = 'checked';
                                                             }
                                                             @endphp
-                                                            <label for="answer[]">{{$i}}.</label>
-                                                            <div class="input-group">
+                                                            <label class="col-sm-1 col-md-1 col-lg-1 m-auto" for="answer[]">{{$i}}.</label>
+                                                            <div class="input-group col-sm-11 col-md-11 col-lg-11">
                                                                 <input type="text" class="form-control" name="answer[]"
                                                                     value="{{$answer->name}}">
                                                                 <div class="input-group-prepend">
@@ -67,7 +66,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                     </div>
                                                 </li>
                                                 @endforeach

@@ -30,12 +30,12 @@
         </div>
     </div>
     <div class="row m-3">
-        <div class="col-md-4">
+        <div class="col-xs-1 col-sm-2 col-md-4 col-lg-4 col-xl-6">
             <button class="btn-dashboard" onclick="window.location.href = '{{url('/quiz/'.$quiz->id.'/dashboard')}}'">
                 <i class="fas fa-tachometer-alt"></i>
             </button>
         </div>
-        <div class="col-md-6 offset-md-2 text-right">
+        <div class="col-xs-11 col-sm-10 col-md-8 col-lg-8 col-xl-6 offset-lg-0 offset-md-2 text-right">
             <button class="btn-edit-quiz " data-toggle="modal" data-target="#edit_Modal">
                 <i class="fas fa-pencil-alt"></i>
             </button>
@@ -53,14 +53,65 @@
     <div class="text-center">
         <h3>คำถาม</h3>
     </div>
-    <div class="quiz-content ">
+    <div class="quiz-content overflow-auto">
         @foreach ($quiz->questions as $key=>$question)
+        <div id="accordion">
+            <div class="card rounded-top rounded-bottom rounded-left rounded-right">
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#quiz{{$key}}" aria-expanded="true" aria-controls="quiz{{$key}}">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4 ">
+                        <div class="row">
+                            <div class="col-6 text-truncate p-key">
+                                {{($key+1)}}. {{$question->name}}
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-sm-10 col-md-8 col-lg-8 text-right ">
+                        <button class="send_ajax btn-edit-question" onclick="edit_question({{$question->id}})">
+                            <i class="fas fa-cog    "></i>
+                        </button>
+                        <button class="send_ajax btn-delete-question" onclick="delete_question({{$question->id}})">
+                            <i class="fas fa-trash    "></i>
+                        </button>
+                    </div>
+                </div>
+              </div>
+
+              <div id="quiz{{$key}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="ccol-sm-12 ol-md-12 col-lg-4">
+                            <img class="m-auto d-block img-fluid qImage"
+                                src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}">
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-8 p-4" id="question">
+                            <dl class="row p-2">
+                                <dd class="col-sm-12 col-md-12 col-lg-12 text-justify">
+                                    {{$question->name}}
+                                </dd>
+                            </dl>
+                            <div class="row">
+                                @foreach ($question->answers as $key => $answer )
+                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                    <p class="text-justify" for="{{$answer->id}}" @if ($answer->correct)
+                                        style="color:#009900;"
+                                        @endif>{{$key+1}}).{{$answer->name}}</p>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+{{--
         <div class="quiz-card">
             <div class="row">
-                <div class="col-md-4 p-4 ">
+                <div class="col-sm-2 col-md-4 col-lg-4 p-4 ">
                     <p class="p-key">{{($key+1)}}.</p>
                 </div>
-                <div class="offset-md-4 col-md-4 text-right p-4">
+                <div class="col-sm-10 col-md-8 col-lg-8 text-right p-4">
                     <button class="send_ajax btn-edit-question" onclick="edit_question({{$question->id}})">
                         <i class="fas fa-cog    "></i>
                     </button>
@@ -70,20 +121,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 p-2">
+                <div class="ccol-sm-12 ol-md-12 col-lg-4">
                     <img class="m-auto d-block img-fluid qImage"
                         src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}">
                 </div>
-                <div class="col-md-8" id="question">
+                <div class="col-sm-12 col-md-12 col-lg-8 p-4" id="question">
                     <dl class="row p-2">
-                        <dd class="col-md-12 text-justify">
+                        <dd class="col-sm-12 col-md-12 col-lg-12 text-justify">
                             {{$question->name}}
                         </dd>
                     </dl>
                     <div class="row">
                         @foreach ($question->answers as $key => $answer )
-                        <div class="col-md-6">
-                            <p class="text-justify p-2" for="{{$answer->id}}" @if ($answer->correct)
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <p class="text-justify" for="{{$answer->id}}" @if ($answer->correct)
                                 style="color:#009900;"
                                 @endif>{{$key+1}}).{{$answer->name}}</p>
                         </div>
@@ -91,7 +142,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         @endforeach
 
     </div>
@@ -119,15 +170,15 @@
                                 <div class="create-quiz">
                                     <div class="row mb-3">
                                         <div class="col-md-12 row">
-                                            <label for="name-quiz" class="col-sm-2 col-form-label">โจทย์ :</label>
-                                            <div class="col-md-8">
+                                            <label for="name-quiz" class="col-sm-1 col-md-2 col-form-label">โจทย์ :</label>
+                                            <div class="col-sm-1 col-md-10">
                                                 <textarea name="name" id="name-quiz" rows="5"
                                                     class="form-control"></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-5">
-                                        <div class="offset-md-3 col-md-6">
+                                    <div class="row mb-5 justify-content-center">
+                                        <div class="col-md-10">
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" name="cover_image"
@@ -139,14 +190,13 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-12">
                                             <ul>
-                                                <li>
-                                                    <div class="row p-2">
-                                                        <div class="col-md-12">
+                                                <li class="m-1">
+                                                    <div class="row">
                                                             <label for="answer[]"
-                                                                class="col-sm-2 col-form-label">1.</label>
-                                                            <div class="input-group">
+                                                                class="col-sm-1 col-md-1 col-lg-1 col-form-label">1.</label>
+                                                            <div class="input-group col-sm-11 col-md-11 col-lg-11">
                                                                 <input type="text" class="form-control" name="answer[]">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-text rounded">
@@ -154,15 +204,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="row p-2">
-                                                        <div class="col-md-12">
+                                                <li class="m-1">
+                                                    <div class="row">
                                                             <label for="answer[]"
-                                                                class="col-sm-2 col-form-label">2.</label>
-                                                            <div class="input-group">
+                                                                class="col-sm-1 col-md-1 col-lg-1  col-form-label">2.</label>
+                                                            <div class="input-group col-sm-11 col-md-11 col-lg-11">
                                                                 <input type="text" class="form-control" name="answer[]">
                                                                 <div class="input-group-prepend rounded">
                                                                     <div class="input-group-text">
@@ -170,15 +218,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="row p-2">
-                                                        <div class="col-md-12">
+                                                <li class="m-1">
+                                                    <div class="row">
                                                             <label for="answer[]"
-                                                                class="col-sm-2 col-form-label">3.</label>
-                                                            <div class="input-group">
+                                                                class="col-sm-1 col-md-1 col-lg-1 col-form-label">3.</label>
+                                                            <div class="input-group col-sm-11 col-md-11 col-lg-11">
                                                                 <input type="text" class="form-control" name="answer[]">
                                                                 <div class="input-group-prepend rounded">
                                                                     <div class="input-group-text">
@@ -186,15 +232,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="row p-2">
-                                                        <div class="col-md-12">
+                                                <li class="m-1">
+                                                    <div class="row">
                                                             <label for="answer[]"
-                                                                class="col-sm-2 col-form-label">4.</label>
-                                                            <div class="input-group">
+                                                                class="col-sm-1 col-md-1 col-lg-1 col-form-label">4.</label>
+                                                            <div class="input-group col-sm-11 col-md-11 col-lg-11">
                                                                 <input type="text" class="form-control" name="answer[]">
                                                                 <div class="input-group-prepend rounded">
                                                                     <div class="input-group-text">
@@ -202,7 +246,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                     </div>
                                                 </li>
                                             </ul>
