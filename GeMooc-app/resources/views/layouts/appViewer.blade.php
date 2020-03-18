@@ -27,7 +27,6 @@
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> --}}
 
     @stack('links')
-
     <!-- CEFstyle -->
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}">
     <!-- fontawesom -->

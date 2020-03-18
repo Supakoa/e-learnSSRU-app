@@ -120,7 +120,7 @@
                     <div class="course-collapse-body">
                         <div class="row h-100 m-auto">
                             <div class="col-lg-1 collapse-1">
-                                <label>
+                                <label class="mt-4 ml-4">
                                     @switch($content->type)
                                     @case(1)
                                     <i class="fas fa-video"></i>
@@ -137,11 +137,11 @@
                                 </label>
                             </div>
                             <div class="collapse-2 col-lg-8 ">
-                                <a href="#" class="btn btn-block p-2"
+                                <a href="#" class="btn btn-block p-2 text-center mt-2"
                                     onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</a>
                             </div>
-                            <div class="collapse-3 col-lg-3">
-                                <button onclick="delete_content('{{$content->id}}')">
+                            <div class="collapse-3 col-lg-3 ">
+                                <button class="mt-4" onclick="delete_content('{{$content->id}}')">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                             </div>

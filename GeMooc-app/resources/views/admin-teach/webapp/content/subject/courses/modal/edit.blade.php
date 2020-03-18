@@ -66,7 +66,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="lession">บทเรียน</label>
-                                    <div class="form-group h-50 overflow-auto">
+                                    <div class="form-group h-100 overflow-auto">
                                         <ul class="list-group list-group-flush" id="lession" >
                                             @foreach ($course->lessons as $lesson)
                                                 <li class="list-group-item">- {{$lesson->name}}</li>
