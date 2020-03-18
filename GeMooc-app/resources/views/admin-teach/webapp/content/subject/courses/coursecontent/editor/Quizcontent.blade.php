@@ -57,52 +57,52 @@
         @foreach ($quiz->questions as $key=>$question)
         <div id="accordion">
             <div class="card rounded-top rounded-bottom rounded-left rounded-right">
-            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#quiz{{$key}}" aria-expanded="true" aria-controls="quiz{{$key}}">
-                <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4 ">
-                        <div class="row">
-                            <div class="col-6 text-truncate p-key">
-                                {{($key+1)}}. {{$question->name}}
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-sm-10 col-md-8 col-lg-8 text-right ">
-                        <button class="send_ajax btn-edit-question" onclick="edit_question({{$question->id}})">
-                            <i class="fas fa-cog    "></i>
-                        </button>
-                        <button class="send_ajax btn-delete-question" onclick="delete_question({{$question->id}})">
-                            <i class="fas fa-trash    "></i>
-                        </button>
-                    </div>
-                </div>
-              </div>
-
-              <div id="quiz{{$key}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
+                <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#quiz{{$key}}" aria-expanded="true" aria-controls="quiz{{$key}}">
                     <div class="row">
-                        <div class="ccol-sm-12 ol-md-12 col-lg-4">
-                            <img class="m-auto d-block img-fluid qImage"
-                                src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}">
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-8 p-4" id="question">
-                            <dl class="row p-2">
-                                <dd class="col-sm-12 col-md-12 col-lg-12 text-justify">
-                                    {{$question->name}}
-                                </dd>
-                            </dl>
+                        <div class="col-sm-4 col-md-4 col-lg-4 ">
                             <div class="row">
-                                @foreach ($question->answers as $key => $answer )
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <p class="text-justify" for="{{$answer->id}}" @if ($answer->correct)
-                                        style="color:#009900;"
-                                        @endif>{{$key+1}}).{{$answer->name}}</p>
+                                <div class="col-6 text-truncate p-key">
+                                    {{($key+1)}}. {{$question->name}}
                                 </div>
-                                @endforeach
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-md-8 col-lg-8 text-right ">
+                            <button class="send_ajax btn-edit-question" onclick="edit_question({{$question->id}})">
+                                <i class="fas fa-cog    "></i>
+                            </button>
+                            <button class="send_ajax btn-delete-question" onclick="delete_question({{$question->id}})">
+                                <i class="fas fa-trash    "></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quiz{{$key}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="ccol-sm-12 ol-md-12 col-lg-4">
+                                <img class="m-auto d-block img-fluid qImage"
+                                    src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-8 p-4" id="question">
+                                <dl class="row p-2">
+                                    <dd class="col-sm-12 col-md-12 col-lg-12 text-justify">
+                                        {{$question->name}}
+                                    </dd>
+                                </dl>
+                                <div class="row">
+                                    @foreach ($question->answers as $key => $answer )
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <p class="text-justify" for="{{$answer->id}}" @if ($answer->correct)
+                                            style="color:#009900;"
+                                            @endif>{{$key+1}}).{{$answer->name}}</p>
+                                    </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-              </div>
             </div>
         </div>
 {{--

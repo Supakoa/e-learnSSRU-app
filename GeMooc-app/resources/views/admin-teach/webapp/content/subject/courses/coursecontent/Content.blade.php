@@ -76,16 +76,21 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-6 row">
-                            <div class="col-md-6 icon-status">
+                        <div class="col-md-6 row justify-content-center">
+                            <div class="col-md-5 icon-status p-1">
                                 <button id="edit-btn" data-toggle="modal" data-target="#edit_lesson_Modal"
                                     onclick="edit_lesson({{$lesson}})">
                                     <i class="fas fa-pencil-alt    "></i>
                                 </button>
                             </div>
-                            <div class="col-md-6 icon-status">
+                            <div class="col-md-5 icon-status p-1">
                                 <button id="trash-btn" onclick="delete_lesson('{{$lesson->id}}')" aria-hidden="true">
                                     <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="add-content rounded-circle" style="top:40%" data-toggle="modal" data-target="#Add_Modal_content" onclick="add_content({{$lesson}})">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -93,7 +98,7 @@
                 </div>
             </div>
         </div>
-        <div id="collapse{{$lesson->id}}" class="container bg-gray collapse border p-5"
+        <div id="collapse{{$lesson->id}}" class="container bg-gray collapse border"
             aria-labelledby="heading{{$lesson->id}}" data-parent="#accordionExample">
             <script>
                     $(document).ready(function () {
@@ -113,37 +118,39 @@
                 @foreach ($lesson->contents as $content)
                 <div class="course-content-collapse shadow" data-id = "{{ $content->id}}">
                     <div class="course-collapse-body">
-                        <div class="collapse-1">
-                            <label>
-                                @switch($content->type)
-                                @case(1)
-                                <i class="fas fa-video"></i>
-                                @break
-                                @case(2)
-                                <i class="fas fa-clipboard-list"></i>
-                                @break
-                                @case(3)
-                                <i class="fa fa-question" aria-hidden="true"></i>
-                                @break
-                                @default
+                        <div class="row h-100 m-auto">
+                            <div class="col-lg-1 collapse-1">
+                                <label>
+                                    @switch($content->type)
+                                    @case(1)
+                                    <i class="fas fa-video"></i>
+                                    @break
+                                    @case(2)
+                                    <i class="fas fa-clipboard-list"></i>
+                                    @break
+                                    @case(3)
+                                    <i class="fa fa-question" aria-hidden="true"></i>
+                                    @break
+                                    @default
 
-                                @endswitch
-                            </label>
-                        </div>
-                        <div class="collapse-2 ">
-                            <a href="#" class="btn btn-block p-2"
-                                onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</a>
-                        </div>
-                        <div class="collapse-3">
-                            <button onclick="delete_content('{{$content->id}}')">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
+                                    @endswitch
+                                </label>
+                            </div>
+                            <div class="collapse-2 col-lg-8 ">
+                                <a href="#" class="btn btn-block p-2"
+                                    onclick="window.location.href='{{url('content/'.$content->id)}}'">{{$content->name}}</a>
+                            </div>
+                            <div class="collapse-3 col-lg-3">
+                                <button onclick="delete_content('{{$content->id}}')">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
-            <button class="add-content" data-toggle="modal" data-target="#Add_Modal_content"
+            <button class="add-content rounded-circle" data-toggle="modal" data-target="#Add_Modal_content"
                 onclick="add_content({{$lesson}})"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
         @endforeach
