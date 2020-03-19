@@ -48,7 +48,7 @@ if($subject->type_video!='file'){
                     <img class=" rounded" src="{{url('storage/'.$course->image)}}" alt="" width="100%" height="auto">
                 </div>
                 <div class="col-md-8 table-responsive p-2">
-                    <table class="bg-light table table-borderless table-striped">
+                    <table class="bg-light table rounded table-striped">
                         <thead>
                             <tr>
                                 <th colspan="3" style="font-size:26px">ข้อมูล</th>
@@ -71,16 +71,17 @@ if($subject->type_video!='file'){
                     </table>
                 </div>
             </div>
-
-            <div class="text-center">
-                <a href="{{url('std_view/course/'.$course->id)}}" class="btn btn-success">ไปที่คอร์ส</a>
-            </div>
             @endforeach
-            @else
-            <div class="alert alert-warning" role="alert">
-                ไม่มีคอสที่เปิดสอน
+            <div class="p-3">
+                <div class="text-center">
+                    <a href="{{url('std_view/course/'.$course->id)}}" class="btn btn-success">ไปที่คอร์ส</a>
+                </div>
+                @else
+                <div class="alert alert-warning" role="alert">
+                    ไม่มีคอสที่เปิดสอน
+                </div>
+                @endif
             </div>
-            @endif
 
     </div>
 </div>
@@ -111,7 +112,7 @@ if($subject->type_video!='file'){
 
             @endphp
             @foreach ($users as $key => $user)
-            <div class="col-md-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="p-4 text-center">
                     <img class="m-auto bg-success rounded-circle" width="200" height="200"
                         src="{{url('storage/'.$user->first())}}" alt="">
