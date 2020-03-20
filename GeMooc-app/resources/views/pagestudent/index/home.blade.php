@@ -87,13 +87,10 @@
 
 @section('mainContent')
 <div class="container">
-    <h3 class="m-5 text-center">กำลังเรียน...</h3>
+    <h3 class="m-2 text-center">กำลังเรียน...</h3>
     <div class="section1">
         <div class="row">
-            <div class="col-md-12 p-5">
-
-
-
+            <div class="col-md-12 col-lg-12">
                 @php
                 $user = auth()->user();
                 $coursesFinish= auth()->user()->courses()->wherePivot("status",1)->get();
@@ -104,12 +101,12 @@
                 <div class="alert alert-danger text-light fade show" style="letter-spacing:2px;" role="alert">
                     คุณยังไม่มีคอร์สเรียนในคณะนี้. <strong><a href="{{url('std_view/subject')}}">คลิกที่นี่
                             !</a></strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button> --}}
                 </div>
                 @else
-                <div class="yourCourse p-3">
+                <div class="yourCourse p-1">
                     @foreach ($coursesUnFinish as $course)
                     <div class="my_course" onclick="my_course_unfinish($(this))"
                         course_link="{{url('std_view/course/'.$course->id)}}"
@@ -138,10 +135,10 @@
         </div>
     </div>
 
-    <h3 class="m-5 text-center">คอร์สที่เรียนสำเร็จ</h3>
+    <h3 class="m-2 text-center">คอร์สที่เรียนสำเร็จ</h3>
     <div class="section2">
         <div class="row">
-            <div class="col-md-12 p-5">
+            <div class="col-md-12 col-lg-12">
                 @if ($coursesFinish->count() == 0)
                 <div class="alert alert-warning text-light alert-dismissible fade show" style="letter-spacing:2px;"  role="alert">
                     คุณยังไม่มีคอร์สที่เรียนสำเร็จในคณะนี้.
@@ -150,7 +147,7 @@
                     </button>
                 </div>
                 @else
-                <div class="courseFinish p-3">
+                <div class="courseFinish">
                     @foreach ($coursesFinish as $course)
                     <div class="my_course" onclick="my_course_finish($(this))"
                         course_link="{{url('std_view/course/'.$course->id)}}"
@@ -166,14 +163,14 @@
         </div>
         <h2 id="course_name-finish" style="color:white"></h2>
         <div class="row progress-now-finish">
-            <div class="col-md-9 m-1">
+            <div class="col-sm-8 col-md-10 col-lg-10">
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar-finish"
                         role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-4 col-md-2 col-lg-2">
                 <a class="btn btn-success" id="btn_to_course" href="#">เริ่มคอร์ส</a>
             </div>
         </div>
@@ -189,8 +186,6 @@
         $('.progress-now-unfinish').show();
         $('#btn_to_course').attr('href', my_course.attr('course_link'));
         $('#course_name-unfinish').html(my_course.attr('course_name'));
-        // $("#progress-bar").css('width', my_course.attr('course_progress')+'%');
-        // alert(my_course.attr('course_progress')+'%')
         $("#progress_bar-unfinish").css('width', my_course.attr('course_progress') + '%');
         $("#progress_bar-unfinish").html(my_course.attr('course_progress') + '%')
     }
@@ -201,8 +196,6 @@
         $('.progress-now-finish').show();
         $('#btn_to_course').attr('href', my_course.attr('course_link'));
         $('#course_name-finish').html(my_course.attr('course_name'));
-        // $("#progress-bar").css('width', my_course.attr('course_progress')+'%');
-        // alert(my_course.attr('course_progress')+'%')
         $("#progress_bar-finish").css('width', my_course.attr('course_progress') + '%');
         $("#progress_bar-finish").html(my_course.attr('course_progress') + '%')
     }

@@ -56,7 +56,7 @@ $question_number = $quiz->questions->count();
                 </script>
                 <div class="card collapse {{$key == 0 ? 'show' : ''}}" id="question_{{$question->id}}">
                     <div class="row">
-                        <div class="col-md-12 ">
+                        <div class="col-sm-12 col-md-12 ">
                             <p class="p-1 text-right">{{$key+1}}/{{$question_number}}</p>
                         </div>
                     </div>
@@ -145,9 +145,6 @@ $question_number = $quiz->questions->count();
                         slidesToScroll: 1
                     }
                 }
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
             ]
         });
     });
