@@ -1,13 +1,9 @@
-@extends('layouts.appBackEnd')
-
-@push('links')
-<!-- CEFstyle -->
-<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFstyle3.css')}}">
-<link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceMain.css')}}">
-@endpush
+@extends('layouts.backEnd')
 
 @section('wrap-body')
+
 <div class="ce-main">
+
     <nav>
         <div class="logo">
             <img src="{{url('images/logo.png')}}" alt="">
@@ -83,7 +79,7 @@
                 @endif
 
                 @if ($teach)
-                <a href="{{url('guideBook')}}">
+                <a href="{{url('/guide_Book')}}">
                     <li><i class="fas fa-book-open"></i> คู่มือการใช้งาน</li>
                 </a>
                 @endif
@@ -118,17 +114,3 @@
 
 </div>
 @endsection
-
-{{-- @section('js')
-<script>
-    $('#openProfile').click(function (e) {
-        e.preventDefault();
-        $('.container-profile').css('margin-left', '0');
-    });
-    $('.closeProfile').click(function (e) {
-        e.preventDefault();
-        $('.container-profile').css('margin-left', '-100%');
-    });
-
-</script>
-@endsection --}}

@@ -10,6 +10,7 @@
 
     <title>@yield('title','MOOC SSRU')</title>
     @include('layouts.inc.backend')
+
 </head>
 
 <body>
@@ -36,6 +37,7 @@
 
 @yield('modal')
 
+@include('layouts.inc.jsbackEnd')
 
     @yield('js')
 </body>
