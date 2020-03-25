@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    {{-- backEnd --}}
     <style>
         .bg-blur {
             background-image: url("@yield('background',url('images/BG.jpg'))");
@@ -35,9 +36,9 @@
     <input type="hidden" name="percent" id="percent" value="">
 
 
-@yield('modal')
+    @yield('modal')
 
-@include('layouts.inc.jsbackEnd')
+    @include('layouts.inc.jsbackEnd')
 
     @yield('js')
 </body>

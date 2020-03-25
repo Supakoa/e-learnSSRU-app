@@ -35,12 +35,12 @@
 
     {{-- o video player --}}
         {{-- plyr .js --}}
-        <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
-        <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+    <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
         {{-- video.js --}}
-        <script src="//vjs.zencdn.net/7.3.0/video.min.js"></script>
-        <link href="//vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/7.3.0/video.min.js"></script>
+    <link href="//vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
 
 
 

@@ -1,4 +1,4 @@
-@extends('layouts.backEnd')
+@extends('layouts.appBackEnd')
 
 @section('wrap-body')
 
