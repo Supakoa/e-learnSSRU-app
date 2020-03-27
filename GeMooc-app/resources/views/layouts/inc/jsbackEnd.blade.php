@@ -12,6 +12,9 @@
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <!-- CEFstyle -->
 <script src="{{ asset('node_modules/CEFstyle/navrespone.js') }}"></script>
+<script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
+<script src="//vjs.zencdn.net/7.3.0/video.min.js"></script>
+
 <script>
     $(document).ready(function () {
         // $('#uploadingFile').modal('show');

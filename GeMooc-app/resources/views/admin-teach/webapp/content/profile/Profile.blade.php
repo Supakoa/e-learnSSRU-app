@@ -2,9 +2,11 @@
 @push('links')
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceProfile.css')}}">
 @endpush
+
 @section('title')
 แก้ไขโปรไฟล์ | MOOC SSRU
 @endsection
+
 @section('main-content')
 <div class="container-profile">
     @php
@@ -83,46 +85,8 @@
                 </div>
                 <hr>
             </form>
-
-            {{-- <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="pass">รหัสผ่านใหม่</label>
-                        <input type="text" class="form-control" id="pass" value="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="confermPass">ยืนยันรหัสผ่านใหม่</label>
-                        <input type="text" class="form-control" id="confermPass" value="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="confermPass">รหัสผ่านใหม่เดิม</label>
-                        <input type="text" class="form-control" id="confermPass" value="">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <button type="submit"><i class="fas fa-download"></i> บันทึกรหัสผ่านใหม่</button>
-                </div>
-            </div>
-            <hr> --}}
-
-            {{-- <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="eMail">อีเมล</label>
-                        <input type="text" class="form-control" id="eMail" value="{{ auth()->user()->email }}">
         </div>
     </div>
-    <div class="col-md-12">
-        <button type="submit"><i class="fas fa-download"></i> บันทึกอีเมลล์ใหม่</button>
-    </div>
-</div> --}}
-
-</div>
-</div>
 </div>
 @endsection
 

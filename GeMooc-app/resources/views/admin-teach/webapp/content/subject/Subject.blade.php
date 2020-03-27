@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceModal.css')}}">
 <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/subject/new/new.css') }}">
 @endpush
-
 @section('main-content')
 <div class="main-content-header">
     <p class="t-shadow">วิชา</p>
@@ -18,7 +17,7 @@
 </div>
 <div class="container">
     <div class="row m-3">
-        <div class="offset-md-8 col-md-4 text-right">
+        <div class="offset-md-8 col-md-4 col-lg-6 text-right">
                 @php
                 $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
                 $adminOnly = auth()->user()->type_user == 'admin';
@@ -42,7 +41,7 @@
                     <div class="section-subject-btn">
                         <button class="btn-subject"
                             onclick="window.location.href='{{url('subject/'.$subject->id)}}'">ไปที่วิชา</button>
-                            @if (  $adminOnly)<i onclick="edit_subject({{$subject->id}})" class="fas fa-cog btn-cogs"></i>@endif
+                            @if ($adminOnly)<i onclick="edit_subject({{$subject->id}})" class="fas fa-cog btn-cogs"></i>@endif
                     </div>
                 </div>
             </div>
@@ -52,7 +51,8 @@
     </div>
 </div>
 @endsection
-@if (  $adminOnly)
+
+@if ($adminOnly)
 @section('modal')
 <div id="sub_modal"></div>
 <div class="modal fade" id="newSubject">

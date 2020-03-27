@@ -1,4 +1,4 @@
-<link rel="shortcut icon" href="{{url('/images/newLogothree.PNG')}}">
+    <link rel="shortcut icon" href="{{url('/images/newLogothree.PNG')}}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-dt/css/jquery.dataTables.css')}}">
 
     <!-- CEFstyle -->
-    {{-- <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}"> --}}
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/CEFstyle.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/CEFstyle3.css')}}">
+    <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/cssBackdoor/ceMain.css')}}">
 
     {{-- css --}}
     @stack('links')
@@ -30,16 +32,11 @@
     {{-- messenger box --}}
     <link rel="stylesheet" href="{{ asset('node_modules/CEFstyle/message-box.css')}}">
 
-    <!-- Styles -->
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
-    {{-- o video player --}}
-        {{-- plyr .js --}}
-    <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
+
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 
         {{-- video.js --}}
-    <script src="//vjs.zencdn.net/7.3.0/video.min.js"></script>
     <link href="//vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
 
 

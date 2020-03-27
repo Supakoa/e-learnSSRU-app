@@ -105,44 +105,6 @@
                 </div>
             </div>
         </div>
-{{--
-        <div class="quiz-card">
-            <div class="row">
-                <div class="col-sm-2 col-md-4 col-lg-4 p-4 ">
-                    <p class="p-key">{{($key+1)}}.</p>
-                </div>
-                <div class="col-sm-10 col-md-8 col-lg-8 text-right p-4">
-                    <button class="send_ajax btn-edit-question" onclick="edit_question({{$question->id}})">
-                        <i class="fas fa-cog    "></i>
-                    </button>
-                    <button class="send_ajax btn-delete-question" onclick="delete_question({{$question->id}})">
-                        <i class="fas fa-trash    "></i>
-                    </button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="ccol-sm-12 ol-md-12 col-lg-4">
-                    <img class="m-auto d-block img-fluid qImage"
-                        src="{{$question->image ? url('/storage/'.$question->image) :  url('/storage/cover_image_subject/no_image.jpg')}}">
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-8 p-4" id="question">
-                    <dl class="row p-2">
-                        <dd class="col-sm-12 col-md-12 col-lg-12 text-justify">
-                            {{$question->name}}
-                        </dd>
-                    </dl>
-                    <div class="row">
-                        @foreach ($question->answers as $key => $answer )
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <p class="text-justify" for="{{$answer->id}}" @if ($answer->correct)
-                                style="color:#009900;"
-                                @endif>{{$key+1}}).{{$answer->name}}</p>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         @endforeach
 
     </div>
