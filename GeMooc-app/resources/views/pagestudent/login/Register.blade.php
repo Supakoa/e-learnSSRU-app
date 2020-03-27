@@ -288,7 +288,7 @@
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-lx-12">
                             <label for="phoneNumber">เบอร์โทรศัพท์</label>
-                            <i class="far fa-envelope"></i>
+                            <i class="fas fa-phone"></i>
                             <input type="phoneNumber" class="form-control @error('phoneNumber') is-invalid @enderror"
                                 name="phoneNumber" id="phoneNumber" value="{{ old('phoneNumber') }}" required
                                 autocomplete="phoneNumber">

@@ -27,7 +27,7 @@
                         @csrf
                     </form>
                     <div onclick="$('#upload').trigger('click'); return false;" id="imageProfile"
-                        class="container-fluid text-center">
+                        class="container-fluid text-center w-50">
                         @if (auth()->user()->profile->image == null)
                         <img  class="m-auto border rounded rounded-circle"
                             src="https://cdn.pixabay.com/photo/2017/02/23/13/05/profile-2092113_960_720.png" id="userProfileLeftImg"
