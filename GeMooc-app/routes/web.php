@@ -16,30 +16,30 @@ use App\Mail\newMail;
 use App\Http\Controllers\laravelExcelTest;
 
 //New STD-viewer
-Route::get('std/login', function(){
+Route::get('std/login', function () {
     return view('pagestudent.login.Login_std');
 });
 
 //New admin-teacher
-Route::get('at/index', function(){
+Route::get('at/index', function () {
     return view('admin-teach.webapp.login.Index');
 });
 
-Route::get('course/{content}/editor', function(){
+Route::get('course/{content}/editor', function () {
     return view('admin-teach.webapp.content.subject.courses.coursecontent.Content');
 });
 
-Route::get('/guide_book', function(){
+Route::get('/guide_book', function () {
     return view('admin-teach.webapp.content.gb.guideBook');
 });
 
-Route::post('content/order_update','backend\content_c@order_update');
+Route::post('content/order_update', 'backend\content_c@order_update');
 
 /**
  *  all test route
  * */
 Route::get('test/{id}', 'test@export');
-Route::get('/test', function(){
+Route::get('/test', function () {
     return view('test2');
 });
 Route::get('/email', function () {
@@ -50,20 +50,20 @@ Route::get('/email', function () {
 // Route::resource('/video', 'VideoController');
 
 //New STD-viewer
-Route::get('/register', function(){
+Route::get('/register', function () {
     return view('pagestudent.login.Register');
 });
-Route::get('/forget', function(){
+Route::get('/forget', function () {
     return view('pagestudent.login.Forget');
 });
 // Route::get('test', 'test@export');
 // Route::post('import', 'test@import');
 
 
-Route::get('std_view/profile', function(){
+Route::get('std_view/profile', function () {
     return view('pagestudent.profile.Profile');
 });
-Route::post('std_view/profile/upddateProfile','ProfileController@update');
+Route::post('std_view/profile/upddateProfile', 'ProfileController@update');
 
 // use File;
 Auth::routes();
@@ -73,7 +73,7 @@ Route::prefix('login')->group(function () {
     Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.provider.callback');
 });
 
-Route::group(['middleware' => 'auth'], function (){
+Route::group(['middleware' => 'auth'], function () {
     // recordBar
     Route::post('/callRecordBar', 'RecordController@makeRecord');
 
@@ -92,7 +92,7 @@ Route::group(['middleware' => 'auth'], function (){
     // record
     Route::resource('/record', 'RecordController');
 
-    Route::get('page/content/quiz',function() {
+    Route::get('page/content/quiz', function () {
         return view('pagestudent.subject.course.quiz.quiz');
     });
 
@@ -115,11 +115,11 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::post('get_time', function () {
         $time = session('time');
-        if($time>=0){
+        if ($time >= 0) {
             $time--;
             session(['time' => $time]);
             echo $time;
-        }else{
+        } else {
             echo 0;
         }
     });
@@ -145,14 +145,14 @@ Route::group(['middleware' => 'auth'], function (){
         // Route::get('/FAQ', 'image_slideController@FAQ_index');
         Route::post('ajaximage', function () {
             $file = Request::file('file');
-            $destinationPath = public_path().'/uploads/';
+            $destinationPath = public_path() . '/uploads/';
             $filenameWithExt = $file->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $file->getClientOriginalExtension();
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
             $file->move($destinationPath, $fileNameToStore);
-            echo url('/uploads/'.$fileNameToStore);
+            echo url('/uploads/' . $fileNameToStore);
         });
 
         Route::post('ajaximage_delete', function () {
@@ -167,8 +167,8 @@ Route::group(['middleware' => 'auth'], function (){
         // Route::get('test', function ($id) {
 
         /**
-        * Route Sub
-        */
+         * Route Sub
+         */
         Route::resource('/subject', 'backend\subject_c');
         Route::post('subject/modal/edit', 'backend\subject_c@modal_edit');
 
@@ -178,7 +178,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::resource('/content', 'backend\content_c');
         Route::resource('/article', 'backend\articleController');
         Route::resource('/quiz', 'backend\quizController');
-        Route::get('/quiz/{quiz}/dashboard','backend\quizController@quiz_dashboard');
+        Route::get('/quiz/{quiz}/dashboard', 'backend\quizController@quiz_dashboard');
         Route::resource('/teach', 'backend\teachController');
         Route::resource('/question', 'backend\questionController');
         Route::resource('/student', 'backend\studentController');
@@ -187,10 +187,10 @@ Route::group(['middleware' => 'auth'], function (){
         /**
          * Route course
          */
-        Route::get('/course/{course}/users','backend\course_c@users');
-        Route::post('/course/{course}/add_user','backend\course_c@add_user');
-        Route::post('/course/{course}/delete_user','backend\course_c@delete_user');
-        Route::post('/course/{course}/edit_user','backend\course_c@update_role');
+        Route::get('/course/{course}/users', 'backend\course_c@users');
+        Route::post('/course/{course}/add_user', 'backend\course_c@add_user');
+        Route::post('/course/{course}/delete_user', 'backend\course_c@delete_user');
+        Route::post('/course/{course}/edit_user', 'backend\course_c@update_role');
 
         /**
          * Route teach
@@ -221,9 +221,6 @@ Route::group(['middleware' => 'auth'], function (){
         Route::post('question/modal/edit', 'backend\questionController@modal_edit');
         Route::get('quiz/export/{id}', 'backend\quizController@export');
         Route::post('quiz/import/{id}', 'backend\quizController@import');
-
-
     });
-
 });
 // middle ware to any route
