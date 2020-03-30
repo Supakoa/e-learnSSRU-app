@@ -2,23 +2,23 @@
 
 @section('wrap-body')
 <div class="ce-main">
-    <nav>
-        <div class="logo">
-            <img src="{{url('images/logo.png')}}" alt="">
-            <div class="log-underline-img"></div>
-            <h5>SSRU</h5>
-        </div>
-
-        <ul class="nav-links justify-content-end">
-            <li>
-                <a class="t-shadow text-light" href="#" onclick="$('#logout-form').submit()">
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBackend" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBackend">
+            <a href="" class="navbar-brand">
+                <img src="{{url('images/newLogoleftBorder.png')}}" class="d-inline-block align-top " alt="" height="110" width="130">
+            </a>
+            <div class="form-inline my-2 my-lg-0 w-100 justify-content-end">
+                <a class="btn btn-link text-light" href="#" onclick="$('#logout-form').submit()" style="font-size:20px">
                     ออกจากระบบ <i class="fas fa-sign-out-alt"></i>
                 </a>
-            </li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </ul>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </div>
     </nav>
 
     <div class="main-body">
@@ -75,7 +75,7 @@
                 @endif
 
                 @if ($teach)
-                <a href="{{url('/guide_Book')}}">
+                <a href="{{url('/guide_book')}}">
                     <li><i class="fas fa-book-open"></i> คู่มือการใช้งาน</li>
                 </a>
                 @endif

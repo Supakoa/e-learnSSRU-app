@@ -35,11 +35,6 @@ Route::get('/guide_book', function(){
 
 Route::post('content/order_update','backend\content_c@order_update');
 
-// owl admin route
-// Route::get('admin', function(){
-//     return view('admin-teach.webapp.content.admin.Admin');
-// });
-
 /**
  *  all test route
  * */

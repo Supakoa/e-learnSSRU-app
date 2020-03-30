@@ -17,7 +17,7 @@
 </div>
 <div class="container">
     <div class="row m-3">
-        <div class="offset-md-8 col-md-4 col-lg-6 text-right">
+        <div class="offset-md-8 col-md-4 col-lg-6 text-center">
                 @php
                 $both = auth()->user()->type_user == 'admin' || auth()->user()->type_user == 'teach';
                 $adminOnly = auth()->user()->type_user == 'admin';

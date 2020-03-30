@@ -11,8 +11,10 @@
 @endpush
 
 @section('mainContent')
-<div class="nav-name">
-    <p>หลักสูตรที่เปิดสอน</p>
+<div class="w-75 m-auto">
+    <div class="nav-name rounded">
+        <p>หลักสูตรที่เปิดสอน</p>
+    </div>
 </div>
 <div class="container-fluid justify-content-center">
     <div id="win" class="carouselCEF">
